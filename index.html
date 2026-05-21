@@ -332,20 +332,31 @@
       margin: 0 auto;
       display: flex;
       flex-direction: column;
-      gap: 22px;
+      gap: 12px;
       text-align: left;
     }
-    .porque__list li { display: flex; gap: 16px; align-items: flex-start; }
+    .porque__list li {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      background: #0a1a2e;
+      border: 1px solid #1a3050;
+      border-radius: 12px;
+      padding: 16px 18px;
+    }
     .pq-icon {
-      width: 44px; height: 44px;
+      width: 46px; height: 46px;
       border-radius: 50%;
-      background: var(--green);
       display: flex; align-items: center; justify-content: center;
-      font-size: 19px;
+      font-size: 22px;
       flex-shrink: 0;
     }
-    .pq-text h4 { font-size: 14px; font-weight: 800; margin-bottom: 4px; }
-    .pq-text p  { font-size: 13px; color: var(--gray); line-height: 1.55; }
+    .pq-icon.blue   { background: #1a3a8a; }
+    .pq-icon.green  { background: #1a5a30; }
+    .pq-icon.gold   { background: #7a5a00; }
+    .pq-icon.purple { background: #4a1a8a; }
+    .pq-text h4 { font-size: 14px; font-weight: 800; color: #fff; margin-bottom: 4px; }
+    .pq-text p  { font-size: 13px; color: var(--gray); line-height: 1.5; }
 
     /* ─── LIVROS ─── */
     .livros {
@@ -795,31 +806,31 @@
   <p class="sec-sub">Conteúdos literários para continuar libertando com resultados práticos</p>
   <ul class="porque__list">
     <li>
-      <div class="pq-icon">💰</div>
+      <div class="pq-icon blue">💰</div>
       <div class="pq-text">
         <h4>Finanças e Negócios</h4>
-        <p>Estratégias financeiras para construir liberdade com resultados práticos.</p>
+        <p>Estratégias financeiras para construir liberdade com negócios prósperos.</p>
       </div>
     </li>
     <li>
-      <div class="pq-icon">🧠</div>
+      <div class="pq-icon green">🌱</div>
       <div class="pq-text">
         <h4>Desenvolvimento Pessoal</h4>
-        <p>Os melhores livros de mentalidade e conquista de habilidades que mudam sua posição.</p>
+        <p>Mude sua mentalidade e conquiste habilidades que levam ao sucesso.</p>
       </div>
     </li>
     <li>
-      <div class="pq-icon">👑</div>
+      <div class="pq-icon gold">👑</div>
       <div class="pq-text">
         <h4>Liderança e Gestão</h4>
-        <p>Como se posicionar como um líder em qualquer área.</p>
+        <p>Domine técnicas e destaque-se em qualquer área.</p>
       </div>
     </li>
     <li>
-      <div class="pq-icon">⚡</div>
+      <div class="pq-icon purple">⚡</div>
       <div class="pq-text">
-        <h4>Produtividade e Resiliência</h4>
-        <p>Organize sua mente e alcance tudo aquilo que você merece fazer.</p>
+        <h4>Produtividade e Eficiência</h4>
+        <p>Organize seu tempo e alcance resultados maiores todos os dias.</p>
       </div>
     </li>
   </ul>
