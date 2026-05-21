@@ -128,12 +128,15 @@
     }
     .hero__img {
       width: 100%;
-      max-width: 560px;
+      max-width: 100%;
     }
     .hero__img img {
       width: 100%;
       display: block;
       margin: 0 auto;
+    }
+    @media (min-width: 768px) {
+      .hero__img { max-width: 400px; }
     }
     /* unused - kept for safety */
     .hero__checks { display: none; }
