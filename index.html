@@ -4,6 +4,41 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>LV Books – Mais de 3 Mil Livros na Palma da Sua Mão</title>
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1280501823665802');
+  var _pvId='pv_'+Date.now()+'_'+Math.random().toString(36).slice(2,9);
+  fbq('track','PageView',{},{eventID:_pvId});
+  </script>
+  <script>
+    if(typeof fbq==='function'){
+      var _vcId='vc_'+Date.now()+'_'+Math.random().toString(36).slice(2,9);
+      fbq('track','ViewContent',{},{eventID:_vcId});
+    }
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1280501823665802&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
+
+  <!-- Utmify -->
+  <script
+    src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+    data-utmify-prevent-xcod-sck
+    data-utmify-prevent-subids
+    async
+    defer
+  ></script>
+  <!-- End Utmify -->
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
@@ -187,11 +222,88 @@
       overflow: hidden;
       border: 2px solid var(--border);
       box-shadow: 0 0 60px rgba(46,204,64,.15);
+      position: relative;
     }
-    .vsl-wrap video {
-      width: 100%;
-      display: block;
-      background: #000;
+    .vsl-wrap video { width: 100%; display: block; background: #000; }
+
+    /* ─── OVERLAY VERDE (autoplay mudo) ─── */
+    .mute-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(30,140,40,.72);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      cursor: pointer;
+      border-radius: 12px;
+      transition: background .2s;
+    }
+    .mute-overlay:hover { background: rgba(30,140,40,.62); }
+    .mute-overlay.hidden { display: none; }
+    .mute-overlay .mo-title {
+      font-size: 18px;
+      font-weight: 900;
+      color: #fff;
+      text-align: center;
+      text-shadow: 0 2px 8px rgba(0,0,0,.4);
+      line-height: 1.2;
+    }
+    .mute-overlay .mo-icon {
+      font-size: 52px;
+      line-height: 1;
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,.4));
+    }
+    .mute-overlay .mo-cta {
+      font-size: 17px;
+      font-weight: 900;
+      color: #fff;
+      text-align: center;
+      text-shadow: 0 2px 8px rgba(0,0,0,.4);
+    }
+
+    /* ─── OVERLAY ESCURO (click to play — depoimento) ─── */
+    .vid-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(5,14,26,.82);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      cursor: pointer;
+      transition: background .2s;
+      border-radius: 12px;
+    }
+    .vid-overlay:hover { background: rgba(5,14,26,.72); }
+    .vid-overlay.hidden { display: none; }
+    .vid-play-btn {
+      width: 76px; height: 76px;
+      border-radius: 50%;
+      background: var(--green);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 30px;
+      color: #000;
+      box-shadow: 0 0 0 10px rgba(46,204,64,.2);
+      transition: transform .15s, box-shadow .15s;
+    }
+    .vid-overlay:hover .vid-play-btn {
+      transform: scale(1.08);
+      box-shadow: 0 0 0 16px rgba(46,204,64,.15);
+    }
+    .vid-overlay p {
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+    }
+    .vid-overlay small {
+      font-size: 11px;
+      color: var(--gray);
+      letter-spacing: .3px;
     }
 
     /* ─── SECTION COMMONS ─── */
@@ -279,6 +391,7 @@
       overflow: hidden;
       border: 2px solid var(--border);
       box-shadow: 0 0 40px rgba(46,204,64,.15);
+      position: relative;
     }
     .depo-video-wrap video { width: 100%; display: block; background: #000; }
 
@@ -490,8 +603,15 @@
     </ul>
     <a href="#pricing" class="btn-green">QUERO ACESSAR AGORA →</a>
   </div>
-  <div class="hero__img">
-    <img src="audio%20book/banner.png" alt="LV Books no celular" />
+  <div class="hero__img" style="position:relative;border-radius:14px;overflow:hidden;border:2px solid var(--border);box-shadow:0 0 60px rgba(46,204,64,.2);">
+    <video id="vsl-video" autoplay muted playsinline loop style="width:100%;display:block;background:#000;">
+      <source src="audio%20book/vsl.mp4" type="video/mp4" />
+    </video>
+    <div class="mute-overlay" id="vsl-overlay" onclick="unmuteVSL()">
+      <div class="mo-title">Seu vídeo já começou</div>
+      <div class="mo-icon">🔇</div>
+      <div class="mo-cta">Clique para ouvir</div>
+    </div>
   </div>
 </section>
 
@@ -525,10 +645,8 @@
      VSL (VÍDEO DE VENDAS)
 ════════════════════════════ -->
 <section class="vsl-section">
-  <div class="vsl-wrap">
-    <video controls poster="audio%20book/banner.png">
-      <source src="audio%20book/vsl.mp4" type="video/mp4" />
-    </video>
+  <div class="vsl-wrap" style="border:none;box-shadow:none;max-width:420px;">
+    <img src="audio%20book/banner.png" alt="LV Books – mais de 3 mil livros" style="width:100%;display:block;border-radius:12px;filter:drop-shadow(0 0 40px rgba(46,204,64,.2));" />
   </div>
 </section>
 
@@ -611,9 +729,14 @@
 
   <!-- Vídeo depoimento -->
   <div class="depo-video-wrap">
-    <video controls>
+    <video id="dep1-video">
       <source src="audio%20book/dep1.mp4" type="video/mp4" />
     </video>
+    <div class="vid-overlay" id="dep1-overlay" onclick="playVideo('dep1-video','dep1-overlay')">
+      <div class="vid-play-btn">▶</div>
+      <p>Clique para assistir ao depoimento</p>
+      <small>Cliente satisfeito</small>
+    </div>
   </div>
 
   <!-- Screenshots WhatsApp -->
@@ -727,5 +850,25 @@
   </p>
 </footer>
 
+<script>
+  /* VSL: autoplay mudo → clique para ouvir */
+  function unmuteVSL() {
+    var video   = document.getElementById('vsl-video');
+    var overlay = document.getElementById('vsl-overlay');
+    video.muted = false;
+    video.loop  = false;
+    video.controls = true;
+    overlay.classList.add('hidden');
+  }
+
+  /* Depoimento: clique para reproduzir */
+  function playVideo(videoId, overlayId) {
+    var video   = document.getElementById(videoId);
+    var overlay = document.getElementById(overlayId);
+    overlay.classList.add('hidden');
+    video.controls = true;
+    video.play();
+  }
+</script>
 </body>
 </html>
