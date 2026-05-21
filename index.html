@@ -171,42 +171,60 @@
       text-align: center;
     }
     .vantagens h2 {
-      font-size: 20px;
+      font-size: 22px;
       font-weight: 900;
       text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 38px;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
     }
-    .vant__grid {
+    .vantagens__sub {
+      font-size: 13px;
+      color: var(--gray);
+      margin-bottom: 32px;
+    }
+    .vant__card {
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
-      gap: 36px;
       max-width: 860px;
       margin: 0 auto;
+      background: #0a1a2e;
+      border: 1px solid #1a3050;
+      border-radius: 14px;
+      overflow: hidden;
     }
     .vant-item {
       display: flex;
-      flex-direction: column;
       align-items: center;
-      gap: 12px;
-      flex: 1 1 200px;
-      max-width: 240px;
+      gap: 14px;
+      flex: 1 1 220px;
+      padding: 22px 24px;
+      text-align: left;
+      border-right: 1px solid #1a3050;
+    }
+    .vant-item:last-child { border-right: none; }
+    @media (max-width: 600px) {
+      .vant-item { border-right: none; border-bottom: 1px solid #1a3050; }
+      .vant-item:last-child { border-bottom: none; }
     }
     .vant-icon {
-      width: 58px; height: 58px;
-      background: var(--green);
-      border-radius: 50%;
+      width: 46px; height: 46px;
+      border-radius: 10px;
       display: flex; align-items: center; justify-content: center;
-      font-size: 26px;
+      font-size: 22px;
+      flex-shrink: 0;
     }
+    .vant-icon.orange { background: #7a3a00; }
+    .vant-icon.blue   { background: #0a2a5a; }
+    .vant-icon.yellow { background: #5a4a00; }
     .vant-item h3 {
       font-size: 12px;
-      font-weight: 800;
+      font-weight: 900;
       text-transform: uppercase;
       letter-spacing: .5px;
+      margin-bottom: 3px;
+      color: #fff;
     }
-    .vant-item p { font-size: 12px; color: var(--gray); line-height: 1.55; }
+    .vant-item p { font-size: 12px; color: var(--gray); line-height: 1.4; }
 
     /* ─── VSL ─── */
     .vsl-section {
@@ -766,21 +784,28 @@
 ════════════════════════════ -->
 <section class="vantagens">
   <h2>Vantagens</h2>
-  <div class="vant__grid">
+  <p class="vantagens__sub">Ouça seus audiobooks sem anúncios, sem interrupções e direto do celular.</p>
+  <div class="vant__card">
     <div class="vant-item">
-      <div class="vant-icon">💳</div>
-      <h3>Pague somente uma vez</h3>
-      <p>Pague uma única vez, sem mensalidades, e tenha acesso a toda a coleção para sempre.</p>
+      <div class="vant-icon orange">💳</div>
+      <div>
+        <h3>Pague somente uma vez</h3>
+        <p>E tenha acesso pra sempre.</p>
+      </div>
     </div>
     <div class="vant-item">
-      <div class="vant-icon">📱</div>
-      <h3>Leia do jeito que quiser</h3>
-      <p>No celular, tablet ou computador — leia quando e como quiser, sem limites.</p>
+      <div class="vant-icon blue">🎵</div>
+      <div>
+        <h3>Ouça de onde quiser</h3>
+        <p>No celular, tablet ou computador.</p>
+      </div>
     </div>
     <div class="vant-item">
-      <div class="vant-icon">⚡</div>
-      <h3>Receba imediatamente</h3>
-      <p>Acesso liberado logo após o pagamento. Comece a ler em menos de 1 minuto.</p>
+      <div class="vant-icon yellow">⚡</div>
+      <div>
+        <h3>Receba imediatamente</h3>
+        <p>Após o pagamento.</p>
+      </div>
     </div>
   </div>
 </section>
