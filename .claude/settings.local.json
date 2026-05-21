@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-ChildItem \"C:\\\\Users\\\\bloke\\\\Documents\\\\GitHub\\\\lvbooks\\\\audio book\" -Recurse)",
+      "Bash(Select-Object Name, Length, DirectoryName)",
+      "Bash(Format-Table -AutoSize)"
+    ]
+  }
+}
