@@ -241,37 +241,42 @@
     .mute-overlay {
       position: absolute;
       inset: 0;
-      background: rgba(30,140,40,.72);
+      background: transparent;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 12px;
       cursor: pointer;
       border-radius: 12px;
+    }
+    .mute-overlay.hidden { display: none; }
+    .mute-overlay__box {
+      background: rgba(30,140,40,.88);
+      border-radius: 14px;
+      padding: 18px 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
       transition: background .2s;
     }
-    .mute-overlay:hover { background: rgba(30,140,40,.62); }
-    .mute-overlay.hidden { display: none; }
+    .mute-overlay:hover .mute-overlay__box { background: rgba(30,140,40,.78); }
     .mute-overlay .mo-title {
-      font-size: 18px;
-      font-weight: 900;
-      color: #fff;
-      text-align: center;
-      text-shadow: 0 2px 8px rgba(0,0,0,.4);
-      line-height: 1.2;
-    }
-    .mute-overlay .mo-icon {
-      font-size: 52px;
-      line-height: 1;
-      filter: drop-shadow(0 2px 6px rgba(0,0,0,.4));
-    }
-    .mute-overlay .mo-cta {
       font-size: 17px;
       font-weight: 900;
       color: #fff;
       text-align: center;
-      text-shadow: 0 2px 8px rgba(0,0,0,.4);
+      line-height: 1.2;
+    }
+    .mute-overlay .mo-icon {
+      font-size: 48px;
+      line-height: 1;
+    }
+    .mute-overlay .mo-cta {
+      font-size: 16px;
+      font-weight: 900;
+      color: #fff;
+      text-align: center;
     }
 
     /* ─── OVERLAY ESCURO (click to play — depoimento) ─── */
@@ -761,9 +766,11 @@
       <source src="audio%20book/vsl.mp4" type="video/mp4" />
     </video>
     <div class="mute-overlay" id="vsl-overlay" onclick="unmuteVSL()">
-      <div class="mo-title">Seu vídeo já começou</div>
-      <div class="mo-icon">🔇</div>
-      <div class="mo-cta">Clique para ouvir</div>
+      <div class="mute-overlay__box">
+        <div class="mo-title">Seu vídeo já começou</div>
+        <div class="mo-icon">🔇</div>
+        <div class="mo-cta">Clique para ouvir</div>
+      </div>
     </div>
   </div>
 </section>
