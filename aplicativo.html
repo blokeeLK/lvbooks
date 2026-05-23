@@ -3,6 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Redirect: força domínio canônico e HTTPS -->
+  <script>
+  (function(){
+    var h=window.location.hostname, p=window.location.protocol;
+    if(h!=='lvbooks.com.br'||p!=='https:'){
+      window.location.replace('https://lvbooks.com.br'+window.location.pathname+window.location.search+window.location.hash);
+    }
+  })();
+  </script>
   <title>LV Books App Premium – Acesso Vitalício</title>
   <link rel="icon" type="image/png" href="favicon.png" />
   <link rel="apple-touch-icon" href="favicon.png" />
