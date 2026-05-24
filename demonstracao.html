@@ -11,7 +11,7 @@
 </script>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Biblioteca — LV Books</title>
+<title>Demonstração</title>
 <link rel="icon" type="image/png" href="audio%20book/banner.png"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -38,28 +38,12 @@ body{
   min-height:100vh;
 }
 
-.page-header{
-  padding:36px 16px 24px;
-  text-align:center;
-}
-
-.page-header h1{
-  font-size:clamp(16px,4vw,22px);
-  font-weight:700;
-  color:#e2e8f0;
-  letter-spacing:.01em;
-}
-
-.page-header h1 span{
-  color:#1db954;
-}
-
 /* ── GRID ── */
 .book-grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
   gap:8px;
-  padding:0 8px;
+  padding:8px;
   max-width:1200px;
   margin:0 auto;
 }
@@ -115,61 +99,11 @@ body{
   display:flex;
 }
 
-/* ── CTA ── */
-.cta-wrap{
-  padding:52px 16px 64px;
-  text-align:center;
-}
-
-.cta-btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:10px;
-  background:#1db954;
-  color:#000;
-  font-family:'Montserrat',sans-serif;
-  font-size:clamp(15px,3vw,17px);
-  font-weight:800;
-  text-transform:uppercase;
-  letter-spacing:.05em;
-  padding:18px 40px;
-  border-radius:10px;
-  text-decoration:none;
-  border:none;
-  cursor:pointer;
-  animation:pulse 2s infinite;
-}
-
-.cta-btn:hover{
-  background:#17a347;
-  animation:none;
-}
-
-@keyframes pulse{
-  0%,100%{ box-shadow:0 0 0 0 rgba(29,185,84,.5); }
-  50%{ box-shadow:0 0 0 14px rgba(29,185,84,0); }
-}
-
-.cta-sub{
-  margin-top:12px;
-  font-size:12px;
-  color:#64748b;
-}
 </style>
 </head>
 <body>
 
-<header class="page-header">
-  <h1>Veja alguns livros <span>disponíveis</span></h1>
-</header>
-
 <main class="book-grid" id="grid"></main>
-
-<div class="cta-wrap">
-  <a href="#" class="cta-btn">📖 QUERO ACESSAR AGORA</a>
-  <p class="cta-sub">Acesso imediato · Sem mensalidade · Vitalício</p>
-</div>
 
 <script>
 var books = [
