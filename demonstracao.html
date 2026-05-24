@@ -107,43 +107,64 @@ body{
 
 <script>
 var books = [
-  { title: 'TED Talks',                                              img: 'paginas/download.jpg' },
-  { title: 'Persuasão',                                              img: 'paginas/download (1).jpg' },
-  { title: 'Pai Rico, Pai Pobre',                                    img: 'paginas/download (2).jpg' },
-  { title: 'Quem Pensa Enriquece',                                   img: 'paginas/download (3).jpg' },
-  { title: 'A Arte da Guerra',                                       img: 'paginas/download (4).jpg' },
-  { title: 'Mindset',                                                img: 'paginas/download (5).jpg' },
-  { title: 'Como Falar em Público e Influenciar Pessoas no Mundo dos Negócios', img: 'paginas/download (6).jpg' },
-  { title: 'O Poder do Hábito',                                      img: 'paginas/download (7).jpg' },
-  { title: 'O Homem Mais Rico da Babilônia',                         img: 'paginas/download (8).jpg' },
-  { title: 'A Coragem de Ser Imperfeito',                            img: 'paginas/download (9).jpg' },
-  { title: 'Quebrando o Hábito de Ser Você Mesmo',                   img: 'paginas/download (10).jpg' },
-  { title: 'Como Convencer Alguém em 90 Segundos',                   img: 'paginas/download (11).jpg' },
-  { title: 'Desconstruindo a Ansiedade',                             img: 'paginas/download (12).jpg' },
-  { title: 'Memórias de um Suicida',                                 img: 'paginas/download (13).jpg' },
-  { title: 'O Poder da Autorresponsabilidade',                       img: 'paginas/download (14).jpg' },
-  { title: 'A Psicologia Financeira',                                img: 'paginas/download (15).jpg' },
-  { title: 'O Poder do Basta',                                       img: 'paginas/download (16).jpg' },
-  { title: 'Pare de se Sabotar e Dê a Volta por Cima',               img: 'paginas/download (17).jpg' },
-  { title: 'Rápido e Devagar',                                       img: 'paginas/download (18).jpg' },
-  { title: 'O Ego é Seu Inimigo',                                    img: 'paginas/download (19).jpg' },
-  { title: 'Gatilhos Mentais',                                       img: 'paginas/download (20).jpg' },
-  { title: 'Antifrágil',                                             img: 'paginas/download (21).jpg' },
-  { title: 'Empresas Feitas para Vencer',                            img: 'paginas/download (22).jpg' },
-  { title: 'Os 7 Hábitos das Pessoas Altamente Eficazes',            img: 'paginas/download (23).jpg' },
-  { title: 'Segredos do Milionário',                                 img: 'paginas/download (24).jpg' },
-  { title: 'O Poder da Ação',                                        img: 'paginas/download (25).jpg' },
-  { title: 'Mude sua Mente, Mude seu Destino',                       img: 'paginas/download (26).jpg' }
+  'paginas/download.jpg',
+  'paginas/download (1).jpg',
+  'paginas/download (2).jpg',
+  'paginas/download (3).jpg',
+  'paginas/download (4).jpg',
+  'paginas/download (5).jpg',
+  'paginas/download (6).jpg',
+  'paginas/download (7).jpg',
+  'paginas/download (8).jpg',
+  'paginas/download (9).jpg',
+  'paginas/download (10).jpg',
+  'paginas/download (11).jpg',
+  'paginas/download (12).jpg',
+  'paginas/download (13).jpg',
+  'paginas/download (14).jpg',
+  'paginas/download (15).jpg',
+  'paginas/download (16).jpg',
+  'paginas/download (17).jpg',
+  'paginas/download (18).jpg',
+  'paginas/download (19).jpg',
+  'paginas/download (20).jpg',
+  'paginas/download (21).jpg',
+  'paginas/download (22).jpg',
+  'paginas/download (23).jpg',
+  'paginas/download (24).jpg',
+  'paginas/download (25).jpg',
+  'paginas/download (26).jpg',
+  'paginas/download.png',
+  'paginas/download (1).png',
+  'paginas/download (2).png',
+  'paginas/download (3).png',
+  'paginas/download.webp',
+  'paginas/shopping.webp',
+  'paginas/shopping (1).webp',
+  'paginas/shopping (2).webp',
+  'paginas/shopping (3).webp',
+  'paginas/91NY3dGiqUL._AC_UF1000,1000_QL80_.jpg',
+  'paginas/l1.jpg',
+  'paginas/l1.png',
+  'paginas/l2.png',
+  'paginas/l3.png',
+  'paginas/l4.png',
+  'paginas/l6.jpg',
+  'paginas/l7.png',
+  'paginas/l8.png',
+  'paginas/l10.jpg',
+  'paginas/l11.jpg',
+  'paginas/l13.jpg'
 ];
 
 var grid = document.getElementById('grid');
 var html = '';
-books.forEach(function(b){
+books.forEach(function(src){
   html +=
     '<div class="book-item">' +
-      '<img src="' + b.img + '" alt="' + b.title + '" loading="lazy" ' +
+      '<img src="' + src + '" alt="" loading="lazy" ' +
         'onerror="this.classList.add(\'errored\')">' +
-      '<div class="book-label">' + b.title + '</div>' +
+      '<div class="book-label"></div>' +
     '</div>';
 });
 grid.innerHTML = html;
