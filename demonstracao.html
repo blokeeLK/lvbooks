@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<script>
+(function(){
+  var h=window.location.hostname, p=window.location.protocol;
+  if(h!=='lvbooks.com.br'||p!=='https:'){
+    window.location.replace('https://lvbooks.com.br'+window.location.pathname+window.location.search+window.location.hash);
+  }
+})();
+</script>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>LV Books — Sua Biblioteca Digital</title>
+<link rel="icon" type="image/png" href="audio%20book/banner.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','868077232260294');
+fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=868077232260294&ev=PageView&noscript=1"/></noscript>
+
+<!-- UTMify -->
+<script async src="https://cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-xcod-sck data-utmify-prevent-subids></script>
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --navy:#0a1628;
+  --navy2:#0d1f38;
+  --green:#1db954;
+  --gold:#f5a623;
+  --white:#ffffff;
+  --gray:#8892a4;
+}
+
+html,body{
+  font-family:'Montserrat',sans-serif;
+  background:var(--navy);
+  color:var(--white);
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:60px 20px 80px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+
+.hero::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:radial-gradient(ellipse 80% 60% at 50% 0%, rgba(29,185,84,.12) 0%, transparent 70%);
+  pointer-events:none;
+}
+
+.hero__eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:rgba(29,185,84,.12);
+  border:1px solid rgba(29,185,84,.3);
+  border-radius:100px;
+  padding:6px 18px;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--green);
+  margin-bottom:28px;
+}
+
+.hero__title{
+  font-size:clamp(28px,6vw,60px);
+  font-weight:900;
+  line-height:1.1;
+  letter-spacing:-.02em;
+  margin-bottom:16px;
+  max-width:780px;
+}
+
+.hero__title span{
+  color:var(--green);
+}
+
+.hero__subtitle{
+  font-size:clamp(15px,2.5vw,20px);
+  color:var(--gray);
+  font-weight:500;
+  max-width:560px;
+  line-height:1.6;
+  margin-bottom:48px;
+}
+
+/* ── PHONE MOCKUP ── */
+.phone-wrap{
+  position:relative;
+  width:280px;
+  margin:0 auto 48px;
+  flex-shrink:0;
+}
+
+@media(min-width:768px){
+  .phone-wrap{ width:320px; }
+}
+
+.phone-frame{
+  position:relative;
+  width:100%;
+  background:#111827;
+  border-radius:44px;
+  border:3px solid #2a2a3a;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.06),
+    0 40px 80px rgba(0,0,0,.8),
+    0 0 60px rgba(29,185,84,.15),
+    inset 0 0 0 1px rgba(255,255,255,.04);
+  overflow:hidden;
+  padding-top:28px;
+  padding-bottom:20px;
+}
+
+/* notch */
+.phone-frame::before{
+  content:'';
+  position:absolute;
+  top:10px;
+  left:50%;
+  transform:translateX(-50%);
+  width:90px;
+  height:8px;
+  background:#000;
+  border-radius:100px;
+  z-index:10;
+}
+
+/* side button */
+.phone-frame::after{
+  content:'';
+  position:absolute;
+  right:-5px;
+  top:80px;
+  width:4px;
+  height:50px;
+  background:#2a2a3a;
+  border-radius:0 4px 4px 0;
+}
+
+.phone-screen{
+  width:100%;
+  height:520px;
+  overflow:hidden;
+  position:relative;
+  background:#0d1117;
+}
+
+@media(min-width:768px){
+  .phone-screen{ height:600px; }
+}
+
+/* app header inside phone */
+.phone-app-header{
+  position:sticky;
+  top:0;
+  z-index:5;
+  background:linear-gradient(135deg,#0d1117 0%,#111827 100%);
+  padding:12px 14px 10px;
+  border-bottom:1px solid rgba(255,255,255,.06);
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.phone-app-logo{
+  width:22px;
+  height:22px;
+  background:var(--green);
+  border-radius:6px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:12px;
+  font-weight:900;
+  color:#000;
+  flex-shrink:0;
+}
+
+.phone-app-title{
+  font-size:13px;
+  font-weight:700;
+  color:#fff;
+}
+
+.phone-app-count{
+  margin-left:auto;
+  font-size:10px;
+  color:var(--green);
+  font-weight:600;
+}
+
+/* scrolling grid */
+.phone-grid-track{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:4px;
+  padding:6px 6px 0;
+  animation:scrollGrid 40s linear infinite;
+  will-change:transform;
+}
+
+.phone-grid-track:hover{
+  animation-play-state:paused;
+}
+
+@keyframes scrollGrid{
+  0%{ transform:translateY(0); }
+  100%{ transform:translateY(-50%); }
+}
+
+.phone-book{
+  aspect-ratio:2/3;
+  border-radius:5px;
+  overflow:hidden;
+  background:#1a1a2e;
+  flex-shrink:0;
+}
+
+.phone-book img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+/* ── BADGES ── */
+.badges{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:10px;
+  margin-bottom:44px;
+  max-width:600px;
+}
+
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:100px;
+  padding:8px 16px;
+  font-size:12px;
+  font-weight:600;
+  color:#cbd5e1;
+}
+
+.badge-icon{
+  font-size:14px;
+}
+
+/* ── CTA ── */
+.cta-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  background:var(--green);
+  color:#000;
+  font-family:'Montserrat',sans-serif;
+  font-size:clamp(15px,3vw,18px);
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+  padding:18px 40px;
+  border-radius:12px;
+  text-decoration:none;
+  border:none;
+  cursor:pointer;
+  box-shadow:0 0 0 0 rgba(29,185,84,.5);
+  animation:pulseCta 2s infinite;
+  transition:transform .15s,box-shadow .15s;
+}
+
+.cta-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 32px rgba(29,185,84,.4);
+  animation:none;
+}
+
+@keyframes pulseCta{
+  0%,100%{ box-shadow:0 0 0 0 rgba(29,185,84,.5); }
+  50%{ box-shadow:0 0 0 14px rgba(29,185,84,0); }
+}
+
+.cta-sub{
+  margin-top:12px;
+  font-size:12px;
+  color:var(--gray);
+  font-weight:500;
+}
+
+/* ── STATS ── */
+.stats{
+  background:var(--navy2);
+  border-top:1px solid rgba(255,255,255,.06);
+  border-bottom:1px solid rgba(255,255,255,.06);
+  padding:36px 20px;
+}
+
+.stats-inner{
+  max-width:800px;
+  margin:0 auto;
+  display:flex;
+  justify-content:center;
+  gap:clamp(24px,6vw,80px);
+  flex-wrap:wrap;
+}
+
+.stat{
+  text-align:center;
+}
+
+.stat-num{
+  font-size:clamp(28px,5vw,44px);
+  font-weight:900;
+  color:var(--green);
+  letter-spacing:-.02em;
+  line-height:1;
+}
+
+.stat-label{
+  font-size:12px;
+  color:var(--gray);
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  margin-top:4px;
+}
+
+/* ── FEATURES ── */
+.features{
+  padding:72px 20px;
+  max-width:900px;
+  margin:0 auto;
+}
+
+.section-label{
+  text-align:center;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--green);
+  margin-bottom:12px;
+}
+
+.section-title{
+  text-align:center;
+  font-size:clamp(22px,4vw,36px);
+  font-weight:800;
+  line-height:1.2;
+  margin-bottom:48px;
+}
+
+.features-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:20px;
+}
+
+.feat-card{
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:16px;
+  padding:28px 24px;
+  transition:border-color .2s,transform .2s;
+}
+
+.feat-card:hover{
+  border-color:rgba(29,185,84,.3);
+  transform:translateY(-3px);
+}
+
+.feat-icon{
+  width:48px;
+  height:48px;
+  background:rgba(29,185,84,.12);
+  border-radius:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:22px;
+  margin-bottom:16px;
+}
+
+.feat-title{
+  font-size:15px;
+  font-weight:700;
+  margin-bottom:6px;
+}
+
+.feat-desc{
+  font-size:13px;
+  color:var(--gray);
+  line-height:1.6;
+}
+
+/* ── BOOK SHELF ── */
+.shelf{
+  padding:0 0 72px;
+  overflow:hidden;
+}
+
+.shelf-track-wrap{
+  overflow:hidden;
+  mask-image:linear-gradient(to right,transparent 0%,black 8%,black 92%,transparent 100%);
+  -webkit-mask-image:linear-gradient(to right,transparent 0%,black 8%,black 92%,transparent 100%);
+}
+
+.shelf-track{
+  display:flex;
+  gap:12px;
+  width:max-content;
+  animation:slideShelf 40s linear infinite;
+}
+
+.shelf-track.reverse{
+  animation:slideShelfRev 38s linear infinite;
+}
+
+.shelf-track:hover{
+  animation-play-state:paused;
+}
+
+@keyframes slideShelf{
+  0%{ transform:translateX(0); }
+  100%{ transform:translateX(-50%); }
+}
+
+@keyframes slideShelfRev{
+  0%{ transform:translateX(-50%); }
+  100%{ transform:translateX(0); }
+}
+
+.shelf-book{
+  width:90px;
+  flex-shrink:0;
+  border-radius:6px;
+  overflow:hidden;
+  box-shadow:0 4px 12px rgba(0,0,0,.4);
+}
+
+.shelf-book img{
+  width:100%;
+  aspect-ratio:2/3;
+  object-fit:cover;
+  display:block;
+}
+
+/* ── FOOTER ── */
+.footer{
+  border-top:1px solid rgba(255,255,255,.06);
+  padding:32px 20px;
+  text-align:center;
+  font-size:12px;
+  color:var(--gray);
+}
+
+/* ── SCROLL REVEAL ── */
+.reveal{
+  opacity:0;
+  transform:translateY(28px);
+  transition:opacity .6s ease,transform .6s ease;
+}
+.reveal.visible{
+  opacity:1;
+  transform:none;
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero__eyebrow">
+    <span>📚</span> Sua biblioteca digital
+  </div>
+
+  <h1 class="hero__title">
+    Mais de <span>3.000 livros</span><br/>na palma da sua mão
+  </h1>
+
+  <p class="hero__subtitle">
+    Audiobooks, e-books e PDFs dos maiores best-sellers do mundo — acesse de qualquer lugar, a qualquer hora, para sempre.
+  </p>
+
+  <!-- Phone Mockup -->
+  <div class="phone-wrap reveal">
+    <div class="phone-frame">
+      <div class="phone-screen">
+        <div class="phone-app-header">
+          <div class="phone-app-logo">LV</div>
+          <span class="phone-app-title">LV Books</span>
+          <span class="phone-app-count">+3.000 títulos</span>
+        </div>
+        <div class="phone-grid-track" id="phoneGrid">
+          <!-- books injected by JS -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Badges -->
+  <div class="badges reveal">
+    <span class="badge"><span class="badge-icon">⚡</span> Acesso imediato</span>
+    <span class="badge"><span class="badge-icon">📱</span> Funciona no celular</span>
+    <span class="badge"><span class="badge-icon">🔒</span> Compra 100% segura</span>
+    <span class="badge"><span class="badge-icon">♾️</span> Acesso vitalício</span>
+    <span class="badge"><span class="badge-icon">🌐</span> Online e offline</span>
+  </div>
+
+  <a href="#" class="cta-btn" id="heroCtaBtn">
+    📖 QUERO ACESSAR AGORA
+  </a>
+  <p class="cta-sub">Sem mensalidade · Sem renovação · Acesso para sempre</p>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat">
+      <div class="stat-num">+3.000</div>
+      <div class="stat-label">Livros</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">250+</div>
+      <div class="stat-label">Audiobooks</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Digital</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">∞</div>
+      <div class="stat-label">Acesso</div>
+    </div>
+  </div>
+</div>
+
+<!-- SCROLLING SHELF ROW 1 -->
+<div class="shelf" style="padding-top:72px">
+  <p class="section-label" style="margin-bottom:32px">Títulos disponíveis</p>
+  <div class="shelf-track-wrap">
+    <div class="shelf-track" id="shelfRow1"></div>
+  </div>
+</div>
+
+<!-- SCROLLING SHELF ROW 2 -->
+<div class="shelf" style="padding-top:0">
+  <div class="shelf-track-wrap">
+    <div class="shelf-track reverse" id="shelfRow2"></div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section class="features reveal">
+  <p class="section-label">Por que escolher</p>
+  <h2 class="section-title">Tudo que você precisa em um só lugar</h2>
+  <div class="features-grid">
+    <div class="feat-card">
+      <div class="feat-icon">🎧</div>
+      <div class="feat-title">Audiobooks profissionais</div>
+      <div class="feat-desc">Mais de 250 audiobooks narrados com qualidade de estúdio. Ouça no trânsito, academia ou onde quiser.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">📚</div>
+      <div class="feat-title">+3.500 e-books</div>
+      <div class="feat-desc">A maior coleção digital em português. Best-sellers nacionais e internacionais ao seu alcance.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">📄</div>
+      <div class="feat-title">PDFs integrados</div>
+      <div class="feat-desc">Resumos e materiais complementares em PDF para aprofundar seu conhecimento.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">📱</div>
+      <div class="feat-title">Funciona no celular</div>
+      <div class="feat-desc">Acesse pelo navegador do celular, tablet ou computador. Sem necessidade de instalar nada.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">🔒</div>
+      <div class="feat-title">Acesso vitalício</div>
+      <div class="feat-desc">Pague uma vez e tenha acesso para sempre. Sem mensalidade, sem renovação, sem surpresas.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">🔄</div>
+      <div class="feat-title">Atualizações inclusas</div>
+      <div class="feat-desc">Novos títulos adicionados regularmente. Você recebe tudo sem pagar nada a mais.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section style="padding:60px 20px 80px;text-align:center;">
+  <div class="reveal">
+    <p class="section-label">Oferta especial</p>
+    <h2 class="section-title" style="margin-bottom:28px;">Transforme sua vida<br/><span style="color:var(--green)">com o conhecimento certo</span></h2>
+    <a href="#" class="cta-btn" id="bottomCtaBtn">
+      📖 QUERO ACESSAR AGORA
+    </a>
+    <p class="cta-sub" style="margin-top:16px;">⚡ Acesso imediato após o pagamento</p>
+    <div style="display:flex;align-items:center;justify-content:center;gap:20px;margin-top:24px;flex-wrap:wrap;">
+      <span style="font-size:12px;color:var(--gray);">🔒 Pagamento 100% seguro</span>
+      <span style="font-size:12px;color:var(--gray);">✅ Garantia de 7 dias</span>
+      <span style="font-size:12px;color:var(--gray);">📱 Acesso no celular</span>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  © 2025 LV Books — Todos os direitos reservados
+</footer>
+
+<script>
+// Book images from paginas/ folder
+var books = [
+  'paginas/download.jpg',
+  'paginas/download (1).jpg',
+  'paginas/download (2).jpg',
+  'paginas/download (3).jpg',
+  'paginas/download (4).jpg',
+  'paginas/download (5).jpg',
+  'paginas/download (6).jpg',
+  'paginas/download (7).jpg',
+  'paginas/download (8).jpg',
+  'paginas/download (9).jpg',
+  'paginas/download (10).jpg',
+  'paginas/download (11).jpg',
+  'paginas/download (12).jpg',
+  'paginas/download (13).jpg',
+  'paginas/download (14).jpg',
+  'paginas/download (15).jpg',
+  'paginas/download (16).jpg',
+  'paginas/download (17).jpg',
+  'paginas/download (18).jpg',
+  'paginas/download (19).jpg',
+  'paginas/download (20).jpg',
+  'paginas/download (21).jpg',
+  'paginas/download (22).jpg',
+  'paginas/download (23).jpg',
+  'paginas/download (24).jpg',
+  'paginas/download (25).jpg',
+  'paginas/download (26).jpg',
+  'paginas/download.png',
+  'paginas/download (1).png',
+  'paginas/download (2).png',
+  'paginas/download (3).png',
+  'paginas/download.webp',
+  'paginas/shopping.webp',
+  'paginas/shopping (1).webp',
+  'paginas/shopping (2).webp',
+  'paginas/shopping (3).webp',
+  'paginas/91NY3dGiqUL._AC_UF1000,1000_QL80_.jpg',
+  'paginas/l1.jpg',
+  'paginas/l1.png',
+  'paginas/l2.png',
+  'paginas/l3.png',
+  'paginas/l4.png',
+  'paginas/l6.jpg',
+  'paginas/l7.png',
+  'paginas/l8.png',
+  'paginas/l10.jpg',
+  'paginas/l11.jpg',
+  'paginas/l13.jpg'
+];
+
+// ── Phone grid (infinite scroll) ──
+(function(){
+  var grid = document.getElementById('phoneGrid');
+  // duplicate set for seamless loop
+  var doubled = books.concat(books);
+  var html = '';
+  doubled.forEach(function(src){
+    html += '<div class="phone-book"><img src="'+src+'" alt="livro" loading="lazy"/></div>';
+  });
+  grid.innerHTML = html;
+
+  // Adjust animation duration so speed feels consistent
+  var totalRows = Math.ceil(doubled.length / 3);
+  var rowH = 100; // approx px per row
+  var duration = totalRows * rowH / 40; // ~40px/s
+  grid.style.animationDuration = Math.max(30, duration) + 's';
+})();
+
+// ── Shelf rows ──
+(function(){
+  function buildShelf(el, list){
+    // triple for seamless infinite
+    var arr = list.concat(list).concat(list);
+    var html = '';
+    arr.forEach(function(src){
+      html += '<div class="shelf-book"><img src="'+src+'" alt="livro" loading="lazy"/></div>';
+    });
+    el.innerHTML = html;
+  }
+
+  var half = Math.floor(books.length / 2);
+  buildShelf(document.getElementById('shelfRow1'), books.slice(0, half + 8));
+  buildShelf(document.getElementById('shelfRow2'), books.slice(half - 8));
+})();
+
+// ── Scroll reveal ──
+(function(){
+  var els = document.querySelectorAll('.reveal');
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  },{threshold:0.15});
+  els.forEach(function(el){ io.observe(el); });
+  // Trigger hero elements immediately
+  document.querySelectorAll('.hero .reveal').forEach(function(el){
+    el.classList.add('visible');
+  });
+})();
+</script>
+</body>
+</html>

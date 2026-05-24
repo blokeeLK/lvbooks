@@ -1,3 +1,4 @@
 # Render static site – path fallback (hostname redirect is handled via JS)
 /aplicativo  /aplicativo.html  200
 /oferta      /oferta.html      200
+/demonstracao  /demonstracao.html  200
