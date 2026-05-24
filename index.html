@@ -419,6 +419,17 @@
     .stars { color: var(--gold); font-size: 22px; letter-spacing: 3px; margin-bottom: 4px; }
     .stars-count { font-size: 13px; color: var(--gray); margin-bottom: 32px; }
 
+    .depo-video-wrap {
+      width: 100%;
+      max-width: 320px;
+      margin: 0 auto 32px;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 2px solid var(--border);
+      box-shadow: 0 0 40px rgba(46,204,64,.15);
+      position: relative;
+    }
+    .depo-video-wrap video { width: 100%; display: block; background: #000; }
 
     .depo__imgs {
       display: flex;
@@ -892,6 +903,17 @@
   <div class="stars">⭐⭐⭐⭐⭐</div>
   <p class="stars-count">4,9/5 – 18.397 avaliações</p>
 
+  <!-- Vídeo depoimento -->
+  <div class="depo-video-wrap">
+    <video id="dep1-video">
+      <source src="audio%20book/dep1.mp4" type="video/mp4" />
+    </video>
+    <div class="vid-overlay" id="dep1-overlay" onclick="playVideo('dep1-video','dep1-overlay')">
+      <div class="vid-play-btn">▶</div>
+      <p>Clique para assistir ao depoimento</p>
+      <small>Cliente satisfeito</small>
+    </div>
+  </div>
 
   <!-- Screenshots WhatsApp -->
   <div class="depo__imgs">
