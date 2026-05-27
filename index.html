@@ -13,8 +13,8 @@
   })();
   </script>
   <title>LV Books – Mais de 3 Mil Livros na Palma da Sua Mão</title>
-  <link rel="icon" type="image/png" href="favicon.png" />
-  <link rel="apple-touch-icon" href="favicon.png" />
+  <link rel="icon" type="image/png" href="upcell/logo.png" />
+  <link rel="apple-touch-icon" href="upcell/logo.png" />
   <!-- Meta Pixel Code -->
   <script>
   !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
@@ -1075,9 +1075,14 @@
     pointer-events: auto;
   }
   .sp-popup__icon {
-    font-size: 32px;
     flex-shrink: 0;
     line-height: 1;
+  }
+  .sp-popup__icon img {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+    border-radius: 8px;
   }
   .sp-popup__body { display: flex; flex-direction: column; gap: 2px; }
   .sp-popup__name {
@@ -1116,7 +1121,7 @@
 
 <!-- Social Proof Popup -->
 <div class="sp-popup" id="sp-popup">
-  <div class="sp-popup__icon">📚</div>
+  <div class="sp-popup__icon"><img src="logo.png" alt="LV Books"/></div>
   <div class="sp-popup__body">
     <div class="sp-popup__name" id="sp-name">Carlos Mendes comprou</div>
     <div class="sp-popup__product" id="sp-product">250 audiobooks Pacote Premium+</div>
@@ -1229,9 +1234,9 @@
 
     spPopup.classList.add('show');
 
-    /* esconde após 5 s */
+    /* esconde após 4 s */
     clearTimeout(spHideTimer);
-    spHideTimer = setTimeout(closePopup, 5000);
+    spHideTimer = setTimeout(closePopup, 4000);
 
     /* agenda próximo entre 18 e 40 s */
     var next = (18 + Math.floor(Math.random() * 22)) * 1000;
@@ -1244,8 +1249,8 @@
     clearTimeout(spHideTimer);
   }
 
-  /* primeiro popup: entre 4 e 8 s após entrar na página */
-  setTimeout(showPopup, (4 + Math.floor(Math.random() * 4)) * 1000);
+  /* primeiro popup: imediatamente ao entrar na página */
+  showPopup();
 </script>
 </body>
 </html>
