@@ -12,7 +12,13 @@ var LVData = {
 
   // ── AUDIOBOOKS ────────────────────────────────────────────
   audiobooks: [
-    { id: 1, title: '1 Ano em 12 Semanas - Brian P. Moran e Michael Lennington', author: '', cover: 'https://m.media-amazon.com/images/I/716Xx+6GJiS.jpg', audio: '1Kz-vm_bTi7mt6o0oLLqZ74Iwx3QErz3M' },
+    {
+  id: 1,
+  title: '1 Ano em 12 Semanas - Brian P. Moran e Michael Lennington',
+  author: '',
+  cover: 'https://m.media-amazon.com/images/I/716Xx+6GJiS.jpg',
+  audio: 'https://drive.google.com/uc?export=download&id=1Kz-vm_bTi7mt6o0oLLqZ74Iwx3QErz3M'
+},
     { id: 2, title: '100 Homens que a História do Mundo - Bill Yenne', author: '', cover: '../audio%20book/1.jpg', audio: '' },
     { id: 3, title: '12 Regras para a Vida - Jordan B. Peterson - Parte 1 de 2', author: '', cover: '../audio%20book/1.jpg', audio: '' },
     { id: 4, title: '12 Regras para a Vida - Jordan B. Peterson - Parte 2 de 2', author: '', cover: '../audio%20book/1.jpg', audio: '' },
