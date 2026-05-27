@@ -200,9 +200,10 @@
       width: 52px; height: 52px;
       border-radius: 12px;
       display: flex; align-items: center; justify-content: center;
-      font-size: 26px;
       flex-shrink: 0;
+      overflow: hidden;
     }
+    .vant-icon img { width: 100%; height: 100%; object-fit: contain; }
     .vant-icon.orange { background: #7a3a00; }
     .vant-icon.blue   { background: #0a2a5a; }
     .vant-icon.yellow { background: #5a4a00; }
@@ -383,7 +384,7 @@
     }
     .livros__grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 10px;
       max-width: 680px;
       margin: 0 auto 36px;
@@ -784,21 +785,21 @@
   <p class="vantagens__sub">Ouça seus audiobooks sem anúncios, sem interrupções e direto do celular.</p>
   <div class="vant__card">
     <div class="vant-item">
-      <div class="vant-icon orange">💳</div>
+      <div class="vant-icon orange"><img src="cartao.png" alt="Pagamento"/></div>
       <div>
         <h3>Pague somente uma vez</h3>
         <p>E tenha acesso pra sempre.</p>
       </div>
     </div>
     <div class="vant-item">
-      <div class="vant-icon blue">🎵</div>
+      <div class="vant-icon blue"><img src="music.png" alt="Música"/></div>
       <div>
         <h3>Ouça de onde quiser</h3>
         <p>No celular, tablet ou computador.</p>
       </div>
     </div>
     <div class="vant-item">
-      <div class="vant-icon yellow">⚡</div>
+      <div class="vant-icon yellow"><img src="raio.png" alt="Rápido"/></div>
       <div>
         <h3>Receba imediatamente</h3>
         <p>Após o pagamento.</p>
@@ -1050,8 +1051,9 @@
   /* ─── POPUP SOCIAL PROOF ─── */
   .sp-popup {
     position: fixed;
-    bottom: 24px;
-    left: 20px;
+    top: 16px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-140px);
     z-index: 9999;
     background: #fff;
     border-radius: 12px;
@@ -1060,16 +1062,15 @@
     align-items: center;
     gap: 12px;
     padding: 14px 18px 14px 14px;
-    max-width: 310px;
+    max-width: 340px;
     width: calc(100vw - 40px);
     border-left: 4px solid #e53935;
-    transform: translateX(-120%);
     opacity: 0;
     transition: transform .45s cubic-bezier(.34,1.56,.64,1), opacity .35s ease;
     pointer-events: none;
   }
   .sp-popup.show {
-    transform: translateX(0);
+    transform: translateX(-50%) translateY(0);
     opacity: 1;
     pointer-events: auto;
   }
