@@ -701,6 +701,11 @@ function playAudio(id) {
   var book = LVData.audiobooks.find(function(b) { return b.id === id; });
   if (!book) return;
 
+  if (!book.audio) {
+    alert('Áudio ainda não configurado.');
+    return;
+  }
+
   // Remove playing state from previous card
   document.querySelectorAll('.audio-card.playing').forEach(function(c) { c.classList.remove('playing'); });
 
