@@ -697,6 +697,24 @@ function filterAudio(q) {
   renderAudio(f);
 }
 
+function resolveAudioUrl(raw) {
+  if (!raw) return '';
+  var trimmed = raw.trim();
+
+  // Format 2: https://drive.google.com/file/d/FILE_ID/view...
+  var m = trimmed.match(/drive\.google\.com\/file\/d\/([^\/\?]+)/);
+  if (m) return 'https://drive.google.com/uc?export=download&id=' + m[1];
+
+  // Format 1: already a direct download link — return as-is
+  if (trimmed.indexOf('drive.google.com/uc') !== -1) return trimmed;
+
+  // Format 3: bare FILE_ID (no slashes, no dots in typical Drive ID pattern)
+  if (/^[-\w]{10,}$/.test(trimmed)) return 'https://drive.google.com/uc?export=download&id=' + trimmed;
+
+  // Fallback: return unchanged
+  return trimmed;
+}
+
 function playAudio(id) {
   var book = LVData.audiobooks.find(function(b) { return b.id === id; });
   if (!book) return;
@@ -714,7 +732,7 @@ function playAudio(id) {
 
   currentTrack = id;
 
-  audioEl.src = book.audio;
+  audioEl.src = resolveAudioUrl(book.audio);
   audioEl.load();
   audioEl.play().catch(function() {});
   isPlaying = true;
