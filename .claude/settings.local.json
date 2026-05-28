@@ -3,7 +3,12 @@
     "allow": [
       "Bash(Get-ChildItem \"C:\\\\Users\\\\bloke\\\\Documents\\\\GitHub\\\\lvbooks\\\\audio book\" -Recurse)",
       "Bash(Select-Object Name, Length, DirectoryName)",
-      "Bash(Format-Table -AutoSize)"
+      "Bash(Format-Table -AutoSize)",
+      "Bash(node -e \"try { require\\('./aplicativo/data.js'\\); console.log\\('OK - audiobooks:', LVData.audiobooks.length\\); } catch\\(e\\) { console.error\\('ERRO:', e.message\\); }\")",
+      "Bash(node -e \"const fs=require\\('fs'\\); const code=fs.readFileSync\\('./aplicativo/data.js','utf8'\\); try { eval\\(code\\); console.log\\('OK - audiobooks:', LVData.audiobooks.length\\); } catch\\(e\\) { console.error\\('ERRO:', e.message, 'linha:', e.lineNumber\\); }\")",
+      "Bash(node -e \"const fs=require\\('fs'\\); const code=fs.readFileSync\\('./aplicativo/data.js','utf8'\\); try { eval\\(code\\); console.log\\('OK - audiobooks:', LVData.audiobooks.length\\); } catch\\(e\\) { console.error\\('ERRO:', e.message\\); }\")",
+      "Bash(node -e ' *)",
+      "Bash(node -e \"const fs=require\\('fs'\\); let d=''; process.stdin.on\\('data',c=>d+=c\\); process.stdin.on\\('end',\\(\\)=>{ try{eval\\(d\\);console.log\\('audiobooks:',LVData.audiobooks.length\\);}catch\\(e\\){console.error\\(e.message\\);} }\\);\")"
     ]
   }
 }
