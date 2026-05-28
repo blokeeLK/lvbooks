@@ -584,9 +584,123 @@ html,body{
   width:100%;
   background:#000;
 }
+
+/* ── LOGIN ── */
+.login-overlay{
+  position:fixed;
+  inset:0;
+  background:var(--navy);
+  z-index:500;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:32px 24px;
+}
+
+.login-box{
+  width:100%;
+  max-width:360px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:0;
+}
+
+.login-logo{
+  width:80px;
+  height:80px;
+  object-fit:contain;
+  border-radius:18px;
+  margin-bottom:20px;
+  box-shadow:0 8px 32px rgba(0,0,0,.4);
+}
+
+.login-title{
+  font-size:24px;
+  font-weight:900;
+  letter-spacing:-.02em;
+  margin-bottom:6px;
+  text-align:center;
+}
+
+.login-title span{color:var(--green);}
+
+.login-sub{
+  font-size:13px;
+  color:var(--gray);
+  text-align:center;
+  margin-bottom:32px;
+  line-height:1.5;
+}
+
+.login-field{
+  width:100%;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:14px 16px;
+  font-family:'Montserrat',sans-serif;
+  font-size:14px;
+  color:#fff;
+  outline:none;
+  margin-bottom:12px;
+}
+
+.login-field:focus{border-color:rgba(29,185,84,.4);}
+.login-field::placeholder{color:var(--gray);}
+
+.login-btn{
+  width:100%;
+  background:var(--green);
+  color:#000;
+  font-family:'Montserrat',sans-serif;
+  font-size:14px;
+  font-weight:800;
+  padding:15px;
+  border:none;
+  border-radius:12px;
+  cursor:pointer;
+  margin-top:4px;
+  transition:background .15s;
+}
+
+.login-btn:active{background:var(--green2);}
+
+.login-error{
+  font-size:12px;
+  color:#f87171;
+  margin-top:10px;
+  text-align:center;
+  min-height:18px;
+}
+
+.login-security{
+  font-size:11px;
+  color:var(--gray);
+  text-align:center;
+  margin-top:20px;
+  line-height:1.5;
+}
+
+.login-security strong{color:#f5a623;}
 </style>
 </head>
 <body>
+
+<!-- ── LOGIN OVERLAY ── -->
+<div class="login-overlay" id="loginOverlay">
+  <div class="login-box">
+    <img class="login-logo" src="../upcell/logo.png" alt="LV Books"/>
+    <h1 class="login-title">LV <span>Books</span></h1>
+    <p class="login-sub">Digite suas credenciais de acesso para entrar na biblioteca.</p>
+    <input class="login-field" id="loginUser" type="text" placeholder="Login" autocomplete="username" autocapitalize="none"/>
+    <input class="login-field" id="loginPass" type="password" placeholder="Senha" autocomplete="current-password"/>
+    <button class="login-btn" onclick="doLogin()">Entrar</button>
+    <div class="login-error" id="loginError"></div>
+    <p class="login-security">🔒 <strong>Seu acesso é único — não envie a ninguém.</strong></p>
+  </div>
+</div>
 
 <div class="app-scroll" id="appScroll">
 
@@ -720,6 +834,37 @@ html,body{
 
 <script src="/aplicativo/data.js?v=232"></script>
 <script>
+// ── LOGIN ─────────────────────────────────────────────────
+var AUTH_USER = 'lvbook10500';
+var AUTH_PASS = 'admin';
+var SESSION_KEY = 'lvbooks_auth';
+
+function checkAuth() {
+  if (sessionStorage.getItem(SESSION_KEY) === '1') {
+    document.getElementById('loginOverlay').style.display = 'none';
+  }
+}
+
+function doLogin() {
+  var u = document.getElementById('loginUser').value.trim();
+  var p = document.getElementById('loginPass').value;
+  if (u === AUTH_USER && p === AUTH_PASS) {
+    sessionStorage.setItem(SESSION_KEY, '1');
+    document.getElementById('loginOverlay').style.display = 'none';
+    document.getElementById('loginError').textContent = '';
+  } else {
+    document.getElementById('loginError').textContent = 'Login ou senha incorretos. Tente novamente.';
+  }
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Enter' && document.getElementById('loginOverlay').style.display !== 'none') {
+    doLogin();
+  }
+});
+
+checkAuth();
+
 // ── NAV ──────────────────────────────────────────────────
 var currentSection = 'home';
 
@@ -950,10 +1095,11 @@ function renderBonus() {
     } else if (device === 'ios') {
       banner.innerHTML =
         '<div style="flex:1;font-size:13px;color:#a8e6a0;line-height:1.6;">📲 <strong>Adicionar à Tela Inicial (iPhone)</strong><br>' +
-        '1. Abra esta página no <strong>Safari</strong><br>' +
+        '1. Copie o link desta página e abra no <strong>Safari</strong> do iPhone<br>' +
         '2. Toque no botão de compartilhar <strong>⬆</strong><br>' +
-        '3. Toque em <strong>"Adicionar à Tela de Início"</strong><br>' +
-        '4. Toque em <strong>"Adicionar"</strong></div>' +
+        '3. Clique em <strong>MAIS</strong><br>' +
+        '4. Toque em <strong>"Adicionar à Tela de Início"</strong><br>' +
+        '5. Toque em <strong>"Adicionar"</strong></div>' +
         '<button onclick="document.getElementById(\'installBanner\').remove()" style="background:none;border:none;color:#8892a4;font-size:20px;cursor:pointer;padding:0 4px;align-self:flex-start;">✕</button>';
       document.body.appendChild(banner);
     }

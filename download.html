@@ -159,6 +159,62 @@ html,body{
 
 .support-note a:hover{text-decoration:underline;}
 
+.credentials-box{
+  background:#0d2218;
+  border:1px solid rgba(29,185,84,.35);
+  border-radius:16px;
+  padding:24px 28px;
+  width:100%;
+  max-width:380px;
+  margin-bottom:28px;
+  text-align:left;
+}
+
+.credentials-title{
+  font-size:13px;
+  font-weight:700;
+  color:#1db954;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  margin-bottom:14px;
+  text-align:center;
+}
+
+.credential-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:10px 0;
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+
+.credential-row:last-of-type{border-bottom:none;}
+
+.credential-label{
+  font-size:12px;
+  color:#8892a4;
+  font-weight:600;
+  flex-shrink:0;
+}
+
+.credential-value{
+  font-size:15px;
+  font-weight:800;
+  color:#fff;
+  font-family:'Courier New',monospace;
+  letter-spacing:.04em;
+}
+
+.security-note{
+  font-size:12px;
+  color:#f5a623;
+  text-align:center;
+  margin-top:14px;
+  line-height:1.5;
+  font-weight:700;
+}
+
 @media(min-width:600px){
   .cards{flex-direction:row;}
   .device-card{flex:1;}
@@ -194,6 +250,19 @@ html,body{
       </a>
     </div>
 
+  </div>
+
+  <div class="credentials-box">
+    <div class="credentials-title">🔑 Suas credenciais de acesso</div>
+    <div class="credential-row">
+      <span class="credential-label">Login</span>
+      <span class="credential-value">lvbook10500</span>
+    </div>
+    <div class="credential-row">
+      <span class="credential-label">Senha</span>
+      <span class="credential-value">admin</span>
+    </div>
+    <p class="security-note">🔒 Seu acesso é único — não envie a ninguém.</p>
   </div>
 
   <p class="support-note">
