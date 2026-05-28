@@ -653,13 +653,13 @@ html,body{
   <!-- ── SUPORTE ── -->
   <div class="section" id="sec-suporte">
     <div class="suporte">
-      <div class="suporte-icon">💬</div>
+      <div class="suporte-icon">✉️</div>
       <h2>Precisa de ajuda?</h2>
       <p>Nossa equipe está disponível para tirar dúvidas e resolver qualquer problema.</p>
-      <a class="wa-btn" id="waBtn" href="#" target="_blank" rel="noopener">
-        <span>📲</span> Falar com suporte
+      <a class="wa-btn" href="mailto:expressdigitaal@gmail.com?subject=Preciso%20de%20suporte&body=Ol%C3%A1%2C%20preciso%20de%20suporte." rel="noopener">
+        <span>✉️</span> Enviar e-mail
       </a>
-      <p class="suporte-info">Atendimento via WhatsApp</p>
+      <p class="suporte-info">expressdigitaal@gmail.com</p>
     </div>
   </div>
 
@@ -901,18 +901,11 @@ function renderBonus() {
   document.getElementById('bonusList').innerHTML = html;
 }
 
-// ── WHATSAPP ──────────────────────────────────────────────
-function setupWA() {
-  var url = 'https://wa.me/' + LVData.whatsapp + '?text=' + encodeURIComponent(LVData.whatsappMsg);
-  document.getElementById('waBtn').href = url;
-}
-
 // ── INIT ─────────────────────────────────────────────────
 (function init() {
   renderAudio(LVData.audiobooks);
   renderEbooks(LVData.ebooks);
   renderBonus();
-  setupWA();
 
   // Service Worker
   if ('serviceWorker' in navigator) {
@@ -924,7 +917,50 @@ function setupWA() {
   window.addEventListener('beforeinstallprompt', function(e) {
     e.preventDefault();
     deferredPrompt = e;
+    if (getDeviceParam() === 'android') showInstallBanner('android');
   });
+
+  // Handle ?device= param from download page
+  function getDeviceParam() {
+    return new URLSearchParams(window.location.search).get('device');
+  }
+
+  function showInstallBanner(device) {
+    var existing = document.getElementById('installBanner');
+    if (existing) existing.remove();
+
+    var banner = document.createElement('div');
+    banner.id = 'installBanner';
+    banner.style.cssText = 'position:fixed;bottom:calc(64px + env(safe-area-inset-bottom,0px));left:0;right:0;background:#0d2218;border-top:1px solid rgba(29,185,84,.4);padding:14px 16px;z-index:150;display:flex;align-items:center;gap:12px;';
+
+    if (device === 'android') {
+      banner.innerHTML =
+        '<div style="flex:1;font-size:13px;color:#a8e6a0;line-height:1.4;">📲 <strong>Instalar LV Books</strong><br>Adicione à tela inicial para acesso rápido.</div>' +
+        '<button id="installBtn" style="background:#1db954;color:#000;border:none;border-radius:10px;padding:10px 16px;font-family:Montserrat,sans-serif;font-size:12px;font-weight:800;cursor:pointer;white-space:nowrap;">Instalar</button>' +
+        '<button onclick="document.getElementById(\'installBanner\').remove()" style="background:none;border:none;color:#8892a4;font-size:20px;cursor:pointer;padding:0 4px;">✕</button>';
+      document.body.appendChild(banner);
+      document.getElementById('installBtn').addEventListener('click', function() {
+        if (deferredPrompt) {
+          deferredPrompt.prompt();
+          deferredPrompt.userChoice.then(function() { deferredPrompt = null; banner.remove(); });
+        } else {
+          alert('Para instalar: abra o menu do navegador e toque em "Adicionar à tela inicial".');
+        }
+      });
+    } else if (device === 'ios') {
+      banner.innerHTML =
+        '<div style="flex:1;font-size:13px;color:#a8e6a0;line-height:1.6;">📲 <strong>Adicionar à Tela Inicial (iPhone)</strong><br>' +
+        '1. Abra esta página no <strong>Safari</strong><br>' +
+        '2. Toque no botão de compartilhar <strong>⬆</strong><br>' +
+        '3. Toque em <strong>"Adicionar à Tela de Início"</strong><br>' +
+        '4. Toque em <strong>"Adicionar"</strong></div>' +
+        '<button onclick="document.getElementById(\'installBanner\').remove()" style="background:none;border:none;color:#8892a4;font-size:20px;cursor:pointer;padding:0 4px;align-self:flex-start;">✕</button>';
+      document.body.appendChild(banner);
+    }
+  }
+
+  var devParam = getDeviceParam();
+  if (devParam === 'ios') showInstallBanner('ios');
 })();
 </script>
 </body>

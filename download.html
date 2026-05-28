@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="theme-color" content="#0a1628"/>
+<title>Baixe o App LV Books</title>
+<link rel="icon" type="image/png" href="upcell/logo.png"/>
+<link rel="apple-touch-icon" href="upcell/logo.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --navy:#0a1628;
+  --navy2:#0d1f38;
+  --card:#111d30;
+  --green:#1db954;
+  --green2:#17a347;
+  --gold:#f5a623;
+  --white:#ffffff;
+  --gray:#8892a4;
+  --border:rgba(255,255,255,.07);
+}
+
+html,body{
+  font-family:'Montserrat',sans-serif;
+  background:var(--navy);
+  color:var(--white);
+  min-height:100%;
+}
+
+.page{
+  min-height:100dvh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:40px 20px 60px;
+  text-align:center;
+}
+
+.logo{
+  width:80px;
+  height:80px;
+  object-fit:contain;
+  border-radius:18px;
+  margin-bottom:24px;
+  box-shadow:0 8px 32px rgba(0,0,0,.4);
+}
+
+.title{
+  font-size:26px;
+  font-weight:900;
+  letter-spacing:-.02em;
+  margin-bottom:10px;
+}
+
+.title span{color:var(--green);}
+
+.subtitle{
+  font-size:14px;
+  color:var(--gray);
+  line-height:1.6;
+  max-width:320px;
+  margin-bottom:40px;
+}
+
+.cards{
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+  width:100%;
+  max-width:380px;
+  margin-bottom:36px;
+}
+
+.device-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:28px 24px;
+  text-align:left;
+  transition:border-color .2s;
+}
+
+.device-card:hover{border-color:rgba(29,185,84,.35);}
+
+.device-icon{
+  font-size:36px;
+  margin-bottom:14px;
+  display:block;
+}
+
+.device-name{
+  font-size:18px;
+  font-weight:800;
+  margin-bottom:8px;
+}
+
+.device-desc{
+  font-size:13px;
+  color:var(--gray);
+  line-height:1.55;
+  margin-bottom:20px;
+}
+
+.device-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:var(--green);
+  color:#000;
+  font-family:'Montserrat',sans-serif;
+  font-size:13px;
+  font-weight:800;
+  padding:13px 24px;
+  border-radius:12px;
+  text-decoration:none;
+  cursor:pointer;
+  transition:background .15s,transform .12s;
+  -webkit-tap-highlight-color:transparent;
+}
+
+.device-btn:active{background:var(--green2);transform:scale(.97);}
+
+.ios-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  background:transparent;
+  border:1px solid rgba(255,255,255,.15);
+  color:var(--white);
+  font-family:'Montserrat',sans-serif;
+  font-size:13px;
+  font-weight:700;
+  padding:13px 24px;
+  border-radius:12px;
+  text-decoration:none;
+  cursor:pointer;
+  transition:border-color .15s,transform .12s;
+  -webkit-tap-highlight-color:transparent;
+}
+
+.ios-badge:active{border-color:rgba(255,255,255,.4);transform:scale(.97);}
+
+.support-note{
+  font-size:12px;
+  color:var(--gray);
+  line-height:1.6;
+}
+
+.support-note a{
+  color:var(--green);
+  text-decoration:none;
+}
+
+.support-note a:hover{text-decoration:underline;}
+
+@media(min-width:600px){
+  .cards{flex-direction:row;}
+  .device-card{flex:1;}
+}
+</style>
+</head>
+<body>
+
+<div class="page">
+  <img class="logo" src="upcell/logo.png" alt="LV Books"/>
+  <h1 class="title">Baixe o App <span>LV Books</span></h1>
+  <p class="subtitle">Escolha seu dispositivo para acessar sua biblioteca digital direto pela tela inicial do celular.</p>
+
+  <div class="cards">
+
+    <!-- Android -->
+    <div class="device-card">
+      <span class="device-icon">🤖</span>
+      <div class="device-name">Android</div>
+      <p class="device-desc">Instale o LV Books no seu celular e acesse seus audiobooks e eBooks com mais facilidade.</p>
+      <a class="device-btn" href="/aplicativo?device=android">
+        ⬇ Instalar no Android
+      </a>
+    </div>
+
+    <!-- iPhone / iOS -->
+    <div class="device-card">
+      <span class="device-icon">🍎</span>
+      <div class="device-name">iPhone / iOS</div>
+      <p class="device-desc">Adicione o LV Books à tela inicial do seu iPhone e acesse como aplicativo.</p>
+      <a class="ios-badge" href="/aplicativo?device=ios">
+        ➕ Instalar no iPhone
+      </a>
+    </div>
+
+  </div>
+
+  <p class="support-note">
+    Caso tenha dificuldade, entre em contato com o
+    <a href="mailto:expressdigitaal@gmail.com?subject=Preciso%20de%20suporte&body=Ol%C3%A1%2C%20preciso%20de%20suporte.">suporte</a>.
+  </p>
+</div>
+
+</body>
+</html>

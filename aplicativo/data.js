@@ -3,29 +3,17 @@
 //  Edite aqui para adicionar/remover audiobooks, eBooks e bônus
 // ============================================================
 
-// Para links do Google Drive use o formato:
-//   https://drive.google.com/uc?export=download&id=SEU_FILE_ID
-// O FILE_ID está na URL de compartilhamento:
-//   drive.google.com/file/d/  >FILE_ID<  /view
-
 var LVData = {
 
   // ── AUDIOBOOKS ────────────────────────────────────────────
   audiobooks: [
-    {
-  id: 1,
-  title: '1 Ano em 12 Semanas - Brian P. Moran e Michael Lennington',
-  author: '',
-  cover: 'https://m.media-amazon.com/images/I/716Xx+6GJiS.jpg',
-  audio: 'https://drive.google.com/file/d/1Kz-vm_bTi7mt6o0oLLqZ74Iwx3QErz3M/view?usp=drive_link'
-},
+    { id: 1, title: '1 Ano em 12 Semanas - Brian P. Moran e Michael Lennington', author: '', cover: 'https://m.media-amazon.com/images/I/716Xx+6GJiS.jpg', audio: 'https://drive.google.com/file/d/1Kz-vm_bTi7mt6o0oLLqZ74Iwx3QErz3M/view?usp=drive_link' },
     { id: 2, title: '100 Homens que a História do Mundo - Bill Yenne', author: '', cover: 'https://m.media-amazon.com/images/I/511fsUG82UL._AC_UF1000,1000_QL80_.jpg', audio: 'https://drive.google.com/file/d/1atURJtgR-AOVtkgZ_1CbPJjHHoIEpL1X/view' },
     { id: 3, title: '12 Regras para a Vida - Jordan B. Peterson - Parte 1 de 2', author: '', cover: 'https://m.media-amazon.com/images/I/71geoUmEoQL.jpg', audio: 'https://drive.google.com/file/d/10yU_goy4KK-2e-FvVydMhyi8FJN0kVxg/view?usp=drive_link' },
     { id: 4, title: '12 Regras para a Vida - Jordan B. Peterson - Parte 2 de 2', author: '', cover: 'https://m.media-amazon.com/images/I/71geoUmEoQL.jpg', audio: 'https://drive.google.com/file/d/1XE1yWUCcc8NAF8FVVC0au4YcyijBgCGK/view?usp=drive_link' },
     { id: 6, title: '12 Semanas Para Mudar Uma Vida - Augusto Cury', author: '', cover: 'https://m.media-amazon.com/images/I/61x7NtR5IoL._AC_UF1000,1000_QL80_.jpg', audio: 'https://drive.google.com/file/d/1sXYJZpI6aNsy4T_e8JNpX0Dz2p8iMuoX/view?usp=drive_link' },
     { id: 7, title: '1984 - George Orwell', author: '', cover: 'https://m.media-amazon.com/images/I/61t0bwt1s3L._AC_UF1000,1000_QL80_.jpg', audio: 'https://drive.google.com/file/d/1LyzP-97-65kJGk9-9AdN1745NzLsIpbn/view?usp=drive_link' },
     { id: 8, title: '23 Hábitos Anti-Procrastinação - S.J. Scott', author: '', cover: 'https://m.media-amazon.com/images/I/81lwpqg9QjL._UF1000,1000_QL80_.jpg', audio: 'https://drive.google.com/file/d/1Xh1OlEAaA_TfarpPvNDMP1pzqdhEwhDa/view?usp=drive_link' },
-    { id: 9, title: '27 Poderes de Persuasão - Chris St. Hilaire e Lynette Padwa', author: '', cover: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2bL_-OhoNbCSf96P3ygEtpjyUzkNn_mPCMA&s', audio: '' },
     { id: 10, title: '29 Minutos para Falar Bem em Público - Reinaldo Piloto e Rachel Polito', author: '', cover: 'https://m.media-amazon.com/images/I/51s91VGATPL.jpg', audio: 'https://drive.google.com/file/d/1K9wJzz0XlpY3Yf10pEvGS7h6JOuoLbGi/view?usp=drive_link' },
     { id: 11, title: '38 Estratégias para Vencer Qualquer Debate - Arthur Schopenhauer', author: '', cover: 'https://m.media-amazon.com/images/I/A1yeZ0JiKzL._UF1000,1000_QL80_.jpg', audio: 'https://drive.google.com/file/d/14_iI0jG0zHy5ikRK3PCVwJZ_wWaNzykw/view?usp=drive_link' },
     { id: 12, title: '52 Maneiras de Ganhar Mais Dinheiro - Clene Salles', author: '', cover: 'https://m.media-amazon.com/images/I/81k7SgjSQfL._UF1000,1000_QL80_.jpg', audio: 'https://drive.google.com/file/d/1jZG_LYvFxdejZjT6bQRXeHfGZ6CmeFfY/view?usp=drive_link' },
@@ -52,7 +40,7 @@ var LVData = {
     { id: 36, title: 'A Escada para o Triunfo - Napoleon Hill', author: '', cover: 'https://m.media-amazon.com/images/I/61OeOmvi1ZL._AC_UF1000,1000_QL80_.jpg', audio: 'https://drive.google.com/file/d/1_fBfqry_jSDthq9Jr6f5dB_uZ1EMsF6S/view?usp=drive_link' },
     { id: 38, title: 'A Estratégia do Oceano Azul - Renée Mauborgne, W. Chan Kim', author: '', cover: 'https://m.media-amazon.com/images/I/71zvq8BIkmL._AC_UF1000,1000_QL80_.jpg', audio: 'https://m.media-amazon.com/images/I/71zvq8BIkmL._AC_UF1000,1000_QL80_.jpg' },
     { id: 39, title: 'A Fascinante Construção Do Eu - Augusto Cury', author: '', cover: 'https://m.media-amazon.com/images/I/61HFLB5b5aL._AC_UF1000,1000_QL80_.jpg', audio: 'https://drive.google.com/file/d/1yELAVkGz6HVRJ2o_KEPLFVvJ-0HziK5j/view?usp=drive_link' },
-    { id: 40, title: 'A Filosofia Do Sucesso - Napoleon Hill', author: '', cover: 'https://m.media-amazon.com/images/I/51heT5W9YUL._AC_UF1000,1000_QL80_.jpg', audio: 'https://drive.google.com/file/d/1-UkSv3bBWZznRrfqaEnpuKcM76AyrvLH/view?usp=drive_link  ' },
+    { id: 40, title: 'A Filosofia Do Sucesso - Napoleon Hill', author: '', cover: 'https://m.media-amazon.com/images/I/51heT5W9YUL._AC_UF1000,1000_QL80_.jpg', audio: 'https://drive.google.com/file/d/1-UkSv3bBWZznRrfqaEnpuKcM76AyrvLH/view?usp=drive_link' },
     { id: 41, title: 'A Introdução Definitiva a PNL - Richard Bandler', author: '', cover: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2pL_8SxSvgu_o-W-8dDk29ej6afLUA8A57g&s', audio: 'https://drive.google.com/file/d/1k2rf-vxKiu7ZZVaks4guz1cyA-oHl8BQ/view?usp=drive_link' },
     { id: 43, title: 'A Lei da Atração - O Segredo Colocado em Prática - Michael J. Losier', author: '', cover: 'https://m.media-amazon.com/images/I/71aphXwg+bL._AC_UF1000,1000_QL80_.jpg', audio: 'https://drive.google.com/file/d/1WZO-iOY9Of6uk9bvpEOyvcYRiOwKkzCm/view?usp=drive_link' },
     { id: 44, title: 'A Marca da Vitória - A História da NIKE - Philip H. Knight', author: '', cover: 'https://http2.mlstatic.com/D_NQ_NP_821751-MLA79585916267_092024-O.webp', audio: 'https://drive.google.com/file/d/17GGrjhKFJqXgVZ40YoTHuCpeXRYQBWI-/view?usp=drive_link' },
@@ -65,7 +53,7 @@ var LVData = {
     { id: 52, title: 'A Revolução 8020, O Poder da Escolha - Richard Koch', author: '', cover: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFHCaH9cYuC93n80CaK2Q0EI3MkjBPGxmTZw&s', audio: 'https://drive.google.com/file/d/1kFvrdUkQRF6Cn9ECATjBmjo5D5s0oT6F/view?usp=drive_link' },
     { id: 53, title: 'A Revolução dos Bichos - George Orwell', author: '', cover: 'https://m.media-amazon.com/images/I/91BsZhxCRjL.jpg', audio: 'https://drive.google.com/file/d/1ZdqF6EaLAlk5ft67puGfB7L_NgIvq6gu/view?usp=drive_link' },
     { id: 54, title: 'A Sorte Segue a Coragem - Mario Sergio Cortella', author: '', cover: 'https://m.media-amazon.com/images/I/81LVMS26UtL._AC_UF1000,1000_QL80_.jpg', audio: 'https://drive.google.com/file/d/1evaz-F2HPrMmwtgtuG6iai82L-cs8nMh/view?usp=drive_link' },
-    { id: 56, title: 'A Sutil Arte de Ligar o Foda-se - Mark Manson', author: '', cover: 'https://m.media-amazon.com/images/I/6175IU0qFgL.jpg', audio: 'https://drive.google.com/file/d/1y0WXuBt7et2j64Q6ATK68Z0DVUui2eAj/view?usp=drive_link ' },
+    { id: 56, title: 'A Sutil Arte de Ligar o Foda-se - Mark Manson', author: '', cover: 'https://m.media-amazon.com/images/I/6175IU0qFgL.jpg', audio: 'https://drive.google.com/file/d/1y0WXuBt7et2j64Q6ATK68Z0DVUui2eAj/view?usp=drive_link' },
     { id: 57, title: 'A Tríade do Tempo - Christian Barbosa', author: '', cover: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsjB0-9dbeK3Ni5qLiQVmFcZdC8OlxnaVBmA&s', audio: 'https://drive.google.com/file/d/1T-T-atbkCw_13vUdi_wX2f6Xuce4GVOV/view?usp=drive_link' },
     { id: 58, title: 'Admirável Mundo Novo - Aldous Huxley', author: '', cover: 'https://m.media-amazon.com/images/I/61hOp6UFvCL._AC_UF1000,1000_QL80_DpWeblab_.jpg', audio: 'https://drive.google.com/file/d/13yXJUO8GaG9KDhFc3whdfdBiBWCc2JFw/view?usp=drive_link' },
     { id: 59, title: 'Antimedo - Pablo Marçal', author: '', cover: 'https://m.media-amazon.com/images/I/61BsXDaRO8L._AC_UF1000,1000_QL80_.jpg', audio: 'https://drive.google.com/file/d/1cvOjlQRMa58ZRTSdo7Wbr2pXZ3VVFIkk/view?usp=drive_link' },
@@ -79,7 +67,7 @@ var LVData = {
     { id: 67, title: 'As Cinco Habilidades Essenciais do Relacionamento - Dale Carnegie', author: '', cover: 'https://m.media-amazon.com/images/I/811M8IvYu0L._AC_UF1000,1000_QL80_.jpg', audio: 'https://drive.google.com/file/d/140uee_EP2wl9Yv3mIHZhWUPakFjTAUpV/view?usp=drive_link' },
     { id: 68, title: 'As Coisas Que Você Só Vê Quando Desacelera - Haemin Sunim', author: '', cover: 'https://m.media-amazon.com/images/I/61F6T1at-nL.jpg', audio: 'https://drive.google.com/file/d/1jKd5AJR7dMtJa33kelYoGk5_se5dMkIT/view?usp=drive_link' },
     { id: 69, title: 'As Memórias de Sherlock Holmes - Arthur Conan Doyle', author: '', cover: 'https://m.media-amazon.com/images/I/81dM8mIahbL._AC_UF1000,1000_QL80_.jpg', audio: 'https://drive.google.com/file/d/1D2uLRd1y8CvwITg3Y417jOBpHiKUUDyZ/view?usp=drive_link' },
-    { id: 70, title: 'As Regras Básicas de Warren Buffett - Jeremy C. Miller', author: '', cover: 'https://www.record.com.br/products/as-regras-basicas-de-warren-buffett', audio: 'https://drive.google.com/file/d/17iqAmZY5r_lFvENAo1xGfe8zIJZOYk3n/view?usp=drive_link  ' },
+    { id: 70, title: 'As Regras Básicas de Warren Buffett - Jeremy C. Miller', author: '', cover: 'https://www.record.com.br/products/as-regras-basicas-de-warren-buffett', audio: 'https://drive.google.com/file/d/17iqAmZY5r_lFvENAo1xGfe8zIJZOYk3n/view?usp=drive_link' },
     { id: 71, title: 'As Regras de Ouro dos Casais Saudáveis - Augusto Cury', author: '', cover: 'https://m.media-amazon.com/images/I/61J2127-lyL._AC_UF1000,1000_QL80_.jpg', audio: 'https://drive.google.com/file/d/1wIRUpJ9Nen3GheP93L8eUw3neXOAFLqx/view?usp=drive_link' },
     { id: 72, title: 'Assim Falou Zaratustra - Friedrich Nietzsche', author: '', cover: 'https://m.media-amazon.com/images/I/91t6qaIZFWL.jpg', audio: 'https://drive.google.com/file/d/1N9SWsBS9VEsd5uemoeyvbqUlCNJmdFUC/view?usp=drive_link' },
     { id: 73, title: 'Assuma o Controle Do Seu Tempo - Holly Reisem Hanna', author: '', cover: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZ1rklOenPYmFEFifCjgIvhtfQEBTzCxWipQ&sg', audio: 'https://drive.google.com/file/d/1igF6oN4PHCkCqZT0ycIUhCNShdHVX2Y4/view?usp=drive_link' },
@@ -94,17 +82,13 @@ var LVData = {
     { id: 82, title: 'Comece Pelo Mais Difícil - Brian Tracy', author: '', cover: 'https://m.media-amazon.com/images/I/61rvWTjvMeL.jpg', audio: 'https://drive.google.com/file/d/1A5-oakKDKExr2icVBErc6jDzbbqoT4xs/view?usp=drive_link' },
     { id: 83, title: 'Comece Pelo Porquê - Simon Sinek', author: '', cover: 'https://m.media-amazon.com/images/I/71M6czhxmTL.jpg', audio: 'https://drive.google.com/file/d/1kURn0MS9r1jHiKP7cgo3gucX1SijGj4z/view?usp=drive_link' },
     { id: 84, title: 'Como Aprendi a Pensar - Luiz Felipe Pondé', author: '', cover: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoTSo2ZnKgE3u3oZgkoihLiJG2ltyevjZqVg&s', audio: 'https://drive.google.com/file/d/13BKTycIRvVtCnuBt5nSVLNYVP6K6sQf_/view?usp=drive_link' },
-    { id: 85, title: 'Como Atrair Dinheiro - Joseph Murphy', author: '', cover: '../audio%20book/1.jpg', audio: '' },
     { id: 86, title: 'Como Aumentar o Seu Próprio Salário - Napoleon Hill', author: '', cover: 'https://m.media-amazon.com/images/I/81jOMSfVdkL._UF1000,1000_QL80_.jpg', audio: 'https://drive.google.com/file/d/1zfnZ8E0n646L13wgmpwNaq4sRiKhq0Ug/view?usp=drive_link' },
     { id: 87, title: 'Como Chegar ao Sim - William Ury, Roger Fisher', author: '', cover: 'https://m.media-amazon.com/images/I/81ydaXHpiBL.jpg', audio: 'https://drive.google.com/file/d/1-TTWUshXzPe76Ir5TzCcP3_TRvYsXGet/view?usp=drive_link' },
     { id: 88, title: 'Como Convencer Alguém em 90 Segundos - Nicholas Boothman', author: '', cover: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSulPeRTepdH8E__JfhERdyoRqCFH1g5-mfjw&s', audio: 'https://drive.google.com/file/d/1zQ0qtErdVco-LzR6jjD7mjyGQQyj5i4s/view?usp=drive_link' },
-    { id: 89, title: 'Como Evitar Preocupações e Começar a Viver - Dale Carnegie', author: '', cover: '../audio%20book/1.jpg', audio: '' },
-    { id: 90, title: 'Como Fazer Alguém Gostar de Você em 90 Segundos - Nicholas Boothman', author: '', cover: '../audio%20book/1.jpg', audio: '' },
     { id: 91, title: 'Como Fazer Amigos e Influenciar Pessoas - Dale Carnegie', author: '', cover: 'https://m.media-amazon.com/images/I/71x-i7sKSvL.jpg', audio: 'https://drive.google.com/file/d/1rxtIfkOoGPEgXxyMPBMwKVSBXEMedSgA/view?usp=drive_link' },
     { id: 92, title: 'Como Ganhar Dinheiro na Internet - 45 Formas Comprovadas - Thiago Vertad', author: '', cover: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTylImkQ9T08QF6Qgwnkxe3f-rhWugq2e1D2w&s', audio: 'https://drive.google.com/file/d/1ScTSaUW5OMF7pTNhJflX4ksmaxYrPPO3/view?usp=drive_link' },
     { id: 93, title: 'Como Lidar Com Pessoas Manipuladoras - George K. Simon', author: '', cover: 'https://m.media-amazon.com/images/I/714eNmAFaeL._AC_UF1000,1000_QL80_.jpg', audio: 'https://drive.google.com/file/d/15rZPBYpQU_vFidNyt0t3F3rGhJkLQGDh/view?usp=drive_link' },
     { id: 94, title: 'Como Organizar Sua Vida Financeira - Gustavo Cerbasi', author: '', cover: 'https://m.media-amazon.com/images/I/71Mhl0pI8XL.jpg', audio: 'https://drive.google.com/file/d/1HJdvWQYzL7k9Qj4k_QAQ8-SlDjLb87vd/view?usp=drive_link' },
-    { id: 95, title: 'Como Parar de Se Preocupar e Começar a Viver - Dale Carnegie', author: '', cover: '../audio%20book/1.jpg', audio: '' },
     { id: 96, title: 'Como Se Tornar Inesquecível - Dale Carnegie', author: '', cover: 'https://m.media-amazon.com/images/I/71cU-NxxSUL.jpg', audio: 'https://drive.google.com/file/d/1YPwRY26akSWWo-3FCQtyJi9OwIyZETJ7/view?usp=drive_link' },
     { id: 97, title: 'Como Ser um Imã para o Dinheiro - Bruno Gimenes', author: '', cover: 'https://m.media-amazon.com/images/I/913NsIKL2lL._AC_UF1000,1000_QL80_.jpg', audio: 'https://drive.google.com/file/d/10rvEysd6wkK_YlVkt7GIwylPxnG_P-YR/view?usp=drive_link' },
     { id: 98, title: 'Como Vender Na Crise e Aumentar Seus Lucros - Magno A. Sipaúba', author: '', cover: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4LSOon2kKDuvxyMybSwvrzaLvNIW_XHooQQ&s', audio: 'https://drive.google.com/file/d/1O0PFVw4RyZax8z59Uq_fMbIekoka2PF6/view?usp=drive_link' },
@@ -120,21 +104,17 @@ var LVData = {
     { id: 108, title: 'Do Zero ao Milhão - Carlos Wizard', author: '', cover: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSruzu6QtwL76E_tHQiTzl1ax2ZrDEWAOyMxg&s', audio: 'https://drive.google.com/file/d/1saBg6fOksBPWz71zsxpUw3peGUSwSt1z/view?usp=drive_link' },
     { id: 109, title: 'Empresas Feitas Para Vencer - Jim Collins', author: '', cover: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQN2SlbAZe4x6uR4L1nbVC6Pd3D7BGf5YPvuQ&s', audio: 'https://drive.google.com/file/d/1jdd4siu1PzBFRo9UYjC2cjCzfSqBlhT9/view?usp=drive_link' },
     { id: 110, title: 'Enriquecer - Ambição de Muitos, Realização de Poucos - Lair Ribeiro', author: '', cover: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpzTtmID4kWm_tFgRO15agwAAplu9d5xjxVg&s', audio: 'https://drive.google.com/file/d/1qc7PF2v4CSWdgBXKUOUKswE0d_cE-kUG/view?usp=drive_link' },
-    { id: 111, title: 'Escola de Negócios - Robert T. Kiyosaki', author: '', cover: 'https://m.media-amazon.com/images/I/71jUUjucszL._AC_UF1000,1000_QL80_.jpg', audio: 'https://drive.google.com/file/d/1FpCdZZSPCLRE7ZVtwsjxR0H4dUHW4ey0/view?usp=drive_link  ' },
+    { id: 111, title: 'Escola de Negócios - Robert T. Kiyosaki', author: '', cover: 'https://m.media-amazon.com/images/I/71jUUjucszL._AC_UF1000,1000_QL80_.jpg', audio: 'https://drive.google.com/file/d/1FpCdZZSPCLRE7ZVtwsjxR0H4dUHW4ey0/view?usp=drive_link' },
     { id: 112, title: 'Especialista em Pessoas - Tiago Brunet', author: '', cover: 'https://m.media-amazon.com/images/I/81A6qTcEONL._AC_UF1000,1000_QL80_.jpg', audio: 'https://drive.google.com/file/d/1pKhgkNhdwa2-9B7JGFZ3iu9cJfEco3Dh/view?usp=drive_link' },
     { id: 113, title: 'Essencialismo - Greg McKeown', author: '', cover: 'https://m.media-amazon.com/images/I/71HuZRl-XeL.jpg', audio: 'https://drive.google.com/file/d/1Qjt_AisWNslkKLF6SsIDy6CkMQ46YXva/view?usp=drive_link' },
     { id: 114, title: 'Eu Vou te Ensinar a Ser Rico - Ben Zruel', author: '', cover: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRE-Diiv7E0s1FMDxU2EpCKf-AHNO47n-5g2Q&s', audio: 'https://drive.google.com/file/d/13tlbuTYUJoWeMHAjklnHIeF74NE2OLkj/view?usp=drive_link' },
     { id: 115, title: 'Fator de Enriquecimento - Paulo Vieira', author: '', cover: 'https://m.media-amazon.com/images/I/81m-aKfHLlL.jpg', audio: 'https://drive.google.com/file/d/1LveT0OOWpPTGhV9OWN3e7JxqY-x5wVNO/view?usp=drive_link' },
     { id: 116, title: 'Faça Fortuna com Ações - Décio Bazin', author: '', cover: 'https://m.media-amazon.com/images/I/71VC1WBFjwL._UF1000,1000_QL80_.jpg', audio: 'https://drive.google.com/file/d/1ogOLZ4KYHA-bdfLxrF2SSHNy7ScLmRuF/view?usp=drive_link' },
     { id: 117, title: 'Filhos Inteligentes Enriquecem Sozinhos - Gustavo Cerbasi', author: '', cover: 'https://m.media-amazon.com/images/I/61YE9CFh+7L._AC_UF1000,1000_QL80_.jpg', audio: 'https://drive.google.com/file/d/16-7cHBtv9hwlRTG9kEpjIXLZQnPl5vos/view?usp=drive_link' },
-    { id: 118, title: 'Foco - O Poder da Única Coisa - Vinicius Almeida', author: '', cover: '../audio%20book/1.jpg', audio: '' },
     { id: 119, title: 'Gatilhos Mentais - Gustavo Ferreira', author: '', cover: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgLccYBcNzmq26FLsDRSSgX_qrv8tMlWdOiQ&s', audio: 'https://drive.google.com/file/d/1AH6piox48dxiAhdg3XBeKRozk8i4sDzN/view?usp=drive_link' },
     { id: 120, title: 'Gente Pobre - Fíodor Dostoiévski', author: '', cover: 'https://m.media-amazon.com/images/I/81xrQauj0bL.jpg', audio: 'https://drive.google.com/file/d/1IsG52PBjIr2lBlsQAn6Y4puTil7nNzUg/view?usp=drive_link' },
     { id: 121, title: 'Geração de Valor - Flávio Augusto da Silva', author: '', cover: 'https://m.media-amazon.com/images/I/51D2KF-05oL._AC_UF1000,1000_QL80_.jpg', audio: 'https://drive.google.com/file/d/1-OdSLZa8XGdTf0W5EqfdzW-etR4LMDP-/view?usp=drive_link' },
-    { id: 122, title: 'Hackeando Tudo - Raiam Dos Santos', author: '', cover: '../audio%20book/1.jpg', audio: '' },
-    { id: 123, title: 'Harry Potter e a Pedra Filosofal - J. K. Rowling', author: '', cover: '../audio%20book/1.jpg', audio: '' },
     { id: 124, title: 'HomoDeus - Yuval Noah Harari', author: '', cover: 'https://m.media-amazon.com/images/I/81ql3Ty2O2L.jpg', audio: 'https://drive.google.com/file/d/1uvnBj95RMsXWpEGCpPXKlpFKskm7uHd3/view?usp=drive_link' },
-    { id: 125, title: 'Hábitos Atômicos - James Clear', author: '', cover: '../audio%20book/1.jpg', audio: '' },
     { id: 127, title: 'Hábitos Milionários - Napoleon Hill', author: '', cover: 'https://m.media-amazon.com/images/I/51O6kna8l2L._AC_UF1000,1000_QL80_.jpg', audio: 'https://drive.google.com/file/d/11L9Mp1C3XzGfzwY51Y7wtsduqy6cjmlr/view?usp=drive_link' },
     { id: 128, title: 'Ikigai - Os Segredos Dos Japoneses Para Uma Vida Longa e Feliz - Hector Garcia, Francesc Miralles', author: '', cover: 'https://m.media-amazon.com/images/I/717ksSGStoL._AC_UF1000,1000_QL80_.jpg', audio: 'https://drive.google.com/file/d/1JhZ8jtX1re_HDxdIMBlz7sd_c4COjX_g/view?usp=drive_link' },
     { id: 129, title: "Limite Zero (Ho'oponopono) - Joe Vitale", author: '', cover: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKZKw_PqoQQhD_yRWWn_K7Rpos0eDqoJeoLg&s', audio: 'https://drive.google.com/file/d/1HVx3_o49r38bAUFNfFZT_k9342fhajuV/view?usp=drive_link' },
@@ -148,9 +128,6 @@ var LVData = {
     { id: 138, title: "Mentes Brilhantes - Alberto Dell'Isola", author: '', cover: 'https://m.media-amazon.com/images/I/81BsIfwdODL._UF1000,1000_QL80_.jpg', audio: 'https://drive.google.com/file/d/1xX-jfiKrJ4h6gSz9NpTTXqLqk359WSxY/view?usp=drive_link' },
     { id: 139, title: 'Mindset - A Nova Psicologia do Sucesso - Carol Dweck', author: '', cover: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbNFK1rm0IgtA-DHF5kTFUV8JGsNgdAJOcoA&s', audio: 'https://drive.google.com/file/d/1o5rjkC8RKw4Ek3LmtEyc6CuMUEyY_i-_/view?usp=drive_link' },
     { id: 140, title: 'Mini Hábitos - Stephen Guise', author: '', cover: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGFZE-ymJTTqu2NqUOWkiXHOPEpepsfTeTGQ&s', audio: 'https://drive.google.com/file/d/1YQUrBVhh2I7oyI-O41TTNoQbV5_djBko/view?usp=drive_link' },
-    { id: 141, title: 'Moby Dick - Herman Melville', author: '', cover: '../audio%20book/1.jpg', audio: '' },
-    { id: 142, title: 'Nascido Para o Sucesso - Colin Turner', author: '', cover: '../audio%20book/1.jpg', audio: '' },
-    { id: 143, title: 'Nação Dopamina - Anna Lembke', author: '', cover: '../audio%20book/1.jpg', audio: '' },
     { id: 144, title: 'Negocie Como se Sua Vida Dependesse Disso - Christopher Voss, Tahl Raz', author: '', cover: 'https://m.media-amazon.com/images/I/713A9sSxvRL.jpg', audio: 'https://drive.google.com/file/d/1oQXiqArQqaIbJ7QzFqbWViZrjoLxRQFJ/view?usp=drive_link' },
     { id: 145, title: 'Negocie Qualquer Coisa com Qualquer Pessoa - Eduardo Ferraz', author: '', cover: 'https://m.media-amazon.com/images/I/71M8uuTqyHL.jpg', audio: 'https://drive.google.com/file/d/1VmPb5fPqt4ROSfeRt-9zms03XgBurKeM/view?usp=drive_link' },
     { id: 146, title: 'Nocaute - Gary Vaynerchuk', author: '', cover: 'https://m.media-amazon.com/images/I/81JoRQMsSFL._AC_UF1000,1000_QL80_.jpg', audio: 'https://drive.google.com/file/d/1oDhIMGhJvBdxHz_AbOgxB7haFXdSbJ0A/view?usp=drive_link' },
@@ -159,7 +136,6 @@ var LVData = {
     { id: 149, title: 'Nós Queremos que Você Fique Rico - Donald Trump, Robert Kiyosaki', author: '', cover: 'https://m.media-amazon.com/images/I/61SAwym1QSL.jpg', audio: 'https://drive.google.com/file/d/1S822wV9NtAh9Oo1SDdafmyBRlTfzx4LU/view?usp=drive_link' },
     { id: 150, title: 'O Alquimista - Audiobook Completo - Narração Profissional', author: '', cover: 'https://acdn-us.mitiendanube.com/stores/003/717/513/products/81ihktjc-6l-_sl1500_-c6f569b7e6249046ad17386960141040-480-0.webp', audio: 'https://drive.google.com/file/d/16_YbtRBgRu9o0ctl09BKkCsBLicOmaJC/view?usp=drive_link' },
     { id: 151, title: 'O Banquete - Platão - Audiobook Completo', author: '', cover: 'https://m.media-amazon.com/images/I/81HQpUxYZDL._AC_UF1000,1000_QL80_.jpg', audio: 'https://drive.google.com/file/d/1FSCFx0WyzduBRZss42-MWrKsagIU3Tb8/view?usp=drive_link' },
-    { id: 152, title: 'O Cavaleiro dos Sete Reinos - George R.R. Martin', author: '', cover: '../audio%20book/1.jpg', audio: '' },
     { id: 153, title: 'O Clube Das 5 Da Manhã - Robin Sharma', author: '', cover: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8D74FBkluGJAVvNq2nl8A2JX_PxDVmAEfdg&s', audio: 'https://drive.google.com/file/d/1DTkPFEumsn44SCLwT8KmKnnGs_NXb8zG/view?usp=drive_link' },
     { id: 155, title: 'O Corpo Fala - Pierre Weil e Roland Tompakow', author: '', cover: 'https://m.media-amazon.com/images/I/81bs2U1-CrL.jpg', audio: 'https://drive.google.com/file/d/1x49uisg06Pt2iXuLlIERc1Ua2bc3G8f1/view?usp=drive_link' },
     { id: 156, title: 'O Código da Inteligência - Augusto Cury', author: '', cover: 'https://m.media-amazon.com/images/I/71sabxRPQyL.jpg', audio: 'https://drive.google.com/file/d/1mq3WWqKwxK6AYUWOOluvH35BhR4tC449/view?usp=drive_link' },
@@ -169,29 +145,19 @@ var LVData = {
     { id: 160, title: 'O Homem Mais Rico da Babilônia - George Samuel Clason', author: '', cover: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS24gOqFwVpUrMQ5QaKMvY46QF2vU8hsiIFeA&s', audio: 'https://drive.google.com/file/d/1MQ_rKKyLriAMgBugiT1tsclq0NuuP6Ll/view?usp=drive_link' },
     { id: 161, title: 'O Homem é Aquilo que ele Pensa - James Allen', author: '', cover: 'https://m.media-amazon.com/images/I/61LyKRYv5CL.jpg', audio: 'https://drive.google.com/file/d/107TVEhdXlzFNiVlgQfuSZ0Pjk9ajpbp5/view?usp=drive_link' },
     { id: 162, title: 'O Jeito Disney de Encantar os Clientes - Disney Institute', author: '', cover: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSjGvnN9FK5NuGbt3V1qs3Fja5vC3W2yBbVA&s', audio: 'https://drive.google.com/file/d/1xgRzxPt8_euiErvN29GixZuKDCJiQsWA/view?usp=drive_link' },
-    { id: 163, title: 'O Lobo de Wall Street - Jordan Belfort', author: '', cover: '../audio%20book/1.jpg', audio: '' },
     { id: 164, title: 'O Maior Vendedor do Mundo - Og Mandino', author: '', cover: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1xXixJUMR_R7voSFUv7G1lZKnWfQi_H8m3g&s', audio: 'https://drive.google.com/file/d/1ctmbDp0ByqFF00iyxxx02XuB6PJlxQnx/view?usp=drive_link' },
     { id: 165, title: 'O Manuscrito Original - Napoleon Hill', author: '', cover: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_esUHvP1Ujl-uebvPZYV72VyiahBKKatBsw&s', audio: 'https://drive.google.com/file/d/1zDPJoUArtmMw2oyw4GB1TvWVQWfOpBl5/view?usp=drive_link' },
-    { id: 166, title: 'O Mensageiro Milionário - Brendon Burchard', author: '', cover: '../audio%20book/1.jpg', audio: '' },
     { id: 167, title: 'O Milagre da Manhã - Hal Elrod', author: '', cover: 'https://m.media-amazon.com/images/I/512zQ6qXkML._AC_UF1000,1000_QL80_DpWeblab_.jpg', audio: 'https://drive.google.com/file/d/1g8GCXJLSpsZwdQHFWahBLHOizAE-C5BW/view?usp=drive_link' },
     { id: 168, title: 'O Milagre da Manhã para Transformar seu Relacionamento - Hal Elrod', author: '', cover: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnXBw0g5-DxKB5XUFebAJBL_IEwCBrErfHPw&s', audio: 'https://drive.google.com/file/d/1ukpQolge3lOpJh_Qrx-FBkkHqTtbsHtD/view?usp=drive_link' },
     { id: 169, title: 'O Milionário Instantâneo - Marc Fisher', author: '', cover: 'https://m.media-amazon.com/images/I/91IpAi1T7bL._UF1000,1000_QL80_.jpg', audio: 'https://drive.google.com/file/d/1lBYjvpK9UKv3_QHzz2eCOs8V3S2DVk9Z/view?usp=drive_link' },
     { id: 170, title: 'O Monge e o Executivo - James C. Hunter', author: '', cover: 'https://m.media-amazon.com/images/I/81azm3rAm3L.jpg', audio: 'https://drive.google.com/file/d/1AfPvx1MEyw_-QVWK0ueC_FFznc2Eaaxu/view?usp=drive_link' },
     { id: 171, title: 'O Negócio do Século XXI - Robert Kiyosaki', author: '', cover: 'https://altabooks.com.br/wp-content/uploads/2021/07/3D_Negocio_Seculo_XXI.jpg', audio: 'https://drive.google.com/file/d/1VN8RTgs8BV6e30I4mFmz--_2KG6RdkQ6/view?usp=drive_link' },
-    { id: 172, title: 'O Pequeno Príncipe - Antoine de Saint-Exupéry', author: '', cover: '../audio%20book/1.jpg', audio: '' },
     { id: 173, title: 'O Poder da Ação - Paulo Vieira', author: '', cover: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0ox3dL0W7yoyoOWJxtawzLa8VHsmWi79MGQ&s', audio: 'https://drive.google.com/file/d/1dhisLXuxAXndDL5OW4IVY8wMtO7tZKJl/view?usp=drive_link' },
-    { id: 174, title: 'O Poder da Resiliência - Rick Hanson', author: '', cover: '../audio%20book/1.jpg', audio: '' },
-    { id: 175, title: 'O Poder do Agora - Eckhart Tolle', author: '', cover: '../audio%20book/1.jpg', audio: '' },
     { id: 177, title: 'O Poder do Hábito - Charles Duhigg', author: '', cover: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmx_YFT8XXbKzQ9p5L00dsXDSAWa3x3NjCwQ&s', audio: 'https://drive.google.com/file/d/1k4auz-xOQjrKWwpdRS7WGoODEokA9Wbx/view?usp=drive_link' },
     { id: 178, title: 'O Poder do Subconsciente - Joseph Murphy', author: '', cover: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuV60ZO3pvaKxJZlztfqaFuCS1yv95AQMjag&s', audio: 'https://drive.google.com/file/d/1M5dL75CAZkTFwMYwuJe6Pkf3iS3IBOR7/view?usp=drive_link' },
     { id: 179, title: 'O Poder dos 5 Segundos - Mel Robbins', author: '', cover: 'https://http2.mlstatic.com/D_NQ_NP_838240-MLB79609386924_102024-O.webp', audio: 'https://drive.google.com/file/d/1aZEIqDzjsqG_QMaxJft7WWKb2FL2L02h/view?usp=drive_link' },
     { id: 180, title: 'O Príncipe - Nicolau Maquiavel', author: '', cover: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3XOUSG9uzKhAthtuBWUjEe6rKXBptbPP7Sg&s', audio: 'https://drive.google.com/file/d/11ImlOwvYtDgC7E7ynNjLXqItp3n3xbrZ/view?usp=drive_link' },
     { id: 182, title: 'O que Steve Jobs Faria - Peter Sander', author: '', cover: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjwd-62tSvtUnpIt9iIt0Iby8xlXP0k6d0_w&s', audio: 'https://drive.google.com/file/d/1UR69UgpKkoRe_EU_0bwRZC6CneYVii3i/view?usp=drive_link' },
-    { id: 183, title: 'O Segredo (The Secret) - Rhonda Byrne', author: '', cover: '../audio%20book/1.jpg', audio: '' },
-    { id: 184, title: 'O Senhor dos Anéis - Livro 1 - A Sociedade do Anel - J. R. R. Tolkien', author: '', cover: '../audio%20book/1.jpg', audio: '' },
-    { id: 185, title: 'O Senhor dos Anéis - Livro 2 - A Sociedade do Anel - J. R. R. Tolkien', author: '', cover: '../audio%20book/1.jpg', audio: '' },
-    { id: 186, title: 'O Sentimento é o Segredo - Neville Goddard', author: '', cover: '../audio%20book/1.jpg', audio: '' },
-    { id: 187, title: 'O Sucesso Não Ocorre Por Acaso - Lair Ribeiro', author: '', cover: '../audio%20book/1.jpg', audio: '' },
     { id: 188, title: 'O Universo Numa Casca De Noz - Stephen Hawking', author: '', cover: 'https://m.media-amazon.com/images/I/61LGgb24eYL._AC_UF1000,1000_QL80_.jpg', audio: 'https://drive.google.com/file/d/1QhpRzL0Ng8nY_SkcFGiuluf0ZTwq0et8/view?usp=drive_link' },
     { id: 189, title: 'O Vendedor de Sonhos - Augusto Cury', author: '', cover: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhrqjGxI6ptaZw8jizOPQ0eaXaLxFNtoLkZg&s', audio: 'https://drive.google.com/file/d/1Im0OpFcQ__xRVQ7fZj-TdrHB0hHilxcC/view?usp=drive_link' },
     { id: 190, title: 'O Vinho Novo é Melhor - Robert Thom', author: '', cover: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdHuCEN60LD7BMZoNlUiF5Vpwd1qTBqgbe_g&s', audio: 'https://drive.google.com/file/d/1rGcE1V007TSs5zpiT36dUcZTaT3O_zkZ/view?usp=drive_link' },
@@ -217,11 +183,9 @@ var LVData = {
     { id: 215, title: 'Segredos Mágicos da Sua Mente - David Medina', author: '', cover: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBve1ylly43YgyjpdOQWZZf5NnCj-yf3yVDg&s', audio: 'https://drive.google.com/file/d/1EkH2nUu7I4G5WswsLJA2Uv51Tifzp8O1/view?usp=drive_link' },
     { id: 216, title: 'Seja Foda! - Caio Carneiro', author: '', cover: 'https://m.media-amazon.com/images/I/4152pe7g7xL._AC_UF1000,1000_QL80_.jpg', audio: 'https://drive.google.com/file/d/1XsMF_3bQG3rV060oGHwLj0kQhz1PBLfa/view?usp=drive_link' },
     { id: 217, title: 'Silvio Santos, a Biografia - Marcia Batista e Anna Medeiros', author: '', cover: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQu_mdmNYmdbQw7drT5Ids-PUU5_TRzNEU9lg&s', audio: 'https://drive.google.com/file/d/1xq5nEWD6_dyBDRwIsL5pSuYT486_jlos/view?usp=drive_link' },
-    { id: 218, title: 'Slogan', author: '', cover: '../audio%20book/1.jpg', audio: '' },
     { id: 219, title: 'Storytelling - Aprenda a Contar Histórias como Steve Jobs', author: '', cover: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQg1wWSok70Cr0HMSwq2iGxGxdtjFixym_0w&sg', audio: 'https://drive.google.com/file/d/1uGlwLNx1ggcwlLMJl_xwWTzwl8tBVwnT/view?usp=drive_link' },
     { id: 220, title: 'Tabralhe 4 Horas Por Semana - Timothy Ferriss', author: '', cover: 'https://m.media-amazon.com/images/I/81nUthzU+xL._AC_UF1000,1000_QL80_.jpg', audio: 'https://drive.google.com/file/d/1W4YZuQS96FuGmo9LImIDspUVzZ0rj7r5/view?usp=drive_link' },
     { id: 221, title: 'Treinando a Emoção Para Ser Feliz - Augusto Cury', author: '', cover: 'https://www.amazon.com.br/Treinando-Emo%C3%A7%C3%A3o-Para-Ser-Feliz/dp/8542203909', audio: 'https://drive.google.com/file/d/1OEoUIPHMFDcvDP8X3e2E489WckjeUgU5/view?usp=drive_link' },
-    { id: 222, title: 'Um Caso Perdido - Colleen Hoover', author: '', cover: '../audio%20book/1.jpg', audio: '' },
     { id: 223, title: 'Uma Breve História do Tempo - Stephen Hawking', author: '', cover: 'https://m.media-amazon.com/images/I/61AaXcdHXKS.jpg', audio: 'https://drive.google.com/file/d/1XL53TYJkyYjOgqC3SSJxyYJPbRiiLmNN/view?usp=drive_link' },
     { id: 224, title: 'Verity - Colleen Hoover', author: '', cover: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgti-9UzkJPdeyFOTgFmNgxLAyTdKMKT-PFA&s', audio: 'https://drive.google.com/file/d/1sXNfnbX5rT6CiiQVpylKJ0_PKH2BqG8V/view?usp=drive_link' },
     { id: 225, title: 'Viagem ao Centro da Terra - Julio Verne', author: '', cover: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQjCQQAoHSU5JoPIMccCyAlbkXuaoCnedFEg&s', audio: 'https://drive.google.com/file/d/1TRdgs1a8Ch2sy438DyrLSUqiutxoV9Mx/view?usp=drive_link' },
@@ -237,43 +201,18 @@ var LVData = {
   ebooks: [
     {
       id: 1,
-      title: 'Mindset — Carol S. Dweck',
-      url: 'https://drive.google.com/file/d/SEU_FILE_ID_AQUI/view'
+      title: 'Acessar biblioteca — 10 mil livros',
+      url: 'https://drive.google.com/drive/u/3/folders/1R8xmZNcke1VZAfXlIJRScadDF6tNWPlj?usp=sharing'
     },
     {
       id: 2,
-      title: 'Antifrágil — Nassim Taleb',
-      url: 'https://drive.google.com/file/d/SEU_FILE_ID_AQUI/view'
+      title: 'Acessar Bônus — 3500 eBooks extras',
+      url: 'https://drive.google.com/drive/u/3/folders/1VmyoDabEl44gJk5vIQXoTnmZNnEH7-Zp?usp=sharing'
     },
     {
       id: 3,
-      title: 'Rápido e Devagar — Daniel Kahneman',
-      url: 'https://drive.google.com/file/d/SEU_FILE_ID_AQUI/view'
-    },
-    {
-      id: 4,
-      title: 'Gatilhos Mentais — Gustavo Ferreira',
-      url: 'https://drive.google.com/file/d/SEU_FILE_ID_AQUI/view'
-    },
-    {
-      id: 5,
-      title: 'Os 7 Hábitos — Stephen Covey',
-      url: 'https://drive.google.com/file/d/SEU_FILE_ID_AQUI/view'
-    },
-    {
-      id: 6,
-      title: 'A Arte da Guerra — Sun Tzu',
-      url: 'https://drive.google.com/file/d/SEU_FILE_ID_AQUI/view'
-    },
-    {
-      id: 7,
-      title: 'O Ego é Seu Inimigo — Ryan Holiday',
-      url: 'https://drive.google.com/file/d/SEU_FILE_ID_AQUI/view'
-    },
-    {
-      id: 8,
-      title: 'A Psicologia Financeira — Morgan Housel',
-      url: 'https://drive.google.com/file/d/SEU_FILE_ID_AQUI/view'
+      title: 'Acessar explicação em Vídeo — 50 livros mais poderosos do mundo',
+      url: 'https://drive.google.com/drive/u/6/folders/1dWPqt3JGRm_odazq9l3KJDCHk9uUzAg4?usp=sharing'
     }
   ],
 
@@ -281,25 +220,15 @@ var LVData = {
   bonus: [
     {
       id: 1,
-      title: 'Pasta Completa de Audiobooks',
-      desc: 'Acesse todos os audiobooks disponíveis na coleção completa.',
-      url: 'https://drive.google.com/drive/folders/SEU_FOLDER_ID_AQUI'
+      title: 'Acessar Bônus — 3500 eBooks extras',
+      desc: 'Acesse a pasta com mais de 3500 eBooks extras disponíveis para download.',
+      url: 'https://drive.google.com/drive/u/3/folders/1VmyoDabEl44gJk5vIQXoTnmZNnEH7-Zp?usp=sharing'
     },
     {
       id: 2,
-      title: 'Pasta Completa de eBooks',
-      desc: 'Mais de 3.000 títulos em PDF prontos para baixar.',
-      url: 'https://drive.google.com/drive/folders/SEU_FOLDER_ID_AQUI'
-    },
-    {
-      id: 3,
-      title: 'Material Extra — Resumos',
-      desc: 'Resumos dos principais best-sellers para leitura rápida.',
-      url: 'https://drive.google.com/drive/folders/SEU_FOLDER_ID_AQUI'
+      title: 'Acessar Check list da leitura',
+      desc: 'Baixe o check list completo para acompanhar e organizar sua leitura.',
+      url: 'https://drive.google.com/drive/u/6/folders/1f_e7372PjVUjrymFxWoMaroVWdy0Uxn3?usp=sharing'
     }
-  ],
-
-  // ── CONFIG ───────────────────────────────────────────────
-  whatsapp: '5511999999999',  // Número com DDI + DDD, sem espaços ou símbolos
-  whatsappMsg: 'Olá! Preciso de suporte com o LV Books.'
+  ]
 };
