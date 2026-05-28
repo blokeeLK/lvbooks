@@ -592,21 +592,6 @@
      ASSISTA ANTES
 ════════════════════ -->
 <section class="assista">
-  <h2>Assista antes de continuar</h2>
-
-  <div class="assista__video-wrap">
-    <video id="vsl-app" autoplay muted playsinline loop style="width:100%;display:block;background:#000;">
-      <source src="upcell/vsl.mp4" type="video/mp4" />
-    </video>
-    <div class="mute-overlay" id="vsl-app-overlay" onclick="unmuteApp()">
-      <div class="mute-overlay__box">
-        <div class="mo-title">Seu vídeo já começou</div>
-        <div class="mo-icon">🔇</div>
-        <div class="mo-cta">Clique para ouvir</div>
-      </div>
-    </div>
-  </div>
-
   <!-- App preview -->
   <div class="app-preview">
     <div class="app-preview__header">
@@ -657,7 +642,7 @@
       <p>Mude hábitos e alcance o que você quer com os maiores livros do mundo.</p>
     </div>
   </div>
-  <a href="https://pay.kirvano.com/3b96c71d-bd71-44d5-988c-e24881633fb3" class="btn-green full">
+  <a href="https://pay.kirvano.com/38c77879-f5a9-4628-a86b-7a70bb77f2c6" class="btn-green full">
     🎧 Quero o Aplicativo LV Books →
   </a>
 </section>
@@ -716,7 +701,7 @@
       <p>Audiobooks novos por mês</p>
     </div>
   </div>
-  <a href="https://pay.kirvano.com/3b96c71d-bd71-44d5-988c-e24881633fb3" class="btn-purple full">
+  <a href="https://pay.kirvano.com/38c77879-f5a9-4628-a86b-7a70bb77f2c6" class="btn-purple full">
     🚀 Garantir Meu Acesso Premium →
   </a>
 </section>
@@ -750,7 +735,7 @@
           <li>Sem renovação</li>
           <li>Uso para sempre</li>
         </ul>
-        <a href="https://pay.kirvano.com/3b96c71d-bd71-44d5-988c-e24881633fb3" class="btn-green full">
+        <a href="https://pay.kirvano.com/38c77879-f5a9-4628-a86b-7a70bb77f2c6" class="btn-green full">
           🎧 SIM! Quero o LV Books Premium+ Vitalício
         </a>
       </div>
@@ -759,14 +744,14 @@
 
   <!-- App store buttons -->
   <div class="stores">
-    <a href="https://pay.kirvano.com/3b96c71d-bd71-44d5-988c-e24881633fb3" class="store-btn">
+    <a href="https://pay.kirvano.com/38c77879-f5a9-4628-a86b-7a70bb77f2c6" class="store-btn">
       <div class="store-btn__icon">▶</div>
       <div class="store-btn__text">
         <span class="store-btn__small">Disponível no</span>
         <span class="store-btn__name">Google Play</span>
       </div>
     </a>
-    <a href="https://pay.kirvano.com/3b96c71d-bd71-44d5-988c-e24881633fb3" class="store-btn">
+    <a href="https://pay.kirvano.com/38c77879-f5a9-4628-a86b-7a70bb77f2c6" class="store-btn">
       <div class="store-btn__icon"></div>
       <div class="store-btn__text">
         <span class="store-btn__small">Disponível na</span>
@@ -787,7 +772,7 @@
   <div style="max-width:600px;margin:0 auto 28px;">
     <img src="upcell/maiores.png" alt="Os maiores autores do mundo" style="width:100%;border-radius:12px;display:block;box-shadow:0 8px 30px rgba(0,0,0,.4);" />
   </div>
-  <a href="https://pay.kirvano.com/3b96c71d-bd71-44d5-988c-e24881633fb3" class="btn-green full">
+  <a href="https://pay.kirvano.com/38c77879-f5a9-4628-a86b-7a70bb77f2c6" class="btn-green full">
     🎧 SIM! Quero o LV Books Premium+ Vitalício →
   </a>
 </section>
@@ -866,7 +851,7 @@
      FINAL CTA
 ════════════════════ -->
 <section class="sec" style="background:#fff;padding-top:32px;padding-bottom:48px;">
-  <a href="https://pay.kirvano.com/3b96c71d-bd71-44d5-988c-e24881633fb3" class="btn-green full" style="max-width:480px;font-size:16px;padding:20px;">
+  <a href="https://pay.kirvano.com/38c77879-f5a9-4628-a86b-7a70bb77f2c6" class="btn-green full" style="max-width:480px;font-size:16px;padding:20px;">
     🎧 SIM! Quero o LV Books Premium+ Vitalício →
   </a>
 </section>
@@ -905,14 +890,6 @@
     document.getElementById('topbar-app').textContent =
       'OFERTA VÁLIDA SOMENTE HOJE, ' + dias[now.getDay()] + ', ' + dd + '/' + mm + '/' + now.getFullYear();
   })();
-
-  /* ── VSL MUDO → DESMUTA ── */
-  function unmuteApp() {
-    var v = document.getElementById('vsl-app');
-    var o = document.getElementById('vsl-app-overlay');
-    v.muted = false; v.loop = false; v.controls = true;
-    o.classList.add('hidden');
-  }
 
   /* ── SOCIAL PROOF POPUP ── */
   var spNames = [
