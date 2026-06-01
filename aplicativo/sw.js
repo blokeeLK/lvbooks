@@ -1,4 +1,4 @@
-var CACHE = 'lvbooks-v1';
+var CACHE = 'lvbooks-v3';
 var SHELL = [
   '/aplicativo/',
   '/aplicativo/index.html',
@@ -25,6 +25,10 @@ self.addEventListener('activate', function(e) {
 });
 
 self.addEventListener('fetch', function(e) {
+  // Só intercepta requisições do próprio domínio do app
+  // Externas (Google Drive, fontes, capas, CDN) vão direto à rede sem overhead do SW
+  if (e.request.url.indexOf(self.location.origin) !== 0) return;
+
   e.respondWith(
     caches.match(e.request).then(function(r) {
       return r || fetch(e.request).catch(function() {
