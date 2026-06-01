@@ -501,6 +501,54 @@ html,body{
   letter-spacing:.02em;
 }
 
+/* ── SPEED CONTROL ── */
+.ctrl-btn.speed{
+  font-size:11px;
+  font-weight:800;
+  min-width:36px;
+  color:var(--green);
+  padding:4px 6px;
+  border-radius:6px;
+  border:1px solid rgba(29,185,84,.35);
+  background:rgba(29,185,84,.08);
+  letter-spacing:-.3px;
+}
+.speed-menu{
+  position:fixed;
+  bottom:calc(var(--nav-h) + var(--player-h) + var(--safe-bottom) + 6px);
+  right:10px;
+  background:#0d1f38;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:12px;
+  overflow:hidden;
+  z-index:300;
+  display:none;
+  flex-direction:column;
+  min-width:130px;
+  box-shadow:0 8px 32px rgba(0,0,0,.5);
+}
+.speed-menu.open{display:flex;}
+.speed-opt{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:11px 16px;
+  font-size:13px;
+  font-weight:700;
+  color:#cbd5e1;
+  cursor:pointer;
+  border:none;
+  background:none;
+  font-family:'Montserrat',sans-serif;
+  width:100%;
+  gap:10px;
+  -webkit-tap-highlight-color:transparent;
+}
+.speed-opt:active{background:rgba(255,255,255,.06);}
+.speed-opt.active{color:var(--green);}
+.speed-opt .spck{font-size:13px;opacity:0;}
+.speed-opt.active .spck{opacity:1;}
+
 /* ── EMPTY STATE ── */
 .empty{
   padding:60px 24px;
@@ -891,6 +939,7 @@ html,body{
     <div class="mini-author" id="miniAuthor">—</div>
   </div>
   <div class="mini-controls">
+    <button class="ctrl-btn speed" id="speedBtn" onclick="toggleSpeedMenu(event)" title="Velocidade">1x</button>
     <button class="ctrl-btn" onclick="playerPrev()" title="Anterior">⏮</button>
     <button class="ctrl-btn main" id="playPauseBtn" onclick="playerToggle()">▶</button>
     <button class="ctrl-btn" onclick="playerNext()" title="Próximo">⏭</button>
@@ -898,6 +947,18 @@ html,body{
   <div class="mini-progress">
     <div class="mini-progress-fill" id="progressFill"></div>
   </div>
+</div>
+
+<!-- ── SPEED MENU ── -->
+<div class="speed-menu" id="speedMenu">
+  <button class="speed-opt" onclick="setSpeed(0.25)"><span>0.25x</span><span class="spck">✓</span></button>
+  <button class="speed-opt" onclick="setSpeed(0.5)"><span>0.5x</span><span class="spck">✓</span></button>
+  <button class="speed-opt" onclick="setSpeed(0.75)"><span>0.75x</span><span class="spck">✓</span></button>
+  <button class="speed-opt" onclick="setSpeed(1)"><span>1x</span><span class="spck">✓</span></button>
+  <button class="speed-opt" onclick="setSpeed(1.25)"><span>1.25x</span><span class="spck">✓</span></button>
+  <button class="speed-opt" onclick="setSpeed(1.5)"><span>1.5x</span><span class="spck">✓</span></button>
+  <button class="speed-opt" onclick="setSpeed(1.75)"><span>1.75x</span><span class="spck">✓</span></button>
+  <button class="speed-opt" onclick="setSpeed(2)"><span>2x</span><span class="spck">✓</span></button>
 </div>
 
 <!-- ── BOTTOM NAV ── -->
@@ -1009,6 +1070,46 @@ function goTo(name) {
   document.getElementById('appScroll').scrollTo(0, 0);
 }
 
+// ── SPEED CONTROL ────────────────────────────────────────
+var SPEED_KEY = 'audioPlaybackRate';
+var currentSpeed = (function() {
+  var s = parseFloat(localStorage.getItem(SPEED_KEY));
+  return (s && s > 0) ? s : 1;
+})();
+
+function applySpeed() {
+  try {
+    audioEl.playbackRate = currentSpeed;
+  } catch(e) {
+    currentSpeed = 1;
+    audioEl.playbackRate = 1;
+  }
+  var label = currentSpeed === Math.floor(currentSpeed)
+    ? currentSpeed + 'x'
+    : currentSpeed + 'x';
+  document.getElementById('speedBtn').textContent = label;
+  document.querySelectorAll('.speed-opt').forEach(function(opt) {
+    var v = parseFloat(opt.querySelector('span').textContent);
+    opt.classList.toggle('active', v === currentSpeed);
+  });
+}
+
+function setSpeed(rate) {
+  currentSpeed = rate;
+  try { localStorage.setItem(SPEED_KEY, rate); } catch(e) {}
+  applySpeed();
+  document.getElementById('speedMenu').classList.remove('open');
+}
+
+function toggleSpeedMenu(e) {
+  e.stopPropagation();
+  document.getElementById('speedMenu').classList.toggle('open');
+}
+
+document.addEventListener('click', function() {
+  document.getElementById('speedMenu').classList.remove('open');
+});
+
 // ── RENDER AUDIOBOOKS ────────────────────────────────────
 var currentTrack = -1;
 var audioEl = document.getElementById('audioEl');
@@ -1089,6 +1190,7 @@ function playAudio(id) {
   // Direct URL (.mp3, .m4a, etc.) — use <audio> player
   audioEl.src = book.audio;
   audioEl.load();
+  applySpeed();
   audioEl.play().catch(function() {});
   isPlaying = true;
 
@@ -1188,6 +1290,7 @@ function closeAndroidModal() {
   renderAudio(LVData.audiobooks);
   renderEbooks(LVData.ebooks);
   renderBonus();
+  applySpeed();
 
   // Service Worker
   if ('serviceWorker' in navigator) {
