@@ -591,20 +591,35 @@
 <!-- ════════════════════
      VSL
 ════════════════════ -->
-<section style="background:#fff;padding:32px 20px 8px;text-align:center;">
-  <h2 style="font-family:'Montserrat',sans-serif;font-size:clamp(17px,4vw,24px);font-weight:900;color:#1a1a2e;margin-bottom:20px;line-height:1.3;">
+<section style="background:#fff;padding:28px 20px 16px;text-align:center;">
+  <h2 style="font-family:'Montserrat',sans-serif;font-size:clamp(16px,3.5vw,22px);font-weight:900;color:#1a1a2e;margin-bottom:16px;line-height:1.3;">
     🎬 Veja na prática como funciona o LV Books!
   </h2>
-  <div style="width:100%;max-width:480px;margin:0 auto;border-radius:14px;overflow:hidden;box-shadow:0 8px 32px rgba(124,58,237,.18);border:2px solid #e2e8f0;">
+  <div style="width:100%;max-width:340px;margin:0 auto;border-radius:12px;overflow:hidden;box-shadow:0 6px 24px rgba(124,58,237,.18);border:2px solid #e2e8f0;position:relative;">
     <video
+      id="vslVideo"
       src="lvbooks.mp4"
-      controls
       playsinline
       preload="metadata"
       style="width:100%;display:block;background:#000;"
     ></video>
+    <div id="vslOverlay" onclick="startVsl()" style="position:absolute;inset:0;background:rgba(10,10,30,.55);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;cursor:pointer;">
+      <div style="width:56px;height:56px;border-radius:50%;background:#7c3aed;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 18px rgba(124,58,237,.5);">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg>
+      </div>
+      <span style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;color:#fff;letter-spacing:.3px;">Clique para ver o vídeo</span>
+    </div>
   </div>
 </section>
+<script>
+function startVsl(){
+  var v=document.getElementById('vslVideo');
+  var o=document.getElementById('vslOverlay');
+  o.style.display='none';
+  v.controls=true;
+  v.play().catch(function(){o.style.display='flex';});
+}
+</script>
 
 <div class="divider"></div>
 
