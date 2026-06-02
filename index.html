@@ -785,6 +785,24 @@ defer
  }
 }
 
+@media (min-width: 769px) {
+ .video-wrapper {
+   max-width: 520px;
+   margin: 20px auto;
+ }
+ .video-wrapper video,
+ .video-wrapper iframe {
+   max-width: 500px !important;
+ }
+ .hero h1,
+ .hero > p {
+   text-align: center;
+   max-width: 520px;
+   margin-left: auto;
+   margin-right: auto;
+ }
+}
+
   .lp-top-offer-bar {
     position: fixed;
     top: 0;
@@ -1020,7 +1038,7 @@ defer
     <div class="slides" id="slides">
       <div class="depoimentos">
 
-<div style="margin:0 auto 18px; width:100%; max-width:400px; position:relative;">
+<div style="margin:0 auto 18px; width:min(400px, 72vw); position:relative;">
  <video id="dep1-video" controls playsinline preload="metadata" style="width:100%;border-radius:12px;background:#000;display:block;">
   <source src="audio%20book/dep1.mp4" type="video/mp4">
   Seu navegador não suporta vídeo HTML5.
