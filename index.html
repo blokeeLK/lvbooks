@@ -3,10 +3,11 @@
 <html lang="pt-BR">
 <head>
 	<meta charset="UTF-8">
-		<title>LP Books | Biblioteca Digital &#8211; Biblioteca digital com audiobooks e eBooks para ouvir e ler no celular.</title>
+	<script>if(location.hostname==='lvbooks.onrender.com'){location.replace('https://lvbooks.com.br'+location.pathname+location.search+location.hash);}</script>
+		<title>LV Books | Biblioteca Digital &#8211; Biblioteca digital com audiobooks e eBooks para ouvir e ler no celular.</title>
 <meta name='robots' content='max-image-preview:large' />
-<link rel="alternate" type="application/rss+xml" title="Feed para LP Books | Biblioteca Digital &raquo;" href="https://lpbooks.com.br/feed/" />
-<link rel="alternate" type="application/rss+xml" title="Feed de comentários para LP Books | Biblioteca Digital &raquo;" href="https://lpbooks.com.br/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Feed para LV Books | Biblioteca Digital &raquo;" href="https://lpbooks.com.br/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Feed de comentários para LV Books | Biblioteca Digital &raquo;" href="https://lpbooks.com.br/comments/feed/" />
 <link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://lpbooks.com.br/wp-json/oembed/1.0/embed?url=https%3A%2F%2Flpbooks.com.br%2F" />
 <link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://lpbooks.com.br/wp-json/oembed/1.0/embed?url=https%3A%2F%2Flpbooks.com.br%2F&#038;format=xml" />
 <style id='wp-img-auto-sizes-contain-inline-css'>
@@ -103,10 +104,10 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 					}
 				}
 			</style>
-			<link rel="icon" href="https://lpbooks.com.br/wp-content/uploads/2026/02/500x-borda-redonda-150x150.png" sizes="32x32" />
-<link rel="icon" href="https://lpbooks.com.br/wp-content/uploads/2026/02/500x-borda-redonda-300x300.png" sizes="192x192" />
-<link rel="apple-touch-icon" href="https://lpbooks.com.br/wp-content/uploads/2026/02/500x-borda-redonda-300x300.png" />
-<meta name="msapplication-TileImage" content="https://lpbooks.com.br/wp-content/uploads/2026/02/500x-borda-redonda-300x300.png" />
+			<link rel="icon" href="upcell/logo.png" sizes="32x32" />
+<link rel="icon" href="upcell/logo.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="upcell/logo.png" />
+<meta name="msapplication-TileImage" content="upcell/logo.png" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" /></head>
 <body class="home wp-singular page-template page-template-elementor_canvas page page-id-347 wp-embed-responsive wp-theme-astra ast-header-break-point ast-page-builder-template ast-no-sidebar astra-4.13.0 ast-single-post ast-inherit-site-logo-transparent ast-hfb-header ast-normal-title-enabled elementor-default elementor-template-canvas elementor-kit-8 elementor-page elementor-page-347">
 			<div data-elementor-type="wp-page" data-elementor-id="347" class="elementor elementor-347">
@@ -881,11 +882,14 @@ defer
 
 </style>
 
-<div class="video-wrapper">
+<div class="video-wrapper" style="position:relative;">
  <video id="vsl-video" autoplay muted playsinline loop controls preload="metadata" style="max-width:700px;width:100%;border-radius:12px;background:#000;display:block;margin:0 auto;">
   <source src="audio%20book/vsl.mp4" type="video/mp4">
   Seu navegador não suporta vídeo HTML5.
  </video>
+ <div id="vsl-sound-overlay" onclick="document.getElementById('vsl-video').muted=false;this.style.display='none';" style="position:absolute;top:12px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.72);color:#fff;border-radius:30px;padding:10px 22px;cursor:pointer;font-size:1rem;font-weight:700;display:flex;align-items:center;gap:8px;z-index:10;white-space:nowrap;box-shadow:0 2px 12px rgba(0,0,0,0.4);">
+  🔊 Clique para liberar o som
+ </div>
 </div>
 
 </header>
@@ -1012,11 +1016,17 @@ defer
     <div class="slides" id="slides">
       <div class="depoimentos">
 
-<div style="margin:0 auto 18px; width:100%; max-width:400px;">
+<div style="margin:0 auto 18px; width:100%; max-width:400px; position:relative;">
  <video id="dep1-video" controls playsinline preload="metadata" style="width:100%;border-radius:12px;background:#000;display:block;">
   <source src="audio%20book/dep1.mp4" type="video/mp4">
   Seu navegador não suporta vídeo HTML5.
  </video>
+ <div id="dep1-overlay" onclick="var v=document.getElementById('dep1-video');v.play();this.style.display='none';" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;border-radius:12px;background:rgba(0,0,0,0.38);">
+  <div style="background:rgba(0,0,0,0.72);border-radius:50%;width:64px;height:64px;display:flex;align-items:center;justify-content:center;margin-bottom:10px;">
+   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#fff" width="36" height="36"><path d="M8 5v14l11-7z"/></svg>
+  </div>
+  <span style="color:#fff;font-weight:700;font-size:1rem;background:rgba(0,0,0,0.6);padding:6px 18px;border-radius:20px;">Clique para reproduzir o vídeo</span>
+ </div>
 </div>
 
 <img decoding="async" src="https://iili.io/KJV8nse.png" alt="Depoimento 1 - WhatsApp" style="margin:10px; max-width:250px; border-radius:10px;">
@@ -1212,7 +1222,7 @@ defer
 <img decoding="async" src="https://i.ibb.co/k6M7gGxD/Chat-GPT-Image-20-05-2026-21-35-45.png"
      style="width:120px; display:block; margin:auto;">
 
-<footer class="container">© 2026 LP BOOKS – Todos os direitos reservados.</footer>
+<footer class="container">© 2026 LV BOOKS – Todos os direitos reservados.</footer>
 
 </main>
 
