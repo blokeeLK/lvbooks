@@ -3,10 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- Redirect: força domínio canônico e HTTPS -->
   <script>
   (function(){
-    var h=window.location.hostname, p=window.location.protocol;
+    var h=window.location.hostname,p=window.location.protocol;
     if(h!=='lvbooks.com.br'||p!=='https:'){
       window.location.replace('https://lvbooks.com.br'+window.location.pathname+window.location.search+window.location.hash);
     }
@@ -15,6 +14,7 @@
   <title>LV Books – Mais de 3 Mil Livros na Palma da Sua Mão</title>
   <link rel="icon" type="image/png" href="upcell/logo.png" />
   <link rel="apple-touch-icon" href="upcell/logo.png" />
+
   <!-- Meta Pixel Code -->
   <script>
   !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
@@ -26,78 +26,73 @@
   <!-- End Meta Pixel Code -->
 
   <!-- Utmify -->
-  <script
-    src="https://cdn.utmify.com.br/scripts/utms/latest.js"
-    data-utmify-prevent-xcod-sck
-    data-utmify-prevent-subids
-    async
-    defer
-  ></script>
-  <!-- End Utmify -->
+  <script src="https://cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-xcod-sck data-utmify-prevent-subids async defer></script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 
     :root {
-      --navy:  #0d1b2e;
-      --navy2: #0a1525;
-      --green: #2ecc40;
-      --green2:#27ae38;
-      --red:   #e53935;
-      --gold:  #f5c518;
-      --gray:  #9aaab8;
-      --border:#1e3a5f;
+      --primary:    #046bd2;
+      --primary-dk: #045cb4;
+      --text-dark:  #1e293b;
+      --text-body:  #334155;
+      --text-muted: #6b7280;
+      --bg-white:   #ffffff;
+      --bg-light:   #f0f5fa;
+      --border:     #d1d5db;
+      --red:        #e53935;
+      --gold:       #e8c50a;
+      --green:      #16a34a;
+      --green-dk:   #15803d;
     }
 
     body {
-      font-family: 'Montserrat', sans-serif;
-      background: var(--navy);
-      color: #fff;
+      font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg-white);
+      color: var(--text-body);
       overflow-x: hidden;
+      font-size: 16px;
+      line-height: 1.65;
     }
 
-    /* ─── TOP BAR ─── */
+    /* TOP BAR */
     .topbar {
       background: var(--red);
+      color: #fff;
       text-align: center;
       padding: 10px 16px;
       font-size: 13px;
-      font-weight: 900;
-      letter-spacing: .8px;
+      font-weight: 800;
+      letter-spacing: .6px;
       text-transform: uppercase;
     }
 
-    /* ─── SECURITY BADGE ─── */
+    /* SECURITY BAR */
     .security-bar {
-      background: var(--navy2);
+      background: var(--bg-light);
+      border-bottom: 1px solid var(--border);
       text-align: center;
       padding: 8px 16px;
       font-size: 12px;
       font-weight: 600;
-      color: var(--gray);
-      letter-spacing: .3px;
+      color: var(--text-muted);
     }
 
-    /* ─── HERO ─── */
+    /* HERO */
     .hero {
-      background: var(--navy2);
-      padding: 22px 20px 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      background: var(--bg-white);
+      padding: 52px 24px 0;
       text-align: center;
     }
-    .hero__text {
-      width: 100%;
-      max-width: 680px;
-    }
+    .hero__inner { max-width: 680px; margin: 0 auto; }
     .hero__logo {
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 900;
-      color: var(--green);
+      color: var(--primary);
       letter-spacing: 3px;
       text-transform: uppercase;
       margin-bottom: 16px;
@@ -105,454 +100,342 @@
     .hero__title {
       font-size: clamp(22px, 5vw, 38px);
       font-weight: 900;
-      line-height: 1.1;
+      line-height: 1.15;
       text-transform: uppercase;
-      margin-bottom: 12px;
-      color: #fff;
-      text-shadow: 0 0 30px rgba(46,204,64,.15);
+      color: var(--text-dark);
+      margin-bottom: 14px;
     }
+    .hero__title span { color: var(--primary); }
     .hero__sub {
-      font-size: clamp(13px, 2.5vw, 15px);
-      color: var(--green);
-      line-height: 1.5;
-      margin-bottom: 20px;
-      text-decoration: underline;
-      text-underline-offset: 4px;
+      font-size: clamp(14px, 2.5vw, 16px);
+      color: var(--text-muted);
       max-width: 500px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .hero__img {
-      width: 100%;
-      max-width: 100%;
-    }
-    .hero__img img {
-      width: 100%;
-      display: block;
-      margin: 0 auto;
-    }
-    @media (min-width: 768px) {
-      .hero__img { max-width: 400px; }
-    }
-    /* unused - kept for safety */
-    .hero__checks { display: none; }
-
-    /* ─── BUTTONS ─── */
-    .btn-green {
-      display: inline-block;
-      background: var(--green);
-      color: #000;
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 800;
-      font-size: 15px;
-      text-transform: uppercase;
-      letter-spacing: .5px;
-      padding: 18px 40px;
-      border-radius: 6px;
-      border: none;
-      cursor: pointer;
-      text-decoration: none;
-      transition: background .2s, transform .15s;
-      text-align: center;
-    }
-    .btn-green:hover { background: var(--green2); transform: translateY(-2px); }
-    .btn-green.full { display: block; width: 100%; }
-
-    /* ─── VANTAGENS ─── */
-    .vantagens {
-      background: #0f2035;
-      padding: 52px 24px;
-      text-align: center;
-    }
-    .vantagens h2 {
-      font-size: 22px;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      margin-bottom: 10px;
-    }
-    .vantagens__sub {
-      font-size: 13px;
-      color: var(--gray);
-      margin-bottom: 32px;
-    }
-    .vant__card {
-      display: flex;
-      flex-wrap: wrap;
-      max-width: 900px;
-      margin: 0 auto;
-      background: #0a1525;
-      border: 1px solid #1a3050;
-      border-radius: 16px;
-      overflow: hidden;
-    }
-    .vant-item {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      flex: 1 1 220px;
-      padding: 24px 26px;
-      text-align: left;
-      border-right: 1px solid #1a3050;
-    }
-    .vant-item:last-child { border-right: none; }
-    .vant-icon {
-      width: 52px; height: 52px;
-      border-radius: 12px;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-      overflow: hidden;
-    }
-    .vant-icon img { width: 100%; height: 100%; object-fit: contain; }
-    .vant-icon.orange { background: #7a3a00; }
-    .vant-icon.blue   { background: #0a2a5a; }
-    .vant-icon.yellow { background: #5a4a00; }
-    .vant-item h3 {
-      font-size: 13px;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: .4px;
-      margin-bottom: 4px;
-      color: #fff;
-    }
-    .vant-item p { font-size: 13px; color: var(--gray); line-height: 1.4; }
-    @media (max-width: 600px) {
-      .vant-item { border-right: none; border-bottom: 1px solid #1a3050; flex: 1 1 100%; }
-      .vant-item:last-child { border-bottom: none; }
+      margin: 0 auto 32px;
+      line-height: 1.6;
     }
 
-    /* ─── VSL ─── */
-    .vsl-section {
-      background: var(--navy2);
-      padding: 52px 24px;
-      text-align: center;
-    }
-    .vsl-wrap {
+    /* VSL HERO WRAP */
+    .vsl-hero-wrap {
       width: 100%;
-      max-width: 560px;
+      max-width: 640px;
       margin: 0 auto;
       border-radius: 14px;
       overflow: hidden;
       border: 2px solid var(--border);
-      box-shadow: 0 0 60px rgba(46,204,64,.15);
+      box-shadow: 0 8px 40px rgba(4,107,210,.12);
       position: relative;
     }
-    .vsl-wrap video { width: 100%; display: block; background: #000; }
+    .vsl-hero-wrap video { width: 100%; display: block; background: #000; }
 
-    /* ─── OVERLAY VERDE (autoplay mudo) ─── */
+    /* MUTE OVERLAY */
     .mute-overlay {
       position: absolute;
       inset: 0;
       background: transparent;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      border-radius: 12px;
     }
     .mute-overlay.hidden { display: none; }
     .mute-overlay__box {
-      background: rgba(30,140,40,.88);
-      border-radius: 14px;
+      background: rgba(4,107,210,.90);
+      border-radius: 12px;
       padding: 18px 32px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
       transition: background .2s;
     }
-    .mute-overlay:hover .mute-overlay__box { background: rgba(30,140,40,.78); }
-    .mute-overlay .mo-title {
-      font-size: 17px;
-      font-weight: 900;
-      color: #fff;
-      text-align: center;
-      line-height: 1.2;
-    }
-    .mute-overlay .mo-icon {
-      font-size: 48px;
-      line-height: 1;
-    }
-    .mute-overlay .mo-cta {
-      font-size: 16px;
-      font-weight: 900;
-      color: #fff;
-      text-align: center;
-    }
+    .mute-overlay:hover .mute-overlay__box { background: rgba(4,107,210,.80); }
+    .mute-overlay .mo-icon  { font-size: 42px; line-height: 1; }
+    .mute-overlay .mo-title { font-size: 16px; font-weight: 900; color: #fff; text-align: center; line-height: 1.2; }
+    .mute-overlay .mo-cta   { font-size: 14px; font-weight: 700; color: rgba(255,255,255,.9); }
 
-    /* ─── OVERLAY ESCURO (click to play — depoimento) ─── */
+    /* VID OVERLAY (depoimento) */
     .vid-overlay {
       position: absolute;
       inset: 0;
-      background: rgba(5,14,26,.82);
+      background: rgba(30,41,59,.78);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 16px;
+      gap: 14px;
       cursor: pointer;
-      transition: background .2s;
       border-radius: 12px;
+      transition: background .2s;
     }
-    .vid-overlay:hover { background: rgba(5,14,26,.72); }
+    .vid-overlay:hover { background: rgba(30,41,59,.65); }
     .vid-overlay.hidden { display: none; }
     .vid-play-btn {
-      width: 76px; height: 76px;
+      width: 72px; height: 72px;
       border-radius: 50%;
-      background: var(--green);
+      background: var(--primary);
       display: flex; align-items: center; justify-content: center;
-      font-size: 30px;
-      color: #000;
-      box-shadow: 0 0 0 10px rgba(46,204,64,.2);
-      transition: transform .15s, box-shadow .15s;
+      font-size: 28px; color: #fff;
+      box-shadow: 0 0 0 10px rgba(4,107,210,.2);
+      transition: transform .15s;
     }
-    .vid-overlay:hover .vid-play-btn {
-      transform: scale(1.08);
-      box-shadow: 0 0 0 16px rgba(46,204,64,.15);
-    }
-    .vid-overlay p {
-      font-size: 14px;
-      font-weight: 700;
-      color: #fff;
-      letter-spacing: .5px;
-      text-transform: uppercase;
-    }
-    .vid-overlay small {
-      font-size: 11px;
-      color: var(--gray);
-      letter-spacing: .3px;
-    }
+    .vid-overlay:hover .vid-play-btn { transform: scale(1.08); }
+    .vid-overlay p     { font-size: 13px; font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: .4px; }
+    .vid-overlay small { font-size: 11px; color: rgba(255,255,255,.7); }
 
-    /* ─── SECTION COMMONS ─── */
+    /* SECTION COMMONS */
+    section { padding: 64px 24px; }
     .sec-title {
-      font-size: clamp(18px, 3.5vw, 28px);
+      font-size: clamp(20px, 3.5vw, 28px);
       font-weight: 900;
-      text-transform: uppercase;
+      color: var(--text-dark);
+      text-align: center;
       margin-bottom: 10px;
+      text-transform: uppercase;
+      line-height: 1.2;
     }
     .sec-sub {
-      font-size: 13px;
-      color: var(--gray);
+      font-size: 14px;
+      color: var(--text-muted);
+      text-align: center;
+      margin-bottom: 40px;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
       line-height: 1.65;
-      margin-bottom: 36px;
     }
 
-    /* ─── POR QUE ─── */
-    .porque {
-      background: #0f2035;
-      padding: 56px 24px;
+    /* BUTTONS */
+    .btn {
+      display: inline-block;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      text-transform: uppercase;
+      letter-spacing: .4px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background .2s, transform .15s, box-shadow .15s;
       text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,.1);
     }
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      padding: 16px 36px;
+    }
+    .btn-primary:hover { background: var(--primary-dk); transform: translateY(-2px); box-shadow: 0 6px 16px rgba(4,107,210,.3); }
+
+    /* VANTAGENS */
+    .vantagens { background: var(--bg-light); }
+    .vant__card {
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 900px;
+      margin: 0 auto;
+      gap: 12px;
+    }
+    .vant-item {
+      flex: 1 1 220px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      background: var(--bg-white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 22px 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.05);
+    }
+    .vant-icon {
+      width: 48px; height: 48px;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+    .vant-icon img { width: 100%; height: 100%; object-fit: contain; }
+    .vant-icon.orange { background: #fff7ed; }
+    .vant-icon.blue   { background: #eff6ff; }
+    .vant-icon.yellow { background: #fefce8; }
+    .vant-item h3 { font-size: 13px; font-weight: 800; color: var(--text-dark); text-transform: uppercase; margin-bottom: 4px; letter-spacing: .3px; }
+    .vant-item p  { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+
+    /* BANNER */
+    .banner-section { background: var(--bg-white); padding: 40px 24px; text-align: center; }
+    .banner-section img {
+      max-width: 420px;
+      width: 100%;
+      border-radius: 14px;
+      box-shadow: 0 8px 32px rgba(4,107,210,.12);
+      filter: drop-shadow(0 0 20px rgba(4,107,210,.08));
+    }
+
+    /* POR QUE */
+    .porque { background: var(--bg-light); }
     .porque__list {
       list-style: none;
-      max-width: 560px;
+      max-width: 580px;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
       gap: 12px;
-      text-align: left;
     }
     .porque__list li {
       display: flex;
       gap: 16px;
       align-items: center;
-      background: #0a1a2e;
-      border: 1px solid #1a3050;
-      border-radius: 12px;
+      background: var(--bg-white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
       padding: 16px 18px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.04);
     }
     .pq-icon {
-      width: 46px; height: 46px;
+      width: 44px; height: 44px;
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      font-size: 22px;
+      font-size: 20px;
       flex-shrink: 0;
     }
-    .pq-icon.blue   { background: #1a3a8a; }
-    .pq-icon.green  { background: #1a5a30; }
-    .pq-icon.gold   { background: #7a5a00; }
-    .pq-icon.purple { background: #4a1a8a; }
-    .pq-text h4 { font-size: 14px; font-weight: 800; color: #fff; margin-bottom: 4px; }
-    .pq-text p  { font-size: 13px; color: var(--gray); line-height: 1.5; }
+    .pq-icon.blue   { background: #eff6ff; }
+    .pq-icon.green  { background: #f0fdf4; }
+    .pq-icon.gold   { background: #fefce8; }
+    .pq-icon.purple { background: #f5f3ff; }
+    .pq-text h4 { font-size: 14px; font-weight: 800; color: var(--text-dark); margin-bottom: 3px; }
+    .pq-text p  { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
 
-    /* ─── LIVROS ─── */
-    .livros {
-      background: var(--navy2);
-      padding: 56px 24px;
-      text-align: center;
-    }
+    /* LIVROS */
+    .livros { background: var(--bg-white); }
     .livros__grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 10px;
-      max-width: 680px;
+      max-width: 700px;
       margin: 0 auto 36px;
     }
-    @media (min-width: 600px) {
-      .livros__grid { grid-template-columns: repeat(4, 1fr); }
-    }
+    @media(min-width:600px){ .livros__grid { grid-template-columns: repeat(4,1fr); } }
     .livros__grid img {
       width: 100%;
       aspect-ratio: 2/3;
       object-fit: cover;
-      border-radius: 6px;
+      border-radius: 8px;
       display: block;
-      transition: transform .2s;
-      box-shadow: 0 4px 18px rgba(0,0,0,.5);
+      box-shadow: 0 4px 16px rgba(0,0,0,.12);
+      transition: transform .2s, box-shadow .2s;
     }
-    .livros__grid img:hover { transform: scale(1.05); }
+    .livros__grid img:hover { transform: scale(1.04); box-shadow: 0 8px 24px rgba(0,0,0,.18); }
+    .livros .cta-center { text-align: center; }
 
-    /* ─── DEPOIMENTOS ─── */
-    .depo {
-      background: #0f2035;
-      padding: 56px 24px;
-      text-align: center;
-    }
-    .stars { color: var(--gold); font-size: 22px; letter-spacing: 3px; margin-bottom: 4px; }
-    .stars-count { font-size: 13px; color: var(--gray); margin-bottom: 32px; }
-
+    /* DEPOIMENTOS */
+    .depo { background: var(--bg-light); }
+    .stars { color: #f59e0b; font-size: 22px; letter-spacing: 2px; margin-bottom: 4px; text-align: center; }
+    .stars-count { font-size: 13px; color: var(--text-muted); margin-bottom: 32px; text-align: center; }
     .depo-video-wrap {
       width: 100%;
       max-width: 320px;
-      margin: 0 auto 32px;
-      border-radius: 14px;
+      margin: 0 auto 28px;
+      border-radius: 12px;
       overflow: hidden;
       border: 2px solid var(--border);
-      box-shadow: 0 0 40px rgba(46,204,64,.15);
+      box-shadow: 0 4px 24px rgba(0,0,0,.10);
       position: relative;
     }
     .depo-video-wrap video { width: 100%; display: block; background: #000; }
-
     .depo__imgs {
       display: flex;
       flex-direction: column;
-      gap: 18px;
+      gap: 16px;
       align-items: center;
       max-width: 420px;
       margin: 0 auto;
     }
-    .depo__imgs img {
-      width: 100%;
-      border-radius: 14px;
-      box-shadow: 0 4px 30px rgba(0,0,0,.5);
-      display: block;
-    }
+    .depo__imgs img { width: 100%; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,.10); }
 
-    /* ─── PRICING ─── */
-    .pricing {
-      background: var(--navy2);
-      padding: 56px 24px;
-      text-align: center;
-    }
+    /* PRICING */
+    .pricing { background: var(--bg-white); text-align: center; }
     .pricing__badge {
       display: inline-block;
       background: linear-gradient(90deg, #e53935, #ff6f00);
       color: #fff;
-      font-size: 13px;
-      font-weight: 900;
+      font-size: 12px;
+      font-weight: 800;
       text-transform: uppercase;
-      padding: 10px 28px;
+      padding: 8px 24px;
       border-radius: 30px;
-      margin-bottom: 18px;
-      letter-spacing: .6px;
+      margin-bottom: 16px;
+      letter-spacing: .5px;
     }
-    .pricing h2 { font-size: clamp(20px, 3.5vw, 30px); font-weight: 900; margin-bottom: 8px; }
-    .pricing__sub { font-size: 14px; color: #6ab0f5; margin-bottom: 32px; line-height: 1.5; }
-    .plans {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 22px;
+    .pricing h2 { font-size: clamp(20px, 3.5vw, 28px); font-weight: 900; color: var(--text-dark); margin-bottom: 8px; }
+    .pricing__sub {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 36px;
       max-width: 480px;
-      margin: 0 auto;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
     }
+    .plans { display: flex; flex-direction: column; align-items: center; gap: 20px; max-width: 480px; margin: 0 auto; }
 
-    /* ── card base ── */
     .plan {
-      background: #0d1f38;
-      border: 2px solid var(--border);
-      border-radius: 16px;
-      overflow: hidden;
       width: 100%;
-      max-width: 480px;
+      background: var(--bg-white);
+      border: 2px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0,0,0,.07);
       text-align: left;
     }
-    .plan-body { padding: 24px 24px 28px; }
-
-    /* ── PREMIUM card ── */
-    .plan.featured { border-color: #5a7a30; }
-
+    .plan.featured { border-color: var(--primary); box-shadow: 0 8px 32px rgba(4,107,210,.15); }
     .plan-mais-vendido {
-      background: #4a7a1e;
+      background: var(--primary);
       color: #fff;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 900;
       text-transform: uppercase;
-      letter-spacing: .6px;
+      letter-spacing: .5px;
       text-align: center;
-      padding: 11px 16px;
-      width: 100%;
+      padding: 10px 16px;
     }
-
-    .plan-name {
-      font-size: 24px;
-      font-weight: 900;
-      color: #fff;
-      margin-bottom: 10px;
-    }
-
+    .plan-body { padding: 24px; }
+    .plan-name { font-size: 22px; font-weight: 900; color: var(--text-dark); margin-bottom: 8px; }
     .plan-price-gold {
-      font-size: 46px;
+      font-size: 44px;
       font-weight: 900;
-      color: #e8c50a;
+      color: var(--gold);
       line-height: 1;
       margin-bottom: 14px;
     }
-    .plan-price-gold sup {
-      font-size: 20px;
-      vertical-align: top;
-      margin-top: 9px;
-      display: inline-block;
-    }
-
-    .plan-countdown {
-      font-size: 14px;
-      font-weight: 800;
-      color: #ff4d4d;
-      margin-bottom: 18px;
-    }
-
+    .plan-price-gold sup { font-size: 18px; vertical-align: top; margin-top: 8px; display: inline-block; }
+    .plan-countdown { font-size: 13px; font-weight: 800; color: var(--red); margin-bottom: 16px; }
     .plan-essencial {
-      background: #5a6e10;
-      color: #fff;
+      background: var(--bg-light);
+      border: 1px solid var(--border);
+      color: var(--text-body);
       font-size: 13px;
       font-weight: 700;
-      padding: 10px 16px;
+      padding: 10px 14px;
       border-radius: 6px;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
     }
-
     .plan-feats {
       list-style: disc;
       padding-left: 18px;
       display: flex;
       flex-direction: column;
-      gap: 9px;
-      margin-bottom: 26px;
+      gap: 8px;
+      margin-bottom: 22px;
       font-size: 13.5px;
-      color: #fff;
+      color: var(--text-body);
     }
     .plan-feats li { line-height: 1.4; }
-    .plan-feats li::marker { color: #fff; }
-
-    /* botão dourado Premium */
     .btn-plan-gold {
       display: block;
       width: 100%;
       text-align: center;
-      background: #e8c50a;
-      color: #000;
+      background: var(--gold);
+      color: #1a1400;
       font-family: 'Montserrat', sans-serif;
       font-weight: 900;
       font-size: 15px;
@@ -567,42 +450,35 @@
       margin-bottom: 10px;
     }
     .btn-plan-gold:hover { background: #d4b208; transform: translateY(-2px); }
+    .plan-social-proof { font-size: 12px; color: var(--text-muted); text-align: center; }
 
-    .plan-social-proof {
-      font-size: 12px;
-      color: var(--gray);
-      text-align: center;
-    }
-
-    /* ── Básico card ── */
-    .plan-name-basic { font-size: 20px; font-weight: 900; color: #fff; margin-bottom: 10px; }
+    .plan-name-basic { font-size: 20px; font-weight: 900; color: var(--text-dark); margin-bottom: 8px; }
     .plan-price-basic {
       font-size: 38px;
       font-weight: 900;
       color: var(--green);
       line-height: 1;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
-    .plan-price-basic sup { font-size: 18px; vertical-align: top; margin-top: 7px; display: inline-block; }
+    .plan-price-basic sup { font-size: 17px; vertical-align: top; margin-top: 7px; display: inline-block; }
     .plan-feats-basic {
       list-style: none;
       display: flex;
       flex-direction: column;
       gap: 10px;
-      margin-bottom: 26px;
+      margin-bottom: 22px;
       font-size: 13px;
-      color: #fff;
+      color: var(--text-body);
     }
     .plan-feats-basic li { display: flex; gap: 8px; align-items: flex-start; }
-    .plan-feats-basic li::before { content: '✔'; color: var(--green); flex-shrink: 0; margin-top: 1px; }
+    .plan-feats-basic li::before { content: '✔'; color: var(--green); flex-shrink: 0; margin-top: 2px; }
     .plan-feats-basic li.no::before { content: '✖'; color: var(--red); }
-
     .btn-plan {
       display: block;
       width: 100%;
       text-align: center;
       background: var(--green);
-      color: #000;
+      color: #fff;
       font-family: 'Montserrat', sans-serif;
       font-weight: 900;
       font-size: 15px;
@@ -615,98 +491,72 @@
       text-decoration: none;
       transition: background .2s, transform .15s;
     }
-    .btn-plan:hover { background: var(--green2); transform: translateY(-2px); }
+    .btn-plan:hover { background: var(--green-dk); transform: translateY(-2px); }
 
-    /* ─── GARANTIA ─── */
-    .garantia {
-      background: var(--navy2);
-      padding: 52px 24px;
-      text-align: center;
-    }
+    /* GARANTIA */
+    .garantia { background: var(--bg-light); }
     .garantia__card {
-      background: #0f2035;
+      background: var(--bg-white);
       border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 28px 24px 20px;
+      border-radius: 14px;
+      padding: 28px 24px;
       max-width: 560px;
       margin: 0 auto;
-      text-align: left;
+      box-shadow: 0 2px 12px rgba(0,0,0,.06);
     }
-    .garantia__top {
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
-      margin-bottom: 20px;
-    }
+    .garantia__top { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     .garantia__shield {
-      width: 52px; height: 52px;
+      width: 50px; height: 50px;
       border-radius: 12px;
-      background: #1a4a2a;
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
       display: flex; align-items: center; justify-content: center;
-      font-size: 24px;
+      font-size: 22px;
       flex-shrink: 0;
     }
-    .garantia__top-text h3 {
-      font-size: 17px;
-      font-weight: 900;
-      color: #fff;
-      margin-bottom: 6px;
-      line-height: 1.3;
-    }
-    .garantia__top-text p {
-      font-size: 13px;
-      color: var(--gray);
-      line-height: 1.6;
-    }
-    .garantia__top-text p strong { color: #e8c50a; }
-    .garantia__items {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-bottom: 16px;
-    }
+    .garantia__top-text h3 { font-size: 17px; font-weight: 800; color: var(--text-dark); margin-bottom: 6px; line-height: 1.3; }
+    .garantia__top-text p  { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+    .garantia__top-text p strong { color: var(--primary); }
+    .garantia__items { display: flex; flex-direction: column; gap: 10px; margin-bottom: 14px; }
     .garantia__item {
-      background: #0a1a2e;
-      border: 1px solid #1a3050;
-      border-radius: 10px;
-      padding: 13px 16px;
+      background: var(--bg-light);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 16px;
       display: flex;
       align-items: center;
       gap: 12px;
-      font-size: 13.5px;
-      color: #fff;
+      font-size: 13px;
+      color: var(--text-body);
     }
     .garantia__check {
-      width: 28px; height: 28px;
+      width: 26px; height: 26px;
       border-radius: 6px;
       background: var(--green);
       display: flex; align-items: center; justify-content: center;
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 900;
-      color: #000;
+      color: #fff;
       flex-shrink: 0;
     }
-    .garantia__item strong { font-weight: 800; }
-    .garantia__note {
-      font-size: 11px;
-      color: var(--gray);
-      line-height: 1.5;
-    }
+    .garantia__note { font-size: 11px; color: var(--text-muted); line-height: 1.5; }
 
-    /* ─── FAQ ─── */
-    .faq { background: var(--navy2); padding: 56px 24px; }
-    .faq h2 { font-size: clamp(18px, 3.5vw, 26px); font-weight: 900; text-align: center; margin-bottom: 32px; }
-    .faq__list { max-width: 660px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+    /* FAQ */
+    .faq { background: var(--bg-white); }
+    .faq h2 { font-size: clamp(18px, 3.5vw, 26px); font-weight: 900; color: var(--text-dark); text-align: center; margin-bottom: 32px; text-transform: uppercase; }
+    .faq__list { max-width: 680px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px; }
     details {
-      background: #0f2035;
+      background: var(--bg-white);
       border: 1px solid var(--border);
       border-radius: 8px;
       overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0,0,0,.04);
     }
     details summary {
-      padding: 18px 20px;
-      font-size: 13px;
+      padding: 16px 20px;
+      font-size: 14px;
       font-weight: 700;
+      color: var(--text-dark);
       cursor: pointer;
       list-style: none;
       display: flex;
@@ -716,73 +566,89 @@
       user-select: none;
     }
     details summary::-webkit-details-marker { display: none; }
-    details summary::after { content: '+'; font-size: 20px; color: var(--green); flex-shrink: 0; }
+    details summary::after { content: '+'; font-size: 20px; color: var(--primary); flex-shrink: 0; }
     details[open] summary::after { content: '−'; }
-    details p { padding: 0 20px 18px; font-size: 13px; color: var(--gray); line-height: 1.7; }
+    details[open] summary { background: var(--bg-light); }
+    details p { padding: 0 20px 16px; font-size: 13px; color: var(--text-muted); line-height: 1.7; background: var(--bg-light); }
 
-    /* ─── FOOTER ─── */
+    /* FOOTER */
     footer {
-      background: #060e18;
-      padding: 28px 24px;
+      background: var(--text-dark);
+      color: rgba(255,255,255,.65);
+      padding: 32px 24px;
       text-align: center;
       font-size: 12px;
-      color: var(--gray);
       line-height: 1.85;
     }
-    footer a { color: var(--gray); text-decoration: underline; }
+    footer a { color: rgba(255,255,255,.55); text-decoration: underline; }
+    footer a:hover { color: #fff; }
 
-    /* ─── DIVIDER ─── */
-    .divider {
-      height: 1px;
-      background: linear-gradient(90deg,transparent,var(--border),transparent);
+    /* DIVIDER */
+    .divider { height: 1px; background: var(--border); }
+
+    /* POPUP */
+    .sp-popup {
+      position: fixed;
+      top: 16px;
+      left: 50%;
+      transform: translateX(-50%) translateY(-140px);
+      z-index: 9999;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 6px 32px rgba(0,0,0,.18);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 18px 14px 14px;
+      max-width: 340px;
+      width: calc(100vw - 40px);
+      border-left: 4px solid var(--primary);
+      opacity: 0;
+      transition: transform .45s cubic-bezier(.34,1.56,.64,1), opacity .35s ease;
+      pointer-events: none;
     }
-
-    /* ─── CTA CENTER ─── */
-    .cta-center { text-align: center; margin-top: 8px; }
+    .sp-popup.show { transform: translateX(-50%) translateY(0); opacity: 1; pointer-events: auto; }
+    .sp-popup__icon { flex-shrink: 0; line-height: 1; }
+    .sp-popup__icon img { width: 44px; height: 44px; object-fit: contain; border-radius: 8px; }
+    .sp-popup__body { display: flex; flex-direction: column; gap: 2px; }
+    .sp-popup__name    { font-family: 'Montserrat',sans-serif; font-size: 13px; font-weight: 800; color: #111; }
+    .sp-popup__product { font-family: 'Montserrat',sans-serif; font-size: 12px; font-weight: 700; color: var(--primary); }
+    .sp-popup__time    { font-family: 'Montserrat',sans-serif; font-size: 11px; color: #888; }
   </style>
 </head>
 <body>
 
 <!-- TOP BAR -->
-<div class="topbar" id="topbar-text">
-  OFERTA VÁLIDA SOMENTE HOJE — GARANTA AGORA!
-</div>
+<div class="topbar" id="topbar-text">OFERTA VÁLIDA SOMENTE HOJE — GARANTA AGORA!</div>
 
-<!-- SECURITY BADGE -->
+<!-- SECURITY BAR -->
 <div class="security-bar">🛡 Compra 100% segura e protegida</div>
 
-<!-- ════════════════════════════
-     HERO
-════════════════════════════ -->
+<!-- HERO -->
 <section class="hero">
-  <div class="hero__text">
-    <h1 class="hero__title">São mais de 3 mil livros<br>na palma da sua mão</h1>
-    <p class="hero__sub">
-      Transforme sua vida com a maior coleção que será a sua chave para o sucesso.
-    </p>
+  <div class="hero__inner">
+    <p class="hero__logo">🎧 LV BOOKS · BIBLIOTECA DIGITAL</p>
+    <h1 class="hero__title">São mais de <span>3 mil livros</span><br>na palma da sua mão</h1>
+    <p class="hero__sub">Transforme sua vida com a maior coleção que será a sua chave para o sucesso.</p>
   </div>
-
-  <!-- VSL logo abaixo do título -->
-  <div class="hero__img" style="position:relative;overflow:hidden;">
-    <video id="vsl-video" autoplay muted playsinline loop style="width:100%;display:block;background:#000;border-radius:0;">
+  <div class="vsl-hero-wrap">
+    <video id="vsl-video" autoplay muted playsinline loop style="width:100%;display:block;background:#000;">
       <source src="audio%20book/vsl.mp4" type="video/mp4" />
     </video>
     <div class="mute-overlay" id="vsl-overlay" onclick="unmuteVSL()">
       <div class="mute-overlay__box">
-        <div class="mo-title">Seu vídeo já começou</div>
         <div class="mo-icon">🔇</div>
+        <div class="mo-title">Seu vídeo já começou</div>
         <div class="mo-cta">Clique para ouvir</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ════════════════════════════
-     VANTAGENS
-════════════════════════════ -->
+<!-- VANTAGENS -->
 <section class="vantagens">
-  <h2>Vantagens</h2>
-  <p class="vantagens__sub">Ouça seus audiobooks sem anúncios, sem interrupções e direto do celular.</p>
+  <h2 class="sec-title">Vantagens</h2>
+  <p class="sec-sub">Ouça seus audiobooks sem anúncios, sem interrupções e direto do celular.</p>
   <div class="vant__card">
     <div class="vant-item">
       <div class="vant-icon orange"><img src="cartao.png" alt="Pagamento"/></div>
@@ -810,20 +676,14 @@
 
 <div class="divider"></div>
 
-<!-- ════════════════════════════
-     VSL (VÍDEO DE VENDAS)
-════════════════════════════ -->
-<section class="vsl-section">
-  <div class="vsl-wrap" style="border:none;box-shadow:none;max-width:420px;">
-    <img src="audio%20book/banner.png" alt="LV Books – mais de 3 mil livros" style="width:100%;display:block;border-radius:12px;filter:drop-shadow(0 0 40px rgba(46,204,64,.2));" />
-  </div>
+<!-- BANNER -->
+<section class="banner-section">
+  <img src="audio%20book/banner.png" alt="LV Books – mais de 3 mil livros" />
 </section>
 
 <div class="divider"></div>
 
-<!-- ════════════════════════════
-     POR QUE ESCOLHER
-════════════════════════════ -->
+<!-- POR QUE ESCOLHER -->
 <section class="porque">
   <h2 class="sec-title">Por que escolher nossa coleção?</h2>
   <p class="sec-sub">Áreas que mais transformam a vida pessoal e profissional.</p>
@@ -859,13 +719,10 @@
   </ul>
 </section>
 
-<!-- ════════════════════════════
-     LIVROS DA COLEÇÃO
-════════════════════════════ -->
+<!-- LIVROS -->
 <section class="livros">
   <h2 class="sec-title">Conheça alguns livros da coleção</h2>
   <p class="sec-sub">Amostra dos clássicos e best-sellers inclusos na coleção completa.</p>
-
   <div class="livros__grid">
     <img src="audio%20book/l2.png"  alt="Mais Esperto que o Diabo – Napoleon Hill" />
     <img src="audio%20book/l3.png"  alt="Pai Rico Pai Pobre – Robert Kiyosaki" />
@@ -880,23 +737,19 @@
     <img src="audio%20book/l1.png"  alt="As 48 Leis do Poder – Robert Greene" />
     <img src="audio%20book/l5.jpg"  alt="O Poder do Hábito – Charles Duhigg" />
   </div>
-
   <div class="cta-center">
-    <a href="javascript:void(0)" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})" class="btn-green">QUERO VER AS OFERTAS</a>
+    <a href="javascript:void(0)" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})" class="btn btn-primary">QUERO VER AS OFERTAS</a>
   </div>
 </section>
 
 <div class="divider"></div>
 
-<!-- ════════════════════════════
-     DEPOIMENTOS
-════════════════════════════ -->
+<!-- DEPOIMENTOS -->
 <section class="depo">
   <h2 class="sec-title">Veja o que nossos clientes dizem</h2>
   <div class="stars">⭐⭐⭐⭐⭐</div>
   <p class="stars-count">4,9/5 – 18.397 avaliações</p>
 
-  <!-- Vídeo depoimento -->
   <div class="depo-video-wrap">
     <video id="dep1-video">
       <source src="audio%20book/dep1.mp4" type="video/mp4" />
@@ -908,7 +761,6 @@
     </div>
   </div>
 
-  <!-- Screenshots WhatsApp -->
   <div class="depo__imgs">
     <img src="audio%20book/dep2.png" alt="Depoimento Jackeline Vitória" />
     <img src="audio%20book/dep3.png" alt="Depoimento Leonardo S" />
@@ -916,9 +768,7 @@
   </div>
 </section>
 
-<!-- ════════════════════════════
-     PRICING
-════════════════════════════ -->
+<!-- PRICING -->
 <section class="pricing" id="pricing">
   <span class="pricing__badge">⏳ 🔥 OFERTA POR TEMPO LIMITADO</span>
   <h2>Escolha Sua Oferta Especial</h2>
@@ -926,7 +776,7 @@
 
   <div class="plans">
 
-    <!-- ── PREMIUM++ ── -->
+    <!-- PREMIUM+ -->
     <div class="plan featured">
       <div class="plan-mais-vendido">🔥 MAIS VENDIDO</div>
       <div class="plan-body">
@@ -950,7 +800,7 @@
       </div>
     </div>
 
-    <!-- ── BÁSICO ── -->
+    <!-- BÁSICO -->
     <div class="plan">
       <div class="plan-body">
         <div class="plan-name-basic">Pacote Básico</div>
@@ -969,12 +819,9 @@
   </div>
 </section>
 
-<!-- ════════════════════════════
-     GARANTIA
-════════════════════════════ -->
+<!-- GARANTIA -->
 <section class="garantia">
   <div class="garantia__card">
-
     <div class="garantia__top">
       <div class="garantia__shield">🛡️</div>
       <div class="garantia__top-text">
@@ -982,7 +829,6 @@
         <p>Se não gostar, devolvemos <strong>100% do seu dinheiro.</strong> Sem burocracia.</p>
       </div>
     </div>
-
     <div class="garantia__items">
       <div class="garantia__item">
         <div class="garantia__check">✓</div>
@@ -997,14 +843,11 @@
         <span><strong>Sem perguntas:</strong> pediu dentro do prazo, reembolsamos.</span>
       </div>
     </div>
-
     <p class="garantia__note">*Garantia válida por 7 dias após a confirmação do pagamento.</p>
   </div>
 </section>
 
-<!-- ════════════════════════════
-     FAQ
-════════════════════════════ -->
+<!-- FAQ -->
 <section class="faq">
   <h2>Perguntas Frequentes</h2>
   <div class="faq__list">
@@ -1031,9 +874,7 @@
   </div>
 </section>
 
-<!-- ════════════════════════════
-     FOOTER
-════════════════════════════ -->
+<!-- FOOTER -->
 <footer>
   <p style="font-weight:900;color:#fff;font-size:15px;letter-spacing:2px;margin-bottom:8px;">LV BOOKS</p>
   <p>© 2026 LV Books · Todos os direitos reservados</p>
@@ -1047,78 +888,6 @@
   </p>
 </footer>
 
-<style>
-  /* ─── POPUP SOCIAL PROOF ─── */
-  .sp-popup {
-    position: fixed;
-    top: 16px;
-    left: 50%;
-    transform: translateX(-50%) translateY(-140px);
-    z-index: 9999;
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 6px 32px rgba(0,0,0,.22);
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 14px 18px 14px 14px;
-    max-width: 340px;
-    width: calc(100vw - 40px);
-    border-left: 4px solid #e53935;
-    opacity: 0;
-    transition: transform .45s cubic-bezier(.34,1.56,.64,1), opacity .35s ease;
-    pointer-events: none;
-  }
-  .sp-popup.show {
-    transform: translateX(-50%) translateY(0);
-    opacity: 1;
-    pointer-events: auto;
-  }
-  .sp-popup__icon {
-    flex-shrink: 0;
-    line-height: 1;
-  }
-  .sp-popup__icon img {
-    width: 44px;
-    height: 44px;
-    object-fit: contain;
-    border-radius: 8px;
-  }
-  .sp-popup__body { display: flex; flex-direction: column; gap: 2px; }
-  .sp-popup__name {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 13px;
-    font-weight: 800;
-    color: #111;
-    line-height: 1.3;
-  }
-  .sp-popup__product {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 12px;
-    font-weight: 700;
-    color: #c8950a;
-  }
-  .sp-popup__time {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 11px;
-    color: #888;
-    margin-top: 1px;
-  }
-  .sp-popup__close {
-    position: absolute;
-    top: 7px; right: 10px;
-    font-size: 14px;
-    color: #aaa;
-    cursor: pointer;
-    line-height: 1;
-    background: none;
-    border: none;
-    padding: 0;
-    font-family: sans-serif;
-  }
-  .sp-popup__close:hover { color: #555; }
-</style>
-
 <!-- Social Proof Popup -->
 <div class="sp-popup" id="sp-popup">
   <div class="sp-popup__icon"><img src="logo.png" alt="LV Books"/></div>
@@ -1130,17 +899,15 @@
 </div>
 
 <script>
-  /* VSL: autoplay mudo → clique para ouvir */
   function unmuteVSL() {
     var video   = document.getElementById('vsl-video');
     var overlay = document.getElementById('vsl-overlay');
-    video.muted = false;
-    video.loop  = false;
+    video.muted    = false;
+    video.loop     = false;
     video.controls = true;
     overlay.classList.add('hidden');
   }
 
-  /* Depoimento: clique para reproduzir */
   function playVideo(videoId, overlayId) {
     var video   = document.getElementById(videoId);
     var overlay = document.getElementById(overlayId);
@@ -1149,38 +916,31 @@
     video.play();
   }
 
-  /* ── TOPBAR DATA DINÂMICA ── */
   (function(){
-    var dias   = ['DOMINGO','SEGUNDA-FEIRA','TERÇA-FEIRA','QUARTA-FEIRA','QUINTA-FEIRA','SEXTA-FEIRA','SÁBADO'];
-    var now    = new Date();
-    var dia    = dias[now.getDay()];
-    var dd     = String(now.getDate()).padStart(2,'0');
-    var mm     = String(now.getMonth()+1).padStart(2,'0');
-    var yyyy   = now.getFullYear();
+    var dias = ['DOMINGO','SEGUNDA-FEIRA','TERÇA-FEIRA','QUARTA-FEIRA','QUINTA-FEIRA','SEXTA-FEIRA','SÁBADO'];
+    var now  = new Date();
+    var dd   = String(now.getDate()).padStart(2,'0');
+    var mm   = String(now.getMonth()+1).padStart(2,'0');
     document.getElementById('topbar-text').textContent =
-      'OFERTA VÁLIDA SOMENTE HOJE, ' + dia + ', ' + dd + '/' + mm + '/' + yyyy;
+      'OFERTA VÁLIDA SOMENTE HOJE, ' + dias[now.getDay()] + ', ' + dd + '/' + mm + '/' + now.getFullYear();
   })();
 
-  /* ── COUNTDOWN OFERTA ── */
   (function(){
-    var total = 10 * 60; // 10 minutos
     var el    = document.getElementById('countdown');
-    if(!el) return;
+    if (!el) return;
     var saved = sessionStorage.getItem('cdEnd');
-    var end   = saved ? parseInt(saved) : Date.now() + total * 1000;
-    if(!saved) sessionStorage.setItem('cdEnd', end);
+    var end   = saved ? parseInt(saved) : Date.now() + 600000;
+    if (!saved) sessionStorage.setItem('cdEnd', end);
     function tick(){
       var diff = Math.max(0, Math.floor((end - Date.now()) / 1000));
-      var m = Math.floor(diff / 60);
-      var s = diff % 60;
-      el.textContent = (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
-      if(diff > 0) setTimeout(tick, 1000);
+      var m = Math.floor(diff / 60), s = diff % 60;
+      el.textContent = (m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+      if (diff > 0) setTimeout(tick, 1000);
       else el.parentElement.textContent = '⚠️ Oferta encerrada!';
     }
     tick();
   })();
 
-  /* ── SOCIAL PROOF POPUP ── */
   var spNames = [
     'Carlos Mendes','Larissa Duarte','Fernanda Lima','Rafael Souza',
     'Juliana Costa','Bruno Alves','Camila Ferreira','Diego Martins',
@@ -1198,57 +958,38 @@
     '100 audiobooks Pacote Básico',
     '250 audiobooks Pacote Premium+'
   ];
+  var spPopup    = document.getElementById('sp-popup');
+  var spNameEl   = document.getElementById('sp-name');
+  var spProdEl   = document.getElementById('sp-product');
+  var spTimeEl   = document.getElementById('sp-time');
+  var spUsed     = [], spTimer, spHideTimer;
 
-  var spPopup   = document.getElementById('sp-popup');
-  var spNameEl  = document.getElementById('sp-name');
-  var spProdEl  = document.getElementById('sp-product');
-  var spTimeEl  = document.getElementById('sp-time');
-  var spTimer   = null;
-  var spHideTimer = null;
-  var spUsed    = [];
-
-  function padZ(n){ return n < 10 ? '0'+n : n; }
-
-  function randomName() {
+  function padZ(n){ return n < 10 ? '0'+n : ''+n; }
+  function randomName(){
     if (spUsed.length === spNames.length) spUsed = [];
-    var pool = spNames.filter(function(n){ return spUsed.indexOf(n) === -1; });
-    var pick = pool[Math.floor(Math.random() * pool.length)];
+    var pool = spNames.filter(function(n){ return spUsed.indexOf(n)===-1; });
+    var pick = pool[Math.floor(Math.random()*pool.length)];
     spUsed.push(pick);
     return pick;
   }
-
-  function showPopup() {
-    var now  = new Date();
-    /* data real do dispositivo do cliente */
-    var date = padZ(now.getDate())+'/'+padZ(now.getMonth()+1)+'/'+now.getFullYear();
-    /* hora ligeiramente variada: até 4 min atrás */
-    var offset = Math.floor(Math.random() * 4);
-    var fakeMin = now.getMinutes() - offset;
-    if (fakeMin < 0) fakeMin += 60;
-    var time = padZ(now.getHours())+':'+padZ(fakeMin);
-
-    spNameEl.textContent = randomName() + ' comprou';
-    spProdEl.textContent = spProducts[Math.floor(Math.random() * spProducts.length)];
-    spTimeEl.textContent = date + ' - ' + time;
-
+  function showPopup(){
+    var now    = new Date();
+    var date   = padZ(now.getDate())+'/'+padZ(now.getMonth()+1)+'/'+now.getFullYear();
+    var offset = Math.floor(Math.random()*4);
+    var fm     = now.getMinutes()-offset; if(fm<0) fm+=60;
+    spNameEl.textContent = randomName()+' comprou';
+    spProdEl.textContent = spProducts[Math.floor(Math.random()*spProducts.length)];
+    spTimeEl.textContent = date+' - '+padZ(now.getHours())+':'+padZ(fm);
     spPopup.classList.add('show');
-
-    /* esconde após 4 s */
     clearTimeout(spHideTimer);
     spHideTimer = setTimeout(closePopup, 4000);
-
-    /* agenda próximo entre 18 e 40 s */
-    var next = (18 + Math.floor(Math.random() * 22)) * 1000;
     clearTimeout(spTimer);
-    spTimer = setTimeout(showPopup, next);
+    spTimer = setTimeout(showPopup, (18+Math.floor(Math.random()*22))*1000);
   }
-
-  function closePopup() {
+  function closePopup(){
     spPopup.classList.remove('show');
     clearTimeout(spHideTimer);
   }
-
-  /* primeiro popup: imediatamente ao entrar na página */
   showPopup();
 </script>
 </body>
