@@ -887,8 +887,10 @@ defer
   <source src="audio%20book/vsl.mp4" type="video/mp4">
   Seu navegador não suporta vídeo HTML5.
  </video>
- <div id="vsl-sound-overlay" onclick="document.getElementById('vsl-video').muted=false;this.style.display='none';" style="position:absolute;top:12px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.72);color:#fff;border-radius:30px;padding:10px 22px;cursor:pointer;font-size:1rem;font-weight:700;display:flex;align-items:center;gap:8px;z-index:10;white-space:nowrap;box-shadow:0 2px 12px rgba(0,0,0,0.4);">
-  🔊 Clique para liberar o som
+ <div id="vsl-sound-overlay" onclick="document.getElementById('vsl-video').muted=false;this.style.display='none';" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:#1a1a1a;color:#fff;border:3px solid #22c55e;border-radius:16px;padding:18px 28px;cursor:pointer;z-index:10;text-align:center;min-width:200px;box-shadow:0 4px 24px rgba(0,0,0,0.6);">
+  <div style="font-size:1rem;font-weight:700;margin-bottom:12px;letter-spacing:0.3px;">Seu vídeo já começou</div>
+  <div style="font-size:2.8rem;line-height:1;margin-bottom:12px;">🔇</div>
+  <div style="font-size:1rem;font-weight:700;color:#22c55e;">Clique para ouvir</div>
  </div>
 </div>
 
