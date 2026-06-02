@@ -786,20 +786,26 @@ defer
 }
 
 @media (min-width: 769px) {
- .video-wrapper {
+ #vsl-wrapper {
+   max-width: 480px !important;
+   margin-left: auto !important;
+   margin-right: auto !important;
+ }
+ #vsl-video {
+   max-width: 460px !important;
+ }
+ .hero {
+   display: flex !important;
+   flex-direction: column !important;
+   align-items: center !important;
+ }
+ .hero h1 {
    max-width: 520px;
-   margin: 20px auto;
- }
- .video-wrapper video,
- .video-wrapper iframe {
-   max-width: 500px !important;
- }
- .hero h1,
- .hero > p {
    text-align: center;
+ }
+ .hero > p {
    max-width: 520px;
-   margin-left: auto;
-   margin-right: auto;
+   text-align: center;
  }
 }
 
@@ -902,7 +908,7 @@ defer
 
 </style>
 
-<div class="video-wrapper" style="position:relative;">
+<div class="video-wrapper" id="vsl-wrapper" style="position:relative;">
  <video id="vsl-video" autoplay muted playsinline loop controls preload="metadata" style="max-width:700px;width:100%;border-radius:12px;background:#000;display:block;margin:0 auto;">
   <source src="audio%20book/vsl.mp4" type="video/mp4">
   Seu navegador não suporta vídeo HTML5.
