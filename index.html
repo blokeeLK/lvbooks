@@ -744,6 +744,8 @@ defer
 
 <header class="container hero">
 
+<div style="max-width:560px; width:100%; margin:0 auto; text-align:center;">
+
  <div class="badge" aria-label="Compra segura">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" xmlns="http://www.w3.org/2000/svg"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg>
   Compra 100% segura e protegida
@@ -788,29 +790,6 @@ defer
  }
 }
 
-@media (min-width: 769px) {
- #vsl-wrapper {
-   max-width: 480px !important;
-   margin-left: auto !important;
-   margin-right: auto !important;
- }
- #vsl-video {
-   max-width: 460px !important;
- }
- .hero {
-   display: flex !important;
-   flex-direction: column !important;
-   align-items: center !important;
- }
- .hero h1 {
-   max-width: 520px;
-   text-align: center;
- }
- .hero > p {
-   max-width: 520px;
-   text-align: center;
- }
-}
 
   .lp-top-offer-bar {
     position: fixed;
@@ -908,7 +887,7 @@ defer
   })();
 </script>
 
-<div class="video-wrapper" id="vsl-wrapper" style="position:relative;">
+<div id="vsl-wrapper" style="position:relative; width:100%; max-width:560px; margin:0 auto;">
  <video id="vsl-video" autoplay muted playsinline loop controls preload="metadata" style="width:100%;border-radius:12px;background:#000;display:block;margin:0 auto;">
   <source src="audio%20book/vsl.mp4" type="video/mp4">
   Seu navegador não suporta vídeo HTML5.
@@ -919,18 +898,8 @@ defer
   <div style="font-size:1rem;font-weight:700;color:#22c55e;">Clique para ouvir</div>
  </div>
 </div>
-<script>
-(function(){
-  if(window.innerWidth >= 769){
-    var w = document.getElementById('vsl-wrapper');
-    var v = document.getElementById('vsl-video');
-    var h = document.querySelector('.hero');
-    if(w){ w.style.maxWidth='480px'; w.style.marginLeft='auto'; w.style.marginRight='auto'; }
-    if(v){ v.style.maxWidth='460px'; }
-    if(h){ h.style.alignItems='center'; h.style.display='flex'; h.style.flexDirection='column'; }
-  }
-})();
-</script>
+
+</div><!-- fim do wrapper centralizado -->
 
 </header>
 
