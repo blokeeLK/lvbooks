@@ -905,11 +905,8 @@ defer
   })();
 </script>
 
-
-</style>
-
 <div class="video-wrapper" id="vsl-wrapper" style="position:relative;">
- <video id="vsl-video" autoplay muted playsinline loop controls preload="metadata" style="max-width:700px;width:100%;border-radius:12px;background:#000;display:block;margin:0 auto;">
+ <video id="vsl-video" autoplay muted playsinline loop controls preload="metadata" style="width:100%;border-radius:12px;background:#000;display:block;margin:0 auto;">
   <source src="audio%20book/vsl.mp4" type="video/mp4">
   Seu navegador não suporta vídeo HTML5.
  </video>
@@ -919,6 +916,18 @@ defer
   <div style="font-size:1rem;font-weight:700;color:#22c55e;">Clique para ouvir</div>
  </div>
 </div>
+<script>
+(function(){
+  if(window.innerWidth >= 769){
+    var w = document.getElementById('vsl-wrapper');
+    var v = document.getElementById('vsl-video');
+    var h = document.querySelector('.hero');
+    if(w){ w.style.maxWidth='480px'; w.style.marginLeft='auto'; w.style.marginRight='auto'; }
+    if(v){ v.style.maxWidth='460px'; }
+    if(h){ h.style.alignItems='center'; h.style.display='flex'; h.style.flexDirection='column'; }
+  }
+})();
+</script>
 
 </header>
 
