@@ -1057,7 +1057,7 @@ src="https://www.facebook.com/tr?id=868077232260294&ev=PageView&noscript=1"
      </ul>
 
      <!-- ✅ ALTERAÇÃO ESSENCIAL: PASSAR UTM PARA O CHECKOUT -->
-     <button class="btn btn-premium" onclick="goCheckout('https://pay.kirvano.com/fa856e82-bfd5-421b-ad32-12ecb139f72f')">
+     <button class="btn btn-premium" onclick="goCheckout('https://pay.kirvano.com/fa856e82-bfd5-421b-ad32-12ecb139f72f', 17.90)">
        QUERO O PACOTE PREMIUM+
      </button>
 
@@ -1077,7 +1077,7 @@ src="https://www.facebook.com/tr?id=868077232260294&ev=PageView&noscript=1"
      </ul>
 
      <!-- ✅ ALTERAÇÃO ESSENCIAL: PASSAR UTM PARA O CHECKOUT -->
-     <button class="btn btn-primary" onclick="goCheckout('https://pay.kirvano.com/40790a84-d135-462f-baea-01062fac7c50')">
+     <button class="btn btn-primary" onclick="goCheckout('https://pay.kirvano.com/40790a84-d135-462f-baea-01062fac7c50', 10.00)">
        QUERO O PACOTE BÁSICO
      </button>
    </article>
@@ -1220,8 +1220,8 @@ src="https://www.facebook.com/tr?id=868077232260294&ev=PageView&noscript=1"
     // exemplo: utm_source: "instagramlibkbio"
   };
 
-  const STORE = "lp_utms";
-  const COOKIE = "lp_utms";
+  const STORE = "lv_utms";
+  const COOKIE = "lv_utms";
 
   function getCurrent(){
     const p = new URLSearchParams(window.location.search);
@@ -1266,7 +1266,7 @@ src="https://www.facebook.com/tr?id=868077232260294&ev=PageView&noscript=1"
   }
 
   // 2) Função do botão: junta tudo (cookie + local + url atual) e aplica no checkout
-  window.goCheckout = function(baseUrl){
+  window.goCheckout = function(baseUrl, value){
     const merged = Object.assign({}, DEFAULTS, loadCookie(), loadLocal(), getCurrent());
     const url = new URL(baseUrl);
 
@@ -1274,11 +1274,48 @@ src="https://www.facebook.com/tr?id=868077232260294&ev=PageView&noscript=1"
       if (merged[k] && !url.searchParams.get(k)) url.searchParams.set(k, merged[k]);
     });
 
+    // Dispara CTA_Click uma única vez por clique, sem bloquear o redirecionamento
+    if (typeof fbq === 'function' && value) {
+      var offer = value === 17.90 ? 'premium_17_90' : 'principal_10';
+      fbq('trackCustom', 'CTA_Click', {
+        content_name: 'LV Books',
+        offer: offer,
+        value: value,
+        currency: 'BRL'
+      });
+    }
+
     window.location.href = url.toString();
   };
 })();
 </script>
 
+
+<!-- LV Books — ViewContent com fallback seguro (dispara apenas uma vez por carregamento) -->
+<script>
+(function(){
+  var attempts = 0;
+  var maxAttempts = 20;
+  function tryViewContent(){
+    if (window.__lvViewContentSent) return;
+    if (typeof fbq === 'function') {
+      window.__lvViewContentSent = true;
+      fbq('track', 'ViewContent', {
+        content_name: 'LV Books',
+        content_category: 'Audiobooks e eBooks',
+        value: 10.00,
+        currency: 'BRL'
+      });
+      return;
+    }
+    attempts++;
+    if (attempts < maxAttempts) {
+      setTimeout(tryViewContent, 300);
+    }
+  }
+  tryViewContent();
+})();
+</script>
 
 <!-- ✅ Notificação de Compra (sem duplicar HTML) -->
 <script>
