@@ -1114,7 +1114,7 @@ html,body{
   </div>
 </div>
 
-<audio id="audioEl" preload="none"></audio>
+<audio id="audioEl" preload="none" style="display:none"></audio>
 
 <script src="/aplicativo/data.js?v=232"></script>
 <script>
@@ -1169,7 +1169,10 @@ var currentSpeed = (function() {
 })();
 
 function applySpeed() {
-  try { audioEl.playbackRate = currentSpeed; } catch(e) { currentSpeed = 1; }
+  // Só aplica playbackRate se o áudio já tiver uma fonte carregada (evita renderizar player nativo)
+  if (audioEl.currentSrc) {
+    try { audioEl.playbackRate = currentSpeed; } catch(e) { currentSpeed = 1; }
+  }
   var btn = document.getElementById('speedBtn');
   if (btn) btn.textContent = currentSpeed + 'x';
   // Atualiza dropdown do mini player
