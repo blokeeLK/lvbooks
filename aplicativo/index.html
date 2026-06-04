@@ -45,8 +45,13 @@ html,body{
   height:100dvh;
   overflow-y:auto;
   overflow-x:hidden;
-  padding-bottom:calc(var(--nav-h) + var(--player-h) + var(--speed-h) + var(--safe-bottom) + 8px);
+  padding-bottom:calc(var(--nav-h) + var(--safe-bottom) + 8px);
   -webkit-overflow-scrolling:touch;
+}
+
+/* Quando player está ativo, reserva espaço para mini-player + barra de velocidade */
+body.player-active .app-scroll{
+  padding-bottom:calc(var(--nav-h) + var(--player-h) + var(--speed-h) + var(--safe-bottom) + 8px);
 }
 
 /* ── SECTIONS ── */
@@ -1282,6 +1287,7 @@ function playAudio(id) {
     document.getElementById('playPauseBtn').textContent = '▶';
     document.getElementById('miniPlayer').classList.remove('visible');
     document.getElementById('speedBar').classList.remove('visible');
+    document.body.classList.remove('player-active');
     // Open Drive iframe player
     document.getElementById('drivePTitle').textContent = book.title;
     document.getElementById('driveIframe').src = 'https://drive.google.com/file/d/' + driveId + '/preview';
@@ -1301,6 +1307,7 @@ function playAudio(id) {
   document.getElementById('miniAuthor').textContent = book.author || 'LV Books';
   document.getElementById('miniPlayer').classList.add('visible');
   document.getElementById('speedBar').classList.add('visible');
+  document.body.classList.add('player-active');
   document.getElementById('playPauseBtn').textContent = '⏸';
 }
 
