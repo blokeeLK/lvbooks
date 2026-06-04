@@ -28,7 +28,7 @@
   --border:rgba(255,255,255,.07);
   --nav-h:64px;
   --player-h:72px;
-  --speed-h:40px;
+  --speed-h:54px;
   --safe-bottom:env(safe-area-inset-bottom,0px);
 }
 
@@ -590,34 +590,42 @@ body.player-active .app-scroll{
   bottom:calc(var(--nav-h) + var(--safe-bottom));
   left:0;right:0;
   height:var(--speed-h);
-  background:#0a1e35;
-  border-top:1px solid rgba(29,185,84,.12);
+  background:linear-gradient(135deg,#0b2e18 0%,#0d2a16 100%);
+  border-top:2px solid var(--green);
   z-index:100;
   display:flex;
+  flex-direction:column;
   align-items:center;
   justify-content:center;
   gap:5px;
-  padding:0 12px;
+  padding:6px 12px 6px;
   transform:translateY(100%);
   transition:transform .3s ease;
 }
 .speed-bar.visible{transform:translateY(0);}
 .speed-bar__label{
   font-size:10px;
-  font-weight:700;
-  color:var(--gray);
+  font-weight:900;
+  color:var(--green);
   white-space:nowrap;
-  margin-right:4px;
+  letter-spacing:.04em;
+  text-transform:uppercase;
   flex-shrink:0;
+  line-height:1;
+}
+.speed-bar__btns{
+  display:flex;
+  align-items:center;
+  gap:5px;
 }
 .speed-bar__btn{
-  background:transparent;
-  border:1px solid rgba(255,255,255,.15);
-  color:var(--gray);
+  background:rgba(29,185,84,.12);
+  border:1px solid rgba(29,185,84,.35);
+  color:#a8e6a0;
   font-family:'Montserrat',sans-serif;
   font-size:11px;
-  font-weight:700;
-  padding:4px 7px;
+  font-weight:800;
+  padding:4px 8px;
   border-radius:6px;
   cursor:pointer;
   line-height:1;
@@ -1035,13 +1043,15 @@ body.player-active .app-scroll{
 
 <!-- ── SPEED BAR (abaixo do player) ── -->
 <div class="speed-bar" id="speedBar">
-  <span class="speed-bar__label">Velocidade do áudio:</span>
-  <button class="speed-bar__btn" onclick="setSpeed(0.75)">0.75x</button>
-  <button class="speed-bar__btn" onclick="setSpeed(1)">1x</button>
-  <button class="speed-bar__btn" onclick="setSpeed(1.25)">1.25x</button>
-  <button class="speed-bar__btn" onclick="setSpeed(1.5)">1.5x</button>
-  <button class="speed-bar__btn" onclick="setSpeed(1.75)">1.75x</button>
-  <button class="speed-bar__btn" onclick="setSpeed(2)">2x</button>
+  <span class="speed-bar__label">⚡ Aumente a velocidade!</span>
+  <div class="speed-bar__btns">
+    <button class="speed-bar__btn" onclick="setSpeed(0.75)">0.75x</button>
+    <button class="speed-bar__btn" onclick="setSpeed(1)">1x</button>
+    <button class="speed-bar__btn" onclick="setSpeed(1.25)">1.25x</button>
+    <button class="speed-bar__btn" onclick="setSpeed(1.5)">1.5x</button>
+    <button class="speed-bar__btn" onclick="setSpeed(1.75)">1.75x</button>
+    <button class="speed-bar__btn" onclick="setSpeed(2)">2x</button>
+  </div>
 </div>
 
 <!-- ── SPEED MENU ── -->
@@ -1164,6 +1174,19 @@ function goTo(name) {
   document.getElementById('sec-' + name).classList.add('active');
   document.getElementById('nav-' + name).classList.add('active');
   document.getElementById('appScroll').scrollTo(0, 0);
+
+  // Esconde player e barra na tela inicial; restaura nas outras se estiver tocando
+  var mp = document.getElementById('miniPlayer');
+  var sb = document.getElementById('speedBar');
+  if (name === 'home') {
+    mp.classList.remove('visible');
+    sb.classList.remove('visible');
+    document.body.classList.remove('player-active');
+  } else if (isPlaying) {
+    mp.classList.add('visible');
+    sb.classList.add('visible');
+    document.body.classList.add('player-active');
+  }
 }
 
 // ── SPEED CONTROL ────────────────────────────────────────
