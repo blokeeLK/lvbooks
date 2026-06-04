@@ -715,6 +715,59 @@ body.player-active .app-scroll{
   margin-bottom:12px;
   text-align:center;
 }
+/* ── SPEED HELPER (dentro do Drive player) ── */
+.speed-helper{
+  display:none;
+  margin-bottom:12px;
+  text-align:center;
+}
+.speed-helper.active{ display:block; }
+.speed-helper-text{
+  font-size:13px;
+  font-weight:600;
+  color:#22c55e;
+  margin-bottom:8px;
+  letter-spacing:.01em;
+}
+.speed-controls{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:6px;
+}
+.speed-current{
+  background:#16a34a;
+  color:#ffffff;
+  font-family:'Montserrat',sans-serif;
+  font-size:15px;
+  font-weight:700;
+  border-radius:8px;
+  padding:7px 14px;
+  min-width:56px;
+  text-align:center;
+  box-shadow:0 0 12px rgba(34,197,94,.4);
+}
+.speed-btn{
+  background:#1e293b;
+  color:#ffffff;
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:7px;
+  padding:7px 11px;
+  font-size:14px;
+  font-weight:700;
+  cursor:pointer;
+  font-family:'Montserrat',sans-serif;
+  line-height:1;
+  -webkit-tap-highlight-color:transparent;
+  -webkit-appearance:none;
+  appearance:none;
+  transition:background .1s;
+}
+.speed-btn:active{
+  transform:scale(.96);
+  background:#2d3f55;
+}
+
 .drive-iframe{
   flex:1;
   border:none;
@@ -1096,6 +1149,19 @@ body.player-active .app-scroll{
     <div class="drive-ptitle" id="drivePTitle"></div>
   </div>
   <div class="drive-warning">⚠️ Se aparecer um aviso do Google Drive, toque em <strong>"Reproduzir mesmo assim"</strong> para ouvir o audiobook.</div>
+
+  <!-- Controle de velocidade do Drive player -->
+  <div class="speed-helper" id="driveSpeedHelper">
+    <div class="speed-helper-text">⚡ Aumente sua velocidade por aqui</div>
+    <div class="speed-controls">
+      <span class="speed-current" id="driveSpeedDisplay">1.00</span>
+      <button class="speed-btn" onclick="driveSpeedStep(-0.25)" title="–0.25x">«</button>
+      <button class="speed-btn" onclick="driveSpeedStep(-0.1)"  title="–0.1x">–</button>
+      <button class="speed-btn" onclick="driveSpeedStep(0.1)"   title="+0.1x">+</button>
+      <button class="speed-btn" onclick="driveSpeedStep(0.25)"  title="+0.25x">»</button>
+    </div>
+  </div>
+
   <iframe class="drive-iframe" id="driveIframe" allowfullscreen allow="autoplay"></iframe>
 </div>
 
@@ -1194,6 +1260,18 @@ var currentSpeed = (function() {
   return (s && s > 0) ? s : 1;
 })();
 
+function updateDriveSpeedDisplay() {
+  var el = document.getElementById('driveSpeedDisplay');
+  if (el) el.textContent = currentSpeed.toFixed(2);
+}
+
+function driveSpeedStep(delta) {
+  var next = Math.round((currentSpeed + delta) * 100) / 100;
+  currentSpeed = Math.max(0.25, Math.min(3.0, next));
+  try { localStorage.setItem(SPEED_KEY, String(currentSpeed)); } catch(e) {}
+  applySpeed();
+}
+
 function applySpeed() {
   // Só aplica playbackRate se o áudio já tiver uma fonte carregada (evita renderizar player nativo)
   if (audioEl.currentSrc) {
@@ -1210,6 +1288,8 @@ function applySpeed() {
   document.querySelectorAll('.speed-bar__btn').forEach(function(b) {
     b.classList.toggle('active', parseFloat(b.textContent) === currentSpeed);
   });
+  // Atualiza display do speed helper do Drive
+  updateDriveSpeedDisplay();
 }
 
 function closeSpeedMenu() {
@@ -1313,6 +1393,8 @@ function playAudio(id) {
     document.getElementById('drivePTitle').textContent = book.title;
     document.getElementById('driveIframe').src = 'https://drive.google.com/file/d/' + driveId + '/preview';
     document.getElementById('drivePlayer').classList.add('visible');
+    document.getElementById('driveSpeedHelper').classList.add('active');
+    updateDriveSpeedDisplay();
     return;
   }
 
@@ -1335,6 +1417,7 @@ function playAudio(id) {
 function closeDrivePlayer() {
   document.getElementById('drivePlayer').classList.remove('visible');
   document.getElementById('driveIframe').src = '';
+  document.getElementById('driveSpeedHelper').classList.remove('active');
   document.querySelectorAll('.audio-card.playing').forEach(function(c) { c.classList.remove('playing'); });
 }
 
