@@ -263,11 +263,10 @@ body.player-active .app-scroll{
   gap:12px;
   padding:0 16px;
   z-index:100;
-  transform:translateY(100%);
-  transition:transform .3s ease;
+  display:none;
 }
 
-.mini-player.visible{ transform:translateY(0); }
+.mini-player.visible{ display:flex; }
 
 .mini-cover{
   width:44px;
@@ -599,10 +598,9 @@ body.player-active .app-scroll{
   justify-content:center;
   gap:5px;
   padding:6px 12px 6px;
-  transform:translateY(100%);
-  transition:transform .3s ease;
+  display:none;
 }
-.speed-bar.visible{transform:translateY(0);}
+.speed-bar.visible{display:flex;}
 .speed-bar__label{
   font-size:10px;
   font-weight:900;
