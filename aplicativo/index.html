@@ -266,7 +266,7 @@ body.player-active .app-scroll{
   display:none;
 }
 
-.mini-player.visible{ display:flex; }
+.mini-player.visible{ display:flex; z-index:350; }
 
 .mini-cover{
   width:44px;
@@ -600,7 +600,7 @@ body.player-active .app-scroll{
   padding:6px 12px 6px;
   display:none;
 }
-.speed-bar.visible{display:flex;}
+.speed-bar.visible{display:flex; z-index:350;}
 .speed-bar__label{
   font-size:10px;
   font-weight:900;
@@ -1155,10 +1155,10 @@ body.player-active .app-scroll{
     <div class="speed-helper-text">⚡ Aumente sua velocidade por aqui</div>
     <div class="speed-controls">
       <span class="speed-current" id="driveSpeedDisplay">1.00</span>
-      <button class="speed-btn" onclick="driveSpeedStep(-0.25)" title="–0.25x">«</button>
-      <button class="speed-btn" onclick="driveSpeedStep(-0.1)"  title="–0.1x">–</button>
-      <button class="speed-btn" onclick="driveSpeedStep(0.1)"   title="+0.1x">+</button>
-      <button class="speed-btn" onclick="driveSpeedStep(0.25)"  title="+0.25x">»</button>
+      <button class="speed-btn" onclick="driveSpeedStep(-0.5)"  title="–0.5x">«</button>
+      <button class="speed-btn" onclick="driveSpeedStep(-0.25)" title="–0.25x">–</button>
+      <button class="speed-btn" onclick="driveSpeedStep(0.25)"  title="+0.25x">+</button>
+      <button class="speed-btn" onclick="driveSpeedStep(0.5)"   title="+0.5x">»</button>
     </div>
   </div>
 
@@ -1381,17 +1381,27 @@ function playAudio(id) {
   var driveId = extractDriveId(book.audio);
 
   if (driveId) {
-    // Stop any <audio> playback and hide mini player
-    audioEl.pause();
-    audioEl.src = '';
-    isPlaying = false;
-    document.getElementById('playPauseBtn').textContent = '▶';
-    document.getElementById('miniPlayer').classList.remove('visible');
-    document.getElementById('speedBar').classList.remove('visible');
-    document.body.classList.remove('player-active');
-    // Open Drive iframe player
+    // Usa URL direta do Drive no audioEl — único modo de controlar playbackRate
+    // (iframe do Drive é cross-origin: playbackRate seria impossível via JS)
+    var directUrl = 'https://drive.google.com/uc?export=download&id=' + driveId;
+    audioEl.src = directUrl;
+    audioEl.load();
+    applySpeed();
+    audioEl.play().catch(function() {});
+    isPlaying = true;
+
+    // Mini player (controles de play/pause/prev/next)
+    document.getElementById('miniCover').src = book.cover || '';
+    document.getElementById('miniTitle').textContent = book.title;
+    document.getElementById('miniAuthor').textContent = book.author || 'LV Books';
+    document.getElementById('miniPlayer').classList.add('visible');
+    document.getElementById('speedBar').classList.add('visible');
+    document.body.classList.add('player-active');
+    document.getElementById('playPauseBtn').textContent = '⏸';
+
+    // Overlay Drive (mostra título + speed helper; iframe fica vazio)
     document.getElementById('drivePTitle').textContent = book.title;
-    document.getElementById('driveIframe').src = 'https://drive.google.com/file/d/' + driveId + '/preview';
+    document.getElementById('driveIframe').src = '';
     document.getElementById('drivePlayer').classList.add('visible');
     document.getElementById('driveSpeedHelper').classList.add('active');
     updateDriveSpeedDisplay();
@@ -1416,9 +1426,8 @@ function playAudio(id) {
 
 function closeDrivePlayer() {
   document.getElementById('drivePlayer').classList.remove('visible');
-  document.getElementById('driveIframe').src = '';
   document.getElementById('driveSpeedHelper').classList.remove('active');
-  document.querySelectorAll('.audio-card.playing').forEach(function(c) { c.classList.remove('playing'); });
+  // Áudio continua tocando no mini player — não interrompe
 }
 
 function playerToggle() {
@@ -1444,6 +1453,11 @@ function playerNext() {
   var idx = ids.indexOf(currentTrack);
   if (idx < ids.length - 1) playAudio(ids[idx + 1]);
 }
+
+// Reaplicar velocidade quando o áudio carregar ou começar a tocar
+audioEl.addEventListener('loadedmetadata', applySpeed);
+audioEl.addEventListener('canplay', applySpeed);
+audioEl.addEventListener('play', applySpeed);
 
 audioEl.addEventListener('timeupdate', function() {
   if (!audioEl.duration) return;
