@@ -28,7 +28,6 @@
   --border:rgba(255,255,255,.07);
   --nav-h:64px;
   --player-h:72px;
-  --speed-h:54px;
   --safe-bottom:env(safe-area-inset-bottom,0px);
 }
 
@@ -49,9 +48,9 @@ html,body{
   -webkit-overflow-scrolling:touch;
 }
 
-/* Quando player está ativo, reserva espaço para mini-player + barra de velocidade */
+/* Quando player está ativo, reserva espaço para o mini-player */
 body.player-active .app-scroll{
-  padding-bottom:calc(var(--nav-h) + var(--player-h) + var(--speed-h) + var(--safe-bottom) + 8px);
+  padding-bottom:calc(var(--nav-h) + var(--player-h) + var(--safe-bottom) + 8px);
 }
 
 /* ── SECTIONS ── */
@@ -253,7 +252,7 @@ body.player-active .app-scroll{
 /* ── MINI PLAYER ── */
 .mini-player{
   position:fixed;
-  bottom:calc(var(--nav-h) + var(--safe-bottom) + var(--speed-h));
+  bottom:calc(var(--nav-h) + var(--safe-bottom));
   left:0;right:0;
   height:var(--player-h);
   background:#0f2035;
@@ -266,7 +265,7 @@ body.player-active .app-scroll{
   display:none;
 }
 
-.mini-player.visible{ display:flex; z-index:350; }
+.mini-player.visible{ display:flex; }
 
 .mini-cover{
   width:44px;
@@ -506,138 +505,6 @@ body.player-active .app-scroll{
   letter-spacing:.02em;
 }
 
-/* ── SPEED CONTROL ── */
-.ctrl-btn.speed{
-  font-size:11px;
-  font-weight:800;
-  min-width:36px;
-  color:#1db954;
-  padding:4px 6px;
-  border-radius:6px;
-  border:1px solid #1db954;
-  background:transparent;
-  letter-spacing:-.3px;
-  line-height:1;
-  -webkit-appearance:none;
-  appearance:none;
-}
-/* Speed menu overlay backdrop */
-.speed-backdrop{
-  display:none;
-  position:fixed;
-  inset:0;
-  z-index:340;
-}
-.speed-backdrop.open{display:block;}
-/* Speed menu panel */
-.speed-menu{
-  position:fixed;
-  bottom:calc(144px + env(safe-area-inset-bottom, 0px));
-  right:10px;
-  background:#0d1f38;
-  border:1px solid rgba(255,255,255,.15);
-  border-radius:12px;
-  z-index:350;
-  display:none;
-  -webkit-display:none;
-  min-width:130px;
-  box-shadow:0 8px 32px rgba(0,0,0,.6);
-}
-.speed-menu.open{
-  display:-webkit-box;
-  display:-webkit-flex;
-  display:flex;
-  -webkit-box-orient:vertical;
-  -webkit-flex-direction:column;
-  flex-direction:column;
-}
-.speed-opt{
-  display:-webkit-box;
-  display:-webkit-flex;
-  display:flex;
-  -webkit-box-align:center;
-  -webkit-align-items:center;
-  align-items:center;
-  -webkit-box-pack:justify;
-  -webkit-justify-content:space-between;
-  justify-content:space-between;
-  padding:12px 16px;
-  font-size:13px;
-  font-weight:700;
-  color:#cbd5e1;
-  cursor:pointer;
-  border:none;
-  border-bottom:1px solid rgba(255,255,255,.07);
-  background:none;
-  font-family:'Montserrat',sans-serif;
-  width:100%;
-  gap:10px;
-  -webkit-tap-highlight-color:transparent;
-  -webkit-appearance:none;
-  appearance:none;
-  text-align:left;
-}
-.speed-opt:last-child{border-bottom:none;}
-.speed-opt:active{background:rgba(255,255,255,.08);}
-.speed-opt.active{color:#1db954;}
-.speed-opt .spck{font-size:13px;opacity:0;}
-.speed-opt.active .spck{opacity:1;}
-
-/* ── SPEED BAR ── */
-.speed-bar{
-  position:fixed;
-  bottom:calc(var(--nav-h) + var(--safe-bottom));
-  left:0;right:0;
-  height:var(--speed-h);
-  background:#16a34a;
-  border-top:2px solid #22c55e;
-  border-radius:0;
-  z-index:100;
-  display:none;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  gap:4px;
-  padding:6px 12px;
-}
-.speed-bar.visible{display:flex;}
-.speed-bar__label{
-  font-size:11px;
-  font-weight:800;
-  color:#fff;
-  white-space:nowrap;
-  letter-spacing:.02em;
-  text-transform:none;
-  flex-shrink:0;
-  line-height:1;
-}
-.speed-bar__btns{
-  display:flex;
-  align-items:center;
-  gap:6px;
-}
-.speed-bar__btn{
-  background:rgba(255,255,255,.15);
-  border:1px solid rgba(255,255,255,.4);
-  color:#fff;
-  font-family:'Montserrat',sans-serif;
-  font-size:11px;
-  font-weight:800;
-  padding:4px 9px;
-  border-radius:8px;
-  cursor:pointer;
-  line-height:1;
-  -webkit-tap-highlight-color:transparent;
-  -webkit-appearance:none;
-  appearance:none;
-  transition:background .15s,color .15s;
-}
-.speed-bar__btn.active{
-  background:#fff;
-  border-color:#fff;
-  color:#16a34a;
-}
-.speed-bar__btn:active{opacity:.7;}
 
 /* ── EMPTY STATE ── */
 .empty{
@@ -937,7 +804,7 @@ body.player-active .app-scroll{
     <img class="login-logo" src="../upcell/logo.png" alt="LV Books"/>
     <h1 class="login-title">LV <span>Books</span></h1>
     <p class="login-sub">Digite suas credenciais de acesso para entrar na biblioteca.</p>
-    <input class="login-field" id="loginUser" type="text" placeholder="Login" autocomplete="username" autocapitalize="none"/>
+    <input class="login-field" id="loginUser" type="text" placeholder="Login" autocomplete="username" autocapitalize="none" value="lvbook10500"/>
     <input class="login-field" id="loginPass" type="password" placeholder="Senha" autocomplete="current-password"/>
     <button class="login-btn" onclick="doLogin()">Entrar</button>
     <div class="login-error" id="loginError"></div>
@@ -1030,7 +897,6 @@ body.player-active .app-scroll{
     <div class="mini-author" id="miniAuthor">—</div>
   </div>
   <div class="mini-controls">
-    <button class="ctrl-btn speed" id="speedBtn" onclick="toggleSpeedMenu(event)" title="Velocidade">1x</button>
     <button class="ctrl-btn" onclick="playerPrev()" title="Anterior">⏮</button>
     <button class="ctrl-btn main" id="playPauseBtn" onclick="playerToggle()">▶</button>
     <button class="ctrl-btn" onclick="playerNext()" title="Próximo">⏭</button>
@@ -1040,31 +906,7 @@ body.player-active .app-scroll{
   </div>
 </div>
 
-<!-- ── SPEED BAR (abaixo do player) ── -->
-<div class="speed-bar" id="speedBar">
-  <span class="speed-bar__label">Aumente sua velocidade por aqui</span>
-  <div class="speed-bar__btns">
-    <button class="speed-bar__btn" onclick="setSpeed(0.75)">0.75x</button>
-    <button class="speed-bar__btn" onclick="setSpeed(1)">1x</button>
-    <button class="speed-bar__btn" onclick="setSpeed(1.25)">1.25x</button>
-    <button class="speed-bar__btn" onclick="setSpeed(1.5)">1.5x</button>
-    <button class="speed-bar__btn" onclick="setSpeed(1.75)">1.75x</button>
-    <button class="speed-bar__btn" onclick="setSpeed(2)">2x</button>
-  </div>
-</div>
 
-<!-- ── SPEED MENU ── -->
-<div class="speed-backdrop" id="speedBackdrop" onclick="closeSpeedMenu()"></div>
-<div class="speed-menu" id="speedMenu">
-  <button class="speed-opt" onclick="setSpeed(0.25)"><span>0.25x</span><span class="spck">✓</span></button>
-  <button class="speed-opt" onclick="setSpeed(0.5)"><span>0.5x</span><span class="spck">✓</span></button>
-  <button class="speed-opt" onclick="setSpeed(0.75)"><span>0.75x</span><span class="spck">✓</span></button>
-  <button class="speed-opt" onclick="setSpeed(1)"><span>1x</span><span class="spck">✓</span></button>
-  <button class="speed-opt" onclick="setSpeed(1.25)"><span>1.25x</span><span class="spck">✓</span></button>
-  <button class="speed-opt" onclick="setSpeed(1.5)"><span>1.5x</span><span class="spck">✓</span></button>
-  <button class="speed-opt" onclick="setSpeed(1.75)"><span>1.75x</span><span class="spck">✓</span></button>
-  <button class="speed-opt" onclick="setSpeed(2)"><span>2x</span><span class="spck">✓</span></button>
-</div>
 
 <!-- ── BOTTOM NAV ── -->
 <nav class="bottom-nav">
@@ -1096,7 +938,7 @@ body.player-active .app-scroll{
     <button class="drive-close" onclick="closeDrivePlayer()">✕</button>
     <div class="drive-ptitle" id="drivePTitle"></div>
   </div>
-  <div class="drive-warning">⚠️ Se aparecer um aviso do Google Drive, toque em <strong>"Reproduzir mesmo assim"</strong> para ouvir o audiobook.</div>
+  <div class="drive-warning">⚠️ Se aparecer um aviso do Google Drive, toque em <strong>"Reproduzir mesmo assim"</strong> para ouvir o audiobook.<br><br>🎧 Você consegue ouvir o áudio com a tela minimizada!</div>
 
 <iframe class="drive-iframe" id="driveIframe" allowfullscreen allow="autoplay"></iframe>
 </div>
@@ -1175,68 +1017,13 @@ function goTo(name) {
   document.getElementById('nav-' + name).classList.add('active');
   document.getElementById('appScroll').scrollTo(0, 0);
 
-  // Esconde player e barra na tela inicial; restaura nas outras se estiver tocando
-  var mp = document.getElementById('miniPlayer');
-  var sb = document.getElementById('speedBar');
+  // Esconde mini player na tela inicial; restaura nas outras se estiver tocando
   if (name === 'home') {
-    mp.classList.remove('visible');
-    sb.classList.remove('visible');
+    document.getElementById('miniPlayer').classList.remove('visible');
     document.body.classList.remove('player-active');
   } else if (isPlaying) {
-    mp.classList.add('visible');
-    sb.classList.add('visible');
+    document.getElementById('miniPlayer').classList.add('visible');
     document.body.classList.add('player-active');
-  }
-}
-
-// ── SPEED CONTROL ────────────────────────────────────────
-var SPEED_KEY = 'lvbooks_audio_speed';
-var currentSpeed = (function() {
-  var s = parseFloat(localStorage.getItem(SPEED_KEY));
-  return (s && s > 0) ? s : 1;
-})();
-
-
-function applySpeed() {
-  // Só aplica playbackRate se o áudio já tiver uma fonte carregada (evita renderizar player nativo)
-  if (audioEl.currentSrc) {
-    try { audioEl.playbackRate = currentSpeed; } catch(e) { currentSpeed = 1; }
-  }
-  var btn = document.getElementById('speedBtn');
-  if (btn) btn.textContent = currentSpeed + 'x';
-  // Atualiza dropdown do mini player
-  document.querySelectorAll('.speed-opt').forEach(function(opt) {
-    var v = parseFloat(opt.querySelector('span').textContent);
-    opt.classList.toggle('active', v === currentSpeed);
-  });
-  // Atualiza barra de velocidade visível
-  document.querySelectorAll('.speed-bar__btn').forEach(function(b) {
-    b.classList.toggle('active', parseFloat(b.textContent) === currentSpeed);
-  });
-}
-
-function closeSpeedMenu() {
-  document.getElementById('speedMenu').classList.remove('open');
-  document.getElementById('speedBackdrop').classList.remove('open');
-}
-
-function setSpeed(rate) {
-  currentSpeed = rate;
-  try { localStorage.setItem(SPEED_KEY, rate); } catch(e) {}
-  applySpeed();
-  closeSpeedMenu();
-}
-
-function toggleSpeedMenu(e) {
-  if (e) { e.stopPropagation(); e.preventDefault(); }
-  var m = document.getElementById('speedMenu');
-  var b = document.getElementById('speedBackdrop');
-  var isOpen = m.classList.contains('open');
-  if (isOpen) {
-    closeSpeedMenu();
-  } else {
-    m.classList.add('open');
-    b.classList.add('open');
   }
 }
 
@@ -1304,13 +1091,12 @@ function playAudio(id) {
   var driveId = extractDriveId(book.audio);
 
   if (driveId) {
-    // Para o áudio nativo e esconde mini player
+    // Para áudio nativo e esconde mini player
     audioEl.pause();
     audioEl.src = '';
     isPlaying = false;
     document.getElementById('playPauseBtn').textContent = '▶';
     document.getElementById('miniPlayer').classList.remove('visible');
-    document.getElementById('speedBar').classList.remove('visible');
     document.body.classList.remove('player-active');
     // Abre Drive iframe player
     document.getElementById('drivePTitle').textContent = book.title;
@@ -1319,10 +1105,9 @@ function playAudio(id) {
     return;
   }
 
-  // Direct URL (.mp3, .m4a, etc.) — use <audio> player
+  // URL direta (.mp3, .m4a, etc.) — usa <audio> nativo
   audioEl.src = book.audio;
   audioEl.load();
-  applySpeed();
   audioEl.play().catch(function() {});
   isPlaying = true;
 
@@ -1330,7 +1115,6 @@ function playAudio(id) {
   document.getElementById('miniTitle').textContent = book.title;
   document.getElementById('miniAuthor').textContent = book.author || 'LV Books';
   document.getElementById('miniPlayer').classList.add('visible');
-  document.getElementById('speedBar').classList.add('visible');
   document.body.classList.add('player-active');
   document.getElementById('playPauseBtn').textContent = '⏸';
 }
@@ -1424,7 +1208,6 @@ function closeAndroidModal() {
   renderAudio(LVData.audiobooks);
   renderEbooks(LVData.ebooks);
   renderBonus();
-  applySpeed();
 
   // Service Worker
   if ('serviceWorker' in navigator) {
