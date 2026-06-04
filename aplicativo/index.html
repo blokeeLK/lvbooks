@@ -28,6 +28,7 @@
   --border:rgba(255,255,255,.07);
   --nav-h:64px;
   --player-h:72px;
+  --speed-h:52px;
   --safe-bottom:env(safe-area-inset-bottom,0px);
 }
 
@@ -48,9 +49,9 @@ html,body{
   -webkit-overflow-scrolling:touch;
 }
 
-/* Quando player está ativo, reserva espaço para o mini-player */
+/* Quando player está ativo, reserva espaço para mini-player + speed bar */
 body.player-active .app-scroll{
-  padding-bottom:calc(var(--nav-h) + var(--player-h) + var(--safe-bottom) + 8px);
+  padding-bottom:calc(var(--nav-h) + var(--player-h) + var(--speed-h) + var(--safe-bottom) + 8px);
 }
 
 /* ── SECTIONS ── */
@@ -265,7 +266,10 @@ body.player-active .app-scroll{
   display:none;
 }
 
-.mini-player.visible{ display:flex; }
+.mini-player.visible{
+  display:flex;
+  bottom:calc(var(--nav-h) + var(--safe-bottom) + var(--speed-h));
+}
 
 .mini-cover{
   width:44px;
@@ -505,6 +509,51 @@ body.player-active .app-scroll{
   letter-spacing:.02em;
 }
 
+
+/* ── SPEED BAR ── */
+.speed-bar{
+  position:fixed;
+  bottom:calc(var(--nav-h) + var(--safe-bottom));
+  left:0;right:0;
+  height:var(--speed-h);
+  background:#16a34a;
+  border-top:2px solid #22c55e;
+  z-index:100;
+  display:none;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:5px;
+  padding:4px 12px;
+}
+.speed-bar.visible{display:flex;}
+.speed-bar__label{
+  font-size:10px;
+  font-weight:800;
+  color:#fff;
+  letter-spacing:.03em;
+  text-transform:uppercase;
+  line-height:1;
+}
+.speed-bar__btns{display:flex;align-items:center;gap:6px;}
+.speed-bar__btn{
+  background:rgba(255,255,255,.2);
+  border:1px solid rgba(255,255,255,.45);
+  color:#fff;
+  font-family:'Montserrat',sans-serif;
+  font-size:11px;
+  font-weight:800;
+  padding:4px 10px;
+  border-radius:7px;
+  cursor:pointer;
+  line-height:1;
+  -webkit-tap-highlight-color:transparent;
+  -webkit-appearance:none;
+  appearance:none;
+  transition:background .12s,color .12s;
+}
+.speed-bar__btn.active{background:#fff;border-color:#fff;color:#16a34a;}
+.speed-bar__btn:active{opacity:.7;}
 
 /* ── EMPTY STATE ── */
 .empty{
@@ -908,6 +957,18 @@ body.player-active .app-scroll{
 
 
 
+<!-- ── SPEED BAR ── -->
+<div class="speed-bar" id="speedBar">
+  <span class="speed-bar__label">Aumente sua velocidade por aqui</span>
+  <div class="speed-bar__btns">
+    <button class="speed-bar__btn" onclick="setSpeed(1)">1x</button>
+    <button class="speed-bar__btn" onclick="setSpeed(1.25)">1.25x</button>
+    <button class="speed-bar__btn" onclick="setSpeed(1.5)">1.5x</button>
+    <button class="speed-bar__btn" onclick="setSpeed(1.75)">1.75x</button>
+    <button class="speed-bar__btn" onclick="setSpeed(2)">2x</button>
+  </div>
+</div>
+
 <!-- ── BOTTOM NAV ── -->
 <nav class="bottom-nav">
   <button class="nav-btn active" id="nav-home" onclick="goTo('home')">
@@ -1017,14 +1078,101 @@ function goTo(name) {
   document.getElementById('nav-' + name).classList.add('active');
   document.getElementById('appScroll').scrollTo(0, 0);
 
-  // Esconde mini player na tela inicial; restaura nas outras se estiver tocando
+  // Esconde player na tela inicial; restaura nas outras se estiver tocando
   if (name === 'home') {
     document.getElementById('miniPlayer').classList.remove('visible');
+    document.getElementById('speedBar').classList.remove('visible');
     document.body.classList.remove('player-active');
   } else if (isPlaying) {
     document.getElementById('miniPlayer').classList.add('visible');
+    document.getElementById('speedBar').classList.add('visible');
     document.body.classList.add('player-active');
   }
+}
+
+// ── SPEED CONTROL ────────────────────────────────────────
+var SPEED_KEY = 'lvbooks_audio_speed';
+var currentSpeed = Number(localStorage.getItem(SPEED_KEY)) || 1;
+
+function updateSpeedUI() {
+  document.querySelectorAll('.speed-bar__btn').forEach(function(btn) {
+    btn.classList.toggle('active', parseFloat(btn.textContent) === currentSpeed);
+  });
+}
+
+function setSpeed(rate) {
+  currentSpeed = rate;
+  try { localStorage.setItem(SPEED_KEY, String(rate)); } catch(e) {}
+  if (audioEl && audioEl.currentSrc) {
+    try { audioEl.playbackRate = currentSpeed; } catch(e) {}
+  }
+  updateSpeedUI();
+}
+
+// Tenta tocar Drive direto via <audio>; se falhar em 5s → iframe fallback
+var _drivePending = null;
+
+function tryNativeAudio(driveId, book) {
+  // Cancela tentativa anterior
+  if (_drivePending) {
+    clearTimeout(_drivePending.timer);
+    audioEl.removeEventListener('canplay', _drivePending.onOk);
+    audioEl.removeEventListener('error',   _drivePending.onFail);
+    _drivePending = null;
+  }
+
+  var resolved = false;
+  var pending = {};
+
+  function onOk() {
+    if (resolved) return; resolved = true;
+    clearTimeout(pending.timer);
+    audioEl.removeEventListener('canplay', onOk);
+    audioEl.removeEventListener('error',   onFail);
+    _drivePending = null;
+    try { audioEl.playbackRate = currentSpeed; } catch(e) {}
+    audioEl.play().catch(function() {});
+    isPlaying = true;
+    document.getElementById('miniCover').src  = book.cover || '';
+    document.getElementById('miniTitle').textContent  = book.title;
+    document.getElementById('miniAuthor').textContent = book.author || 'LV Books';
+    document.getElementById('miniPlayer').classList.add('visible');
+    document.getElementById('speedBar').classList.add('visible');
+    document.body.classList.add('player-active');
+    document.getElementById('playPauseBtn').textContent = '⏸';
+    updateSpeedUI();
+  }
+
+  function onFail() {
+    if (resolved) return; resolved = true;
+    clearTimeout(pending.timer);
+    audioEl.removeEventListener('canplay', onOk);
+    audioEl.removeEventListener('error',   onFail);
+    _drivePending = null;
+    audioEl.pause(); audioEl.src = '';
+    isPlaying = false;
+    openDriveIframe(driveId, book);
+  }
+
+  pending.onOk   = onOk;
+  pending.onFail = onFail;
+  pending.timer  = setTimeout(onFail, 5000); // fallback após 5s
+  _drivePending  = pending;
+
+  audioEl.addEventListener('canplay', onOk);
+  audioEl.addEventListener('error',   onFail);
+  audioEl.src = 'https://drive.google.com/uc?export=download&id=' + driveId;
+  audioEl.load();
+}
+
+function openDriveIframe(driveId, book) {
+  document.getElementById('miniPlayer').classList.remove('visible');
+  document.getElementById('speedBar').classList.remove('visible');
+  document.body.classList.remove('player-active');
+  document.getElementById('playPauseBtn').textContent = '▶';
+  document.getElementById('drivePTitle').textContent = book.title;
+  document.getElementById('driveIframe').src = 'https://drive.google.com/file/d/' + driveId + '/preview';
+  document.getElementById('drivePlayer').classList.add('visible');
 }
 
 // ── RENDER AUDIOBOOKS ────────────────────────────────────
@@ -1091,23 +1239,23 @@ function playAudio(id) {
   var driveId = extractDriveId(book.audio);
 
   if (driveId) {
-    // Para áudio nativo e esconde mini player
+    // Para qualquer reprodução em andamento
     audioEl.pause();
     audioEl.src = '';
     isPlaying = false;
     document.getElementById('playPauseBtn').textContent = '▶';
     document.getElementById('miniPlayer').classList.remove('visible');
+    document.getElementById('speedBar').classList.remove('visible');
     document.body.classList.remove('player-active');
-    // Abre Drive iframe player
-    document.getElementById('drivePTitle').textContent = book.title;
-    document.getElementById('driveIframe').src = 'https://drive.google.com/file/d/' + driveId + '/preview';
-    document.getElementById('drivePlayer').classList.add('visible');
+    // Tenta áudio nativo (com speed control); se falhar → iframe
+    tryNativeAudio(driveId, book);
     return;
   }
 
-  // URL direta (.mp3, .m4a, etc.) — usa <audio> nativo
+  // URL direta (.mp3, .m4a, etc.) — usa <audio> nativo + speed bar
   audioEl.src = book.audio;
   audioEl.load();
+  try { audioEl.playbackRate = currentSpeed; } catch(e) {}
   audioEl.play().catch(function() {});
   isPlaying = true;
 
@@ -1115,13 +1263,18 @@ function playAudio(id) {
   document.getElementById('miniTitle').textContent = book.title;
   document.getElementById('miniAuthor').textContent = book.author || 'LV Books';
   document.getElementById('miniPlayer').classList.add('visible');
+  document.getElementById('speedBar').classList.add('visible');
   document.body.classList.add('player-active');
   document.getElementById('playPauseBtn').textContent = '⏸';
+  updateSpeedUI();
 }
 
 function closeDrivePlayer() {
   document.getElementById('drivePlayer').classList.remove('visible');
   document.getElementById('driveIframe').src = '';
+  document.getElementById('speedBar').classList.remove('visible');
+  document.getElementById('miniPlayer').classList.remove('visible');
+  document.body.classList.remove('player-active');
   document.querySelectorAll('.audio-card.playing').forEach(function(c) { c.classList.remove('playing'); });
 }
 
