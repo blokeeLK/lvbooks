@@ -3,466 +3,886 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- Redirect: força domínio canônico e HTTPS -->
+
+  <!-- Canonical + HTTPS -->
   <script>
   (function(){
-    var h=window.location.hostname, p=window.location.protocol;
-    if(h!=='lvbooks.com.br'||p!=='https:'){
-      window.location.replace('https://lvbooks.com.br'+window.location.pathname+window.location.search+window.location.hash);
+    var h = window.location.hostname;
+    var p = window.location.protocol;
+    if (h !== 'lvbooks.com.br' || p !== 'https:') {
+      window.location.replace('https://lvbooks.com.br' + window.location.pathname + window.location.search + window.location.hash);
     }
   })();
   </script>
-  <title>Oferta Especial – LV Books por R$ 7,90</title>
+
+  <title>Última Oferta LV Books – Acesso por R$ 7,90</title>
+  <meta name="description" content="Oferta especial LV Books: mais de 3.000 livros digitais e audiobooks por R$ 7,90. Pagamento único, acesso imediato e garantia de 7 dias." />
+  <meta name="robots" content="noindex, nofollow" />
+
   <link rel="icon" type="image/png" href="favicon.png" />
   <link rel="apple-touch-icon" href="favicon.png" />
-
-
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --navy:  #0a1525;
-      --green: #2ecc40;
-      --green2:#27ae38;
-      --red:   #e53935;
-      --gold:  #e8c50a;
-      --gray:  #9aaab8;
-      --border:#1e3a5f;
+      --navy:   #07101d;
+      --navy2:  #0c1f38;
+      --navy3:  #102947;
+      --green:  #27d840;
+      --green2: #20bd35;
+      --red:    #eb332d;
+      --gold:   #ffd21a;
+      --gray:   #a9b8ca;
+      --white:  #ffffff;
+      --border: #24456d;
+      --black:  #05080d;
     }
+
+    html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Montserrat', Arial, sans-serif;
       background: var(--navy);
-      color: #fff;
+      color: var(--white);
       overflow-x: hidden;
+      padding-bottom: 82px;
     }
 
-    /* ── COUNTDOWN BAR ── */
+    a { color: inherit; }
+
+    .page {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(39,216,64,.13) 0%, rgba(39,216,64,0) 28%),
+        linear-gradient(180deg, #0d203a 0%, #07101d 42%, #07101d 100%);
+    }
+
+    /* TOP COUNTDOWN */
     .cd-bar {
       background: var(--red);
       text-align: center;
-      padding: 14px 16px;
+      padding: 11px 14px 12px;
       position: sticky;
       top: 0;
       z-index: 999;
+      box-shadow: 0 10px 28px rgba(0,0,0,.22);
     }
+
     .cd-bar__text {
-      font-size: 13px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: .5px;
-      margin-bottom: 6px;
-    }
-    .cd-bar__timer {
-      font-size: 36px;
+      font-size: 12px;
       font-weight: 900;
-      letter-spacing: 4px;
-      line-height: 1;
+      text-transform: uppercase;
+      letter-spacing: .55px;
+      line-height: 1.25;
     }
+
+    .cd-bar__timer {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 5px;
+      font-size: 27px;
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: 1.5px;
+    }
+
     .cd-bar__timer span {
       background: rgba(0,0,0,.25);
-      border-radius: 6px;
-      padding: 4px 10px;
+      border-radius: 8px;
+      padding: 5px 10px;
+      min-width: 54px;
+      display: inline-block;
     }
+
     .cd-bar__sub {
-      font-size: 11px;
+      font-size: 10px;
       margin-top: 5px;
-      opacity: .85;
+      opacity: .95;
+      font-weight: 700;
+    }
+
+    /* HERO */
+    .hero {
+      width: 100%;
+      padding: 26px 16px 18px;
+      text-align: center;
+    }
+
+    .hero__inner {
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      margin-bottom: 14px;
+      opacity: .97;
+    }
+
+    .brand img {
+      width: 44px;
+      height: 44px;
+      object-fit: contain;
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .brand span {
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 1.7px;
+      text-transform: uppercase;
+      color: #dfefff;
+    }
+
+    .save-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      background: rgba(255,210,26,.13);
+      border: 1px solid rgba(255,210,26,.45);
+      color: var(--gold);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .7px;
+      margin-bottom: 12px;
+    }
+
+    .hero h1 {
+      font-size: clamp(27px, 7vw, 47px);
+      font-weight: 900;
+      line-height: 1.04;
+      letter-spacing: -.8px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .hero h1 .green { color: var(--green); }
+    .hero h1 .gold { color: var(--gold); }
+
+    .hero__sub {
+      max-width: 500px;
+      margin: 0 auto 18px;
+      color: #c6d4e5;
+      font-size: 15px;
+      line-height: 1.55;
       font-weight: 600;
     }
 
-    /* ── HERO ── */
-    .hero {
-      padding: 36px 20px 28px;
-      text-align: center;
-      background: linear-gradient(180deg, #0d1f38 0%, var(--navy) 100%);
-    }
-    .hero__logo { width: 90px; margin: 0 auto 20px; display: block; }
-    .hero__eyebrow {
-      font-size: 12px;
-      font-weight: 800;
-      color: var(--gold);
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      margin-bottom: 12px;
-    }
-    .hero__title {
-      font-size: clamp(26px, 7vw, 46px);
-      font-weight: 900;
-      line-height: 1.1;
-      text-transform: uppercase;
-      margin-bottom: 14px;
-    }
-    .hero__title span { color: var(--green); }
-    .hero__sub {
-      font-size: 15px;
-      color: var(--gray);
+    .hero__sub strong { color: #fff; font-weight: 900; }
+
+    /* PRICE CARD */
+    .price-card {
       max-width: 480px;
-      margin: 0 auto 28px;
-      line-height: 1.6;
+      margin: 0 auto;
+      background: linear-gradient(180deg, #102947 0%, #0c1f38 100%);
+      border: 2px solid var(--green);
+      box-shadow: 0 0 0 6px rgba(39,216,64,.06), 0 18px 50px rgba(0,0,0,.35);
+      border-radius: 18px;
+      padding: 20px 17px 16px;
+      position: relative;
+      overflow: hidden;
     }
 
-    /* ── PRICE BLOCK ── */
-    .price-block {
-      background: #0d1f38;
-      border: 2px solid var(--green);
-      border-radius: 16px;
-      padding: 28px 24px;
-      max-width: 440px;
-      margin: 0 auto 28px;
-      text-align: center;
+    .price-card::before {
+      content: '';
+      position: absolute;
+      inset: -80px auto auto -80px;
+      width: 160px;
+      height: 160px;
+      background: radial-gradient(circle, rgba(39,216,64,.2), rgba(39,216,64,0) 65%);
+      pointer-events: none;
     }
-    .price-block__tag {
+
+    .price-card__tag {
       display: inline-block;
       background: var(--red);
       color: #fff;
       font-size: 11px;
       font-weight: 900;
       text-transform: uppercase;
-      padding: 5px 14px;
+      padding: 7px 14px;
       border-radius: 20px;
-      margin-bottom: 16px;
-      letter-spacing: .5px;
+      margin-bottom: 12px;
+      letter-spacing: .45px;
     }
-    .price-block__old {
-      font-size: 14px;
-      color: var(--gray);
-      text-decoration: line-through;
+
+    .price-card__line {
+      color: #d6e4f4;
+      font-size: 13px;
+      font-weight: 800;
       margin-bottom: 4px;
     }
-    .price-block__price {
-      font-size: 64px;
-      font-weight: 900;
+
+    .price-card__old {
+      color: var(--gray);
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+
+    .price-card__old s { color: #91a3b8; }
+
+    .price-card__price {
       color: var(--gold);
-      line-height: 1;
-      margin-bottom: 6px;
+      font-weight: 900;
+      line-height: .95;
+      font-size: clamp(58px, 15vw, 76px);
+      letter-spacing: -2px;
+      margin-bottom: 4px;
+      text-shadow: 0 8px 25px rgba(0,0,0,.25);
     }
-    .price-block__price sup {
-      font-size: 24px;
-      vertical-align: top;
-      margin-top: 12px;
-      display: inline-block;
+
+    .price-card__price sup {
+      font-size: .36em;
+      position: relative;
+      top: -.85em;
+      margin-right: 4px;
+      letter-spacing: 0;
     }
-    .price-block__once {
+
+    .price-card__once {
+      color: #c6d4e5;
       font-size: 13px;
-      color: var(--gray);
-      margin-bottom: 24px;
-      font-weight: 600;
+      font-weight: 800;
+      margin-bottom: 14px;
     }
 
-    /* ── CTA ── */
     .btn-cta {
-      display: block;
-      width: 100%;
-      max-width: 440px;
-      margin: 0 auto;
-      background: var(--green);
-      color: #000;
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 900;
-      font-size: 17px;
-      text-transform: uppercase;
-      letter-spacing: .5px;
-      padding: 20px;
-      border-radius: 8px;
-      border: none;
-      cursor: pointer;
-      text-decoration: none;
-      text-align: center;
-      transition: background .2s, transform .15s;
-      animation: pulse 2s infinite;
-    }
-    .btn-cta:hover { background: var(--green2); transform: translateY(-2px); animation: none; }
-    @keyframes pulse {
-      0%,100% { box-shadow: 0 0 0 0 rgba(46,204,64,.5); }
-      50%      { box-shadow: 0 0 0 14px rgba(46,204,64,0); }
-    }
-    .btn-cta__sub {
-      text-align: center;
-      font-size: 11px;
-      color: var(--gray);
-      margin-top: 10px;
-    }
-
-    /* ── FEATURES ── */
-    .features {
-      padding: 36px 20px;
-      max-width: 500px;
-      margin: 0 auto;
-    }
-    .features h2 {
-      font-size: 18px;
-      font-weight: 900;
-      text-align: center;
-      margin-bottom: 20px;
-      color: #fff;
-    }
-    .feat-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .feat-list li {
       display: flex;
       align-items: center;
-      gap: 12px;
-      font-size: 14px;
-      font-weight: 600;
-      background: #0d1f38;
-      border: 1px solid var(--border);
+      justify-content: center;
+      width: 100%;
+      min-height: 62px;
+      background: linear-gradient(180deg, var(--green) 0%, var(--green2) 100%);
+      color: #000;
+      border: 0;
       border-radius: 10px;
-      padding: 13px 16px;
-    }
-    .feat-list li::before {
-      content: '✔';
-      color: var(--green);
-      font-size: 15px;
+      padding: 16px 14px;
+      font-family: 'Montserrat', Arial, sans-serif;
       font-weight: 900;
-      flex-shrink: 0;
+      font-size: 15px;
+      line-height: 1.25;
+      letter-spacing: .15px;
+      text-align: center;
+      text-decoration: none;
+      text-transform: uppercase;
+      cursor: pointer;
+      box-shadow: 0 12px 28px rgba(39,216,64,.25);
+      animation: pulse 1.8s infinite;
+      transition: transform .15s ease, filter .15s ease;
     }
 
-    /* ── BOOKS ── */
+    .btn-cta:hover {
+      filter: brightness(1.05);
+      transform: translateY(-1px);
+    }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(39,216,64,.42), 0 12px 28px rgba(39,216,64,.23); }
+      50% { box-shadow: 0 0 0 13px rgba(39,216,64,0), 0 12px 28px rgba(39,216,64,.23); }
+    }
+
+    .micro-trust {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .micro-trust div {
+      background: rgba(255,255,255,.055);
+      border: 1px solid rgba(255,255,255,.09);
+      border-radius: 10px;
+      padding: 9px 5px;
+      color: #dce8f7;
+      font-size: 10px;
+      font-weight: 800;
+      line-height: 1.25;
+    }
+
+    .secure-line {
+      color: var(--gray);
+      font-size: 11px;
+      font-weight: 700;
+      margin-top: 10px;
+      line-height: 1.35;
+    }
+
+    /* FAST BENEFITS */
+    .fast-benefits {
+      max-width: 520px;
+      margin: 18px auto 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      padding: 0 2px;
+    }
+
+    .fast-benefits__item {
+      background: rgba(13,31,56,.92);
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      padding: 12px 10px;
+      text-align: left;
+      font-size: 12px;
+      line-height: 1.35;
+      color: #d7e5f5;
+      font-weight: 700;
+    }
+
+    .fast-benefits__item strong {
+      display: block;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 900;
+      margin-bottom: 3px;
+    }
+
+    /* BOOKS */
     .books {
-      background: #0d1f38;
-      padding: 28px 20px 32px;
+      max-width: 560px;
+      margin: 12px auto 0;
+      padding: 20px 16px 8px;
       text-align: center;
     }
+
     .books h2 {
-      font-size: 15px;
+      font-size: 13px;
       font-weight: 900;
-      color: #6ab0f5;
-      margin-bottom: 18px;
+      color: #77b8ff;
+      margin-bottom: 13px;
       text-transform: uppercase;
-      letter-spacing: 1.5px;
+      letter-spacing: 1.2px;
     }
+
     .books__grid {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
       gap: 8px;
-      max-width: 500px;
+      max-width: 470px;
       margin: 0 auto;
     }
-    @media (max-width: 380px) { .books__grid { grid-template-columns: repeat(4, 1fr); } }
+
     .books__grid img {
       width: 100%;
       aspect-ratio: 2/3;
       object-fit: cover;
-      border-radius: 6px;
-      box-shadow: 0 4px 14px rgba(0,0,0,.6);
-      transition: transform .2s;
-    }
-    .books__grid img:hover { transform: scale(1.05); }
-
-    /* ── GARANTIA ── */
-    .garantia {
+      border-radius: 7px;
+      box-shadow: 0 8px 22px rgba(0,0,0,.48);
       background: #0d1f38;
-      border-top: 1px solid var(--border);
-      padding: 28px 20px;
+    }
+
+    .books__caption {
+      color: var(--gray);
+      font-size: 11px;
+      font-weight: 700;
+      line-height: 1.45;
+      margin: 12px auto 0;
+      max-width: 440px;
+    }
+
+    /* RECEIVE */
+    .receive {
+      max-width: 540px;
+      margin: 0 auto;
+      padding: 22px 16px 8px;
+    }
+
+    .receive h2 {
+      font-size: 18px;
+      font-weight: 900;
       text-align: center;
+      margin-bottom: 14px;
+    }
+
+    .receive-list {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+    }
+
+    .receive-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      background: #0d1f38;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 13px 14px;
+      font-size: 13px;
+      line-height: 1.38;
+      font-weight: 750;
+      color: #edf5ff;
+    }
+
+    .receive-list li::before {
+      content: '✓';
+      flex: 0 0 auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+      margin-top: -1px;
+      border-radius: 50%;
+      background: rgba(39,216,64,.13);
+      color: var(--green);
+      font-weight: 900;
+    }
+
+    /* GUARANTEE */
+    .guarantee {
+      margin-top: 20px;
+      padding: 24px 16px;
+      background: #0c1f38;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .guarantee__inner {
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .guarantee__badge {
+      width: 76px;
+      height: 76px;
+      margin: 0 auto 12px;
+      border-radius: 50%;
+      border: 3px solid var(--green);
+      background: #07101d;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 12px;
+      justify-content: center;
+      box-shadow: 0 0 28px rgba(39,216,64,.14);
     }
-    .garantia__badge {
-      width: 72px; height: 72px;
-      border-radius: 50%;
-      border: 3px solid var(--green);
-      background: #0a1525;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-    }
-    .garantia__badge .num  { font-size: 24px; font-weight: 900; color: var(--green); line-height: 1; }
-    .garantia__badge .dias { font-size: 8px; font-weight: 800; text-transform: uppercase; }
-    .garantia h3 { font-size: 15px; font-weight: 900; }
-    .garantia p  { font-size: 12px; color: var(--gray); max-width: 380px; line-height: 1.6; }
 
-    /* ── FOOTER ── */
+    .guarantee__badge .num {
+      font-size: 25px;
+      color: var(--green);
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .guarantee__badge .txt {
+      font-size: 8px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .4px;
+    }
+
+    .guarantee h3 {
+      font-size: 16px;
+      font-weight: 900;
+      margin-bottom: 7px;
+    }
+
+    .guarantee p {
+      color: var(--gray);
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1.55;
+    }
+
+    .final-cta {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 22px 16px 32px;
+      text-align: center;
+    }
+
+    .final-cta p {
+      color: #c6d4e5;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      line-height: 1.45;
+    }
+
     footer {
-      background: #060e18;
-      padding: 20px;
+      background: #050b13;
+      padding: 22px 16px 26px;
       text-align: center;
       font-size: 11px;
       color: var(--gray);
       line-height: 1.8;
     }
+
+    footer strong {
+      display: block;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      margin-bottom: 6px;
+    }
+
     footer a { color: var(--gray); text-decoration: underline; }
 
-    /* ── SOCIAL PROOF POPUP ── */
-    .sp-popup {
-      position: fixed; bottom: 20px; left: 16px; z-index: 9999;
-      background: #fff; border-radius: 12px;
-      box-shadow: 0 6px 32px rgba(0,0,0,.22);
-      display: flex; align-items: center; gap: 10px;
-      padding: 12px 16px 12px 12px;
-      max-width: 300px; width: calc(100vw - 32px);
-      border-left: 4px solid var(--red);
-      transform: translateX(-120%); opacity: 0;
-      transition: transform .45s cubic-bezier(.34,1.56,.64,1), opacity .35s ease;
+    /* STICKY MOBILE CTA */
+    .sticky-cta {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 998;
+      padding: 10px 12px 12px;
+      background: rgba(5,10,18,.94);
+      border-top: 1px solid rgba(255,255,255,.08);
+      backdrop-filter: blur(10px);
+    }
+
+    .sticky-cta__inner {
+      max-width: 500px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 92px 1fr;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .sticky-price {
+      text-align: center;
+      color: var(--gold);
+      font-weight: 900;
+      line-height: 1;
+      font-size: 22px;
+    }
+
+    .sticky-price span {
+      display: block;
+      color: var(--gray);
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: .4px;
+      margin-bottom: 3px;
+    }
+
+    .sticky-cta .btn-cta {
+      min-height: 50px;
+      font-size: 12px;
+      padding: 12px 10px;
+      border-radius: 9px;
+      animation: none;
+    }
+
+    /* NON-DECEPTIVE NOTIFICATION */
+    .notice-popup {
+      position: fixed;
+      left: 12px;
+      bottom: 94px;
+      z-index: 997;
+      width: min(330px, calc(100vw - 24px));
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      background: #fff;
+      color: #10151d;
+      border-left: 5px solid var(--green);
+      border-radius: 13px;
+      box-shadow: 0 18px 45px rgba(0,0,0,.25);
+      padding: 12px 34px 12px 12px;
+      transform: translateX(-115%);
+      opacity: 0;
+      transition: transform .35s ease, opacity .35s ease;
       pointer-events: none;
     }
-    .sp-popup.show { transform: translateX(0); opacity: 1; pointer-events: auto; }
-    .sp-popup__icon { font-size: 28px; flex-shrink: 0; }
-    .sp-popup__name { font-size: 12px; font-weight: 800; color: #111; }
-    .sp-popup__product { font-size: 11px; font-weight: 700; color: #c8950a; }
-    .sp-popup__time { font-size: 10px; color: #888; }
-    .sp-popup__close { position: absolute; top: 6px; right: 8px; font-size: 13px; color: #aaa; cursor: pointer; background: none; border: none; }
+
+    .notice-popup.show {
+      transform: translateX(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .notice-popup__icon { font-size: 25px; }
+
+    .notice-popup strong {
+      display: block;
+      color: #10151d;
+      font-size: 12px;
+      font-weight: 900;
+      margin-bottom: 2px;
+    }
+
+    .notice-popup span {
+      display: block;
+      color: #56616f;
+      font-size: 11px;
+      font-weight: 700;
+      line-height: 1.35;
+    }
+
+    .notice-popup button {
+      position: absolute;
+      top: 7px;
+      right: 9px;
+      border: 0;
+      background: none;
+      color: #8c96a3;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    @media (min-width: 700px) {
+      body { padding-bottom: 0; }
+      .sticky-cta { display: none; }
+      .hero { padding-top: 34px; }
+      .price-card { padding: 24px 24px 18px; }
+      .receive-list { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 420px) {
+      .cd-bar__timer { font-size: 24px; }
+      .cd-bar__timer span { min-width: 48px; padding: 5px 8px; }
+      .hero { padding-left: 13px; padding-right: 13px; }
+      .hero__sub { font-size: 14px; }
+      .price-card { border-radius: 16px; padding-left: 14px; padding-right: 14px; }
+      .micro-trust { grid-template-columns: 1fr; }
+      .fast-benefits { grid-template-columns: 1fr; }
+      .books__grid { grid-template-columns: repeat(5, 1fr); gap: 6px; }
+      .sticky-cta__inner { grid-template-columns: 78px 1fr; }
+      .sticky-price { font-size: 20px; }
+    }
   </style>
 </head>
+
 <body>
+  <div class="page">
+    <!-- COUNTDOWN -->
+    <div class="cd-bar" role="status" aria-live="polite">
+      <div class="cd-bar__text">⚠️ Espere: desconto de saída liberado</div>
+      <div class="cd-bar__timer" aria-label="Tempo restante da oferta">
+        <span id="cd-min">07</span>:<span id="cd-sec">00</span>
+      </div>
+      <div class="cd-bar__sub" id="cd-sub">Depois disso, essa condição pode voltar ao valor normal.</div>
+    </div>
 
-<!-- ── COUNTDOWN BAR (sticky) ── -->
-<div class="cd-bar">
-  <div class="cd-bar__text">🔥 Oferta exclusiva — expira em:</div>
-  <div class="cd-bar__timer">
-    <span id="cd-min">10</span>:<span id="cd-sec">00</span>
+    <!-- HERO + PRICE ABOVE THE FOLD -->
+    <main class="hero">
+      <div class="hero__inner">
+        <div class="brand" aria-label="LV Books">
+          <img src="upcell/logo.png" alt="LV Books" />
+          <span>LV Books</span>
+        </div>
+
+        <div class="save-badge">🔥 Oferta especial aplicada</div>
+
+        <h1>Antes de sair, leve tudo por <span class="green">R$ 7,90</span></h1>
+
+        <p class="hero__sub">
+          Acesso completo à biblioteca digital com <strong>mais de 3.000 livros + audiobooks</strong> para ler e ouvir direto pelo celular.
+        </p>
+
+        <section class="price-card" aria-label="Oferta especial LV Books">
+          <span class="price-card__tag">Desconto máximo nesta página</span>
+          <div class="price-card__line">Seu acesso completo fica por apenas:</div>
+          <div class="price-card__old">De <s>R$ 17,90</s></div>
+          <div class="price-card__price"><sup>R$</sup>7,90</div>
+          <div class="price-card__once">Pagamento único · Sem mensalidade · Acesso imediato</div>
+
+          <a href="https://pay.kirvano.com/a7a5c8b8-0846-4616-9a58-160473e70ec6" class="btn-cta" data-checkout>
+            Sim, liberar meu acesso por R$ 7,90 →
+          </a>
+
+          <div class="micro-trust" aria-label="Informações de confiança">
+            <div>🔒 Pagamento seguro</div>
+            <div>⚡ Acesso imediato</div>
+            <div>🛡️ Garantia 7 dias</div>
+          </div>
+
+          <p class="secure-line">Você paga uma vez e recebe o acesso digital logo após a confirmação do pagamento.</p>
+        </section>
+
+        <section class="fast-benefits" aria-label="Principais benefícios">
+          <div class="fast-benefits__item"><strong>+3.000 livros</strong>Biblioteca digital direto no celular.</div>
+          <div class="fast-benefits__item"><strong>Audiobooks</strong>Ouça enquanto dirige, treina ou trabalha.</div>
+          <div class="fast-benefits__item"><strong>Sem mensalidade</strong>Pagamento único nesta oferta.</div>
+          <div class="fast-benefits__item"><strong>7 dias de garantia</strong>Teste sem risco.</div>
+        </section>
+      </div>
+    </main>
+
+    <!-- BOOKS AFTER OFFER -->
+    <section class="books">
+      <h2>Alguns títulos da coleção</h2>
+      <div class="books__grid">
+        <img src="audio%20book/l2.png"  alt="Livro da coleção LV Books" loading="lazy" />
+        <img src="audio%20book/l3.png"  alt="Livro da coleção LV Books" loading="lazy" />
+        <img src="audio%20book/l7.png"  alt="Livro da coleção LV Books" loading="lazy" />
+        <img src="audio%20book/l4.png"  alt="Livro da coleção LV Books" loading="lazy" />
+        <img src="audio%20book/l8.png"  alt="Livro da coleção LV Books" loading="lazy" />
+        <img src="audio%20book/l11.jpg" alt="Livro da coleção LV Books" loading="lazy" />
+        <img src="audio%20book/l13.jpg" alt="Livro da coleção LV Books" loading="lazy" />
+        <img src="audio%20book/l10.jpg" alt="Livro da coleção LV Books" loading="lazy" />
+        <img src="audio%20book/l6.jpg"  alt="Livro da coleção LV Books" loading="lazy" />
+        <img src="audio%20book/l1.png"  alt="Livro da coleção LV Books" loading="lazy" />
+      </div>
+      <p class="books__caption">Conteúdos de desenvolvimento pessoal, finanças, negócios, clássicos e audiobooks selecionados.</p>
+    </section>
+
+    <!-- RECEIVE -->
+    <section class="receive">
+      <h2>O que você recebe agora</h2>
+      <ul class="receive-list">
+        <li>Mais de 3.000 livros digitais na palma da mão.</li>
+        <li>Audiobooks para ouvir direto pelo celular.</li>
+        <li>Acesso imediato após a confirmação do pagamento.</li>
+        <li>Funciona no celular, tablet ou computador.</li>
+        <li>Pagamento único, sem assinatura mensal.</li>
+        <li>Garantia incondicional de 7 dias.</li>
+      </ul>
+    </section>
+
+    <!-- GUARANTEE -->
+    <section class="guarantee">
+      <div class="guarantee__inner">
+        <div class="guarantee__badge" aria-hidden="true">
+          <span class="num">7</span>
+          <span class="txt">dias</span>
+        </div>
+        <h3>Garantia incondicional de 7 dias</h3>
+        <p>Você pode acessar, testar e decidir com calma. Se não gostar, pode solicitar reembolso dentro do prazo de garantia.</p>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="final-cta">
+      <p>Essa é a menor condição desta página. Toque no botão abaixo para garantir o acesso por R$ 7,90.</p>
+      <a href="https://pay.kirvano.com/a7a5c8b8-0846-4616-9a58-160473e70ec6" class="btn-cta" data-checkout>
+        Garantir meu acesso por R$ 7,90 →
+      </a>
+      <p class="secure-line">🔒 Pagamento seguro · Acesso imediato · Garantia de 7 dias</p>
+    </section>
+
+    <footer>
+      <strong>LV BOOKS</strong>
+      <p>© 2026 LV Books · Todos os direitos reservados</p>
+      <p><a href="#">Termos de Uso</a> &nbsp;|&nbsp; <a href="#">Política de Privacidade</a></p>
+    </footer>
   </div>
-  <div class="cd-bar__sub">Após esse tempo o preço volta ao normal</div>
-</div>
 
-<!-- ── BOOKS PREVIEW ── -->
-<section class="books">
-  <h2>Alguns títulos inclusos</h2>
-  <div class="books__grid">
-    <img src="audio%20book/l2.png"  alt="" />
-    <img src="audio%20book/l3.png"  alt="" />
-    <img src="audio%20book/l7.png"  alt="" />
-    <img src="audio%20book/l4.png"  alt="" />
-    <img src="audio%20book/l8.png"  alt="" />
-    <img src="audio%20book/l11.jpg" alt="" />
-    <img src="audio%20book/l13.jpg" alt="" />
-    <img src="audio%20book/l10.jpg" alt="" />
-    <img src="audio%20book/l6.jpg"  alt="" />
-    <img src="audio%20book/l1.png"  alt="" />
+  <!-- Sticky mobile CTA -->
+  <div class="sticky-cta" aria-label="Botão fixo para checkout">
+    <div class="sticky-cta__inner">
+      <div class="sticky-price"><span>Hoje</span>R$ 7,90</div>
+      <a href="https://pay.kirvano.com/a7a5c8b8-0846-4616-9a58-160473e70ec6" class="btn-cta" data-checkout>
+        Liberar acesso agora →
+      </a>
+    </div>
   </div>
-</section>
 
-<!-- ── HERO ── -->
-<section class="hero">
-  <img src="upcell/logo.png" alt="LV Books" class="hero__logo" />
-  <p class="hero__eyebrow">⚡ Oferta especial — apenas hoje</p>
-  <h1 class="hero__title">+3 mil livros<br>por <span>R$ 7,90</span></h1>
-  <p class="hero__sub">Tudo que está na coleção principal — audiobooks, best-sellers e clássicos — por menos do que um café.</p>
-</section>
-
-<!-- ── PRICE + CTA ── -->
-<div style="padding: 0 20px 8px;">
-  <div class="price-block">
-    <span class="price-block__tag">🔥 Desconto máximo aplicado</span>
-    <div class="price-block__old">De R$ 17,90</div>
-    <div class="price-block__price"><sup>R$</sup> 7,90</div>
-    <div class="price-block__once">Pagamento único · Acesso vitalício</div>
-    <a href="https://pay.kirvano.com/a7a5c8b8-0846-4616-9a58-160473e70ec6" class="btn-cta">
-      🎧 QUERO MEUS LIVROS POR R$ 7,90 →
-    </a>
-    <p class="btn-cta__sub">🔒 Pagamento 100% seguro · Garantia de 7 dias</p>
+  <!-- Notification sem falsa compra -->
+  <div class="notice-popup" id="notice-popup">
+    <div class="notice-popup__icon">✅</div>
+    <div>
+      <strong>Desconto aplicado nesta página</strong>
+      <span>O acesso completo está liberado por R$ 7,90 por tempo limitado.</span>
+    </div>
+    <button type="button" aria-label="Fechar aviso" onclick="this.closest('.notice-popup').classList.remove('show')">×</button>
   </div>
-</div>
 
-<!-- ── FEATURES ── -->
-<section class="features">
-  <h2>O que você recebe</h2>
-  <ul class="feat-list">
-    <li>Mais de 3.000 livros na palma da mão</li>
-    <li>Audiobooks dos maiores best-sellers do mundo</li>
-    <li>Acesso imediato após o pagamento</li>
-    <li>Leia no celular, tablet ou computador</li>
-    <li>Novos títulos adicionados todo mês</li>
-    <li>Suporte por WhatsApp</li>
-    <li>Garantia incondicional de 7 dias</li>
-  </ul>
-</section>
+  <script>
+    /* Countdown de 7 minutos, persistente apenas na sessão */
+    (function(){
+      var key = 'lvbooks_back_offer_end';
+      var end = sessionStorage.getItem(key);
 
-<!-- ── CTA FINAL ── -->
-<div style="padding: 0 20px 36px; text-align:center;">
-  <a href="https://pay.kirvano.com/a7a5c8b8-0846-4616-9a58-160473e70ec6" class="btn-cta">
-    🎧 GARANTIR MEUS LIVROS POR R$ 7,90 →
-  </a>
-  <p class="btn-cta__sub" style="margin-top:12px;">🔒 Pagamento 100% seguro · Garantia de 7 dias</p>
-</div>
-
-<!-- ── GARANTIA ── -->
-<div class="garantia">
-  <div class="garantia__badge">
-    <span class="num">7</span>
-    <span class="dias">dias</span>
-  </div>
-  <h3>Garantia Incondicional de 7 dias</h3>
-  <p>Se não gostar por qualquer motivo, devolvemos 100% do seu dinheiro. Sem perguntas.</p>
-</div>
-
-<!-- ── FOOTER ── -->
-<footer>
-  <p style="font-weight:900;color:#fff;font-size:13px;letter-spacing:2px;margin-bottom:6px;">LV BOOKS</p>
-  <p>© 2026 LV Books · Todos os direitos reservados</p>
-  <p style="margin-top:4px;">
-    <a href="#">Termos de Uso</a> &nbsp;|&nbsp;
-    <a href="#">Política de Privacidade</a>
-  </p>
-</footer>
-
-<!-- Social proof popup -->
-<div class="sp-popup" id="sp-popup-oferta">
-  <div class="sp-popup__icon">📚</div>
-  <div style="display:flex;flex-direction:column;gap:2px;">
-    <div class="sp-popup__name"  id="sp-name-oferta"></div>
-    <div class="sp-popup__product">Coleção LV Books – R$ 7,90</div>
-    <div class="sp-popup__time"  id="sp-time-oferta"></div>
-  </div>
-  <button class="sp-popup__close" onclick="this.closest('.sp-popup').classList.remove('show')">✕</button>
-</div>
-
-<script>
-  /* ── COUNTDOWN 10 min (persiste na sessão) ── */
-  (function(){
-    var key = 'ofertaEnd';
-    var end = sessionStorage.getItem(key);
-    if(!end){ end = Date.now() + 10*60*1000; sessionStorage.setItem(key, end); }
-    else end = parseInt(end);
-    var elM = document.getElementById('cd-min');
-    var elS = document.getElementById('cd-sec');
-    function tick(){
-      var diff = Math.max(0, Math.floor((end - Date.now())/1000));
-      var m = Math.floor(diff/60), s = diff%60;
-      elM.textContent = m < 10 ? '0'+m : m;
-      elS.textContent = s < 10 ? '0'+s : s;
-      if(diff > 0) setTimeout(tick, 1000);
-      else {
-        elM.textContent='00'; elS.textContent='00';
-        document.querySelector('.cd-bar__sub').textContent='⚠️ Oferta encerrada — preço pode ter aumentado';
+      if (!end || Number(end) < Date.now()) {
+        end = Date.now() + 7 * 60 * 1000;
+        sessionStorage.setItem(key, String(end));
+      } else {
+        end = Number(end);
       }
-    }
-    tick();
-  })();
 
-  /* ── SOCIAL PROOF ── */
-  var names=['Carlos M.','Larissa D.','Fernanda L.','Rafael S.','Juliana C.',
-             'Bruno A.','Camila F.','Diego M.','Patrícia R.','Thiago N.',
-             'Aline B.','Marcos O.','Renata G.','Leonardo P.','Vanessa C.'];
-  var used=[], popup=document.getElementById('sp-popup-oferta'),
-      nameEl=document.getElementById('sp-name-oferta'),
-      timeEl=document.getElementById('sp-time-oferta'),
-      hideT, nextT;
+      var elM = document.getElementById('cd-min');
+      var elS = document.getElementById('cd-sec');
+      var elSub = document.getElementById('cd-sub');
 
-  function pad(n){ return n<10?'0'+n:n; }
-  function pick(){
-    if(used.length===names.length) used=[];
-    var pool=names.filter(function(n){return used.indexOf(n)===-1;});
-    var p=pool[Math.floor(Math.random()*pool.length)]; used.push(p); return p;
-  }
-  function showSP(){
-    var now=new Date(), off=Math.floor(Math.random()*4), min=now.getMinutes()-off;
-    if(min<0)min+=60;
-    nameEl.textContent=pick()+' comprou';
-    timeEl.textContent=pad(now.getDate())+'/'+pad(now.getMonth()+1)+'/'+now.getFullYear()+' - '+pad(now.getHours())+':'+pad(min);
-    popup.classList.add('show');
-    clearTimeout(hideT); hideT=setTimeout(function(){ popup.classList.remove('show'); },5000);
-    clearTimeout(nextT); nextT=setTimeout(showSP,(18+Math.floor(Math.random()*20))*1000);
-  }
-  setTimeout(showSP,(4+Math.floor(Math.random()*4))*1000);
-</script>
+      function tick(){
+        var diff = Math.max(0, Math.floor((end - Date.now()) / 1000));
+        var m = Math.floor(diff / 60);
+        var s = diff % 60;
+
+        elM.textContent = m < 10 ? '0' + m : String(m);
+        elS.textContent = s < 10 ? '0' + s : String(s);
+
+        if (diff <= 60 && diff > 0) {
+          elSub.textContent = 'Últimos segundos para manter o valor especial.';
+        }
+
+        if (diff > 0) {
+          window.setTimeout(tick, 1000);
+        } else {
+          elSub.textContent = 'Oferta especial encerrada nesta sessão.';
+        }
+      }
+
+      tick();
+    })();
+
+    /* Preserva UTMs e identifica clique da página de back redirect */
+    (function(){
+      var checkoutBase = 'https://pay.kirvano.com/a7a5c8b8-0846-4616-9a58-160473e70ec6';
+
+      function getCheckoutUrl(){
+        var url = new URL(checkoutBase);
+        var currentParams = new URLSearchParams(window.location.search);
+
+        currentParams.forEach(function(value, key){
+          if (!url.searchParams.has(key)) url.searchParams.set(key, value);
+        });
+
+        if (!url.searchParams.has('src')) url.searchParams.set('src', 'back_redirect_790');
+        if (!url.searchParams.has('utm_content')) url.searchParams.set('utm_content', 'back_redirect_790');
+
+        return url.toString();
+      }
+
+      var checkoutUrl = getCheckoutUrl();
+      document.querySelectorAll('[data-checkout]').forEach(function(link){
+        link.href = checkoutUrl;
+        link.addEventListener('click', function(){
+          try {
+            if (typeof fbq === 'function') {
+              fbq('trackCustom', 'BackRedirectCheckoutClick', {
+                value: 7.90,
+                currency: 'BRL',
+                offer: 'lvbooks_back_redirect_790'
+              });
+            }
+          } catch(e) {}
+        });
+      });
+    })();
+
+    /* Aviso visual sem simular venda falsa */
+    (function(){
+      var popup = document.getElementById('notice-popup');
+      if (!popup) return;
+
+      setTimeout(function(){
+        popup.classList.add('show');
+      }, 4500);
+
+      setTimeout(function(){
+        popup.classList.remove('show');
+      }, 10500);
+    })();
+  </script>
 </body>
 </html>
