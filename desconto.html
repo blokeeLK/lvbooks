@@ -4,6 +4,31 @@
 <head>
 	<meta charset="UTF-8">
 	<script>if(location.hostname==='lvbooks.onrender.com'){location.replace('https://lvbooks.com.br'+location.pathname+location.search+location.hash);}</script>
+	<script>
+	(function () {
+		var path = window.location.pathname.replace(/\/+$/, '');
+
+		// Executar somente na página /desconto
+		if (path !== '/desconto' && path !== '/desconto.html') return;
+
+		var targetBase = 'https://lvbooks.com.br/oferta';
+
+		function buildTargetUrl() {
+			var currentParams = window.location.search || '';
+			return targetBase + currentParams;
+		}
+
+		try {
+			history.pushState({ backRedirectDesconto: true }, '', window.location.href);
+
+			window.addEventListener('popstate', function () {
+				window.location.replace(buildTargetUrl());
+			});
+		} catch (e) {
+			console.error('Erro no back redirect da página /desconto:', e);
+		}
+	})();
+	</script>
 		<title>LV Books | Biblioteca Digital &#8211; Biblioteca digital com audiobooks e eBooks para ouvir e ler no celular.</title>
 <style id='wp-img-auto-sizes-contain-inline-css'>
 img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
