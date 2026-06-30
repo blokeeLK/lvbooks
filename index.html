@@ -1284,16 +1284,6 @@ src="https://www.facebook.com/tr?id=868077232260294&ev=PageView&noscript=1"
       if (merged[k] && !url.searchParams.get(k)) url.searchParams.set(k, merged[k]);
     });
 
-    // Dispara CTA_Click uma única vez por clique, sem bloquear o redirecionamento
-    if (typeof fbq === 'function' && value) {
-      var offer = value === 17.90 ? 'premium_17_90' : 'principal_10';
-      fbq('trackCustom', 'CTA_Click', {
-        content_name: 'LV Books',
-        offer: offer,
-        value: value,
-        currency: 'BRL'
-      });
-    }
 
     window.location.href = url.toString();
   };
