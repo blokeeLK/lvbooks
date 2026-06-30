@@ -103,8 +103,54 @@ n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
+
 fbq('init', '868077232260294');
+
+(function(){
+  if (window.__lvMetaPixelGuardInstalled) return;
+  window.__lvMetaPixelGuardInstalled = true;
+  window.__lvMetaPixelEventsSent = window.__lvMetaPixelEventsSent || {};
+  var originalFbq = window.fbq;
+
+  if (typeof originalFbq !== 'function') return;
+
+  function guardedFbq(){
+    try {
+      var command = arguments[0];
+      var eventName = command === 'trackSingle' ? arguments[2] : arguments[1];
+
+      if ((command === 'track' || command === 'trackSingle') && (eventName === 'PageView' || eventName === 'ViewContent')) {
+        if (window.__lvMetaPixelEventsSent[eventName]) {
+          return;
+        }
+        window.__lvMetaPixelEventsSent[eventName] = true;
+      }
+    } catch(e){}
+
+    if (guardedFbq.callMethod) {
+      return guardedFbq.callMethod.apply(guardedFbq, arguments);
+    }
+
+    return originalFbq.apply(originalFbq, arguments);
+  }
+
+  for (var key in originalFbq) {
+    try {
+      guardedFbq[key] = originalFbq[key];
+    } catch(e){}
+  }
+
+  window.fbq = guardedFbq;
+  window._fbq = guardedFbq;
+})();
+
 fbq('track', 'PageView');
+fbq('track', 'ViewContent', {
+  content_name: 'LV Books',
+  content_category: 'Audiobooks e eBooks',
+  value: 10.00,
+  currency: 'BRL'
+});
 </script>
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=868077232260294&ev=PageView&noscript=1"
@@ -1289,34 +1335,6 @@ src="https://www.facebook.com/tr?id=868077232260294&ev=PageView&noscript=1"
   };
 })();
 </script>
-
-
-<!-- LV Books — ViewContent com fallback seguro (dispara apenas uma vez por carregamento) -->
-<script>
-(function(){
-  var attempts = 0;
-  var maxAttempts = 20;
-  function tryViewContent(){
-    if (window.__lvViewContentSent) return;
-    if (typeof fbq === 'function') {
-      window.__lvViewContentSent = true;
-      fbq('track', 'ViewContent', {
-        content_name: 'LV Books',
-        content_category: 'Audiobooks e eBooks',
-        value: 10.00,
-        currency: 'BRL'
-      });
-      return;
-    }
-    attempts++;
-    if (attempts < maxAttempts) {
-      setTimeout(tryViewContent, 300);
-    }
-  }
-  tryViewContent();
-})();
-</script>
-
 <!-- ✅ Notificação de Compra (sem duplicar HTML) -->
 <script>
    const productName = "250 audiobooks Pacote Premium+";
