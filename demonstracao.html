@@ -501,11 +501,16 @@ body::before{
 }
 
 .chips{
+  position:relative;
+  overflow:hidden;
+  padding:2px 2px 12px;
+}
+
+.chips-track{
   display:flex;
   gap:8px;
-  overflow-x:auto;
-  padding:2px 2px 12px;
-  scrollbar-width:none;
+  width:max-content;
+  will-change:transform;
 }
 
 .chips::-webkit-scrollbar{display:none}
@@ -787,6 +792,20 @@ body::before{
   font-weight:900;
 }
 
+.proof-cta{
+  width:100%;
+  text-align:center;
+  color:#07111f;
+  background:linear-gradient(90deg,#ffcc66,#ff8a2a);
+  border-radius:999px;
+  padding:12px 16px;
+  font-size:13px;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.3px;
+  box-shadow:0 14px 30px rgba(255,138,42,.25);
+}
+
 @media(max-width:380px){
   .hero h1{font-size:27px}
   .stats{gap:6px}
@@ -820,8 +839,8 @@ body::before{
   <section class="hero" aria-label="Demonstração da biblioteca">
     <div class="hero-content">
       <div class="hero-kicker"><i></i> Demonstração real no celular</div>
-      <h1>Ouça e leia <span>direto do seu celular</span></h1>
-      <p>Uma vitrine visual para mostrar valor rápido no criativo: capas famosas, player em destaque, categorias e sensação de aplicativo premium.</p>
+      <h1>Melhor que ler é ouvir <span>e aprender em qualquer lugar</span></h1>
+      <p>Transforme minutos livres em conhecimento: ouça os maiores livros do mundo no celular, sem complicação, com acesso imediato e pagamento único.</p>
 
       <div class="stats" aria-label="Resumo da biblioteca">
         <div class="stat"><strong>250+</strong><span>Audiobooks para ouvir</span></div>
@@ -836,11 +855,11 @@ body::before{
           <img class="stack-cover" src="paginas/download (4).jpg" alt=""/>
         </div>
         <div class="hero-note">
-          <b>Formato ideal para gravar criativo</b>
-          <small>Abra a página no telefone, grave passando pelas capas e toque em alguns livros para o player mudar na tela.</small>
+          <b>Aprenda enquanto dirige, trabalha ou treina</b>
+          <small>Tenha uma biblioteca completa na palma da mão e escute os livros mais procurados do mundo no seu ritmo, onde e quando quiser.</small>
           <div class="tap-demo">
             <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-            toque em qualquer capa
+            toque e descubra
           </div>
         </div>
       </div>
@@ -855,7 +874,7 @@ body::before{
     <div class="player-info">
       <div class="player-status">tocando agora <em>áudio</em></div>
       <div id="playerTitle">As Armas da Persuasão</div>
-      <div class="player-sub">Player visual • acesso imediato • direto pelo navegador</div>
+      <div class="player-sub">Ouça onde quiser • acesso imediato • sem complicação</div>
       <div class="progress"><span></span></div>
     </div>
   </section>
@@ -863,19 +882,34 @@ body::before{
   <div class="section-head">
     <div>
       <h2>Escolha por interesse</h2>
-      <p>Mostra organização, variedade e valor percebido.</p>
+      <p>Passe pelas categorias e mostre variedade de forma dinâmica.</p>
     </div>
     <div class="counter">+3 mil itens</div>
   </div>
 
-  <nav class="chips" aria-label="Categorias">
-    <span class="chip hot">Mais procurados</span>
-    <span class="chip">Finanças</span>
-    <span class="chip">Mentalidade</span>
-    <span class="chip">Hábitos</span>
-    <span class="chip">Persuasão</span>
-    <span class="chip">Produtividade</span>
-    <span class="chip">Autoconhecimento</span>
+  <nav class="chips" id="interestChips" aria-label="Categorias">
+    <div class="chips-track" id="chipsTrack">
+      <span class="chip hot">Mais procurados</span>
+      <span class="chip">Finanças</span>
+      <span class="chip">Mentalidade</span>
+      <span class="chip">Hábitos</span>
+      <span class="chip">Persuasão</span>
+      <span class="chip">Produtividade</span>
+      <span class="chip">Autoconhecimento</span>
+      <span class="chip">Negócios</span>
+      <span class="chip">Psicologia</span>
+      <span class="chip">Alta performance</span>
+      <span class="chip hot">Mais procurados</span>
+      <span class="chip">Finanças</span>
+      <span class="chip">Mentalidade</span>
+      <span class="chip">Hábitos</span>
+      <span class="chip">Persuasão</span>
+      <span class="chip">Produtividade</span>
+      <span class="chip">Autoconhecimento</span>
+      <span class="chip">Negócios</span>
+      <span class="chip">Psicologia</span>
+      <span class="chip">Alta performance</span>
+    </div>
   </nav>
 
   <section class="marquee-wrap" aria-label="Capas em destaque">
@@ -893,15 +927,8 @@ body::before{
   <main class="book-grid" id="grid"></main>
 </div>
 
-<div class="floating-proof" aria-label="Resumo da oferta">
-  <div class="proof-left">
-    <div class="proof-icon">✓</div>
-    <div class="proof-text">
-      <strong>Biblioteca liberada no celular</strong>
-      <span>Audiobooks + eBooks bônus em um só acesso</span>
-    </div>
-  </div>
-  <div class="proof-price">R$10</div>
+<div class="floating-proof" aria-label="Chamada para ação">
+  <div class="proof-cta">Clique em pedir agora!</div>
 </div>
 
 <script>
@@ -967,6 +994,8 @@ var grid = document.getElementById('grid');
 var playerCover = document.getElementById('playerCover');
 var playerTitle = document.getElementById('playerTitle');
 var marquee = document.getElementById('marquee');
+var chipsWrap = document.getElementById('interestChips');
+var chipsTrack = document.getElementById('chipsTrack');
 var html = '';
 
 function esc(str){
@@ -1020,6 +1049,19 @@ setInterval(function(){
   autoIndex += 3;
   setActive(autoIndex,false);
 },2600);
+
+var chipOffset = 0;
+function animateChips(){
+  if(!chipsWrap || !chipsTrack) return;
+  chipOffset += 0.35;
+  var loopWidth = chipsTrack.scrollWidth / 2;
+  if(chipOffset >= loopWidth){
+    chipOffset = 0;
+  }
+  chipsTrack.style.transform = 'translateX(' + (-chipOffset) + 'px)';
+  requestAnimationFrame(animateChips);
+}
+animateChips();
 </script>
 
 </body>
