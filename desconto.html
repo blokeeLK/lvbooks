@@ -50,11 +50,19 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 fbq('init', '868077232260294');
 fbq('track', 'PageView');
 </script>
-<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=868077232260294&ev=PageView&noscript=1" /></noscript>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=868077232260294&ev=PageView&noscript=1"
+/></noscript>
 <!-- End Meta Pixel Code -->
 
-<!-- Utmify -->
-<script src="https://cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-xcod-sck data-utmify-prevent-subids async defer></script>
+<script>
+  window.pixelId = "6a0f98242c6f2d83c981ade4";
+  var a = document.createElement("script");
+  a.setAttribute("async", "");
+  a.setAttribute("defer", "");
+  a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+  document.head.appendChild(a);
+</script>
 
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -484,28 +492,5 @@ if('IntersectionObserver' in window){
 })();
 </script>
 
-<!-- LV Books — ViewContent com fallback seguro -->
-<script>
-(function(){
-  var attempts = 0;
-  var maxAttempts = 20;
-  function tryViewContent(){
-    if (window.__lvViewContentSent) return;
-    if (typeof fbq === 'function') {
-      window.__lvViewContentSent = true;
-      fbq('track', 'ViewContent', {
-        content_name: 'LV Books',
-        content_category: 'Audiobooks e eBooks',
-        value: 10.00,
-        currency: 'BRL'
-      });
-      return;
-    }
-    attempts++;
-    if (attempts < maxAttempts) setTimeout(tryViewContent, 300);
-  }
-  tryViewContent();
-})();
-</script>
 </body>
 </html>
