@@ -94,7 +94,7 @@ body::before{
 img,video{display:block;max-width:100%;height:auto}
 a{color:inherit;text-decoration:none}
 button{font:inherit}
-.page{position:relative;z-index:2;padding-bottom:92px}
+.page{position:relative;z-index:2;padding-bottom:0}
 .container{width:min(100% - 32px,1080px);margin-inline:auto}
 .container-sm{width:min(100% - 32px,860px);margin-inline:auto}
 
@@ -187,6 +187,10 @@ button{font:inherit}
   .chips-wrap{overflow:visible;mask-image:none;margin-top:14px}
   .chips-track{width:100%;display:flex;flex-wrap:wrap;justify-content:center;animation:none;transform:none!important;gap:7px}
   .chip{font-size:10px;padding:8px 10px}
+  .strip-track{animation:none;transform:none!important;width:100%;display:flex;justify-content:center;flex-wrap:nowrap;overflow:hidden}
+  .strip-track img:nth-child(n+6){display:none}
+  .chips-track .chip:nth-child(n+11){display:none}
+
   .wa-grid{grid-template-columns:1fr}
   .wa-frame{max-width:330px;margin-inline:auto}
   .wa-frame img{width:100%;height:auto;max-height:none;object-fit:contain;object-position:center top}
@@ -197,18 +201,6 @@ button{font:inherit}
 </head>
 <body>
 <div class="page">
-  <div class="urgency">OFERTA ATIVA HOJE • acesso imediato por <span>R$10</span> • termina em <span id="topTimer">10:00</span></div>
-
-  <header class="header container">
-    <nav class="nav" aria-label="Topo LV Books">
-      <div class="brand">
-        <div class="brand-logo">LV</div>
-        <div><strong>LV Books</strong><span>Biblioteca digital</span></div>
-      </div>
-      <div class="status-pill"><i></i> liberado no celular</div>
-    </nav>
-  </header>
-
   <main>
     <section class="hero container">
       <div class="hero-grid">
@@ -220,10 +212,6 @@ button{font:inherit}
             <div class="stat"><strong>250+</strong><span>Audiobooks para ouvir</span></div>
             <div class="stat"><strong>3.500+</strong><span>eBooks bônus inclusos</span></div>
             <div class="stat"><strong>7 dias</strong><span>Garantia incondicional</span></div>
-          </div>
-          <div class="hero-actions">
-            <button class="btn btn-primary" onclick="goCheckout('https://pay.kiwify.com.br/0ZGaP6g', 10.00)">Quero acessar por R$10</button>
-            <a class="btn btn-outline" href="#oferta">Ver pacotes</a>
           </div>
           <div class="micro"><span>✓ Acesso imediato</span><span>✓ Pagamento único</span><span>✓ Recebe por e-mail/WhatsApp</span></div>
         </div>
@@ -341,9 +329,28 @@ button{font:inherit}
       <div class="section-head reveal">
         <div class="section-label">Escolha seu acesso</div>
         <h2>Libere sua biblioteca agora.</h2>
-        <p class="lead">Comece pelo acesso de R$10 ou escolha o pacote mais completo.</p>
+        <p class="lead">Escolha o Premium+ ou comece pelo acesso de R$10.</p>
       </div>
       <div class="offer-grid">
+        <article class="offer-card featured reveal">
+          <div class="tag">Mais completo</div>
+          <h3>Pacote Premium+</h3>
+          <p>Acesso principal + bônus extras para quem quer uma biblioteca mais completa.</p>
+          <div class="old">De R$47,00</div>
+          <div class="price"><strong>R$19,90</strong><span>pagamento único</span></div>
+          <ul class="list">
+            <li>+250 audiobooks para ouvir no celular</li>
+            <li>+3.500 eBooks bônus inclusos</li>
+            <li>Bônus premium liberados junto com o acesso</li>
+            <li>Acesso vitalício, sem mensalidade</li>
+            <li>Garantia de 7 dias</li>
+          </ul>
+          <div class="timer">Oferta Premium expira em: <span id="timerPremium">10:00</span></div>
+          <button class="btn btn-secondary btn-full" onclick="goCheckout('https://pay.kiwify.com.br/Ij93pGM', 19.90)">Quero o Premium+</button>
+          <div class="secure">🔒 Compra segura • envio automático</div>
+        </article>
+
+
         <article class="offer-card reveal">
           <div class="tag">Menor preço</div>
           <h3>Acesso LV Books</h3>
@@ -361,23 +368,6 @@ button{font:inherit}
           <div class="secure">✓ Acesso imediato • pagamento seguro</div>
         </article>
 
-        <article class="offer-card featured reveal">
-          <div class="tag">Mais completo</div>
-          <h3>Pacote Premium+</h3>
-          <p>Acesso principal + bônus extras para quem quer uma biblioteca mais completa.</p>
-          <div class="old">De R$47,00</div>
-          <div class="price"><strong>R$17,90</strong><span>pagamento único</span></div>
-          <ul class="list">
-            <li>+250 audiobooks para ouvir no celular</li>
-            <li>+3.500 eBooks bônus inclusos</li>
-            <li>Bônus premium liberados junto com o acesso</li>
-            <li>Acesso vitalício, sem mensalidade</li>
-            <li>Garantia de 7 dias</li>
-          </ul>
-          <div class="timer">Oferta Premium expira em: <span id="timerPremium">10:00</span></div>
-          <button class="btn btn-secondary btn-full" onclick="goCheckout('https://pay.kiwify.com.br/Ij93pGM', 17.90)">Quero o Premium+</button>
-          <div class="secure">🔒 Compra segura • envio automático</div>
-        </article>
       </div>
     </section>
 
@@ -409,10 +399,6 @@ button{font:inherit}
   <footer class="footer container">© 2026 LV BOOKS – Todos os direitos reservados.</footer>
 </div>
 
-<div class="sticky" aria-label="Chamada fixa">
-  <div class="mini"><strong>Biblioteca liberada no celular</strong><span>+250 audiobooks + eBooks bônus</span></div>
-  <button class="btn btn-primary" onclick="goCheckout('https://pay.kiwify.com.br/0ZGaP6g', 10.00)">Pedir agora</button>
-</div>
 
 <script>
 const bookCovers = [
@@ -461,7 +447,7 @@ function startCountdown(totalSeconds, ids){
   }
   tick(); setInterval(tick,1000);
 }
-startCountdown(600, ['topTimer','timerPremium']);
+startCountdown(600, ['timerPremium']);
 const reveals = document.querySelectorAll('.reveal');
 if('IntersectionObserver' in window){
   const observer = new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){entry.target.classList.add('show');observer.unobserve(entry.target);}});},{threshold:.12});
