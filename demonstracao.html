@@ -10,52 +10,613 @@
 })();
 </script>
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Demonstração</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover"/>
+<title>Demonstração LV Books</title>
 <link rel="icon" type="image/png" href="audio%20book/banner.png"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet"/>
-
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet"/>
 
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
-body{
-  font-family:'Montserrat',sans-serif;
-  background:#0a1628;
-  color:#fff;
-  min-height:100vh;
+:root{
+  --bg:#07111f;
+  --bg2:#0a1628;
+  --card:#101f34;
+  --card2:#13243b;
+  --text:#ffffff;
+  --muted:#9fb0c6;
+  --line:rgba(255,255,255,.10);
+  --gold:#ffcc66;
+  --orange:#ff8a2a;
+  --green:#45e59b;
+  --blue:#5bc0ff;
+  --red:#ff4f67;
 }
 
-/* ── GRID ── */
+html{scroll-behavior:smooth}
+
+body{
+  font-family:'Montserrat',sans-serif;
+  background:
+    radial-gradient(circle at 20% 0%,rgba(91,192,255,.20),transparent 32%),
+    radial-gradient(circle at 90% 12%,rgba(255,138,42,.16),transparent 28%),
+    linear-gradient(180deg,#07111f 0%,#081426 46%,#050b15 100%);
+  color:var(--text);
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  opacity:.28;
+  background-image:
+    linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+  background-size:34px 34px;
+  mask-image:linear-gradient(to bottom,rgba(0,0,0,.85),transparent 82%);
+}
+
+.page{
+  width:min(100%,540px);
+  margin:0 auto;
+  position:relative;
+  padding:0 10px 110px;
+}
+
+.topbar{
+  position:sticky;
+  top:0;
+  z-index:50;
+  padding:10px 2px 8px;
+  background:linear-gradient(180deg,rgba(7,17,31,.96),rgba(7,17,31,.78) 70%,transparent);
+  backdrop-filter:blur(16px);
+}
+
+.topbar-inner{
+  min-height:48px;
+  border:1px solid var(--line);
+  background:rgba(12,28,48,.72);
+  border-radius:18px;
+  padding:9px 12px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  box-shadow:0 18px 40px rgba(0,0,0,.25);
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:9px;
+}
+
+.brand-mark{
+  width:32px;
+  height:32px;
+  border-radius:10px;
+  display:grid;
+  place-items:center;
+  font-weight:900;
+  color:#07111f;
+  background:linear-gradient(135deg,#ffcc66,#ff8a2a);
+  box-shadow:0 0 24px rgba(255,184,82,.35);
+}
+
+.brand strong{
+  display:block;
+  font-size:14px;
+  line-height:1;
+  letter-spacing:.2px;
+}
+
+.brand span{
+  display:block;
+  margin-top:4px;
+  color:var(--muted);
+  font-size:10px;
+  font-weight:700;
+}
+
+.live-pill{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  border:1px solid rgba(69,229,155,.28);
+  color:#d9ffee;
+  background:rgba(69,229,155,.10);
+  padding:8px 10px;
+  border-radius:999px;
+  font-size:10px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.5px;
+}
+
+.live-dot{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:var(--green);
+  box-shadow:0 0 0 0 rgba(69,229,155,.7);
+  animation:pulseDot 1.4s infinite;
+}
+
+@keyframes pulseDot{
+  0%{box-shadow:0 0 0 0 rgba(69,229,155,.7)}
+  70%{box-shadow:0 0 0 9px rgba(69,229,155,0)}
+  100%{box-shadow:0 0 0 0 rgba(69,229,155,0)}
+}
+
+.hero{
+  margin-top:8px;
+  border:1px solid var(--line);
+  border-radius:28px;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 85% 12%,rgba(255,204,102,.22),transparent 26%),
+    linear-gradient(145deg,rgba(17,39,66,.92),rgba(8,20,36,.94));
+  box-shadow:0 24px 70px rgba(0,0,0,.38);
+  position:relative;
+}
+
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:-40%;
+  background:linear-gradient(120deg,transparent 35%,rgba(255,255,255,.13) 50%,transparent 65%);
+  transform:translateX(-70%) rotate(8deg);
+  animation:shine 6s ease-in-out infinite;
+  pointer-events:none;
+}
+
+@keyframes shine{
+  0%,45%{transform:translateX(-75%) rotate(8deg)}
+  72%,100%{transform:translateX(75%) rotate(8deg)}
+}
+
+.hero-content{
+  position:relative;
+  z-index:2;
+  padding:22px 18px 18px;
+}
+
+.hero-kicker{
+  width:max-content;
+  max-width:100%;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 10px;
+  border-radius:999px;
+  background:rgba(255,204,102,.12);
+  border:1px solid rgba(255,204,102,.28);
+  color:#ffe0a1;
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:.4px;
+  text-transform:uppercase;
+}
+
+.hero-kicker i{
+  width:7px;
+  height:7px;
+  display:block;
+  border-radius:50%;
+  background:var(--gold);
+}
+
+.hero h1{
+  margin-top:14px;
+  font-size:31px;
+  line-height:.96;
+  letter-spacing:-1.35px;
+  font-weight:900;
+}
+
+.hero h1 span{
+  display:block;
+  background:linear-gradient(90deg,#ffffff,#ffdc9a 55%,#ff9f43);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+
+.hero p{
+  margin-top:12px;
+  color:#cbd7e8;
+  font-size:13px;
+  font-weight:700;
+  line-height:1.45;
+  max-width:420px;
+}
+
+.stats{
+  margin-top:16px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+}
+
+.stat{
+  border:1px solid rgba(255,255,255,.11);
+  background:rgba(255,255,255,.055);
+  border-radius:16px;
+  padding:12px 8px;
+  min-height:76px;
+}
+
+.stat strong{
+  display:block;
+  font-size:20px;
+  line-height:1;
+  font-weight:900;
+  color:#fff;
+}
+
+.stat span{
+  display:block;
+  margin-top:7px;
+  color:#aebcd1;
+  font-size:9px;
+  line-height:1.25;
+  font-weight:800;
+  text-transform:uppercase;
+}
+
+.hero-stage{
+  margin-top:18px;
+  display:grid;
+  grid-template-columns:1.02fr .98fr;
+  gap:12px;
+  align-items:stretch;
+}
+
+.cover-stack{
+  position:relative;
+  min-height:188px;
+  perspective:900px;
+}
+
+.stack-cover{
+  position:absolute;
+  width:47%;
+  aspect-ratio:2/3;
+  object-fit:cover;
+  border-radius:12px;
+  box-shadow:0 18px 42px rgba(0,0,0,.48);
+  border:1px solid rgba(255,255,255,.20);
+  background:#111827;
+}
+
+.stack-cover:nth-child(1){left:0;top:28px;transform:rotate(-10deg);animation:floatA 4.5s ease-in-out infinite}
+.stack-cover:nth-child(2){left:28%;top:0;width:52%;z-index:3;transform:rotate(2deg);animation:floatB 5s ease-in-out infinite}
+.stack-cover:nth-child(3){right:0;top:34px;transform:rotate(10deg);animation:floatC 4.8s ease-in-out infinite}
+
+@keyframes floatA{50%{transform:rotate(-8deg) translateY(-7px)}}
+@keyframes floatB{50%{transform:rotate(1deg) translateY(7px)}}
+@keyframes floatC{50%{transform:rotate(8deg) translateY(-5px)}}
+
+.hero-note{
+  position:relative;
+  border:1px solid rgba(91,192,255,.20);
+  background:linear-gradient(180deg,rgba(91,192,255,.12),rgba(255,255,255,.045));
+  border-radius:18px;
+  padding:13px;
+  overflow:hidden;
+}
+
+.hero-note::before{
+  content:"";
+  position:absolute;
+  width:90px;
+  height:90px;
+  right:-36px;
+  top:-32px;
+  border-radius:50%;
+  background:rgba(91,192,255,.15);
+}
+
+.hero-note b{
+  display:block;
+  font-size:12px;
+  line-height:1.25;
+}
+
+.hero-note small{
+  display:block;
+  margin-top:8px;
+  color:#b7c8dc;
+  font-size:10px;
+  line-height:1.4;
+  font-weight:700;
+}
+
+.tap-demo{
+  margin-top:14px;
+  display:flex;
+  align-items:center;
+  gap:9px;
+  color:#07111f;
+  background:linear-gradient(90deg,#ffcc66,#ff8a2a);
+  border-radius:999px;
+  padding:10px 12px;
+  width:max-content;
+  max-width:100%;
+  font-size:10px;
+  font-weight:900;
+  box-shadow:0 12px 28px rgba(255,138,42,.25);
+}
+
+.tap-demo svg{width:14px;height:14px;fill:#07111f}
+
+.player-card{
+  margin:12px 0 0;
+  border:1px solid rgba(255,255,255,.11);
+  background:linear-gradient(135deg,rgba(19,36,59,.92),rgba(10,22,40,.92));
+  border-radius:22px;
+  padding:12px;
+  box-shadow:0 22px 55px rgba(0,0,0,.28);
+  display:grid;
+  grid-template-columns:64px 1fr;
+  gap:12px;
+  align-items:center;
+}
+
+.player-cover-wrap{
+  position:relative;
+  width:64px;
+  height:92px;
+}
+
+#playerCover{
+  width:64px;
+  height:92px;
+  object-fit:cover;
+  border-radius:10px;
+  display:block;
+  box-shadow:0 14px 30px rgba(0,0,0,.35);
+  background:#111827;
+}
+
+.sound-rings{
+  position:absolute;
+  inset:auto -7px 8px auto;
+  width:30px;
+  height:30px;
+  border-radius:50%;
+  background:rgba(69,229,155,.96);
+  display:grid;
+  place-items:center;
+  box-shadow:0 0 0 6px rgba(69,229,155,.15);
+}
+
+.sound-rings span{
+  width:12px;
+  height:12px;
+  border-radius:50%;
+  border:2px solid #07111f;
+  border-left-color:transparent;
+  animation:spin 1s linear infinite;
+}
+
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.player-info{min-width:0}
+
+.player-status{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+  color:var(--green);
+  font-size:9px;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.7px;
+}
+
+.player-status em{
+  color:#07111f;
+  background:var(--green);
+  font-style:normal;
+  border-radius:999px;
+  padding:4px 7px;
+  font-size:9px;
+}
+
+#playerTitle{
+  margin-top:7px;
+  font-size:14px;
+  line-height:1.16;
+  font-weight:900;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.player-sub{
+  margin-top:5px;
+  color:#aebcd1;
+  font-size:10px;
+  font-weight:700;
+}
+
+.progress{
+  margin-top:10px;
+  height:7px;
+  border-radius:999px;
+  background:rgba(255,255,255,.10);
+  overflow:hidden;
+}
+
+.progress span{
+  display:block;
+  height:100%;
+  width:62%;
+  border-radius:inherit;
+  background:linear-gradient(90deg,var(--green),var(--blue));
+  animation:progressMove 5.8s ease-in-out infinite;
+}
+
+@keyframes progressMove{
+  0%{width:18%}
+  55%{width:76%}
+  100%{width:18%}
+}
+
+.section-head{
+  margin:22px 2px 12px;
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:14px;
+}
+
+.section-head h2{
+  font-size:18px;
+  font-weight:900;
+  letter-spacing:-.55px;
+}
+
+.section-head p{
+  margin-top:4px;
+  color:var(--muted);
+  font-size:10px;
+  font-weight:700;
+}
+
+.counter{
+  flex:0 0 auto;
+  color:#07111f;
+  background:#fff;
+  border-radius:999px;
+  padding:8px 10px;
+  font-size:10px;
+  font-weight:900;
+}
+
+.chips{
+  display:flex;
+  gap:8px;
+  overflow-x:auto;
+  padding:2px 2px 12px;
+  scrollbar-width:none;
+}
+
+.chips::-webkit-scrollbar{display:none}
+
+.chip{
+  flex:0 0 auto;
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.065);
+  color:#dbe7f7;
+  border-radius:999px;
+  padding:10px 12px;
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:.1px;
+}
+
+.chip.hot{
+  color:#07111f;
+  background:linear-gradient(90deg,#ffcc66,#ff8a2a);
+  border-color:transparent;
+}
+
+.marquee-wrap{
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:22px;
+  background:rgba(255,255,255,.045);
+  overflow:hidden;
+  padding:12px 0;
+  box-shadow:0 18px 42px rgba(0,0,0,.20);
+}
+
+.marquee{
+  display:flex;
+  gap:10px;
+  width:max-content;
+  animation:marquee 24s linear infinite;
+}
+
+.marquee:hover{animation-play-state:paused}
+
+.marquee img{
+  width:88px;
+  aspect-ratio:2/3;
+  object-fit:cover;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:0 14px 30px rgba(0,0,0,.32);
+  background:#111827;
+}
+
+@keyframes marquee{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
+
 .book-grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
-  gap:8px;
-  padding:8px;
-  max-width:1200px;
-  margin:0 auto;
+  gap:10px;
+  padding:0 2px;
 }
 
-@media(min-width:600px){
-  .book-grid{ grid-template-columns:repeat(3,1fr); gap:10px; padding:0 16px; }
-}
-
-@media(min-width:900px){
-  .book-grid{ grid-template-columns:repeat(4,1fr); gap:12px; padding:0 24px; }
-}
-
-@media(min-width:1100px){
-  .book-grid{ grid-template-columns:repeat(5,1fr); }
+@media(min-width:520px){
+  .book-grid{grid-template-columns:repeat(3,1fr);gap:11px}
 }
 
 .book-item{
   aspect-ratio:2/3;
-  border-radius:6px;
+  border-radius:16px;
   overflow:hidden;
   background:#111827;
   position:relative;
+  border:1px solid rgba(255,255,255,.10);
+  box-shadow:0 16px 38px rgba(0,0,0,.28);
+  transform:translateZ(0);
+  cursor:pointer;
+  isolation:isolate;
+}
+
+.book-item::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,.68));
+  z-index:2;
+  opacity:.86;
+}
+
+.book-item::after{
+  content:"";
+  position:absolute;
+  inset:-60%;
+  z-index:3;
+  background:linear-gradient(115deg,transparent 38%,rgba(255,255,255,.20) 50%,transparent 62%);
+  transform:translateX(-72%) rotate(10deg);
+  opacity:0;
+  pointer-events:none;
+}
+
+.book-item.is-active{
+  outline:2px solid rgba(69,229,155,.9);
+  box-shadow:0 0 0 6px rgba(69,229,155,.12),0 24px 50px rgba(0,0,0,.36);
+}
+
+.book-item.is-active::after{
+  opacity:1;
+  animation:cardSweep 1.05s ease-out;
+}
+
+@keyframes cardSweep{
+  to{transform:translateX(75%) rotate(10deg)}
 }
 
 .book-item img{
@@ -63,116 +624,336 @@ body{
   height:100%;
   object-fit:cover;
   display:block;
+  transition:transform .45s ease,filter .45s ease;
 }
 
-/* fallback label if image fails */
+.book-item:hover img,.book-item.is-active img{transform:scale(1.045);filter:saturate(1.08) contrast(1.03)}
+
 .book-item .book-label{
   display:none;
   position:absolute;
   inset:0;
+  z-index:5;
   align-items:center;
   justify-content:center;
   padding:12px;
   text-align:center;
   font-size:11px;
-  font-weight:700;
+  font-weight:800;
   color:#cbd5e1;
   line-height:1.4;
   background:linear-gradient(135deg,#111827,#1e293b);
 }
 
-.book-item img.errored{
-  display:none;
-}
+.book-item img.errored{display:none}
+.book-item img.errored ~ .book-label{display:flex}
 
-.book-item img.errored ~ .book-label{
+.book-badge{
+  position:absolute;
+  z-index:4;
+  top:9px;
+  left:9px;
   display:flex;
+  align-items:center;
+  gap:5px;
+  padding:6px 8px;
+  border-radius:999px;
+  color:#07111f;
+  background:rgba(255,255,255,.94);
+  font-size:8px;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.35px;
+  box-shadow:0 10px 22px rgba(0,0,0,.22);
 }
 
-/* ── PLAY OVERLAY ── */
-.book-item .play-overlay{
+.book-badge i{
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:var(--green);
+  box-shadow:0 0 10px var(--green);
+}
+
+.play-overlay{
   position:absolute;
   inset:0;
+  z-index:4;
   display:flex;
   align-items:center;
   justify-content:center;
   pointer-events:none;
 }
 
-.book-item .play-circle{
+.play-circle{
   width:44px;
   height:44px;
-  background:rgba(0,0,0,.55);
-  backdrop-filter:blur(2px);
+  background:rgba(0,0,0,.56);
+  backdrop-filter:blur(4px);
   border-radius:50%;
   display:flex;
   align-items:center;
   justify-content:center;
-  border:2px solid rgba(255,255,255,.7);
+  border:2px solid rgba(255,255,255,.76);
+  box-shadow:0 12px 28px rgba(0,0,0,.28);
 }
 
-.book-item .play-circle svg{
+.play-circle svg{
   width:16px;
   height:16px;
   fill:#fff;
   margin-left:3px;
 }
+
+.book-title{
+  position:absolute;
+  z-index:4;
+  left:10px;
+  right:10px;
+  bottom:10px;
+  font-size:9px;
+  line-height:1.18;
+  font-weight:900;
+  color:#fff;
+  text-shadow:0 2px 8px rgba(0,0,0,.7);
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+}
+
+.floating-proof{
+  position:fixed;
+  z-index:80;
+  left:50%;
+  bottom:18px;
+  transform:translateX(-50%);
+  width:min(calc(100% - 28px),500px);
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(7,17,31,.88);
+  backdrop-filter:blur(18px);
+  border-radius:22px;
+  padding:10px 12px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  box-shadow:0 20px 60px rgba(0,0,0,.46);
+}
+
+.proof-left{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  min-width:0;
+}
+
+.proof-icon{
+  width:34px;
+  height:34px;
+  flex:0 0 auto;
+  display:grid;
+  place-items:center;
+  border-radius:12px;
+  color:#07111f;
+  background:linear-gradient(135deg,#45e59b,#5bc0ff);
+  font-weight:900;
+}
+
+.proof-text{min-width:0}
+.proof-text strong{
+  display:block;
+  font-size:11px;
+  line-height:1.15;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.proof-text span{
+  display:block;
+  margin-top:3px;
+  color:#aebcd1;
+  font-size:9px;
+  font-weight:700;
+}
+
+.proof-price{
+  flex:0 0 auto;
+  color:#07111f;
+  background:linear-gradient(90deg,#ffcc66,#ff8a2a);
+  border-radius:999px;
+  padding:10px 11px;
+  font-size:11px;
+  font-weight:900;
+}
+
+@media(max-width:380px){
+  .hero h1{font-size:27px}
+  .stats{gap:6px}
+  .stat{padding:10px 6px}
+  .stat strong{font-size:17px}
+  .hero-stage{grid-template-columns:1fr}
+  .cover-stack{min-height:176px}
+  .hero-note{display:none}
+}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
 </style>
 </head>
 <body>
+<div class="page">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand" aria-label="LV Books">
+        <div class="brand-mark">LV</div>
+        <div>
+          <strong>LV Books</strong>
+          <span>Biblioteca digital</span>
+        </div>
+      </div>
+      <div class="live-pill"><span class="live-dot"></span> disponível agora</div>
+    </div>
+  </header>
 
-<main class="book-grid" id="grid"></main>
+  <section class="hero" aria-label="Demonstração da biblioteca">
+    <div class="hero-content">
+      <div class="hero-kicker"><i></i> Demonstração real no celular</div>
+      <h1>Ouça e leia <span>direto do seu celular</span></h1>
+      <p>Uma vitrine visual para mostrar valor rápido no criativo: capas famosas, player em destaque, categorias e sensação de aplicativo premium.</p>
+
+      <div class="stats" aria-label="Resumo da biblioteca">
+        <div class="stat"><strong>250+</strong><span>Audiobooks para ouvir</span></div>
+        <div class="stat"><strong>3.500+</strong><span>eBooks bônus inclusos</span></div>
+        <div class="stat"><strong>1x</strong><span>Pagamento único</span></div>
+      </div>
+
+      <div class="hero-stage">
+        <div class="cover-stack" aria-hidden="true">
+          <img class="stack-cover" src="paginas/download (2).jpg" alt=""/>
+          <img class="stack-cover" src="paginas/download (1).jpg" alt=""/>
+          <img class="stack-cover" src="paginas/download (4).jpg" alt=""/>
+        </div>
+        <div class="hero-note">
+          <b>Formato ideal para gravar criativo</b>
+          <small>Abra a página no telefone, grave passando pelas capas e toque em alguns livros para o player mudar na tela.</small>
+          <div class="tap-demo">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            toque em qualquer capa
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="player-card" aria-label="Player de demonstração">
+    <div class="player-cover-wrap">
+      <img id="playerCover" src="paginas/download (1).jpg" alt="Capa do audiobook atual"/>
+      <div class="sound-rings" aria-hidden="true"><span></span></div>
+    </div>
+    <div class="player-info">
+      <div class="player-status">tocando agora <em>áudio</em></div>
+      <div id="playerTitle">As Armas da Persuasão</div>
+      <div class="player-sub">Player visual • acesso imediato • direto pelo navegador</div>
+      <div class="progress"><span></span></div>
+    </div>
+  </section>
+
+  <div class="section-head">
+    <div>
+      <h2>Escolha por interesse</h2>
+      <p>Mostra organização, variedade e valor percebido.</p>
+    </div>
+    <div class="counter">+3 mil itens</div>
+  </div>
+
+  <nav class="chips" aria-label="Categorias">
+    <span class="chip hot">Mais procurados</span>
+    <span class="chip">Finanças</span>
+    <span class="chip">Mentalidade</span>
+    <span class="chip">Hábitos</span>
+    <span class="chip">Persuasão</span>
+    <span class="chip">Produtividade</span>
+    <span class="chip">Autoconhecimento</span>
+  </nav>
+
+  <section class="marquee-wrap" aria-label="Capas em destaque">
+    <div class="marquee" id="marquee"></div>
+  </section>
+
+  <div class="section-head">
+    <div>
+      <h2>Biblioteca em áudio</h2>
+      <p>Toque nas capas para alterar o player da gravação.</p>
+    </div>
+    <div class="counter">demo</div>
+  </div>
+
+  <main class="book-grid" id="grid"></main>
+</div>
+
+<div class="floating-proof" aria-label="Resumo da oferta">
+  <div class="proof-left">
+    <div class="proof-icon">✓</div>
+    <div class="proof-text">
+      <strong>Biblioteca liberada no celular</strong>
+      <span>Audiobooks + eBooks bônus em um só acesso</span>
+    </div>
+  </div>
+  <div class="proof-price">R$10</div>
+</div>
 
 <script>
 var books = [
-  'paginas/download.jpg',
-  'paginas/download (1).jpg',
-  'paginas/download (2).jpg',
-  'paginas/download (3).jpg',
-  'paginas/download (4).jpg',
-  'paginas/download (5).jpg',
-  'paginas/download (6).jpg',
-  'paginas/download (7).jpg',
-  'paginas/download (8).jpg',
-  'paginas/download (9).jpg',
-  'paginas/download (10).jpg',
-  'paginas/download (11).jpg',
-  'paginas/download (12).jpg',
-  'paginas/download (13).jpg',
-  'paginas/download (14).jpg',
-  'paginas/download (15).jpg',
-  'paginas/download (16).jpg',
-  'paginas/download (17).jpg',
-  'paginas/download (18).jpg',
-  'paginas/download (19).jpg',
-  'paginas/download (20).jpg',
-  'paginas/download (21).jpg',
-  'paginas/download (22).jpg',
-  'paginas/download (23).jpg',
-  'paginas/download (24).jpg',
-  'paginas/download (25).jpg',
-  'paginas/download (26).jpg',
-  'paginas/download.png',
-  'paginas/download (1).png',
-  'paginas/download (2).png',
-  'paginas/download (3).png',
-  'paginas/download.webp',
-  'paginas/shopping.webp',
-  'paginas/shopping (1).webp',
-  'paginas/shopping (2).webp',
-  'paginas/shopping (3).webp',
-  'paginas/91NY3dGiqUL._AC_UF1000,1000_QL80_.jpg',
-  'paginas/l1.jpg',
-  'paginas/l1.png',
-  'paginas/l2.png',
-  'paginas/l3.png',
-  'paginas/l4.png',
-  'paginas/l6.jpg',
-  'paginas/l7.png',
-  'paginas/l8.png',
-  'paginas/l10.jpg',
-  'paginas/l11.jpg',
-  'paginas/l13.jpg'
+  {src:'paginas/download.jpg',title:'TED Talks'},
+  {src:'paginas/download (1).jpg',title:'As Armas da Persuasão'},
+  {src:'paginas/download (2).jpg',title:'Quem Pensa Enriquece'},
+  {src:'paginas/download (3).jpg',title:'A Arte da Guerra'},
+  {src:'paginas/download (4).jpg',title:'Mindset'},
+  {src:'paginas/download (5).jpg',title:'O Homem Mais Rico da Babilônia'},
+  {src:'paginas/download (6).jpg',title:'O Corpo Fala'},
+  {src:'paginas/download (7).jpg',title:'O Poder do Agora'},
+  {src:'paginas/download (8).jpg',title:'Trabalhe 4 Horas por Semana'},
+  {src:'paginas/download (9).jpg',title:'Mais Esperto que o Diabo'},
+  {src:'paginas/download (10).jpg',title:'Quebrando o Hábito de Ser Você Mesmo'},
+  {src:'paginas/download (11).jpg',title:'Como Convencer Alguém em 90 Segundos'},
+  {src:'paginas/download (12).jpg',title:'Desconstruindo a Ansiedade'},
+  {src:'paginas/download (13).jpg',title:'O Poder da Autorresponsabilidade'},
+  {src:'paginas/download (14).jpg',title:'A Psicologia Financeira'},
+  {src:'paginas/download (15).jpg',title:'Me Poupe! Basta!'},
+  {src:'paginas/download (16).jpg',title:'Pare de Se Sabotar'},
+  {src:'paginas/download (17).jpg',title:'Rápido e Devagar'},
+  {src:'paginas/download (18).jpg',title:'Ego é Seu Inimigo'},
+  {src:'paginas/download (19).jpg',title:'Gatilhos Mentais'},
+  {src:'paginas/download (20).jpg',title:'Antifrágil'},
+  {src:'paginas/download (21).jpg',title:'Empresas Feitas para Vencer'},
+  {src:'paginas/download (22).jpg',title:'Os Segredos da Mente Milionária'},
+  {src:'paginas/download (23).jpg',title:'Rápido e Devagar'},
+  {src:'paginas/download (24).jpg',title:'O Poder da Ação'},
+  {src:'paginas/download (25).jpg',title:'Mude Sua Mente e Transforme Sua Vida'},
+  {src:'paginas/download (26).jpg',title:'Como Aumentar a Capacidade do seu Cérebro'},
+  {src:'paginas/download.png',title:'Manual de Persuasão do FBI'},
+  {src:'paginas/download (1).png',title:'Deixe de Ser Pobre'},
+  {src:'paginas/download (2).png',title:'A Montanha é Você'},
+  {src:'paginas/download (3).png',title:'Os 7 Hábitos das Pessoas Altamente Eficazes'},
+  {src:'paginas/download.webp',title:'Como Fazer Amigos e Influenciar Pessoas'},
+  {src:'paginas/shopping.webp',title:'Como Falar em Público e Encantar Pessoas'},
+  {src:'paginas/shopping (1).webp',title:'Nada Pode Me Ferir'},
+  {src:'paginas/shopping (2).webp',title:'Hábitos Atômicos'},
+  {src:'paginas/shopping (3).webp',title:'Desbloqueie o Poder da Sua Mente'},
+  {src:'paginas/91NY3dGiqUL._AC_UF1000,1000_QL80_.jpg',title:'A Coragem de Ser Imperfeito'},
+  {src:'paginas/l1.jpg',title:'O Poder do Hábito'},
+  {src:'paginas/l1.png',title:'Biblioteca LV Books'},
+  {src:'paginas/l2.png',title:'Mais Esperto que o Diabo'},
+  {src:'paginas/l3.png',title:'Pai Rico Pai Pobre'},
+  {src:'paginas/l4.png',title:'Os Segredos da Mente Milionária'},
+  {src:'paginas/l6.jpg',title:'Essencialismo'},
+  {src:'paginas/l7.png',title:'Hábitos Atômicos'},
+  {src:'paginas/l8.png',title:'Deixe de Ser Pobre'},
+  {src:'paginas/l10.jpg',title:'Antifrágil'},
+  {src:'paginas/l11.jpg',title:'Como Fazer Amigos e Influenciar Pessoas'},
+  {src:'paginas/l13.jpg',title:'Do Mil ao Milhão'}
 ];
 
 var playIcon =
@@ -183,17 +964,62 @@ var playIcon =
   '</div>';
 
 var grid = document.getElementById('grid');
+var playerCover = document.getElementById('playerCover');
+var playerTitle = document.getElementById('playerTitle');
+var marquee = document.getElementById('marquee');
 var html = '';
-books.forEach(function(src){
+
+function esc(str){
+  return String(str).replace(/[&<>'"]/g,function(ch){
+    return {'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[ch];
+  });
+}
+
+books.forEach(function(book,index){
   html +=
-    '<div class="book-item">' +
-      '<img src="' + src + '" alt="" loading="lazy" ' +
-        'onerror="this.classList.add(\'errored\')">' +
-      '<div class="book-label"></div>' +
+    '<article class="book-item" data-index="' + index + '" aria-label="' + esc(book.title) + '">' +
+      '<img src="' + esc(book.src) + '" alt="' + esc(book.title) + '" loading="' + (index < 10 ? 'eager' : 'lazy') + '" decoding="async" onerror="this.classList.add(\'errored\')">' +
+      '<div class="book-label">' + esc(book.title) + '</div>' +
+      '<div class="book-badge"><i></i> áudio</div>' +
       playIcon +
-    '</div>';
+      '<div class="book-title">' + esc(book.title) + '</div>' +
+    '</article>';
 });
 grid.innerHTML = html;
+
+var featured = books.slice(0,18).concat(books.slice(0,18));
+marquee.innerHTML = featured.map(function(book){
+  return '<img src="' + esc(book.src) + '" alt="' + esc(book.title) + '" loading="lazy" decoding="async">';
+}).join('');
+
+function setActive(index, shouldScroll){
+  var items = grid.querySelectorAll('.book-item');
+  if(!items.length) return;
+  index = index % items.length;
+  items.forEach(function(item){item.classList.remove('is-active')});
+  var item = items[index];
+  var book = books[index];
+  item.classList.add('is-active');
+  playerCover.src = book.src;
+  playerCover.alt = book.title;
+  playerTitle.textContent = book.title;
+  if(shouldScroll){
+    item.scrollIntoView({behavior:'smooth',block:'center',inline:'nearest'});
+  }
+}
+
+grid.addEventListener('click',function(event){
+  var card = event.target.closest('.book-item');
+  if(!card) return;
+  setActive(Number(card.getAttribute('data-index')) || 0,false);
+});
+
+var autoIndex = 1;
+setActive(1,false);
+setInterval(function(){
+  autoIndex += 3;
+  setActive(autoIndex,false);
+},2600);
 </script>
 
 </body>
