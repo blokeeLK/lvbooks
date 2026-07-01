@@ -481,13 +481,25 @@ if('IntersectionObserver' in window){
   const current = getCurrent();
   if (Object.keys(current).length) {const merged = Object.assign({}, DEFAULTS, loadCookie(), loadLocal(), current);saveLocal(merged);saveCookie(merged);}
   let redirecting = false;
+
+  function unlockCheckoutClick(){
+    redirecting = false;
+  }
+
+  window.addEventListener('pageshow', unlockCheckoutClick);
+  window.addEventListener('focus', unlockCheckoutClick);
+  document.addEventListener('visibilitychange', function(){
+    if(!document.hidden) unlockCheckoutClick();
+  });
+
   window.goCheckout = function(baseUrl){
     if(redirecting) return;
     redirecting = true;
     const merged = Object.assign({}, DEFAULTS, loadCookie(), loadLocal(), getCurrent());
     const url = new URL(baseUrl);
     Object.keys(merged).forEach(k => {if (merged[k] && !url.searchParams.get(k)) url.searchParams.set(k, merged[k]);});
-    setTimeout(function(){ window.location.href = url.toString(); }, 120);
+    window.location.href = url.toString();
+    setTimeout(unlockCheckoutClick, 1800);
   };
 })();
 </script>
