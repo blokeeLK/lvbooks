@@ -22,18 +22,50 @@ if(location.hostname==='lvbooks.onrender.com'){
 (function () {
   var path = window.location.pathname.replace(/\/+$/, '');
   if (path !== '/desconto' && path !== '/desconto.html') return;
+
   var targetBase = 'https://lvbooks.com.br/oferta';
+  var FLAG = 'lv_checkout_return_redirect';
+  var TS = 'lv_checkout_return_ts';
+
   function buildTargetUrl() {
     return targetBase + (window.location.search || '');
   }
-  try {
-    history.pushState({ backRedirectDesconto: true }, '', window.location.href);
-    window.addEventListener('popstate', function () {
-      window.location.replace(buildTargetUrl());
-    });
-  } catch (e) {
-    console.error('Erro no back redirect da página /desconto:', e);
+
+  function isBackForwardNavigation(event) {
+    var nav = null;
+    try {
+      nav = performance.getEntriesByType && performance.getEntriesByType('navigation')[0];
+    } catch (e) {}
+    return !!(event && event.persisted) || !!(nav && nav.type === 'back_forward');
   }
+
+  window.__lvMarkCheckoutVisit = function () {
+    try {
+      sessionStorage.setItem(FLAG, '1');
+      sessionStorage.setItem(TS, String(Date.now()));
+    } catch (e) {}
+  };
+
+  window.addEventListener('pageshow', function (event) {
+    var shouldRedirect = false;
+
+    try {
+      var marked = sessionStorage.getItem(FLAG) === '1';
+      var timestamp = parseInt(sessionStorage.getItem(TS) || '0', 10);
+      var fresh = !timestamp || (Date.now() - timestamp) < 21600000;
+
+      shouldRedirect = marked && fresh && isBackForwardNavigation(event);
+
+      if (shouldRedirect) {
+        sessionStorage.removeItem(FLAG);
+        sessionStorage.removeItem(TS);
+      }
+    } catch (e) {}
+
+    if (shouldRedirect) {
+      window.location.replace(buildTargetUrl());
+    }
+  });
 })();
 </script>
 
@@ -495,6 +527,7 @@ if('IntersectionObserver' in window){
   window.goCheckout = function(baseUrl){
     if(redirecting) return;
     redirecting = true;
+    if(typeof window.__lvMarkCheckoutVisit === 'function') window.__lvMarkCheckoutVisit();
     const merged = Object.assign({}, DEFAULTS, loadCookie(), loadLocal(), getCurrent());
     const url = new URL(baseUrl);
     Object.keys(merged).forEach(k => {if (merged[k] && !url.searchParams.get(k)) url.searchParams.set(k, merged[k]);});
