@@ -1263,22 +1263,11 @@
     (function mostrarPopupClean(){
       var productName = "LV Books";
       var productLogo = "https://i.postimg.cc/J7ywfQdR/Design-sem-nome-86.png";
-      var autoCloseMs = 4800;
-      var intervalMs = 19000;
+      var autoCloseMs = 4500;
       var currentToast = null;
-      var popupIndex = 0;
       var container = document.getElementById("purchaseToastContainer");
-
-      var popups = [
-        { title: "Pacote Premium+ em destaque", text: "+250 audiobooks + mais de 3 mil livros digitais", minutesAgo: 0 },
-        { title: "Biblioteca completa no celular", text: "Audiobooks, eBooks bônus e acesso vitalício", minutesAgo: 7 },
-        { title: "Oferta Premium+ ativa hoje", text: "3.500 eBooks bônus + 250 audiobooks", minutesAgo: 14 },
-        { title: "Acesso imediato após pagamento", text: "Entrega automática no e-mail e suporte no WhatsApp", minutesAgo: 22 },
-        { title: "Conhecimento para ouvir e ler", text: "Finanças, negócios, produtividade e desenvolvimento pessoal", minutesAgo: 31 },
-        { title: "Pagamento único liberado", text: "Sem mensalidade, com garantia de 7 dias", minutesAgo: 43 },
-        { title: "Premium+ com super bônus", text: "+3.500 livros digitais organizados por categoria", minutesAgo: 58 },
-        { title: "LV Books no celular", text: "Acesse quando quiser, de onde estiver", minutesAgo: 73 }
-      ];
+      var buyerName = "Roberto Andrade";
+      var offerText = "250 audiobooks Pacote Premium+";
 
       function escapeHtml(str) {
         return String(str)
@@ -1289,38 +1278,31 @@
           .replace(/'/g, '&#039;');
       }
 
-      function formatDateTime(minutesAgo) {
-        var date = new Date();
-        date.setMinutes(date.getMinutes() - Number(minutesAgo || 0));
-        var formattedDate = date.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' });
-        var formattedTime = date.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
-        return formattedDate + ' - ' + formattedTime;
-      }
-
       function removeToast(toast) {
         if (!toast) return;
         toast.style.animation = 'slideUp 800ms forwards';
         setTimeout(function(){
           if (toast.parentNode) toast.parentNode.removeChild(toast);
           if (currentToast === toast) currentToast = null;
-        }, 420);
+        }, 400);
       }
 
       function showPopup() {
-        if (!container || !popups.length) return;
+        if (!container) return;
         if (currentToast) removeToast(currentToast);
 
-        var item = popups[popupIndex % popups.length];
-        popupIndex++;
+        var now = new Date();
+        var formattedDate = now.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' });
+        var formattedTime = now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
 
         var toast = document.createElement('div');
         toast.className = 'purchase-toast';
         toast.innerHTML =
           '<div class="logo"><img decoding="async" src="' + productLogo + '" alt="' + escapeHtml(productName) + ' logo"></div>' +
           '<div class="content">' +
-            '<span class="who">' + escapeHtml(item.title) + '</span>' +
-            '<span class="what">' + escapeHtml(item.text) + '</span>' +
-            '<span class="when">' + formatDateTime(item.minutesAgo) + '</span>' +
+            '<span class="who">' + escapeHtml(buyerName) + ' comprou</span>' +
+            '<span class="what">' + escapeHtml(offerText) + '</span>' +
+            '<span class="when">' + formattedDate + ' - ' + formattedTime + '</span>' +
           '</div>';
 
         container.appendChild(toast);
@@ -1329,8 +1311,8 @@
         setTimeout(function(){ removeToast(toast); }, autoCloseMs);
       }
 
-      setTimeout(showPopup, 2300);
-      setInterval(showPopup, intervalMs);
+      setTimeout(showPopup, 2500);
+      setInterval(showPopup, 20000);
     })();
   </script>
 </body>
