@@ -1269,15 +1269,17 @@
       var popupIndex = 0;
 
       var popups = [
-        { title: "Premium+ disponível hoje", text: "+250 audiobooks + bônus de 3.500 livros" },
-        { title: "Acesso imediato no celular", text: "Ouça, leia e aprenda de onde estiver" },
-        { title: "Pagamento único liberado", text: "Sem assinatura mensal e com garantia de 7 dias" },
-        { title: "Biblioteca digital completa", text: "Audiobooks, livros digitais e coleções organizadas" },
-        { title: "Pacote Básico disponível", text: "+250 audiobooks com acesso vitalício" },
-        { title: "Bônus Premium+ ativo", text: "Mais de 3 mil livros digitais para ampliar sua coleção" }
+        { name: "Roberto Andrade", offer: "250 audiobooks Pacote Premium+", offset: 0 },
+        { name: "Ana Paula", offer: "250 audiobooks Pacote Premium+", offset: 11 },
+        { name: "Carlos Henrique", offer: "250 audiobooks Pacote Premium+", offset: 24 },
+        { name: "Juliana Martins", offer: "250 audiobooks Pacote Premium+", offset: 43 },
+        { name: "João Marcelo", offer: "250 audiobooks Pacote Premium+", offset: 67 },
+        { name: "Camila Rocha", offer: "250 audiobooks Pacote Premium+", offset: 94 },
+        { name: "Marcos Vinícius", offer: "250 audiobooks Pacote Premium+", offset: 131 },
+        { name: "Mariana Alves", offer: "250 audiobooks Pacote Premium+", offset: 169 },
+        { name: "Rafael Almeida", offer: "250 audiobooks Pacote Premium+", offset: 205 },
+        { name: "Fernanda Ribeiro", offer: "250 audiobooks Pacote Premium+", offset: 240 }
       ];
-
-      var minuteOffsets = [0, 7, 18, 42, 75, 138, 196, 241];
 
       function escapeHtml(str) {
         return String(str)
@@ -1310,7 +1312,6 @@
         if (currentToast) removeToast(currentToast);
 
         var data = popups[popupIndex % popups.length];
-        var offset = minuteOffsets[popupIndex % minuteOffsets.length];
         popupIndex++;
 
         var toast = document.createElement('div');
@@ -1318,9 +1319,9 @@
         toast.innerHTML =
           '<div class="logo"><img decoding="async" src="' + productLogo + '" alt="' + escapeHtml(productName) + ' logo"></div>' +
           '<div class="content">' +
-            '<span class="who">' + escapeHtml(data.title) + '</span>' +
-            '<span class="what">' + escapeHtml(data.text) + '</span>' +
-            '<span class="when">' + formatTimeWithCurrentDate(offset) + '</span>' +
+            '<span class="who">' + escapeHtml(data.name) + ' comprou</span>' +
+            '<span class="what">' + escapeHtml(data.offer) + '</span>' +
+            '<span class="when">' + formatTimeWithCurrentDate(data.offset) + '</span>' +
           '</div>';
 
         container.appendChild(toast);
@@ -1329,8 +1330,8 @@
         setTimeout(function(){ removeToast(toast); }, autoCloseMs);
       }
 
-      setTimeout(showPopup, 2500);
-      setInterval(showPopup, 20000);
+      setTimeout(showPopup, 7000);
+      setInterval(showPopup, 45000);
     })();
   </script>
 </body>
