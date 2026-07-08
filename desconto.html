@@ -457,6 +457,75 @@ src="https://www.facebook.com/tr?id=868077232260294&ev=PageView&noscript=1"
       font-size: 14px;
     }
 
+
+
+    .collection-advantages {
+      background:
+        radial-gradient(circle at 20% 0%, rgba(37, 99, 235, .22), transparent 28%),
+        radial-gradient(circle at 82% 10%, rgba(34, 197, 94, .16), transparent 30%),
+        linear-gradient(180deg, #0f172a, #111827);
+      color: #fff;
+    }
+    .collection-advantages-head {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 24px;
+    }
+    .collection-advantages-head .kicker {
+      color: #93c5fd;
+    }
+    .collection-advantages-head h2 {
+      color: #fff;
+    }
+    .collection-advantages-head p {
+      margin: 12px auto 0;
+      color: #cbd5e1;
+      font-size: 17px;
+    }
+    .collection-advantages-list {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      gap: 14px;
+    }
+    .collection-advantage-card {
+      display: grid;
+      grid-template-columns: 52px 1fr;
+      gap: 15px;
+      align-items: center;
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(15, 23, 42, .72);
+      border: 1px solid rgba(148, 163, 184, .22);
+      box-shadow: 0 18px 45px rgba(0, 0, 0, .16);
+    }
+    .collection-advantage-icon {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      border-radius: 999px;
+      font-size: 22px;
+      background: linear-gradient(135deg, #1d4ed8, #2563eb);
+      box-shadow: 0 10px 24px rgba(37, 99, 235, .26);
+    }
+    .collection-advantage-card:nth-child(2) .collection-advantage-icon { background: linear-gradient(135deg, #047857, #16a34a); }
+    .collection-advantage-card:nth-child(3) .collection-advantage-icon { background: linear-gradient(135deg, #92400e, #facc15); }
+    .collection-advantage-card:nth-child(4) .collection-advantage-icon { background: linear-gradient(135deg, #5b21b6, #7c3aed); }
+    .collection-advantage-card:nth-child(5) .collection-advantage-icon { background: linear-gradient(135deg, #be123c, #f43f5e); }
+    .collection-advantage-card:nth-child(6) .collection-advantage-icon { background: linear-gradient(135deg, #0369a1, #0ea5e9); }
+    .collection-advantage-card h3 {
+      margin: 0 0 3px;
+      color: #fff;
+      font-size: 17px;
+      line-height: 1.2;
+    }
+    .collection-advantage-card p {
+      margin: 0;
+      color: #dbeafe;
+      font-size: 15px;
+    }
+
     .split {
       display: grid;
       grid-template-columns: .92fr 1.08fr;
@@ -1149,6 +1218,68 @@ src="https://www.facebook.com/tr?id=868077232260294&ev=PageView&noscript=1"
     </div>
   </section>
 
+
+
+  <section class="collection-advantages" id="vantagens-colecao">
+    <div class="container">
+      <div class="collection-advantages-head">
+        <span class="kicker">Por que escolher nossa coleção?</span>
+        <h2>Mais conhecimento, menos gasto e acesso direto pelo celular.</h2>
+        <p>Uma biblioteca pensada para quem quer evoluir na vida pessoal e profissional sem depender de comprar livro por livro.</p>
+      </div>
+
+      <div class="collection-advantages-list">
+        <article class="collection-advantage-card">
+          <div class="collection-advantage-icon">💰</div>
+          <div>
+            <h3>Economize comprando uma coleção completa</h3>
+            <p>Em vez de pagar caro em livros separados, você libera uma biblioteca inteira com pagamento único.</p>
+          </div>
+        </article>
+
+        <article class="collection-advantage-card">
+          <div class="collection-advantage-icon">🎧</div>
+          <div>
+            <h3>Aprenda mesmo sem tempo para ler</h3>
+            <p>Dê play enquanto dirige, treina, caminha, trabalha ou descansa e transforme sua rotina em aprendizado.</p>
+          </div>
+        </article>
+
+        <article class="collection-advantage-card">
+          <div class="collection-advantage-icon">📚</div>
+          <div>
+            <h3>Mais variedade em um só acesso</h3>
+            <p>Audiobooks, livros digitais bônus e coleções organizadas para você escolher o conteúdo certo para cada momento.</p>
+          </div>
+        </article>
+
+        <article class="collection-advantage-card">
+          <div class="collection-advantage-icon">⚡</div>
+          <div>
+            <h3>Acesso rápido e sem complicação</h3>
+            <p>Compra aprovada, acesso enviado automaticamente para começar a ouvir ou ler direto pelo celular.</p>
+          </div>
+        </article>
+
+        <article class="collection-advantage-card">
+          <div class="collection-advantage-icon">🧠</div>
+          <div>
+            <h3>Conteúdos que ajudam em decisões reais</h3>
+            <p>Finanças, negócios, desenvolvimento pessoal, liderança e produtividade para aplicar no dia a dia.</p>
+          </div>
+        </article>
+
+        <article class="collection-advantage-card">
+          <div class="collection-advantage-icon">🔒</div>
+          <div>
+            <h3>Compra segura com garantia</h3>
+            <p>Pagamento único, sem mensalidade e 7 dias de garantia para testar com mais segurança.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <section id="como-funciona" style="background:#fff;">
     <div class="container">
       <div class="section-head">
@@ -1312,16 +1443,6 @@ src="https://www.facebook.com/tr?id=868077232260294&ev=PageView&noscript=1"
     </div>
   </footer>
 
-  <div class="sticky-cta">
-    <div class="sticky-inner">
-      <div class="sticky-copy">
-        <b>LV Books</b>
-        <span>Acesso imediato a partir de R$10</span>
-      </div>
-      <a href="#ofertas" class="btn btn-primary">Ver acesso</a>
-    </div>
-  </div>
-
   <div id="purchaseToastContainer" aria-live="polite"></div>
 
   <div id="premiumOfferPopup" class="premium-popup-overlay" role="dialog" aria-modal="true" aria-labelledby="premiumOfferTitle" aria-hidden="true">
@@ -1347,7 +1468,7 @@ src="https://www.facebook.com/tr?id=868077232260294&ev=PageView&noscript=1"
       </ul>
 
       <div class="premium-popup-actions">
-        <button class="btn btn-gold" style="width:100%;" onclick="goCheckout('https://pay.kirvano.com/fa856e82-bfd5-421b-ad32-12ecb139f72f', 14.90)">
+        <button class="btn btn-gold" style="width:100%;" onclick="goCheckout('https://pay.kirvano.com/a7a5c8b8-0846-4616-9a58-160473e70ec6', 14.90)">
           Quero o pacote Premium por R$14,90
         </button>
         <button class="premium-popup-secondary" style="width:100%;" onclick="goCheckout('https://pay.kirvano.com/40790a84-d135-462f-baea-01062fac7c50', 10.00)">
