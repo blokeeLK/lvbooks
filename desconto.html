@@ -17,7 +17,7 @@
   <link rel="apple-touch-icon" href="upcell/logo.png">
   <meta name="msapplication-TileImage" content="upcell/logo.png">
 
-  <!-- Meta Pixel Code -->
+    <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -28,12 +28,14 @@ t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 
+fbq('set', 'autoConfig', false, '868077232260294');
 fbq('init', '868077232260294');
 
 (function(){
   if (window.__lvMetaPixelGuardInstalled) return;
   window.__lvMetaPixelGuardInstalled = true;
   window.__lvMetaPixelEventsSent = window.__lvMetaPixelEventsSent || {};
+  window.__lvBlockPageViewUntil = window.__lvBlockPageViewUntil || 0;
   var originalFbq = window.fbq;
 
   if (typeof originalFbq !== 'function') return;
@@ -43,7 +45,13 @@ fbq('init', '868077232260294');
       var command = arguments[0];
       var eventName = command === 'trackSingle' ? arguments[2] : arguments[1];
 
-      if ((command === 'track' || command === 'trackSingle') && (eventName === 'PageView' || eventName === 'ViewContent')) {
+      var isMetaTrack = command === 'track' || command === 'trackSingle' || command === 'trackCustom' || command === 'trackSingleCustom';
+
+      if (isMetaTrack && (eventName === 'PageView' || eventName === 'ViewContent')) {
+        if (eventName === 'PageView' && window.__lvBlockPageViewUntil && Date.now() < window.__lvBlockPageViewUntil) {
+          return;
+        }
+
         if (window.__lvMetaPixelEventsSent[eventName]) {
           return;
         }
@@ -766,6 +774,140 @@ src="https://www.facebook.com/tr?id=868077232260294&ev=PageView&noscript=1"
     .sticky-copy span { color: var(--muted); font-size: 12px; font-weight: 700; }
     .sticky-cta .btn { min-height: 48px; padding: 13px 14px; font-size: 14px; border-radius: 12px; }
 
+    /* ===== Popup oferta Premium ===== */
+    .premium-popup-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 99998;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      background: rgba(15, 23, 42, .72);
+      backdrop-filter: blur(10px);
+    }
+    .premium-popup-overlay.is-open {
+      display: flex;
+    }
+    .premium-popup-card {
+      width: min(470px, 100%);
+      max-height: calc(100vh - 36px);
+      overflow-y: auto;
+      background: #ffffff;
+      color: #0f172a;
+      border: 2px solid #facc15;
+      border-radius: 24px;
+      padding: 22px;
+      box-shadow: 0 30px 90px rgba(0, 0, 0, .35);
+    }
+    .premium-popup-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: #fef3c7;
+      color: #92400e;
+      font-size: 12px;
+      font-weight: 950;
+      margin-bottom: 12px;
+    }
+    .premium-popup-card h3 {
+      margin: 0 0 8px;
+      font-size: 26px;
+      line-height: 1.05;
+      letter-spacing: -.5px;
+    }
+    .premium-popup-desc {
+      margin: 0 0 14px;
+      color: #475569;
+      font-size: 15px;
+    }
+    .premium-popup-price {
+      display: grid;
+      gap: 2px;
+      margin: 14px 0 16px;
+      padding: 14px;
+      border-radius: 18px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      text-align: center;
+    }
+    .premium-popup-price .old-price {
+      color: #64748b;
+      font-size: 14px;
+      font-weight: 900;
+      text-decoration: line-through;
+    }
+    .premium-popup-price .new-price {
+      color: #15803d;
+      font-size: 42px;
+      line-height: 1;
+      font-weight: 950;
+      letter-spacing: -1px;
+    }
+    .premium-popup-price .payment-note {
+      color: #475569;
+      font-size: 13px;
+      font-weight: 800;
+    }
+    .premium-popup-list {
+      list-style: none;
+      margin: 0 0 18px;
+      padding: 0;
+      display: grid;
+      gap: 8px;
+    }
+    .premium-popup-list li {
+      display: grid;
+      grid-template-columns: 22px 1fr;
+      gap: 8px;
+      color: #1e293b;
+      font-size: 14px;
+      font-weight: 650;
+    }
+    .premium-popup-list li::before {
+      content: "✓";
+      width: 22px;
+      height: 22px;
+      display: grid;
+      place-items: center;
+      border-radius: 7px;
+      background: #dcfce7;
+      color: #15803d;
+      font-weight: 950;
+      font-size: 13px;
+    }
+    .premium-popup-actions {
+      display: grid;
+      gap: 10px;
+    }
+    .premium-popup-secondary {
+      border: 1px solid #cbd5e1;
+      cursor: pointer;
+      min-height: 50px;
+      padding: 13px 16px;
+      border-radius: 14px;
+      background: #ffffff;
+      color: #334155;
+      font-size: 15px;
+      font-weight: 950;
+      text-align: center;
+      transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+    }
+    .premium-popup-secondary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(15, 23, 42, .08);
+      filter: brightness(1.02);
+    }
+    .premium-popup-secure {
+      margin-top: 10px;
+      text-align: center;
+      color: #64748b;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
     /* ===== Popup clean estilo antigo ===== */
     .purchase-toast {
       position: fixed;
@@ -1076,9 +1218,9 @@ src="https://www.facebook.com/tr?id=868077232260294&ev=PageView&noscript=1"
 
       <div class="offer-grid">
         <article class="offer-card premium">
-          <div class="tag">🔥 Melhor custo-benefício</div>
+          <div class="tag">🔥 Melhor e +VENDIDO</div>
           <h3>Pacote Premium+</h3>
-          <div class="price">R$ 17,90 <small>pagamento único</small></div>
+          <div class="price">R$ 19,90 <small>pagamento único</small></div>
           <p class="offer-desc">O melhor pacote para quem quer audiobooks, livros digitais de bônus e mais variedade em um único acesso.</p>
           <ul class="checklist">
             <li>+250 audiobooks para ouvir de onde estiver</li>
@@ -1099,7 +1241,7 @@ src="https://www.facebook.com/tr?id=868077232260294&ev=PageView&noscript=1"
         </article>
 
         <article class="offer-card">
-          <div class="tag" style="background:#dbeafe;color:#1d4ed8;">Entrada simples</div>
+          <div class="tag" style="background:#dbeafe;color:#1d4ed8;">Basic+</div>
           <h3>Pacote Básico</h3>
           <div class="price">R$ 10,00 <small>pagamento único</small></div>
           <p class="offer-desc">Comece hoje com acesso imediato com os audiobooks e acessar tudo de forma simples pelo celular.</p>
@@ -1110,7 +1252,7 @@ src="https://www.facebook.com/tr?id=868077232260294&ev=PageView&noscript=1"
             <li>Suporte por WhatsApp</li>
             <li>Garantia incondicional de 7 dias</li>
           </ul>
-          <button class="btn btn-primary" style="width:100%;" onclick="goCheckout('https://pay.kirvano.com/40790a84-d135-462f-baea-01062fac7c50', 10.00)">
+          <button class="btn btn-primary" style="width:100%;" onclick="openPremiumOfferPopup()">
             Quero começar pelo Básico
           </button>
           <div class="secure-note">Comece hoje com acesso imediato</div>
@@ -1182,6 +1324,44 @@ src="https://www.facebook.com/tr?id=868077232260294&ev=PageView&noscript=1"
 
   <div id="purchaseToastContainer" aria-live="polite"></div>
 
+  <div id="premiumOfferPopup" class="premium-popup-overlay" role="dialog" aria-modal="true" aria-labelledby="premiumOfferTitle" aria-hidden="true">
+    <div class="premium-popup-card">
+      <div class="premium-popup-badge">🔥 Oferta exclusiva agora</div>
+      <h3 id="premiumOfferTitle">Leve o Premium+ completo com desconto.</h3>
+      <p class="premium-popup-desc">Você ia começar pelo pacote de R$10,00, mas pode liberar o pacote completo de R$19,90 por apenas R$14,90 hoje.</p>
+
+      <div class="premium-popup-price">
+        <span class="old-price">De R$ 19,90</span>
+        <span class="new-price">R$ 14,90</span>
+        <span class="payment-note">pagamento único • sem mensalidade</span>
+      </div>
+
+      <ul class="premium-popup-list">
+        <li>+250 audiobooks para ouvir de onde estiver</li>
+        <li>+ Super bônus 3.500 livros digitais</li>
+        <li>Desenvolvimento pessoal, negócios, liderança e produtividade</li>
+        <li>200 áudios adicionados por mês</li>
+        <li>200 novos livros digitais lançamentos todo mês</li>
+        <li>7 coleções exclusivas organizadas</li>
+        <li>Entrega automática no e-mail</li>
+        <li>Acesso vitalício</li>
+        <li>Suporte por WhatsApp</li>
+        <li>Garantia de 7 dias</li>
+      </ul>
+
+      <div class="premium-popup-actions">
+        <button class="btn btn-gold" style="width:100%;" onclick="goCheckout('https://pay.kirvano.com/fa856e82-bfd5-421b-ad32-12ecb139f72f', 14.90)">
+          Quero o pacote Premium por R$14,90
+        </button>
+        <button class="premium-popup-secondary" style="width:100%;" onclick="goCheckout('https://pay.kirvano.com/40790a84-d135-462f-baea-01062fac7c50', 10.00)">
+          Não, quero o pacote de R$10,00
+        </button>
+      </div>
+
+      <div class="premium-popup-secure">Compra segura • acesso imediato • teste por 7 dias</div>
+    </div>
+  </div>
+
   <!-- UTM + checkout preserving -->
   <script>
   (function(){
@@ -1238,6 +1418,13 @@ src="https://www.facebook.com/tr?id=868077232260294&ev=PageView&noscript=1"
       });
       window.location.href = url.toString();
     };
+
+    window.openPremiumOfferPopup = function(){
+      var popup = document.getElementById('premiumOfferPopup');
+      if (!popup) return;
+      popup.classList.add('is-open');
+      popup.setAttribute('aria-hidden', 'false');
+    };
   })();
   </script>
 
@@ -1260,7 +1447,7 @@ src="https://www.facebook.com/tr?id=868077232260294&ev=PageView&noscript=1"
       var dia = String(hoje.getDate()).padStart(2, '0');
       var mes = String(hoje.getMonth() + 1).padStart(2, '0');
       var ano = hoje.getFullYear();
-      el.textContent = 'LV Books — oferta disponível hoje, ' + dias[hoje.getDay()] + ', ' + dia + '/' + mes + '/' + ano + ' • acesso imediato e garantia de 7 dias';
+      el.textContent = 'LV Books — oferta disponível somente hoje, ' + dias[hoje.getDay()] + ', ' + dia + '/' + mes + '/' + ano + ' • ';
     })();
 
     (function mostrarPopupClean(){
@@ -1337,5 +1524,33 @@ src="https://www.facebook.com/tr?id=868077232260294&ev=PageView&noscript=1"
       setInterval(showPopup, 45000);
     })();
   </script>
+
+  <script>
+    (function bloquearPageViewEmCliquesInternos(){
+      document.addEventListener('click', function(event){
+        var clicked = event.target && event.target.closest ? event.target.closest('a, button, .sound-overlay') : null;
+        if (!clicked) return;
+
+        var onclickAttr = clicked.getAttribute ? (clicked.getAttribute('onclick') || '') : '';
+        var isCheckoutButton = clicked.tagName === 'BUTTON' && onclickAttr.indexOf('goCheckout(') !== -1;
+
+        if (!isCheckoutButton) {
+          window.__lvBlockPageViewUntil = Date.now() + 2000;
+        }
+
+        if (clicked.tagName === 'A') {
+          var href = clicked.getAttribute('href') || '';
+          if (href.charAt(0) === '#' && href.length > 1) {
+            var target = document.getElementById(href.slice(1));
+            if (target) {
+              event.preventDefault();
+              target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+          }
+        }
+      }, true);
+    })();
+  </script>
+
 </body>
 </html>
