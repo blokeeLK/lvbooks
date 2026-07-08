@@ -18,69 +18,71 @@
   <meta name="msapplication-TileImage" content="upcell/logo.png">
 
   <!-- Meta Pixel Code -->
-  <script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
 
-  fbq('init', '868077232260294');
+fbq('init', '868077232260294');
 
-  (function(){
-    if (window.__lvMetaPixelGuardInstalled) return;
-    window.__lvMetaPixelGuardInstalled = true;
-    window.__lvMetaPixelEventsSent = window.__lvMetaPixelEventsSent || {};
-    var originalFbq = window.fbq;
+(function(){
+  if (window.__lvMetaPixelGuardInstalled) return;
+  window.__lvMetaPixelGuardInstalled = true;
+  window.__lvMetaPixelEventsSent = window.__lvMetaPixelEventsSent || {};
+  var originalFbq = window.fbq;
 
-    if (typeof originalFbq !== 'function') return;
+  if (typeof originalFbq !== 'function') return;
 
-    function guardedFbq(){
-      try {
-        var command = arguments[0];
-        var eventName = command === 'trackSingle' ? arguments[2] : arguments[1];
+  function guardedFbq(){
+    try {
+      var command = arguments[0];
+      var eventName = command === 'trackSingle' ? arguments[2] : arguments[1];
 
-        if ((command === 'track' || command === 'trackSingle') && (eventName === 'PageView' || eventName === 'ViewContent')) {
-          if (window.__lvMetaPixelEventsSent[eventName]) {
-            return;
-          }
-          window.__lvMetaPixelEventsSent[eventName] = true;
+      if ((command === 'track' || command === 'trackSingle') && (eventName === 'PageView' || eventName === 'ViewContent')) {
+        if (window.__lvMetaPixelEventsSent[eventName]) {
+          return;
         }
-      } catch(e){}
-
-      if (guardedFbq.callMethod) {
-        return guardedFbq.callMethod.apply(guardedFbq, arguments);
+        window.__lvMetaPixelEventsSent[eventName] = true;
       }
+    } catch(e){}
 
-      return originalFbq.apply(originalFbq, arguments);
+    if (guardedFbq.callMethod) {
+      return guardedFbq.callMethod.apply(guardedFbq, arguments);
     }
 
-    for (var key in originalFbq) {
-      try {
-        guardedFbq[key] = originalFbq[key];
-      } catch(e){}
-    }
+    return originalFbq.apply(originalFbq, arguments);
+  }
 
-    window.fbq = guardedFbq;
-    window._fbq = guardedFbq;
-  })();
+  for (var key in originalFbq) {
+    try {
+      guardedFbq[key] = originalFbq[key];
+    } catch(e){}
+  }
 
-  fbq('track', 'PageView');
-  fbq('track', 'ViewContent', {
-    content_name: 'LV Books',
-    content_category: 'Audiobooks e eBooks',
-    value: 10.00,
-    currency: 'BRL'
-  });
-  </script>
-  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=868077232260294&ev=PageView&noscript=1" alt=""></noscript>
-  <!-- End Meta Pixel Code -->
+  window.fbq = guardedFbq;
+  window._fbq = guardedFbq;
+})();
 
-  <!-- Utmify -->
-  <script src="https://cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-xcod-sck data-utmify-prevent-subids async defer></script>
+fbq('track', 'PageView');
+fbq('track', 'ViewContent', {
+  content_name: 'LV Books',
+  content_category: 'Audiobooks e eBooks',
+  value: 10.00,
+  currency: 'BRL'
+});
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=868077232260294&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+<!-- Utmify -->
+<script src="https://cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-xcod-sck data-utmify-prevent-subids async defer></script>
 
   <style>
     :root {
