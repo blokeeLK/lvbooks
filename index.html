@@ -774,6 +774,140 @@ src="https://www.facebook.com/tr?id=868077232260294&ev=PageView&noscript=1"
     .sticky-copy span { color: var(--muted); font-size: 12px; font-weight: 700; }
     .sticky-cta .btn { min-height: 48px; padding: 13px 14px; font-size: 14px; border-radius: 12px; }
 
+    /* ===== Popup oferta Premium ===== */
+    .premium-popup-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 99998;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      background: rgba(15, 23, 42, .72);
+      backdrop-filter: blur(10px);
+    }
+    .premium-popup-overlay.is-open {
+      display: flex;
+    }
+    .premium-popup-card {
+      width: min(470px, 100%);
+      max-height: calc(100vh - 36px);
+      overflow-y: auto;
+      background: #ffffff;
+      color: #0f172a;
+      border: 2px solid #facc15;
+      border-radius: 24px;
+      padding: 22px;
+      box-shadow: 0 30px 90px rgba(0, 0, 0, .35);
+    }
+    .premium-popup-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: #fef3c7;
+      color: #92400e;
+      font-size: 12px;
+      font-weight: 950;
+      margin-bottom: 12px;
+    }
+    .premium-popup-card h3 {
+      margin: 0 0 8px;
+      font-size: 26px;
+      line-height: 1.05;
+      letter-spacing: -.5px;
+    }
+    .premium-popup-desc {
+      margin: 0 0 14px;
+      color: #475569;
+      font-size: 15px;
+    }
+    .premium-popup-price {
+      display: grid;
+      gap: 2px;
+      margin: 14px 0 16px;
+      padding: 14px;
+      border-radius: 18px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      text-align: center;
+    }
+    .premium-popup-price .old-price {
+      color: #64748b;
+      font-size: 14px;
+      font-weight: 900;
+      text-decoration: line-through;
+    }
+    .premium-popup-price .new-price {
+      color: #15803d;
+      font-size: 42px;
+      line-height: 1;
+      font-weight: 950;
+      letter-spacing: -1px;
+    }
+    .premium-popup-price .payment-note {
+      color: #475569;
+      font-size: 13px;
+      font-weight: 800;
+    }
+    .premium-popup-list {
+      list-style: none;
+      margin: 0 0 18px;
+      padding: 0;
+      display: grid;
+      gap: 8px;
+    }
+    .premium-popup-list li {
+      display: grid;
+      grid-template-columns: 22px 1fr;
+      gap: 8px;
+      color: #1e293b;
+      font-size: 14px;
+      font-weight: 650;
+    }
+    .premium-popup-list li::before {
+      content: "✓";
+      width: 22px;
+      height: 22px;
+      display: grid;
+      place-items: center;
+      border-radius: 7px;
+      background: #dcfce7;
+      color: #15803d;
+      font-weight: 950;
+      font-size: 13px;
+    }
+    .premium-popup-actions {
+      display: grid;
+      gap: 10px;
+    }
+    .premium-popup-secondary {
+      border: 1px solid #cbd5e1;
+      cursor: pointer;
+      min-height: 50px;
+      padding: 13px 16px;
+      border-radius: 14px;
+      background: #ffffff;
+      color: #334155;
+      font-size: 15px;
+      font-weight: 950;
+      text-align: center;
+      transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+    }
+    .premium-popup-secondary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(15, 23, 42, .08);
+      filter: brightness(1.02);
+    }
+    .premium-popup-secure {
+      margin-top: 10px;
+      text-align: center;
+      color: #64748b;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
     /* ===== Popup clean estilo antigo ===== */
     .purchase-toast {
       position: fixed;
@@ -1118,7 +1252,7 @@ src="https://www.facebook.com/tr?id=868077232260294&ev=PageView&noscript=1"
             <li>Suporte por WhatsApp</li>
             <li>Garantia incondicional de 7 dias</li>
           </ul>
-          <button class="btn btn-primary" style="width:100%;" onclick="goCheckout('https://pay.kirvano.com/40790a84-d135-462f-baea-01062fac7c50', 10.00)">
+          <button class="btn btn-primary" style="width:100%;" onclick="openPremiumOfferPopup()">
             Quero começar pelo Básico
           </button>
           <div class="secure-note">Comece hoje com acesso imediato</div>
@@ -1178,17 +1312,42 @@ src="https://www.facebook.com/tr?id=868077232260294&ev=PageView&noscript=1"
     </div>
   </footer>
 
-  <div class="sticky-cta">
-    <div class="sticky-inner">
-      <div class="sticky-copy">
-        <b>LV Books</b>
-        <span>Acesso imediato a partir de R$10</span>
+  <div id="purchaseToastContainer" aria-live="polite"></div>
+
+  <div id="premiumOfferPopup" class="premium-popup-overlay" role="dialog" aria-modal="true" aria-labelledby="premiumOfferTitle" aria-hidden="true">
+    <div class="premium-popup-card">
+      <div class="premium-popup-badge">🔥 Oferta exclusiva agora</div>
+      <h3 id="premiumOfferTitle">Leve o Premium+ completo com desconto.</h3>
+      <p class="premium-popup-desc">Você ia começar pelo pacote de R$10,00, mas pode liberar o pacote completo de R$19,90 por apenas R$14,90 hoje.</p>
+
+      <div class="premium-popup-price">
+        <span class="old-price">De R$ 19,90</span>
+        <span class="new-price">R$ 14,90</span>
+        <span class="payment-note">pagamento único • sem mensalidade</span>
       </div>
-      <a href="#ofertas" class="btn btn-primary">Ver acesso</a>
+
+      <ul class="premium-popup-list">
+        <li>+250 audiobooks para ouvir de onde estiver</li>
+        <li>+ Super bônus 3.500 livros digitais</li>
+        <li>200 áudios adicionados por mês</li>
+        <li>200 novos livros digitais lançamentos todo mês</li>
+        <li>7 coleções exclusivas organizadas</li>
+        <li>Acesso vitalício</li>
+        <li>Garantia de 7 dias</li>
+      </ul>
+
+      <div class="premium-popup-actions">
+        <button class="btn btn-gold" style="width:100%;" onclick="goCheckout('https://pay.kirvano.com/a7a5c8b8-0846-4616-9a58-160473e70ec6', 14.90)">
+          Quero o pacote Premium por R$14,90
+        </button>
+        <button class="premium-popup-secondary" style="width:100%;" onclick="goCheckout('https://pay.kirvano.com/40790a84-d135-462f-baea-01062fac7c50', 10.00)">
+          Não, quero o pacote de R$10,00
+        </button>
+      </div>
+
+      <div class="premium-popup-secure">Compra segura • acesso imediato • teste por 7 dias</div>
     </div>
   </div>
-
-  <div id="purchaseToastContainer" aria-live="polite"></div>
 
   <!-- UTM + checkout preserving -->
   <script>
@@ -1245,6 +1404,13 @@ src="https://www.facebook.com/tr?id=868077232260294&ev=PageView&noscript=1"
         if (merged[k] && !url.searchParams.get(k)) url.searchParams.set(k, merged[k]);
       });
       window.location.href = url.toString();
+    };
+
+    window.openPremiumOfferPopup = function(){
+      var popup = document.getElementById('premiumOfferPopup');
+      if (!popup) return;
+      popup.classList.add('is-open');
+      popup.setAttribute('aria-hidden', 'false');
     };
   })();
   </script>
