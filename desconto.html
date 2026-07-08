@@ -895,7 +895,7 @@
           <div class="eyebrow">🎧 Biblioteca digital para ouvir e ler</div>
           <h1><span>Mais livros.</span><br>Mais conhecimento. Menos gasto.</h1>
           <p class="hero-sub">
-            Tenha uma coleção organizada com <b>+250 audiobooks</b> e opção com <b>+3.500 eBooks de bônus</b> para acessar direto pelo celular, sem assinatura mensal.
+            Tenha uma coleção organizada com <b>+250 audiobooks</b> e <b>mais de 3 mil livros digitais de bônus</b> no Premium+ para ouvir, ler e acessar direto pelo celular, sem assinatura mensal.
           </p>
 
           <div class="hero-actions">
@@ -1090,7 +1090,7 @@
             <li>Garantia de 7 dias</li>
           </ul>
           <button class="btn btn-gold" style="width:100%;" onclick="goCheckout('https://pay.kirvano.com/fa856e82-bfd5-421b-ad32-12ecb139f72f', 17.90)">
-            Quero o Premium+
+            Quero o Premium+ com bônus de 3.500 livros
           </button>
           <div class="secure-note">Compra segura • Acesso imediato • Sem mensalidade</div>
         </article>
@@ -1263,11 +1263,22 @@
     (function mostrarPopupClean(){
       var productName = "LV Books";
       var productLogo = "https://i.postimg.cc/J7ywfQdR/Design-sem-nome-86.png";
-      var autoCloseMs = 4500;
+      var autoCloseMs = 4800;
+      var intervalMs = 19000;
       var currentToast = null;
+      var popupIndex = 0;
       var container = document.getElementById("purchaseToastContainer");
-      var buyerName = "Roberto Andrade";
-      var offerText = "250 audiobooks Pacote Premium+";
+
+      var popups = [
+        { title: "Pacote Premium+ em destaque", text: "+250 audiobooks + mais de 3 mil livros digitais", minutesAgo: 0 },
+        { title: "Biblioteca completa no celular", text: "Audiobooks, eBooks bônus e acesso vitalício", minutesAgo: 7 },
+        { title: "Oferta Premium+ ativa hoje", text: "3.500 eBooks bônus + 250 audiobooks", minutesAgo: 14 },
+        { title: "Acesso imediato após pagamento", text: "Entrega automática no e-mail e suporte no WhatsApp", minutesAgo: 22 },
+        { title: "Conhecimento para ouvir e ler", text: "Finanças, negócios, produtividade e desenvolvimento pessoal", minutesAgo: 31 },
+        { title: "Pagamento único liberado", text: "Sem mensalidade, com garantia de 7 dias", minutesAgo: 43 },
+        { title: "Premium+ com super bônus", text: "+3.500 livros digitais organizados por categoria", minutesAgo: 58 },
+        { title: "LV Books no celular", text: "Acesse quando quiser, de onde estiver", minutesAgo: 73 }
+      ];
 
       function escapeHtml(str) {
         return String(str)
@@ -1278,31 +1289,38 @@
           .replace(/'/g, '&#039;');
       }
 
+      function formatDateTime(minutesAgo) {
+        var date = new Date();
+        date.setMinutes(date.getMinutes() - Number(minutesAgo || 0));
+        var formattedDate = date.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' });
+        var formattedTime = date.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+        return formattedDate + ' - ' + formattedTime;
+      }
+
       function removeToast(toast) {
         if (!toast) return;
         toast.style.animation = 'slideUp 800ms forwards';
         setTimeout(function(){
           if (toast.parentNode) toast.parentNode.removeChild(toast);
           if (currentToast === toast) currentToast = null;
-        }, 400);
+        }, 420);
       }
 
       function showPopup() {
-        if (!container) return;
+        if (!container || !popups.length) return;
         if (currentToast) removeToast(currentToast);
 
-        var now = new Date();
-        var formattedDate = now.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' });
-        var formattedTime = now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+        var item = popups[popupIndex % popups.length];
+        popupIndex++;
 
         var toast = document.createElement('div');
         toast.className = 'purchase-toast';
         toast.innerHTML =
           '<div class="logo"><img decoding="async" src="' + productLogo + '" alt="' + escapeHtml(productName) + ' logo"></div>' +
           '<div class="content">' +
-            '<span class="who">' + escapeHtml(buyerName) + ' comprou</span>' +
-            '<span class="what">' + escapeHtml(offerText) + '</span>' +
-            '<span class="when">' + formattedDate + ' - ' + formattedTime + '</span>' +
+            '<span class="who">' + escapeHtml(item.title) + '</span>' +
+            '<span class="what">' + escapeHtml(item.text) + '</span>' +
+            '<span class="when">' + formatDateTime(item.minutesAgo) + '</span>' +
           '</div>';
 
         container.appendChild(toast);
@@ -1311,8 +1329,8 @@
         setTimeout(function(){ removeToast(toast); }, autoCloseMs);
       }
 
-      setTimeout(showPopup, 2500);
-      setInterval(showPopup, 20000);
+      setTimeout(showPopup, 2300);
+      setInterval(showPopup, intervalMs);
     })();
   </script>
 </body>
