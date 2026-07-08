@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <script>
     if (location.hostname === 'lvbooks.onrender.com') {
       location.replace('https://lvbooks.com.br' + location.pathname + location.search + location.hash);
     }
   </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>LV Books | Biblioteca Digital de Audiobooks e eBooks</title>
-  <meta name="description" content="LV Books: biblioteca digital com audiobooks e eBooks para ouvir e ler no celular. Acesso imediato, pagamento único e garantia de 7 dias.">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="theme-color" content="#0f172a">
-  <link rel="canonical" href="https://lvbooks.com.br/">
-  <link rel="icon" href="upcell/logo.png" sizes="32x32">
-  <link rel="icon" href="upcell/logo.png" sizes="192x192">
-  <link rel="apple-touch-icon" href="upcell/logo.png">
-  <meta name="msapplication-TileImage" content="upcell/logo.png">
+  <meta name="description" content="LV Books: biblioteca digital com audiobooks e eBooks para ouvir e ler pelo celular. Acesso imediato, pagamento único e garantia de 7 dias." />
+  <meta name="theme-color" content="#ffffff" />
+  <link rel="icon" href="upcell/logo.png" sizes="32x32" />
+  <link rel="icon" href="upcell/logo.png" sizes="192x192" />
+  <link rel="apple-touch-icon" href="upcell/logo.png" />
+  <meta name="msapplication-TileImage" content="upcell/logo.png" />
 
   <!-- Meta Pixel Code -->
   <script>
@@ -44,9 +43,7 @@
         var eventName = command === 'trackSingle' ? arguments[2] : arguments[1];
 
         if ((command === 'track' || command === 'trackSingle') && (eventName === 'PageView' || eventName === 'ViewContent')) {
-          if (window.__lvMetaPixelEventsSent[eventName]) {
-            return;
-          }
+          if (window.__lvMetaPixelEventsSent[eventName]) return;
           window.__lvMetaPixelEventsSent[eventName] = true;
         }
       } catch(e){}
@@ -59,9 +56,7 @@
     }
 
     for (var key in originalFbq) {
-      try {
-        guardedFbq[key] = originalFbq[key];
-      } catch(e){}
+      try { guardedFbq[key] = originalFbq[key]; } catch(e){}
     }
 
     window.fbq = guardedFbq;
@@ -76,1129 +71,507 @@
     currency: 'BRL'
   });
   </script>
-  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=868077232260294&ev=PageView&noscript=1" alt=""></noscript>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=868077232260294&ev=PageView&noscript=1" /></noscript>
   <!-- End Meta Pixel Code -->
 
   <!-- Utmify -->
   <script src="https://cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-xcod-sck data-utmify-prevent-subids async defer></script>
 
   <style>
-    :root {
-      --dark: #0f172a;
-      --dark-2: #111827;
-      --blue: #1d4ed8;
-      --blue-soft: #dbeafe;
-      --green: #16a34a;
-      --green-2: #22c55e;
-      --gold: #facc15;
-      --red: #ef4444;
-      --text: #0f172a;
-      --muted: #475569;
-      --line: #e2e8f0;
-      --bg: #f8fafc;
-      --card: #ffffff;
-      --shadow: 0 18px 45px rgba(15, 23, 42, .12);
-      --radius: 22px;
+    :root{
+      --bg:#f7f8fb;
+      --surface:#ffffff;
+      --surface-2:#f1f5f9;
+      --ink:#0f172a;
+      --text:#1e293b;
+      --muted:#667085;
+      --line:#e2e8f0;
+      --brand:#175cff;
+      --brand-dark:#0b1744;
+      --brand-soft:#eef4ff;
+      --success:#16a34a;
+      --success-dark:#0f7a35;
+      --gold:#c99522;
+      --shadow:0 20px 60px rgba(15,23,42,.08);
+      --radius:24px;
+      --max:1120px;
     }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.5;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-      padding-bottom: 82px;
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,Arial,sans-serif;
+      color:var(--text);
+      background:var(--bg);
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+      line-height:1.5;
     }
-    img, video { max-width: 100%; display: block; }
-    a { color: inherit; text-decoration: none; }
-    button { font: inherit; }
+    body.mobile-stick{padding-bottom:76px}
+    img,video{max-width:100%;display:block}
+    a{color:inherit;text-decoration:none}
+    button,a{touch-action:manipulation}
 
-    .offer-bar {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      width: 100%;
-      background: linear-gradient(90deg, #0f172a, #1d4ed8);
-      color: #fff;
-      text-align: center;
-      font-size: 13px;
-      font-weight: 800;
-      letter-spacing: .2px;
-      padding: 10px 12px;
-      box-shadow: 0 8px 25px rgba(15, 23, 42, .18);
+    .wrap{width:min(var(--max), calc(100% - 40px));margin-inline:auto}
+    .section{padding:84px 0}
+    .section.compact{padding:56px 0}
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:8px 12px;border:1px solid var(--line);border-radius:999px;
+      background:#fff;color:#334155;font-size:13px;font-weight:800;letter-spacing:.02em;
     }
+    h1,h2,h3,p{margin:0}
+    h1{font-size:clamp(36px,6vw,68px);line-height:.96;letter-spacing:-.055em;color:var(--ink);font-weight:900}
+    h2{font-size:clamp(28px,4vw,46px);line-height:1.05;letter-spacing:-.04em;color:var(--ink);font-weight:900}
+    h3{font-size:20px;line-height:1.2;color:var(--ink);font-weight:850}
+    .lead{font-size:clamp(18px,2.1vw,22px);color:#475569;line-height:1.48;max-width:690px}
+    .muted{color:var(--muted)}
+    .center{text-align:center}.center .lead{margin-inline:auto}
 
-    .container {
-      width: min(1120px, calc(100% - 32px));
-      margin: 0 auto;
+    .topbar{
+      position:sticky;top:0;z-index:60;
+      background:rgba(255,255,255,.86);backdrop-filter:blur(16px);
+      border-bottom:1px solid rgba(226,232,240,.85);
     }
+    .nav{height:72px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:950;letter-spacing:-.03em;color:var(--ink)}
+    .brand-mark{
+      width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,#102a86,#175cff);
+      display:grid;place-items:center;color:white;font-weight:950;box-shadow:0 12px 30px rgba(23,92,255,.18);
+    }
+    .nav-links{display:flex;gap:26px;align-items:center;font-size:14px;font-weight:750;color:#475569}
+    .nav-links a:hover{color:var(--brand)}
 
-    .hero {
-      position: relative;
-      isolation: isolate;
-      padding: 28px 0 42px;
-      color: #fff;
-      background:
-        radial-gradient(circle at 20% 10%, rgba(34, 197, 94, .28), transparent 28%),
-        radial-gradient(circle at 85% 20%, rgba(250, 204, 21, .24), transparent 30%),
-        linear-gradient(145deg, #0f172a 0%, #111827 58%, #172554 100%);
-      overflow: hidden;
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      min-height:56px;padding:0 24px;border-radius:16px;border:0;
+      font-size:16px;font-weight:950;letter-spacing:-.01em;cursor:pointer;
+      transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
+      white-space:nowrap;
     }
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: auto -15% -42% -15%;
-      height: 260px;
-      background: rgba(255,255,255,.06);
-      transform: rotate(-4deg);
-      z-index: -1;
-    }
+    .btn:hover{transform:translateY(-1px)}
+    .btn-primary{background:var(--success);color:white;box-shadow:0 16px 34px rgba(22,163,74,.26)}
+    .btn-primary:hover{background:var(--success-dark)}
+    .btn-blue{background:var(--brand);color:white;box-shadow:0 16px 34px rgba(23,92,255,.22)}
+    .btn-blue:hover{background:#0b49df}
+    .btn-ghost{background:#fff;color:var(--ink);border:1px solid var(--line)}
+    .btn-full{width:100%}
+    .under-btn{font-size:13px;color:#64748b;margin-top:12px;font-weight:700}
 
-    .nav-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 28px;
+    .hero{
+      position:relative;overflow:hidden;background:
+        radial-gradient(circle at 12% 0%, rgba(23,92,255,.10), transparent 32%),
+        radial-gradient(circle at 92% 8%, rgba(22,163,74,.10), transparent 28%),
+        linear-gradient(180deg,#ffffff 0%,#f7f8fb 100%);
+      border-bottom:1px solid var(--line);
     }
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 900;
-      letter-spacing: .4px;
+    .hero-grid{display:grid;grid-template-columns:1.04fr .96fr;gap:56px;align-items:center;padding:72px 0 64px}
+    .hero-copy{display:grid;gap:24px}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+    .trust-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:6px;max-width:720px}
+    .trust-item{
+      background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px;
+      box-shadow:0 12px 26px rgba(15,23,42,.04);
     }
-    .brand img {
-      width: 38px;
-      height: 38px;
-      object-fit: contain;
-      border-radius: 10px;
-      background: rgba(255,255,255,.1);
-      padding: 3px;
-    }
-    .nav-proof {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      border: 1px solid rgba(255,255,255,.16);
-      background: rgba(255,255,255,.08);
-      padding: 9px 12px;
-      border-radius: 999px;
-      font-size: 12px;
-      font-weight: 800;
-      color: #e0f2fe;
-      white-space: nowrap;
-    }
+    .trust-item strong{display:block;color:var(--ink);font-size:20px;letter-spacing:-.03em;line-height:1.1}
+    .trust-item span{display:block;color:#64748b;font-size:12.5px;font-weight:750;margin-top:4px}
 
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.05fr .95fr;
-      gap: 34px;
-      align-items: center;
+    .product-card{
+      position:relative;border-radius:34px;background:linear-gradient(180deg,#fff,#f8fbff);
+      border:1px solid rgba(226,232,240,.95);box-shadow:var(--shadow);padding:24px;overflow:hidden;
     }
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      width: fit-content;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(34, 197, 94, .13);
-      border: 1px solid rgba(34, 197, 94, .32);
-      color: #bbf7d0;
-      font-weight: 900;
-      font-size: 13px;
-      margin-bottom: 14px;
+    .product-card::before{
+      content:"";position:absolute;inset:-90px -70px auto auto;width:210px;height:210px;
+      background:rgba(23,92,255,.09);border-radius:50%;filter:blur(2px)
     }
-    h1 {
-      margin: 0 0 14px;
-      font-size: clamp(34px, 5.7vw, 66px);
-      line-height: .98;
-      letter-spacing: -2px;
-      max-width: 750px;
+    .screen{
+      position:relative;background:#0b1744;border-radius:28px;padding:18px;color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.10);
     }
-    .hero h1 span {
-      display: inline-block;
-      background: linear-gradient(90deg, #fff, #fde68a);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-    .hero-sub {
-      margin: 0 0 20px;
-      max-width: 650px;
-      color: #dbeafe;
-      font-size: clamp(17px, 2.4vw, 21px);
-    }
-    .hero-sub b { color: #fff; }
+    .screen-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;font-size:13px;font-weight:850;color:#dbeafe}
+    .screen-title{font-size:28px;line-height:1.05;letter-spacing:-.04em;font-weight:950;margin:10px 0 16px;color:#fff}
+    .cover-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0}
+    .cover-grid img{width:100%;aspect-ratio:3/4;border-radius:10px;object-fit:cover;box-shadow:0 12px 22px rgba(0,0,0,.20)}
+    .play-strip{background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:14px;display:flex;align-items:center;gap:12px}
+    .play-icon{width:42px;height:42px;border-radius:50%;background:#fff;color:var(--brand-dark);display:grid;place-items:center;font-weight:950;flex:0 0 auto}
+    .play-strip b{display:block;color:#fff;font-size:14px}.play-strip span{display:block;color:#cbd5e1;font-size:12.5px;margin-top:2px}
+    .mini-proof{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
+    .mini-proof div{background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px;text-align:center;font-size:12px;font-weight:850;color:#475569}
+    .mini-proof strong{display:block;font-size:17px;color:var(--ink);letter-spacing:-.03em}
 
-    .hero-actions {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-      flex-wrap: wrap;
-      margin: 22px 0 14px;
-    }
-    .btn {
-      border: 0;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      gap: 8px;
-      min-height: 54px;
-      padding: 16px 22px;
-      border-radius: 14px;
-      font-size: 16px;
-      font-weight: 950;
-      letter-spacing: .2px;
-      transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
-    }
-    .btn:hover { transform: translateY(-2px); filter: brightness(1.02); }
-    .btn:active { transform: translateY(0); }
-    .btn-primary {
-      background: linear-gradient(180deg, #22c55e, #16a34a);
-      color: #052e16;
-      box-shadow: 0 12px 30px rgba(34, 197, 94, .35);
-    }
-    .btn-gold {
-      background: linear-gradient(180deg, #fde047, #facc15);
-      color: #422006;
-      box-shadow: 0 12px 30px rgba(250, 204, 21, .28);
-    }
-    .btn-ghost {
-      background: rgba(255,255,255,.08);
-      color: #fff;
-      border: 1px solid rgba(255,255,255,.18);
-    }
+    .logos{padding:20px 0;border-bottom:1px solid var(--line);background:#fff}
+    .logos-row{display:flex;gap:12px;overflow:auto;padding-bottom:2px;scrollbar-width:none}.logos-row::-webkit-scrollbar{display:none}
+    .logos-row span{flex:0 0 auto;border:1px solid var(--line);border-radius:999px;background:#fff;padding:10px 14px;font-size:13px;font-weight:850;color:#64748b}
 
-    .trust-line {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 9px;
-      margin-top: 16px;
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:34px}
+    .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:34px}
+    .card{
+      background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px;
+      box-shadow:0 16px 40px rgba(15,23,42,.045);
     }
-    .trust-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 8px 10px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.08);
-      border: 1px solid rgba(255,255,255,.12);
-      color: #e2e8f0;
-      font-size: 13px;
-      font-weight: 800;
+    .icon{
+      width:48px;height:48px;border-radius:16px;background:var(--brand-soft);color:var(--brand);
+      display:grid;place-items:center;font-weight:950;font-size:22px;margin-bottom:18px;
     }
+    .card p{margin-top:10px;color:#64748b;font-size:15px}
 
-    .hero-card {
-      background: rgba(255,255,255,.1);
-      border: 1px solid rgba(255,255,255,.16);
-      border-radius: 28px;
-      padding: 14px;
-      box-shadow: 0 30px 80px rgba(0,0,0,.26);
-      backdrop-filter: blur(14px);
-    }
-    .video-box {
-      position: relative;
-      border-radius: 22px;
-      overflow: hidden;
-      background: #000;
-      border: 1px solid rgba(255,255,255,.12);
-    }
-    .video-box video {
-      width: 100%;
-      aspect-ratio: 9 / 16;
-      object-fit: cover;
-      background: #000;
-    }
-    .sound-overlay {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(0,0,0,.38);
-      cursor: pointer;
-      padding: 22px;
-    }
-    .sound-card {
-      width: min(270px, 92%);
-      background: rgba(15, 23, 42, .92);
-      border: 2px solid #22c55e;
-      color: #fff;
-      border-radius: 18px;
-      padding: 18px 16px;
-      text-align: center;
-      box-shadow: 0 18px 50px rgba(0,0,0,.45);
-    }
-    .sound-card strong { display: block; font-size: 18px; }
-    .sound-card .speaker { font-size: 40px; margin: 8px 0; }
-    .sound-card small { color: #86efac; font-weight: 900; }
+    .showcase{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .books-strip{display:grid;grid-template-columns:repeat(8,1fr);gap:12px;margin-top:34px}
+    .books-strip img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:14px;box-shadow:0 14px 26px rgba(15,23,42,.12);background:#e2e8f0}
+    .note-box{margin-top:22px;background:#f8fafc;border:1px solid var(--line);border-radius:18px;padding:16px;color:#64748b;font-size:14px;text-align:center}
 
-    .hero-stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin-top: 12px;
-    }
-    .stat {
-      border-radius: 16px;
-      padding: 12px 10px;
-      background: rgba(255,255,255,.08);
-      border: 1px solid rgba(255,255,255,.12);
-      text-align: center;
-    }
-    .stat b { display:block; color: #fff; font-size: 20px; line-height: 1; }
-    .stat span { display:block; color:#cbd5e1; font-size: 11px; font-weight: 800; margin-top: 5px; }
+    .video-box{max-width:720px;margin:34px auto 0;background:#fff;border:1px solid var(--line);border-radius:28px;padding:12px;box-shadow:var(--shadow)}
+    .video-box video{width:100%;border-radius:20px;background:#000}
 
-    section { padding: 54px 0; }
-    .section-head {
-      text-align: center;
-      max-width: 780px;
-      margin: 0 auto 26px;
-    }
-    .kicker {
-      display: inline-block;
-      margin-bottom: 10px;
-      color: #1d4ed8;
-      font-size: 12px;
-      font-weight: 950;
-      text-transform: uppercase;
-      letter-spacing: .9px;
-    }
-    h2 {
-      margin: 0;
-      font-size: clamp(28px, 4.5vw, 44px);
-      line-height: 1.06;
-      letter-spacing: -1.2px;
-    }
-    .section-head p {
-      margin: 12px auto 0;
-      color: var(--muted);
-      font-size: 17px;
-    }
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:34px}
+    .step{background:#fff;border:1px solid var(--line);border-radius:24px;padding:24px;position:relative;overflow:hidden}
+    .step-num{width:38px;height:38px;border-radius:50%;background:var(--brand-dark);color:#fff;display:grid;place-items:center;font-weight:950;margin-bottom:16px}
+    .step p{color:#64748b;margin-top:8px}
 
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
+    .offers{background:linear-gradient(180deg,#f7f8fb 0%,#ffffff 100%)}
+    .plans{display:grid;grid-template-columns:1fr 1.08fr;gap:22px;align-items:stretch;margin-top:38px;max-width:980px;margin-inline:auto}
+    .plan{
+      background:#fff;border:1px solid var(--line);border-radius:30px;padding:28px;box-shadow:0 18px 44px rgba(15,23,42,.06);
+      display:flex;flex-direction:column;
     }
-    .feature-card, .step-card, .offer-card, .review-panel, .guarantee-card, .faq details {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: 0 10px 30px rgba(15, 23, 42, .06);
-    }
-    .feature-card {
-      padding: 20px;
-      min-height: 170px;
-    }
-    .icon-bubble {
-      width: 46px;
-      height: 46px;
-      display: grid;
-      place-items: center;
-      border-radius: 15px;
-      background: var(--blue-soft);
-      color: #1d4ed8;
-      font-size: 24px;
-      margin-bottom: 14px;
-    }
-    .feature-card h3, .step-card h3, .offer-card h3 {
-      margin: 0 0 7px;
-      font-size: 19px;
-      color: #0f172a;
-    }
-    .feature-card p, .step-card p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 15px;
-    }
+    .plan.featured{border:2px solid rgba(23,92,255,.55);box-shadow:0 24px 70px rgba(23,92,255,.14);position:relative}
+    .badge{display:inline-flex;align-self:flex-start;padding:8px 12px;border-radius:999px;background:var(--brand-soft);color:var(--brand);font-size:12px;font-weight:950;letter-spacing:.02em;margin-bottom:16px}
+    .badge.gold{background:#fff7e2;color:#9a6a00}
+    .price{font-size:48px;line-height:1;letter-spacing:-.06em;font-weight:950;color:var(--ink);margin:18px 0 4px}
+    .price small{font-size:18px;letter-spacing:0;color:#64748b;font-weight:850}
+    .plan-sub{color:#64748b;font-size:14px;margin-bottom:22px}
+    .checklist{list-style:none;padding:0;margin:8px 0 24px;display:grid;gap:12px;text-align:left;flex:1}
+    .checklist li{display:flex;gap:10px;align-items:flex-start;color:#334155;font-size:15px}
+    .checklist li::before{content:"✓";display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:#dcfce7;color:#15803d;font-weight:950;flex:0 0 auto;font-size:13px;margin-top:1px}
+    .plan-foot{font-size:12.5px;color:#64748b;text-align:center;margin-top:12px;font-weight:700}
 
-    .showcase {
-      background: #fff;
-    }
-    .book-grid {
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap: 14px;
-      align-items: stretch;
-    }
-    .book-grid img {
-      width: 100%;
-      height: 100%;
-      aspect-ratio: 2 / 3;
-      object-fit: cover;
-      border-radius: 14px;
-      box-shadow: 0 14px 35px rgba(15, 23, 42, .18);
-      border: 1px solid rgba(15, 23, 42, .08);
-      background: #e2e8f0;
-    }
-    .collection-note {
-      margin-top: 18px;
-      text-align: center;
-      color: var(--muted);
-      font-size: 14px;
-    }
+    .testimonials{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .testimonial-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:34px}
+    .testimonial{background:#f8fafc;border:1px solid var(--line);border-radius:24px;padding:14px}
+    .testimonial img{width:100%;border-radius:18px;background:#fff;object-fit:contain;max-height:420px}
 
-    .split {
-      display: grid;
-      grid-template-columns: .92fr 1.08fr;
-      gap: 28px;
-      align-items: center;
+    .guarantee-card{
+      background:var(--brand-dark);color:#fff;border-radius:32px;padding:34px;
+      display:grid;grid-template-columns:1fr auto;gap:26px;align-items:center;box-shadow:0 26px 70px rgba(11,23,68,.22)
     }
-    .phone-mock {
-      width: min(340px, 100%);
-      margin: 0 auto;
-      padding: 12px;
-      border-radius: 38px;
-      background: #0f172a;
-      box-shadow: var(--shadow);
-      border: 1px solid rgba(255,255,255,.16);
-    }
-    .phone-screen {
-      border-radius: 28px;
-      overflow: hidden;
-      background: linear-gradient(180deg, #172554, #0f172a);
-      padding: 18px;
-      color: #fff;
-      min-height: 530px;
-    }
-    .phone-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 18px;
-      font-size: 12px;
-      color: #bfdbfe;
-      font-weight: 800;
-    }
-    .app-title { font-size: 24px; font-weight: 950; line-height: 1.05; margin-bottom: 10px; }
-    .app-sub { color: #cbd5e1; font-size: 14px; margin-bottom: 16px; }
-    .app-card {
-      display: flex;
-      gap: 10px;
-      padding: 12px;
-      border-radius: 16px;
-      background: rgba(255,255,255,.08);
-      border: 1px solid rgba(255,255,255,.1);
-      margin-bottom: 10px;
-    }
-    .app-cover {
-      width: 52px;
-      height: 70px;
-      border-radius: 8px;
-      background: linear-gradient(135deg, #facc15, #1d4ed8);
-      flex: 0 0 auto;
-    }
-    .app-card b { display:block; font-size: 14px; }
-    .app-card span { color:#cbd5e1; font-size: 12px; }
-    .progress {
-      height: 7px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.13);
-      overflow: hidden;
-      margin-top: 9px;
-    }
-    .progress i { display:block; width: 67%; height:100%; background:#22c55e; }
+    .guarantee-card h2{color:#fff;font-size:clamp(26px,3.2vw,38px)}
+    .guarantee-card p{color:#dbeafe;margin-top:10px;max-width:720px}
+    .shield{width:88px;height:88px;border-radius:28px;background:rgba(255,255,255,.12);display:grid;place-items:center;font-size:40px}
 
-    .benefit-list {
-      display: grid;
-      gap: 12px;
-    }
-    .benefit-row {
-      display: grid;
-      grid-template-columns: 42px 1fr;
-      gap: 12px;
-      align-items: start;
-      padding: 16px;
-      border-radius: 18px;
-      background: #fff;
-      border: 1px solid var(--line);
-    }
-    .benefit-row .check {
-      width: 42px;
-      height: 42px;
-      display: grid;
-      place-items: center;
-      border-radius: 14px;
-      background: #dcfce7;
-      color: #15803d;
-      font-weight: 950;
-      font-size: 20px;
-    }
-    .benefit-row b { display:block; margin-bottom: 3px; }
-    .benefit-row span { color: var(--muted); font-size: 15px; }
+    .faq{max-width:820px;margin:34px auto 0;display:grid;gap:12px}
+    details{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px 20px;box-shadow:0 10px 26px rgba(15,23,42,.035)}
+    summary{cursor:pointer;font-weight:900;color:var(--ink);list-style:none;display:flex;justify-content:space-between;gap:16px}
+    summary::-webkit-details-marker{display:none}
+    summary::after{content:"+";font-weight:950;color:var(--brand)}
+    details[open] summary::after{content:"−"}
+    details p{color:#64748b;margin-top:12px}
 
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-    }
-    .step-card { padding: 22px; }
-    .step-number {
-      width: 40px;
-      height: 40px;
-      display: grid;
-      place-items: center;
-      border-radius: 999px;
-      background: #0f172a;
-      color: #fff;
-      font-weight: 950;
-      margin-bottom: 14px;
-    }
+    footer{padding:34px 0;background:#fff;border-top:1px solid var(--line);color:#64748b;font-size:13px;text-align:center}
+    .footer-brand{font-weight:950;color:var(--ink);font-size:16px;margin-bottom:6px}
 
-    .reviews {
-      background: linear-gradient(180deg, #f8fafc, #eef6ff);
+    .mobile-cta{
+      position:fixed;left:0;right:0;bottom:0;z-index:70;background:rgba(255,255,255,.94);
+      backdrop-filter:blur(18px);border-top:1px solid var(--line);padding:10px 14px env(safe-area-inset-bottom);
+      display:none;box-shadow:0 -16px 40px rgba(15,23,42,.08)
     }
-    .review-panel {
-      padding: 22px;
-      display: grid;
-      grid-template-columns: .75fr 1.25fr;
-      gap: 18px;
-      align-items: center;
-    }
-    .review-video {
-      position: relative;
-      overflow: hidden;
-      border-radius: 18px;
-      background: #000;
-    }
-    .review-video video {
-      width: 100%;
-      aspect-ratio: 9 / 16;
-      object-fit: cover;
-      background: #000;
-    }
-    .review-images {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-    }
-    .review-images img {
-      width: 100%;
-      border-radius: 16px;
-      border: 1px solid var(--line);
-      box-shadow: 0 12px 26px rgba(15, 23, 42, .1);
-      background: #fff;
-    }
-    .review-copy {
-      margin-bottom: 16px;
-    }
-    .review-copy b {
-      display:block;
-      font-size: 22px;
-      margin-bottom: 6px;
-    }
-    .review-copy p { margin: 0; color: var(--muted); }
+    .mobile-cta-inner{display:flex;gap:10px;align-items:center;justify-content:space-between}
+    .mobile-price{font-weight:950;color:var(--ink);line-height:1.05}.mobile-price span{display:block;color:#64748b;font-size:11px;font-weight:750;margin-top:2px}
+    .mobile-cta .btn{min-height:50px;border-radius:14px;padding:0 18px;font-size:14px}
 
-    .offers {
-      background:
-        radial-gradient(circle at 20% 0%, rgba(34, 197, 94, .18), transparent 25%),
-        linear-gradient(180deg, #0f172a, #111827);
-      color: #fff;
+    @media (max-width: 980px){
+      .hero-grid{grid-template-columns:1fr;gap:34px;padding:54px 0 46px}.hero-copy{text-align:center}.lead{margin-inline:auto}.hero-actions{justify-content:center}.trust-row{margin-inline:auto}.product-card{max-width:620px;margin-inline:auto}.grid-4{grid-template-columns:repeat(2,1fr)}.plans{grid-template-columns:1fr}.guarantee-card{grid-template-columns:1fr;text-align:center}.shield{margin-inline:auto}.books-strip{grid-template-columns:repeat(4,1fr)}
     }
-    .offers .section-head p { color: #cbd5e1; }
-    .offers .kicker { color: #86efac; }
-    .offers h2 { color:#fff; }
-    .offer-grid {
-      display: grid;
-      grid-template-columns: 1.06fr .94fr;
-      gap: 18px;
-      align-items: stretch;
-    }
-    .offer-card {
-      position: relative;
-      overflow: hidden;
-      padding: 24px;
-      color: #0f172a;
-    }
-    .offer-card.premium {
-      border: 2px solid #facc15;
-      box-shadow: 0 22px 65px rgba(250, 204, 21, .16);
-    }
-    .tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 7px 10px;
-      border-radius: 999px;
-      background: #fef3c7;
-      color: #92400e;
-      font-size: 12px;
-      font-weight: 950;
-      margin-bottom: 12px;
-    }
-    .price {
-      margin: 12px 0 6px;
-      font-size: 44px;
-      line-height: 1;
-      letter-spacing: -1px;
-      font-weight: 950;
-      color: #15803d;
-    }
-    .price small {
-      font-size: 16px;
-      color: var(--muted);
-      font-weight: 800;
-      letter-spacing: 0;
-    }
-    .offer-desc {
-      margin: 0 0 16px;
-      color: var(--muted);
-    }
-    .checklist {
-      list-style: none;
-      padding: 0;
-      margin: 0 0 18px;
-      display: grid;
-      gap: 9px;
-    }
-    .checklist li {
-      display: grid;
-      grid-template-columns: 22px 1fr;
-      gap: 9px;
-      color: #1e293b;
-      font-size: 15px;
-    }
-    .checklist li::before {
-      content: "✓";
-      width: 22px;
-      height: 22px;
-      display: grid;
-      place-items: center;
-      border-radius: 7px;
-      background: #dcfce7;
-      color: #15803d;
-      font-weight: 950;
-      font-size: 13px;
-    }
-    .secure-note {
-      text-align: center;
-      margin-top: 10px;
-      color: #64748b;
-      font-size: 13px;
-      font-weight: 800;
-    }
-
-    .guarantee-card {
-      max-width: 850px;
-      margin: 0 auto;
-      padding: 26px;
-      display: grid;
-      grid-template-columns: 70px 1fr;
-      gap: 18px;
-      align-items: start;
-      background: #fff;
-    }
-    .guarantee-icon {
-      width: 70px;
-      height: 70px;
-      border-radius: 22px;
-      display: grid;
-      place-items: center;
-      background: #dcfce7;
-      color: #15803d;
-      font-size: 34px;
-      font-weight: 950;
-    }
-    .guarantee-card h2 { font-size: clamp(25px, 3.5vw, 36px); margin-bottom: 8px; }
-    .guarantee-card p { margin: 0; color: var(--muted); }
-
-    .faq {
-      max-width: 880px;
-      margin: 0 auto;
-      display: grid;
-      gap: 12px;
-    }
-    .faq details {
-      padding: 18px 20px;
-      box-shadow: none;
-    }
-    .faq summary {
-      cursor: pointer;
-      font-weight: 900;
-      color: #0f172a;
-    }
-    .faq p { margin: 10px 0 0; color: var(--muted); }
-
-    .footer {
-      padding: 28px 0 34px;
-      text-align: center;
-      color: #64748b;
-      font-size: 13px;
-    }
-    .footer img {
-      width: 92px;
-      margin: 0 auto 12px;
-      border-radius: 18px;
-    }
-
-    .sticky-cta {
-      position: fixed;
-      z-index: 60;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
-      background: rgba(255,255,255,.94);
-      border-top: 1px solid var(--line);
-      backdrop-filter: blur(12px);
-      box-shadow: 0 -10px 30px rgba(15, 23, 42, .1);
-    }
-    .sticky-inner {
-      width: min(700px, 100%);
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap: 10px;
-      align-items: center;
-    }
-    .sticky-copy b { display:block; font-size: 14px; line-height: 1.1; }
-    .sticky-copy span { color: var(--muted); font-size: 12px; font-weight: 700; }
-    .sticky-cta .btn { min-height: 48px; padding: 13px 14px; font-size: 14px; border-radius: 12px; }
-
-    .trust-toast {
-      position: fixed;
-      top: 58px;
-      left: 50%;
-      transform: translateX(-50%) translateY(-18px);
-      z-index: 55;
-      width: min(370px, calc(100% - 24px));
-      background: #fff;
-      border: 1px solid var(--line);
-      color: #0f172a;
-      border-radius: 16px;
-      box-shadow: 0 15px 40px rgba(15, 23, 42, .16);
-      padding: 12px 14px;
-      display: none;
-      grid-template-columns: 42px 1fr;
-      gap: 10px;
-      align-items: center;
-    }
-    .trust-toast.show { display: grid; animation: toastIn .35s ease both; }
-    .trust-toast-icon {
-      width: 42px;
-      height: 42px;
-      display:grid;
-      place-items:center;
-      border-radius: 13px;
-      background:#dcfce7;
-      color:#15803d;
-      font-weight:950;
-    }
-    .trust-toast b { display:block; font-size: 14px; }
-    .trust-toast span { display:block; color: var(--muted); font-size: 12px; }
-    @keyframes toastIn { to { transform: translateX(-50%) translateY(0); } }
-
-    @media (max-width: 920px) {
-      .hero-grid, .split, .review-panel, .offer-grid { grid-template-columns: 1fr; }
-      .hero-card { width: min(430px, 100%); margin: 0 auto; }
-      .feature-grid, .steps { grid-template-columns: 1fr; }
-      .book-grid { grid-template-columns: repeat(3, 1fr); }
-      .review-images { grid-template-columns: 1fr; }
-      .review-images img { max-width: 320px; margin: 0 auto; }
-      .phone-screen { min-height: 500px; }
-    }
-
-    @media (max-width: 560px) {
-      .offer-bar { font-size: 12px; padding: 9px 8px; }
-      .nav-top { margin-bottom: 20px; }
-      .nav-proof { display: none; }
-      .hero { padding: 22px 0 34px; }
-      .hero-actions .btn { width: 100%; }
-      .trust-line { display: grid; grid-template-columns: 1fr 1fr; }
-      .trust-pill { justify-content: center; font-size: 12px; padding: 8px 7px; }
-      .hero-stats { grid-template-columns: 1fr; }
-      section { padding: 42px 0; }
-      .feature-card, .step-card, .offer-card, .guarantee-card { border-radius: 18px; }
-      .book-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-      .review-panel { padding: 16px; }
-      .price { font-size: 40px; }
-      .guarantee-card { grid-template-columns: 1fr; text-align: center; }
-      .guarantee-icon { margin: 0 auto; }
-      .sticky-inner { grid-template-columns: .9fr 1.1fr; }
-      .sticky-copy b { font-size: 13px; }
-      .sticky-copy span { font-size: 11px; }
+    @media (max-width: 720px){
+      body.mobile-stick{padding-bottom:78px}.wrap{width:min(100% - 28px, var(--max))}.section{padding:58px 0}.section.compact{padding:42px 0}.nav{height:64px}.nav-links{display:none}.brand-mark{width:34px;height:34px;border-radius:11px}h1{font-size:42px}.lead{font-size:17px}.hero-grid{padding-top:36px}.hero-actions .btn{width:100%}.trust-row{grid-template-columns:repeat(2,1fr);gap:10px}.trust-item{padding:12px}.trust-item strong{font-size:18px}.product-card{padding:14px;border-radius:26px}.screen{border-radius:22px;padding:14px}.screen-title{font-size:24px}.mini-proof{grid-template-columns:1fr}.grid-3,.steps,.testimonial-grid{grid-template-columns:1fr}.grid-4{grid-template-columns:1fr}.books-strip{grid-template-columns:repeat(3,1fr);gap:10px}.card,.step,.plan{padding:22px;border-radius:22px}.plans{gap:16px}.price{font-size:42px}.guarantee-card{padding:26px;border-radius:24px}.mobile-cta{display:block}.logos-row span{font-size:12px}.testimonial img{max-height:none}.topbar .btn{display:none}
     }
   </style>
 </head>
-<body>
-  <div class="offer-bar" id="offerBar">LV Books — acesso digital imediato, pagamento único e garantia de 7 dias.</div>
-
-  <header class="hero">
-    <div class="container">
-      <div class="nav-top">
-        <div class="brand">
-          <img src="upcell/logo.png" alt="LV Books">
-          <span>LV BOOKS</span>
-        </div>
-        <div class="nav-proof">🔒 Compra segura | Acesso no celular</div>
-      </div>
-
-      <div class="hero-grid">
-        <div>
-          <div class="eyebrow">🎧 Biblioteca digital para ouvir e ler</div>
-          <h1><span>Mais livros.</span><br>Mais conhecimento. Menos gasto.</h1>
-          <p class="hero-sub">
-            Tenha uma coleção organizada com <b>+250 audiobooks</b> e opção com <b>+3.500 eBooks de bônus</b> para acessar direto pelo celular, sem assinatura mensal.
-          </p>
-
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#ofertas">Ver pacotes disponíveis</a>
-            <a class="btn btn-ghost" href="#como-funciona">Como funciona</a>
-          </div>
-
-          <div class="trust-line" aria-label="Benefícios principais">
-            <span class="trust-pill">✓ Acesso vitalício</span>
-            <span class="trust-pill">✓ Pagamento único</span>
-            <span class="trust-pill">✓ Entrega automática</span>
-            <span class="trust-pill">✓ Garantia 7 dias</span>
-          </div>
-        </div>
-
-        <div class="hero-card">
-          <div class="video-box">
-            <video id="vsl-video" autoplay muted playsinline loop controls preload="metadata">
-              <source src="audio%20book/vsl.mp4" type="video/mp4">
-              Seu navegador não suporta vídeo HTML5.
-            </video>
-            <div class="sound-overlay" id="vslSoundOverlay" onclick="ativarSomVSL()">
-              <div class="sound-card">
-                <strong>Seu vídeo já começou</strong>
-                <div class="speaker">🔇</div>
-                <small>Clique para ouvir</small>
-              </div>
-            </div>
-          </div>
-
-          <div class="hero-stats">
-            <div class="stat"><b>+250</b><span>AUDIOBOOKS</span></div>
-            <div class="stat"><b>+3.500</b><span>eBOOKS BÔNUS</span></div>
-            <div class="stat"><b>7 DIAS</b><span>GARANTIA</span></div>
-          </div>
-        </div>
-      </div>
+<body class="mobile-stick">
+  <header class="topbar">
+    <div class="wrap nav">
+      <a href="#topo" class="brand" aria-label="LV Books">
+        <span class="brand-mark">LV</span>
+        <span>LV Books</span>
+      </a>
+      <nav class="nav-links" aria-label="Navegação principal">
+        <a href="#recebe">O que recebe</a>
+        <a href="#capas">Coleção</a>
+        <a href="#ofertas">Ofertas</a>
+        <a href="#faq">Dúvidas</a>
+      </nav>
+      <a class="btn btn-primary" href="#ofertas">Ver ofertas</a>
     </div>
   </header>
 
-  <section>
-    <div class="container">
-      <div class="section-head">
-        <span class="kicker">O que você recebe</span>
-        <h2>Uma biblioteca digital feita para consumir conhecimento no seu ritmo.</h2>
-        <p>Ideal para quem quer aprender enquanto dirige, caminha, treina, trabalha ou antes de dormir.</p>
-      </div>
+  <main id="topo">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">Biblioteca digital · acesso imediato · sem mensalidade</span>
+          <h1>Ouça e leia grandes livros direto do celular.</h1>
+          <p class="lead">O LV Books reúne audiobooks e eBooks em uma experiência simples, organizada e rápida para você aprender no seu ritmo: em casa, no trabalho, dirigindo, caminhando ou antes de dormir.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#ofertas">Quero acessar o LV Books</a>
+            <a class="btn btn-ghost" href="#recebe">Ver o que está incluso</a>
+          </div>
+          <p class="under-btn">Pagamento único · entrega automática · garantia de 7 dias</p>
 
-      <div class="feature-grid">
-        <article class="feature-card">
-          <div class="icon-bubble">🎧</div>
-          <h3>Audiobooks práticos</h3>
-          <p>Ouça pelo celular, tablet ou computador sem depender de rotina longa de leitura.</p>
-        </article>
-        <article class="feature-card">
-          <div class="icon-bubble">📚</div>
-          <h3>eBooks de bônus</h3>
-          <p>No pacote Premium+, você recebe uma grande biblioteca extra para ampliar sua coleção digital.</p>
-        </article>
-        <article class="feature-card">
-          <div class="icon-bubble">⚡</div>
-          <h3>Acesso imediato</h3>
-          <p>Depois da confirmação do pagamento, o acesso é enviado automaticamente para você.</p>
-        </article>
-        <article class="feature-card">
-          <div class="icon-bubble">🔒</div>
-          <h3>Pagamento único</h3>
-          <p>Sem mensalidade. Você paga uma vez e mantém o acesso ao pacote adquirido.</p>
-        </article>
-        <article class="feature-card">
-          <div class="icon-bubble">📱</div>
-          <h3>Direto no celular</h3>
-          <p>Feito para acesso rápido, simples e organizado na palma da mão.</p>
-        </article>
-        <article class="feature-card">
-          <div class="icon-bubble">🛡️</div>
-          <h3>Garantia de 7 dias</h3>
-          <p>Você pode testar sem risco. Se não gostar, solicite reembolso dentro do prazo.</p>
-        </article>
-      </div>
-    </div>
-  </section>
+          <div class="trust-row" aria-label="Principais benefícios">
+            <div class="trust-item"><strong>250+</strong><span>audiobooks</span></div>
+            <div class="trust-item"><strong>3.500+</strong><span>eBooks bônus</span></div>
+            <div class="trust-item"><strong>0</strong><span>mensalidade</span></div>
+            <div class="trust-item"><strong>7 dias</strong><span>de garantia</span></div>
+          </div>
+        </div>
 
-  <section class="showcase" id="colecao">
-    <div class="container">
-      <div class="section-head">
-        <span class="kicker">Coleção organizada</span>
-        <h2>Livros de finanças, negócios, mentalidade, produtividade e desenvolvimento pessoal.</h2>
-        <p>Uma amostra visual da coleção para o cliente entender rapidamente o valor do LV Books.</p>
-      </div>
-
-      <div class="book-grid">
-        <img src="https://iili.io/KnyikP9.png" alt="Capa de livro da coleção LV Books" loading="lazy">
-        <img src="https://i.postimg.cc/Vs7c6MTf/imgi-238-819-ERr-DHRc-L-SL1500.png" alt="Capa de livro da coleção LV Books" loading="lazy">
-        <img src="https://i.postimg.cc/DZ631bwc/imgi-228-71-V4l-NR2g-KL-SL1500.png" alt="Capa de livro da coleção LV Books" loading="lazy">
-        <img src="https://i.postimg.cc/LsFc7VqT/imgi-245-81-Wz-W3x-Jb5-L-SL1500.png" alt="Capa de livro da coleção LV Books" loading="lazy">
-        <img src="https://m.media-amazon.com/images/I/51Pw06uU8FL._SY445_SX342_ControlCacheEqualizer_.jpg" alt="Capa de livro da coleção LV Books" loading="lazy">
-        <img src="https://m.media-amazon.com/images/I/41-xN92FD7L._SY445_SX342_ControlCacheEqualizer_.jpg" alt="Capa de livro da coleção LV Books" loading="lazy">
-        <img src="https://i.postimg.cc/2yHmNBp5/imageye-imgi-220-81e-T2pjx4j-L-SL1500.png" alt="Capa de livro da coleção LV Books" loading="lazy">
-        <img src="https://i.postimg.cc/cJQS4zq2/imgi-228-71q-AGtcq-CTL-SL1500.png" alt="Capa de livro da coleção LV Books" loading="lazy">
-        <img src="https://m.media-amazon.com/images/I/8119xmkJ3IL._SY425_.jpg" alt="Capa de livro da coleção LV Books" loading="lazy">
-        <img src="https://m.media-amazon.com/images/I/41TsvI70n9L._SY445_SX342_ControlCacheEqualizer_.jpg" alt="Capa de livro da coleção LV Books" loading="lazy">
-        <img src="https://m.media-amazon.com/images/I/41RTbO7BvbL._SY445_SX342_ControlCacheEqualizer_.jpg" alt="Capa de livro da coleção LV Books" loading="lazy">
-        <img src="https://i.postimg.cc/tJm0MQPZ/imgi-237-71wdbq8-Nb-FL-SL1500.png" alt="Capa de livro da coleção LV Books" loading="lazy">
-      </div>
-      <p class="collection-note">Imagens demonstrativas da coleção. Confira o pacote escolhido e os detalhes no checkout.</p>
-    </div>
-  </section>
-
-  <section>
-    <div class="container split">
-      <div class="phone-mock" aria-hidden="true">
-        <div class="phone-screen">
-          <div class="phone-top"><span>LV Books</span><span>Online</span></div>
-          <div class="app-title">Sua biblioteca no celular</div>
-          <div class="app-sub">Escolha um tema, dê play no áudio ou leia quando preferir.</div>
-
-          <div class="app-card">
-            <div class="app-cover"></div>
-            <div>
-              <b>Finanças e negócios</b>
-              <span>Audiobook em andamento</span>
-              <div class="progress"><i></i></div>
+        <div class="product-card" aria-label="Prévia da biblioteca LV Books">
+          <div class="screen">
+            <div class="screen-top"><span>LV Books</span><span>Biblioteca Digital</span></div>
+            <div class="screen-title">Conhecimento em áudio e leitura, sem complicação.</div>
+            <div class="cover-grid">
+              <img src="https://iili.io/KnyikP9.png" alt="Livro da coleção LV Books" loading="eager" />
+              <img src="https://i.postimg.cc/Vs7c6MTf/imgi-238-819-ERr-DHRc-L-SL1500.png" alt="Livro da coleção LV Books" loading="eager" />
+              <img src="https://i.postimg.cc/DZ631bwc/imgi-228-71-V4l-NR2g-KL-SL1500.png" alt="Livro da coleção LV Books" loading="eager" />
+              <img src="https://i.postimg.cc/LsFc7VqT/imgi-245-81-Wz-W3x-Jb5-L-SL1500.png" alt="Livro da coleção LV Books" loading="eager" />
+              <img src="https://m.media-amazon.com/images/I/51Pw06uU8FL._SY445_SX342_ControlCacheEqualizer_.jpg" alt="Livro da coleção LV Books" loading="eager" />
+              <img src="https://m.media-amazon.com/images/I/41-xN92FD7L._SY445_SX342_ControlCacheEqualizer_.jpg" alt="Livro da coleção LV Books" loading="eager" />
+            </div>
+            <div class="play-strip">
+              <div class="play-icon">▶</div>
+              <div><b>Ouvir agora</b><span>Acesso pelo celular, tablet ou computador</span></div>
             </div>
           </div>
-          <div class="app-card">
-            <div class="app-cover" style="background:linear-gradient(135deg,#22c55e,#0ea5e9)"></div>
-            <div>
-              <b>Desenvolvimento pessoal</b>
-              <span>Categoria organizada</span>
-              <div class="progress"><i style="width:42%"></i></div>
-            </div>
-          </div>
-          <div class="app-card">
-            <div class="app-cover" style="background:linear-gradient(135deg,#fb7185,#7c3aed)"></div>
-            <div>
-              <b>Produtividade</b>
-              <span>Ouvir em qualquer lugar</span>
-              <div class="progress"><i style="width:78%"></i></div>
-            </div>
+          <div class="mini-proof">
+            <div><strong>Vitalício</strong>Acesso para sempre</div>
+            <div><strong>Simples</strong>Sem instalação difícil</div>
+            <div><strong>Rápido</strong>Recebe após pagar</div>
           </div>
         </div>
       </div>
+    </section>
 
-      <div>
-        <div class="section-head" style="text-align:left;margin:0 0 20px;">
-          <span class="kicker">Por que isso vende melhor</span>
-          <h2>O valor fica claro antes do preço.</h2>
-          <p>O cliente não está comprando apenas arquivos. Ele está comprando praticidade, organização e acesso rápido a conhecimento.</p>
+    <section class="logos" aria-label="Categorias da biblioteca">
+      <div class="wrap logos-row">
+        <span>Finanças</span>
+        <span>Negócios</span>
+        <span>Autoajuda</span>
+        <span>Produtividade</span>
+        <span>Liderança</span>
+        <span>Histórias</span>
+        <span>Desenvolvimento pessoal</span>
+        <span>Conhecimento prático</span>
+      </div>
+    </section>
+
+    <section id="recebe" class="section">
+      <div class="wrap">
+        <div class="center">
+          <span class="eyebrow">Tudo em um só lugar</span>
+          <h2 style="margin-top:16px">Aprenda mais sem precisar ficar comprando livro por livro.</h2>
+          <p class="lead" style="margin-top:16px">Uma biblioteca digital com audiobooks e eBooks para você ouvir, ler e acessar de forma simples pelo celular.</p>
         </div>
 
-        <div class="benefit-list">
-          <div class="benefit-row">
-            <div class="check">✓</div>
-            <div><b>Não precisa comprar livro por livro</b><span>O pacote concentra uma coleção grande em um único acesso.</span></div>
-          </div>
-          <div class="benefit-row">
-            <div class="check">✓</div>
-            <div><b>Funciona para quem tem preguiça de ler</b><span>A pessoa pode ouvir enquanto faz outras atividades.</span></div>
-          </div>
-          <div class="benefit-row">
-            <div class="check">✓</div>
-            <div><b>Preço baixo, percepção alta</b><span>O design valoriza a quantidade, os bônus e a facilidade de uso.</span></div>
-          </div>
-          <div class="benefit-row">
-            <div class="check">✓</div>
-            <div><b>Compra simples e direta</b><span>CTA claro, oferta objetiva e redirecionamento com UTMs preservadas.</span></div>
-          </div>
+        <div class="grid-4">
+          <article class="card">
+            <div class="icon">🎧</div>
+            <h3>Audiobooks para ouvir</h3>
+            <p>Conteúdos em áudio para aprender enquanto faz outras atividades, sem depender de rotina perfeita de leitura.</p>
+          </article>
+          <article class="card">
+            <div class="icon">📚</div>
+            <h3>eBooks bônus</h3>
+            <p>Biblioteca complementar com milhares de livros digitais para ampliar sua coleção em um único acesso.</p>
+          </article>
+          <article class="card">
+            <div class="icon">⚡</div>
+            <h3>Acesso imediato</h3>
+            <p>Após a confirmação do pagamento, o acesso é enviado de forma automática para você começar rapidamente.</p>
+          </article>
+          <article class="card">
+            <div class="icon">🛡️</div>
+            <h3>Compra segura</h3>
+            <p>Pagamento único, garantia de 7 dias e suporte para ajudar no acesso ao material.</p>
+          </article>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="como-funciona" style="background:#fff;">
-    <div class="container">
-      <div class="section-head">
-        <span class="kicker">Como funciona</span>
-        <h2>Compra rápida, entrega automática e acesso direto.</h2>
-        <p>Sem complicação para o cliente. Quanto menor a fricção, maior a chance de finalizar.</p>
+    <section id="capas" class="section showcase">
+      <div class="wrap">
+        <div class="center">
+          <span class="eyebrow">Prévia da coleção</span>
+          <h2 style="margin-top:16px">Conheça alguns livros da coleção.</h2>
+          <p class="lead" style="margin-top:16px">Uma prévia dos títulos e categorias disponíveis dentro da biblioteca digital.</p>
+        </div>
+        <div class="books-strip">
+          <img src="https://iili.io/KnyikP9.png" alt="Capa de livro da coleção" loading="lazy" />
+          <img src="https://i.postimg.cc/Vs7c6MTf/imgi-238-819-ERr-DHRc-L-SL1500.png" alt="Capa de livro da coleção" loading="lazy" />
+          <img src="https://i.postimg.cc/DZ631bwc/imgi-228-71-V4l-NR2g-KL-SL1500.png" alt="Capa de livro da coleção" loading="lazy" />
+          <img src="https://i.postimg.cc/LsFc7VqT/imgi-245-81-Wz-W3xJb5-L-SL1500.png" alt="Capa de livro da coleção" loading="lazy" onerror="this.src='https://i.postimg.cc/LsFc7VqT/imgi-245-81-Wz-W3x-Jb5-L-SL1500.png'" />
+          <img src="https://m.media-amazon.com/images/I/51Pw06uU8FL._SY445_SX342_ControlCacheEqualizer_.jpg" alt="Capa de livro da coleção" loading="lazy" />
+          <img src="https://m.media-amazon.com/images/I/41-xN92FD7L._SY445_SX342_ControlCacheEqualizer_.jpg" alt="Capa de livro da coleção" loading="lazy" />
+          <img src="https://i.postimg.cc/2yHmNBp5/imageye-imgi-220-81e-T2pjx4j-L-SL1500.png" alt="Capa de livro da coleção" loading="lazy" />
+          <img src="https://i.postimg.cc/cJQS4zq2/imgi-228-71q-AGtcq-CTL-SL1500.png" alt="Capa de livro da coleção" loading="lazy" />
+        </div>
+        <div class="note-box">Amostra visual da coleção. O conteúdo completo é liberado conforme o pacote escolhido.</div>
       </div>
+    </section>
 
-      <div class="steps">
-        <article class="step-card">
-          <div class="step-number">1</div>
-          <h3>Escolha o pacote</h3>
-          <p>O cliente escolhe entre o pacote básico ou o pacote Premium+ com bônus.</p>
-        </article>
-        <article class="step-card">
-          <div class="step-number">2</div>
-          <h3>Finalize o pagamento</h3>
-          <p>Pagamento seguro pelo checkout. Os parâmetros de campanha continuam sendo enviados.</p>
-        </article>
-        <article class="step-card">
-          <div class="step-number">3</div>
-          <h3>Receba o acesso</h3>
-          <p>Após a aprovação, o acesso é enviado para usar no celular, tablet ou computador.</p>
-        </article>
+    <section class="section compact">
+      <div class="wrap">
+        <div class="center">
+          <span class="eyebrow">Como funciona</span>
+          <h2 style="margin-top:16px">Compra simples, acesso rápido.</h2>
+        </div>
+        <div class="steps">
+          <article class="step">
+            <div class="step-num">1</div>
+            <h3>Escolha o pacote</h3>
+            <p>Selecione o acesso básico ou a versão completa com bônus adicionais.</p>
+          </article>
+          <article class="step">
+            <div class="step-num">2</div>
+            <h3>Finalize o pagamento</h3>
+            <p>Você será direcionado para o checkout seguro para concluir a compra.</p>
+          </article>
+          <article class="step">
+            <div class="step-num">3</div>
+            <h3>Receba o acesso</h3>
+            <p>Após a aprovação, o material é entregue para você acessar pelo celular.</p>
+          </article>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="reviews" id="depoimentos">
-    <div class="container">
-      <div class="section-head">
-        <span class="kicker">Prova e confiança</span>
-        <h2>Depoimentos e demonstrações ajudam o cliente a visualizar a compra.</h2>
-        <p>Essa seção reduz insegurança antes do checkout e mostra que o produto é simples de acessar.</p>
-      </div>
-
-      <div class="review-panel">
-        <div class="review-video">
-          <video id="dep1-video" controls playsinline preload="metadata">
-            <source src="audio%20book/dep1.mp4" type="video/mp4">
+    <section class="section compact" aria-labelledby="video-title">
+      <div class="wrap center">
+        <span class="eyebrow">Veja por dentro</span>
+        <h2 id="video-title" style="margin-top:16px">Veja como o LV Books funciona.</h2>
+        <p class="lead" style="margin-top:16px">Assista à apresentação e entenda como acessar a biblioteca pelo celular.</p>
+        <div class="video-box">
+          <video controls playsinline preload="metadata" poster="https://i.postimg.cc/J7ywfQdR/Design-sem-nome-86.png">
+            <source src="audio%20book/vsl.mp4" type="video/mp4" />
             Seu navegador não suporta vídeo HTML5.
           </video>
         </div>
-        <div>
-          <div class="review-copy">
-            <b>Clientes entendem melhor quando veem o produto em uso.</b>
-            <p>Use depoimentos, prints e demonstrações reais para fortalecer confiança sem depender de textos longos.</p>
-          </div>
-          <div class="review-images">
-            <img src="https://i.ibb.co/R4Qfy7dF/Chat-GPT-Image-28-de-jun-de-2026-21-47-55.png" alt="Depoimento de cliente LV Books" loading="lazy">
-            <img src="https://i.ibb.co/HT67WYhv/8bf8db01-35bd-4229-8bb7-64ae6f704899.png" alt="Depoimento de cliente LV Books" loading="lazy">
-            <img src="https://i.ibb.co/YFnZvTN9/DEP3.png" alt="Depoimento de cliente LV Books" loading="lazy">
-          </div>
+      </div>
+    </section>
+
+    <section id="ofertas" class="section offers">
+      <div class="wrap">
+        <div class="center">
+          <span class="eyebrow">Escolha seu acesso</span>
+          <h2 style="margin-top:16px">Escolha seu acesso ao LV Books.</h2>
+          <p class="lead" style="margin-top:16px">Você paga uma única vez e escolhe entre o acesso básico ou a versão completa com bônus.</p>
+        </div>
+
+        <div class="plans">
+          <article class="plan">
+            <span class="badge">Entrada simples</span>
+            <h3>Pacote Básico</h3>
+            <div class="price">R$ 10,00</div>
+            <p class="plan-sub">Para quem quer começar com acesso aos audiobooks.</p>
+            <ul class="checklist">
+              <li>Acesso a mais de 250 audiobooks</li>
+              <li>Entrega automática após o pagamento</li>
+              <li>Acesso vitalício</li>
+              <li>Suporte por WhatsApp</li>
+              <li>Garantia de 7 dias</li>
+            </ul>
+            <a class="btn btn-ghost btn-full checkout-link" href="https://pay.kirvano.com/40790a84-d135-462f-baea-01062fac7c50" data-value="10.00">Escolher pacote básico</a>
+            <div class="plan-foot">Pagamento único. Sem assinatura mensal.</div>
+          </article>
+
+          <article class="plan featured">
+            <span class="badge gold">Oferta completa</span>
+            <h3>Pacote Premium+</h3>
+            <div class="price">R$ 17,90</div>
+            <p class="plan-sub">Para quem quer a biblioteca mais completa, com bônus de eBooks.</p>
+            <ul class="checklist">
+              <li>Tudo do pacote básico</li>
+              <li>Super bônus com mais de 3.500 eBooks</li>
+              <li>Conteúdos de desenvolvimento pessoal, negócios, liderança e produtividade</li>
+              <li>Coleções organizadas para facilitar o acesso</li>
+              <li>Entrega automática no e-mail</li>
+              <li>Acesso vitalício</li>
+              <li>Suporte por WhatsApp</li>
+              <li>Garantia de 7 dias</li>
+            </ul>
+            <a class="btn btn-primary btn-full checkout-link" href="https://pay.kirvano.com/fa856e82-bfd5-421b-ad32-12ecb139f72f" data-value="17.90">Escolher pacote Premium+</a>
+            <div class="plan-foot">Mais completo para quem quer audiobooks + eBooks bônus.</div>
+          </article>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="offers" id="ofertas">
-    <div class="container">
-      <div class="section-head">
-        <span class="kicker">Escolha seu acesso</span>
-        <h2>Dois pacotes simples, com foco em valor percebido.</h2>
-        <p>O Premium+ fica mais forte visualmente porque entrega mais conteúdo e aumenta a percepção de vantagem.</p>
-      </div>
-
-      <div class="offer-grid">
-        <article class="offer-card premium">
-          <div class="tag">🔥 Melhor custo-benefício</div>
-          <h3>Pacote Premium+</h3>
-          <div class="price">R$ 17,90 <small>pagamento único</small></div>
-          <p class="offer-desc">Para quem quer a experiência mais completa do LV Books com audiobooks, bônus e biblioteca ampliada.</p>
-          <ul class="checklist">
-            <li>+250 audiobooks para ouvir de onde estiver</li>
-            <li>+3.500 eBooks de bônus</li>
-            <li>Conteúdos de finanças, negócios, produtividade e desenvolvimento pessoal</li>
-            <li>Entrega automática após o pagamento</li>
-            <li>Acesso vitalício ao pacote adquirido</li>
-            <li>Suporte por WhatsApp</li>
-            <li>Garantia incondicional de 7 dias</li>
-          </ul>
-          <button class="btn btn-gold" style="width:100%;" onclick="goCheckout('https://pay.kirvano.com/fa856e82-bfd5-421b-ad32-12ecb139f72f', 17.90)">
-            Quero o Premium+
-          </button>
-          <div class="secure-note">Compra segura • Acesso imediato • Sem mensalidade</div>
-        </article>
-
-        <article class="offer-card">
-          <div class="tag" style="background:#dbeafe;color:#1d4ed8;">Entrada simples</div>
-          <h3>Pacote Básico</h3>
-          <div class="price">R$ 10,00 <small>pagamento único</small></div>
-          <p class="offer-desc">Para quem quer começar com os audiobooks essenciais e acessar de forma rápida pelo celular.</p>
-          <ul class="checklist">
-            <li>Acesso a +250 audiobooks</li>
-            <li>Entrega automática após o pagamento</li>
-            <li>Acesso vitalício ao pacote adquirido</li>
-            <li>Suporte por WhatsApp</li>
-            <li>Garantia incondicional de 7 dias</li>
-          </ul>
-          <button class="btn btn-primary" style="width:100%;" onclick="goCheckout('https://pay.kirvano.com/40790a84-d135-462f-baea-01062fac7c50', 10.00)">
-            Quero o Básico
-          </button>
-          <div class="secure-note">Ideal para começar agora</div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="container">
-      <div class="guarantee-card">
-        <div class="guarantee-icon">✓</div>
-        <div>
-          <h2>Garantia incondicional de 7 dias.</h2>
-          <p>Você pode testar o LV Books sem risco. Se não gostar, solicite o reembolso dentro de 7 dias após a confirmação do pagamento.</p>
+    <section class="section testimonials">
+      <div class="wrap">
+        <div class="center">
+          <span class="eyebrow">Prova e confiança</span>
+          <h2 style="margin-top:16px">Veja relatos de quem já acessou.</h2>
+          <p class="lead" style="margin-top:16px">Alguns relatos e prints de clientes que acessaram a biblioteca digital.</p>
+        </div>
+        <div class="testimonial-grid">
+          <div class="testimonial"><img src="https://i.ibb.co/R4Qfy7dF/Chat-GPT-Image-28-de-jun-de-2026-21-47-55.png" alt="Depoimento de cliente LV Books" loading="lazy" /></div>
+          <div class="testimonial"><img src="https://i.ibb.co/HT67WYhv/8bf8db01-35bd-4229-8bb7-64ae6f704899.png" alt="Depoimento de cliente LV Books" loading="lazy" /></div>
+          <div class="testimonial"><img src="https://i.ibb.co/YFnZvTN9/DEP3.png" alt="Depoimento de cliente LV Books" loading="lazy" /></div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section style="background:#fff;">
-    <div class="container">
-      <div class="section-head">
-        <span class="kicker">Perguntas frequentes</span>
-        <h2>Dúvidas que o cliente precisa resolver antes de comprar.</h2>
+    <section class="section compact">
+      <div class="wrap">
+        <div class="guarantee-card">
+          <div>
+            <h2>Garantia de 7 dias para comprar sem risco.</h2>
+            <p>Se o acesso não fizer sentido para você dentro do prazo de garantia, solicite o reembolso conforme as regras da plataforma de pagamento.</p>
+          </div>
+          <div class="shield">🛡️</div>
+        </div>
       </div>
+    </section>
 
-      <div class="faq">
-        <details>
-          <summary>Como recebo o acesso?</summary>
-          <p>Após a confirmação do pagamento, o acesso é enviado automaticamente para o e-mail e/ou contato informado na compra.</p>
-        </details>
-        <details>
-          <summary>Preciso pagar assinatura?</summary>
-          <p>Não. É pagamento único. Você paga uma vez pelo pacote escolhido e mantém o acesso ao conteúdo adquirido.</p>
-        </details>
-        <details>
-          <summary>Funciona no celular?</summary>
-          <p>Sim. O LV Books foi pensado para acesso pelo celular, tablet ou computador.</p>
-        </details>
-        <details>
-          <summary>O pacote Premium+ inclui o quê?</summary>
-          <p>Inclui os audiobooks e também os eBooks de bônus, ampliando a biblioteca digital.</p>
-        </details>
-        <details>
-          <summary>E se eu não gostar?</summary>
-          <p>Você tem 7 dias de garantia. Dentro desse prazo, pode solicitar o reembolso conforme as regras da compra.</p>
-        </details>
+    <section id="faq" class="section compact">
+      <div class="wrap center">
+        <span class="eyebrow">Dúvidas frequentes</span>
+        <h2 style="margin-top:16px">Tire suas dúvidas antes de acessar.</h2>
+        <div class="faq">
+          <details>
+            <summary>Preciso pagar mensalidade?</summary>
+            <p>Não. A proposta da oferta é pagamento único, sem assinatura mensal.</p>
+          </details>
+          <details>
+            <summary>Recebo o acesso na hora?</summary>
+            <p>Após a confirmação do pagamento, o acesso é enviado automaticamente conforme os dados informados no checkout.</p>
+          </details>
+          <details>
+            <summary>Funciona no celular?</summary>
+            <p>Sim. A oferta foi pensada para acesso pelo celular, tablet ou computador.</p>
+          </details>
+          <details>
+            <summary>Qual pacote vale mais a pena?</summary>
+            <p>O Básico é para começar com audiobooks. O Premium+ entrega mais valor por incluir o bônus de eBooks e uma biblioteca mais completa.</p>
+          </details>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <footer class="footer">
-    <div class="container">
-      <img src="https://i.ibb.co/k6M7gGxD/Chat-GPT-Image-20-05-2026-21-35-45.png" alt="LV Books" loading="lazy">
+  <footer>
+    <div class="wrap">
+      <div class="footer-brand">LV Books</div>
       <div>© 2026 LV Books — Todos os direitos reservados.</div>
     </div>
   </footer>
 
-  <div class="sticky-cta">
-    <div class="sticky-inner">
-      <div class="sticky-copy">
-        <b>LV Books</b>
-        <span>Planos a partir de R$10</span>
-      </div>
-      <a href="#ofertas" class="btn btn-primary">Ver pacotes</a>
+  <div class="mobile-cta" aria-label="Botão fixo de compra no celular">
+    <div class="mobile-cta-inner">
+      <div class="mobile-price">LV Books<span>acesso digital</span></div>
+      <a class="btn btn-primary" href="#ofertas">Ver ofertas</a>
     </div>
   </div>
 
-  <div class="trust-toast" id="trustToast" aria-live="polite">
-    <div class="trust-toast-icon">✓</div>
-    <div>
-      <b>Acesso imediato após a compra</b>
-      <span>Pagamento único, sem mensalidade e com garantia de 7 dias.</span>
-    </div>
-  </div>
-
-  <!-- UTM + checkout preserving -->
+  <!-- Repasse de UTMs para o checkout -->
   <script>
   (function(){
     const KEYS = ["utm_source","utm_medium","utm_campaign","utm_content","utm_term","fbclid","gclid","ttclid"];
@@ -1227,9 +600,7 @@
         const m = document.cookie.match(new RegExp('(?:^|; )' + COOKIE.replace(/[-.*+?^${}()|[\]\\]/g, '\\$&') + '=([^;]*)'));
         if (!m) return {};
         return JSON.parse(decodeURIComponent(m[1]) || "{}");
-      } catch(e){
-        return {};
-      }
+      } catch(e){ return {}; }
     }
 
     function saveCookie(obj){
@@ -1246,45 +617,26 @@
       saveCookie(merged);
     }
 
-    window.goCheckout = function(baseUrl, value){
+    function buildCheckoutUrl(baseUrl){
       const merged = Object.assign({}, DEFAULTS, loadCookie(), loadLocal(), getCurrent());
-      const url = new URL(baseUrl);
+      const url = new URL(baseUrl, window.location.href);
       Object.keys(merged).forEach(k => {
         if (merged[k] && !url.searchParams.get(k)) url.searchParams.set(k, merged[k]);
       });
-      window.location.href = url.toString();
-    };
-  })();
-  </script>
-
-  <script>
-    function ativarSomVSL() {
-      var video = document.getElementById('vsl-video');
-      var overlay = document.getElementById('vslSoundOverlay');
-      if (!video) return;
-      video.muted = false;
-      video.volume = 1;
-      video.play().catch(function(){});
-      if (overlay) overlay.style.display = 'none';
+      return url.toString();
     }
 
-    (function atualizarBarraOferta(){
-      var el = document.getElementById('offerBar');
-      if (!el) return;
-      var hoje = new Date();
-      var dias = ['domingo','segunda-feira','terça-feira','quarta-feira','quinta-feira','sexta-feira','sábado'];
-      var dia = String(hoje.getDate()).padStart(2, '0');
-      var mes = String(hoje.getMonth() + 1).padStart(2, '0');
-      var ano = hoje.getFullYear();
-      el.textContent = 'LV Books — oferta disponível hoje, ' + dias[hoje.getDay()] + ', ' + dia + '/' + mes + '/' + ano + ' • acesso imediato e garantia de 7 dias';
-    })();
+    window.goCheckout = function(baseUrl){
+      window.location.href = buildCheckoutUrl(baseUrl);
+    };
 
-    (function mostrarTrustToast(){
-      var toast = document.getElementById('trustToast');
-      if (!toast) return;
-      setTimeout(function(){ toast.classList.add('show'); }, 2500);
-      setTimeout(function(){ toast.classList.remove('show'); }, 8500);
-    })();
+    document.querySelectorAll('.checkout-link').forEach(function(link){
+      link.addEventListener('click', function(e){
+        e.preventDefault();
+        window.location.href = buildCheckoutUrl(link.getAttribute('href'));
+      });
+    });
+  })();
   </script>
 </body>
 </html>
