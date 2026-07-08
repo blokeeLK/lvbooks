@@ -28,12 +28,14 @@ t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 
+fbq('set', 'autoConfig', false, '868077232260294');
 fbq('init', '868077232260294');
 
 (function(){
   if (window.__lvMetaPixelGuardInstalled) return;
   window.__lvMetaPixelGuardInstalled = true;
   window.__lvMetaPixelEventsSent = window.__lvMetaPixelEventsSent || {};
+  window.__lvBlockPageViewUntil = window.__lvBlockPageViewUntil || 0;
   var originalFbq = window.fbq;
 
   if (typeof originalFbq !== 'function') return;
@@ -43,7 +45,13 @@ fbq('init', '868077232260294');
       var command = arguments[0];
       var eventName = command === 'trackSingle' ? arguments[2] : arguments[1];
 
-      if ((command === 'track' || command === 'trackSingle') && (eventName === 'PageView' || eventName === 'ViewContent')) {
+      var isMetaTrack = command === 'track' || command === 'trackSingle' || command === 'trackCustom' || command === 'trackSingleCustom';
+
+      if (isMetaTrack && (eventName === 'PageView' || eventName === 'ViewContent')) {
+        if (eventName === 'PageView' && window.__lvBlockPageViewUntil && Date.now() < window.__lvBlockPageViewUntil) {
+          return;
+        }
+
         if (window.__lvMetaPixelEventsSent[eventName]) {
           return;
         }
@@ -1337,5 +1345,33 @@ src="https://www.facebook.com/tr?id=868077232260294&ev=PageView&noscript=1"
       setInterval(showPopup, 45000);
     })();
   </script>
+
+  <script>
+    (function bloquearPageViewEmCliquesInternos(){
+      document.addEventListener('click', function(event){
+        var clicked = event.target && event.target.closest ? event.target.closest('a, button, .sound-overlay') : null;
+        if (!clicked) return;
+
+        var onclickAttr = clicked.getAttribute ? (clicked.getAttribute('onclick') || '') : '';
+        var isCheckoutButton = clicked.tagName === 'BUTTON' && onclickAttr.indexOf('goCheckout(') !== -1;
+
+        if (!isCheckoutButton) {
+          window.__lvBlockPageViewUntil = Date.now() + 2000;
+        }
+
+        if (clicked.tagName === 'A') {
+          var href = clicked.getAttribute('href') || '';
+          if (href.charAt(0) === '#' && href.length > 1) {
+            var target = document.getElementById(href.slice(1));
+            if (target) {
+              event.preventDefault();
+              target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+          }
+        }
+      }, true);
+    })();
+  </script>
+
 </body>
 </html>
