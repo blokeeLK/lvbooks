@@ -764,38 +764,85 @@
     .sticky-copy span { color: var(--muted); font-size: 12px; font-weight: 700; }
     .sticky-cta .btn { min-height: 48px; padding: 13px 14px; font-size: 14px; border-radius: 12px; }
 
-    .trust-toast {
+    /* ===== Popup clean estilo antigo ===== */
+    .purchase-toast {
       position: fixed;
-      top: 58px;
+      top: 12px;
       left: 50%;
-      transform: translateX(-50%) translateY(-18px);
-      z-index: 55;
-      width: min(370px, calc(100% - 24px));
-      background: #fff;
-      border: 1px solid var(--line);
-      color: #0f172a;
-      border-radius: 16px;
-      box-shadow: 0 15px 40px rgba(15, 23, 42, .16);
-      padding: 12px 14px;
-      display: none;
-      grid-template-columns: 42px 1fr;
-      gap: 10px;
+      transform: translateX(-50%) translateY(-150%);
+      z-index: 99999;
+      display: flex;
       align-items: center;
+      gap: 12px;
+      max-width: 380px;
+      width: calc(100% - 24px);
+      background: #fff;
+      color: #111827;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      box-shadow: 0 12px 34px rgba(15, 23, 42, .16);
+      padding: 12px;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      opacity: 0;
+      animation: slideDown 450ms cubic-bezier(.2,.9,.2,1) forwards;
     }
-    .trust-toast.show { display: grid; animation: toastIn .35s ease both; }
-    .trust-toast-icon {
-      width: 42px;
-      height: 42px;
-      display:grid;
-      place-items:center;
-      border-radius: 13px;
-      background:#dcfce7;
-      color:#15803d;
-      font-weight:950;
+    .purchase-toast .logo {
+      width: 44px;
+      height: 44px;
+      flex: 0 0 44px;
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
     }
-    .trust-toast b { display:block; font-size: 14px; }
-    .trust-toast span { display:block; color: var(--muted); font-size: 12px; }
-    @keyframes toastIn { to { transform: translateX(-50%) translateY(0); } }
+    .purchase-toast .logo img {
+      max-width: 100%;
+      max-height: 100%;
+      display: block;
+    }
+    .purchase-toast .content {
+      flex: 1 1 auto;
+      font-size: 14px;
+      line-height: 1.3;
+    }
+    .purchase-toast .content .who {
+      font-weight: 850;
+      display: block;
+      margin-bottom: 2px;
+      color: #0f172a;
+    }
+    .purchase-toast .content .what {
+      display: block;
+      font-size: 13px;
+      color: #16a34a;
+      font-weight: 800;
+    }
+    .purchase-toast .content .when {
+      display: block;
+      font-size: 11px;
+      color: #64748b;
+      margin-top: 4px;
+      font-weight: 700;
+    }
+    @keyframes slideDown {
+      to { transform: translateX(-50%) translateY(0); opacity: 1; }
+    }
+    @keyframes slideUp {
+      to { transform: translateX(-50%) translateY(-150%); opacity: 0; }
+    }
+    @media (max-width: 480px) {
+      .purchase-toast {
+        max-width: 92%;
+        padding: 10px;
+        border-radius: 12px;
+      }
+      .purchase-toast .content {
+        font-size: 13px;
+      }
+    }
 
     @media (max-width: 920px) {
       .hero-grid, .split, .review-panel, .offer-grid { grid-template-columns: 1fr; }
@@ -954,70 +1001,6 @@
         <img src="https://i.postimg.cc/tJm0MQPZ/imgi-237-71wdbq8-Nb-FL-SL1500.png" alt="Capa de livro da coleção LV Books" loading="lazy">
       </div>
       <p class="collection-note">Imagens demonstrativas da coleção. Confira o pacote escolhido e os detalhes no checkout.</p>
-    </div>
-  </section>
-
-  <section>
-    <div class="container split">
-      <div class="phone-mock" aria-hidden="true">
-        <div class="phone-screen">
-          <div class="phone-top"><span>LV Books</span><span>Online</span></div>
-          <div class="app-title">Sua biblioteca no celular</div>
-          <div class="app-sub">Escolha um tema, dê play no áudio ou leia quando preferir.</div>
-
-          <div class="app-card">
-            <div class="app-cover"></div>
-            <div>
-              <b>Finanças e negócios</b>
-              <span>Audiobook em andamento</span>
-              <div class="progress"><i></i></div>
-            </div>
-          </div>
-          <div class="app-card">
-            <div class="app-cover" style="background:linear-gradient(135deg,#22c55e,#0ea5e9)"></div>
-            <div>
-              <b>Desenvolvimento pessoal</b>
-              <span>Categoria organizada</span>
-              <div class="progress"><i style="width:42%"></i></div>
-            </div>
-          </div>
-          <div class="app-card">
-            <div class="app-cover" style="background:linear-gradient(135deg,#fb7185,#7c3aed)"></div>
-            <div>
-              <b>Produtividade</b>
-              <span>Ouvir em qualquer lugar</span>
-              <div class="progress"><i style="width:78%"></i></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div>
-        <div class="section-head" style="text-align:left;margin:0 0 20px;">
-          <span class="kicker">Por que isso vende melhor</span>
-          <h2>O valor fica claro antes do preço.</h2>
-          <p>O cliente não está comprando apenas arquivos. Ele está comprando praticidade, organização e acesso rápido a conhecimento.</p>
-        </div>
-
-        <div class="benefit-list">
-          <div class="benefit-row">
-            <div class="check">✓</div>
-            <div><b>Não precisa comprar livro por livro</b><span>O pacote concentra uma coleção grande em um único acesso.</span></div>
-          </div>
-          <div class="benefit-row">
-            <div class="check">✓</div>
-            <div><b>Funciona para quem tem preguiça de ler</b><span>A pessoa pode ouvir enquanto faz outras atividades.</span></div>
-          </div>
-          <div class="benefit-row">
-            <div class="check">✓</div>
-            <div><b>Preço baixo, percepção alta</b><span>O design valoriza a quantidade, os bônus e a facilidade de uso.</span></div>
-          </div>
-          <div class="benefit-row">
-            <div class="check">✓</div>
-            <div><b>Compra simples e direta</b><span>CTA claro, oferta objetiva e redirecionamento com UTMs preservadas.</span></div>
-          </div>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -1190,13 +1173,7 @@
     </div>
   </div>
 
-  <div class="trust-toast" id="trustToast" aria-live="polite">
-    <div class="trust-toast-icon">✓</div>
-    <div>
-      <b>Acesso imediato após a compra</b>
-      <span>Pagamento único, sem mensalidade e com garantia de 7 dias.</span>
-    </div>
-  </div>
+  <div id="purchaseToastContainer" aria-live="polite"></div>
 
   <!-- UTM + checkout preserving -->
   <script>
@@ -1279,11 +1256,66 @@
       el.textContent = 'LV Books — oferta disponível hoje, ' + dias[hoje.getDay()] + ', ' + dia + '/' + mes + '/' + ano + ' • acesso imediato e garantia de 7 dias';
     })();
 
-    (function mostrarTrustToast(){
-      var toast = document.getElementById('trustToast');
-      if (!toast) return;
-      setTimeout(function(){ toast.classList.add('show'); }, 2500);
-      setTimeout(function(){ toast.classList.remove('show'); }, 8500);
+    (function mostrarPopupClean(){
+      var productName = "LV Books";
+      var productLogo = "https://i.postimg.cc/J7ywfQdR/Design-sem-nome-86.png";
+      var autoCloseMs = 4500;
+      var currentToast = null;
+      var container = document.getElementById("purchaseToastContainer");
+      var mensagens = [
+        ["Acesso liberado automaticamente", "Pagamento único, sem mensalidade."],
+        ["Biblioteca digital pronta para usar", "+250 audiobooks e opção com eBooks de bônus."],
+        ["Compra segura no checkout", "Garantia incondicional de 7 dias."]
+      ];
+      var indexMensagem = 0;
+
+      function escapeHtml(str) {
+        return String(str)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#039;');
+      }
+
+      function removeToast(toast) {
+        if (!toast) return;
+        toast.style.animation = 'slideUp 800ms forwards';
+        setTimeout(function(){
+          if (toast.parentNode) toast.parentNode.removeChild(toast);
+          if (currentToast === toast) currentToast = null;
+        }, 400);
+      }
+
+      function showPopup() {
+        if (!container) return;
+        if (currentToast) removeToast(currentToast);
+
+        var mensagem = mensagens[indexMensagem % mensagens.length];
+        indexMensagem++;
+
+        var now = new Date();
+        var formattedDate = now.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' });
+        var formattedTime = now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+
+        var toast = document.createElement('div');
+        toast.className = 'purchase-toast';
+        toast.innerHTML =
+          '<div class="logo"><img decoding="async" src="' + productLogo + '" alt="' + escapeHtml(productName) + ' logo"></div>' +
+          '<div class="content">' +
+            '<span class="who">' + escapeHtml(mensagem[0]) + '</span>' +
+            '<span class="what">' + escapeHtml(mensagem[1]) + '</span>' +
+            '<span class="when">' + formattedDate + ' - ' + formattedTime + '</span>' +
+          '</div>';
+
+        container.appendChild(toast);
+        currentToast = toast;
+
+        setTimeout(function(){ removeToast(toast); }, autoCloseMs);
+      }
+
+      setTimeout(showPopup, 2500);
+      setInterval(showPopup, 20000);
     })();
   </script>
 </body>
