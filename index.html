@@ -1659,5 +1659,43 @@ src="https://www.facebook.com/tr?id=868077232260294&ev=PageView&noscript=1"
     })();
   </script>
 
+  <!-- Back Redirect LV Books: preserva UTMs e evita loop na página /oferta -->
+  <script>
+    (function instalarBackRedirectLVBooks() {
+      var BACK_REDIRECT_URL = 'https://lvbooks.com.br/oferta';
+
+      if (window.__lvBackRedirectInstalled) return;
+
+      var destino = new URL(BACK_REDIRECT_URL, window.location.origin);
+      var caminhoAtual = window.location.pathname.replace(/\/+$/, '') || '/';
+      var caminhoDestino = destino.pathname.replace(/\/+$/, '') || '/';
+
+      // Não instala o back redirect na própria página de oferta.
+      if (caminhoAtual === caminhoDestino) return;
+
+      window.__lvBackRedirectInstalled = true;
+
+      function montarUrlComRastreamento() {
+        var urlFinal = new URL(BACK_REDIRECT_URL, window.location.origin);
+        var parametrosAtuais = new URLSearchParams(window.location.search);
+
+        parametrosAtuais.forEach(function(valor, chave) {
+          if (!urlFinal.searchParams.has(chave)) {
+            urlFinal.searchParams.append(chave, valor);
+          }
+        });
+
+        return urlFinal.toString();
+      }
+
+      // Cria uma entrada segura no histórico para capturar o botão Voltar.
+      history.pushState({ lvBackRedirect: true }, '', window.location.href);
+
+      window.addEventListener('popstate', function() {
+        window.location.replace(montarUrlComRastreamento());
+      });
+    })();
+  </script>
+
 </body>
 </html>
