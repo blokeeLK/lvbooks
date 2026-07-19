@@ -293,7 +293,36 @@ button { cursor: pointer; font-family: var(--sans); border: none; }
 .player-promo-text { font-size: .75rem; color: var(--muted); text-align: center; margin-top: 12px; }
 .player-footer-text { font-size: .9rem; color: var(--muted); margin-top: 24px; text-align: center; }
 
-@media (max-width: 480px) { .player-inner-meta { flex-direction: column; align-items: flex-start; } .volume-wrap { width: 100%; } }
+@media (max-width: 768px) {
+  .audio-carousel-wrapper { width: 90%; margin-top: 32px; }
+  .audio-player { padding: 20px 16px; }
+  .player-cover-large { margin-bottom: 16px; }
+  .player-cover-large img { max-width: 200px; border-radius: 8px; }
+  .player-title { font-size: 1.3rem; margin-bottom: 4px; }
+  .player-cat { font-size: 0.9rem; margin-bottom: 20px; }
+  .player-inner-box {
+    display: grid; grid-template-columns: auto 1fr auto auto; grid-template-rows: auto auto auto;
+    column-gap: 12px; row-gap: 6px; padding: 16px 14px; align-items: center;
+  }
+  .player-inner-top, .player-inner-meta { display: contents; }
+  .play-btn { grid-column: 1; grid-row: 1 / 3; width: 44px; height: 44px; }
+  .play-btn svg { width: 20px; height: 20px; }
+  .player-inner-text { grid-column: 2; grid-row: 1; align-self: end; min-width: 0; }
+  .player-inner-title { font-size: 0.9rem; max-width: none; }
+  .player-inner-author { display: none; }
+  .progress-wrap { grid-column: 2; grid-row: 2; margin: 0; align-self: center; }
+  .speed-btns { grid-column: 3; grid-row: 1; align-self: end; justify-self: center; }
+  .speed-btn { font-size: 0.8rem; padding: 0; }
+  .time-display { grid-column: 3; grid-row: 2; font-size: 0.65rem; justify-self: center; align-self: center; }
+  .volume-wrap { grid-column: 4; grid-row: 1 / 3; width: auto; justify-self: end; }
+  .volume-slider { display: none; }
+  .volume-icon { font-size: 1.1rem; }
+  .player-promo-text { grid-column: 1 / 5; grid-row: 3; margin-top: 10px; font-size: 0.65rem; }
+  .player-footer-text { font-size: 0.8rem; margin-top: 16px; }
+  .audio-carousel-controls { margin-top: 12px; }
+  .ac-btn { width: 36px; height: 36px; }
+  .ac-btn svg { width: 20px; height: 20px; }
+}
 
 /* === CATALOGO === */
 .catalogo { background: var(--bg); }
@@ -491,7 +520,7 @@ button { cursor: pointer; font-family: var(--sans); border: none; }
   <div class="container">
     <div class="apresentacao-inner">
       <div class="apres-visual">
-        <img src="https://i.postimg.cc/prsg3J3k/Chat-GPT-Image-19-07-2026-12-31-12.png" alt="LV Books no celular" />
+        <img src="https://i.postimg.cc/KvF7VpCk/Chat-GPT-Image-16-07-2026-23-09-57-removebg-preview.png" alt="LV Books no celular" />
       </div>
       <div class="apres-text">
         <span class="eyebrow">A solução</span>
