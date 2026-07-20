@@ -718,15 +718,12 @@ button { cursor: pointer; font-family: var(--sans); border: none; }
       </div>
       <div class="hero-visual">
         <div class="hero-vsl-wrap">
-          <video id="heroVsl" class="hero-vsl-video" autoplay muted playsinline webkit-playsinline preload="auto" aria-label="Apresentação em vídeo do LV Books">
-            <source src="VSL.MP4" type="video/mp4" />
+          <video id="heroVsl" class="hero-vsl-video" autoplay muted playsinline preload="auto" aria-label="Apresentação em vídeo do LV Books">
+            <source src="./VSL.MP4" type="video/mp4">
             Seu navegador não suporta a reprodução deste vídeo.
           </video>
           <button type="button" class="hero-vsl-sound" id="heroVslSound" aria-label="Toque para liberar o som do vídeo">
-            <span class="hero-vsl-sound-pill">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9v6h4l5 4V5L7 9H3zm13.5 3a4.5 4.5 0 0 0-2.5-4.03v8.05A4.5 4.5 0 0 0 16.5 12zm-2.5-8.65v2.06A7 7 0 0 1 18 12a7 7 0 0 1-4 6.59v2.06A9 9 0 0 0 20 12a9 9 0 0 0-6-8.65z"/></svg>
-              <span>Toque para liberar o som</span>
-            </span>
+            <span class="hero-vsl-sound-pill">🔊 Toque para liberar o som</span>
           </button>
         </div>
       </div>
@@ -1185,25 +1182,39 @@ function closeMobileNav() { navOpen = false; mobileNav.style.display = 'none'; }
 
   var autoplayAttempt = video.play();
   if (autoplayAttempt && typeof autoplayAttempt.catch === 'function') {
-    autoplayAttempt.catch(function(){});
+    autoplayAttempt.catch(function(){
+      // Autoplay bloqueado pelo navegador
+      video.muted = false;
+      video.defaultMuted = false;
+      video.controls = true;
+    });
   }
 
-  soundButton.addEventListener('click', function(){
+  function activateVideo() {
     video.muted = false;
     video.defaultMuted = false;
     video.volume = 1;
-    video.currentTime = 0;
     video.controls = true;
     soundButton.hidden = true;
+    soundButton.style.display = 'none';
 
     var playAttempt = video.play();
-    if (playAttempt && typeof playAttempt.catch === 'function') {
-      playAttempt.catch(function(){ soundButton.hidden = false; });
+    if (playAttempt !== undefined) {
+      playAttempt.catch(function(){
+        soundButton.hidden = false;
+        soundButton.style.display = '';
+      });
     }
-  });
+  }
+
+  soundButton.addEventListener('click', activateVideo);
+  video.addEventListener('click', activateVideo);
 
   video.addEventListener('volumechange', function(){
-    if (!video.muted && video.volume > 0) soundButton.hidden = true;
+    if (!video.muted && video.volume > 0) {
+      soundButton.hidden = true;
+      soundButton.style.display = 'none';
+    }
   });
 })();
 </script>
