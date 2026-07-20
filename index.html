@@ -735,7 +735,6 @@ button { cursor: pointer; font-family: var(--sans); border: none; }
             playsinline
             webkit-playsinline
             preload="auto"
-            poster="header.png"
             aria-label="Apresentação em vídeo do LV Books"
           >
             <source src="VSL.MP4?v=20260720" type="video/mp4">
@@ -1199,6 +1198,9 @@ function closeMobileNav() { navOpen = false; mobileNav.style.display = 'none'; }
   var soundButton = document.getElementById('heroVslSound');
   var errorBox = document.getElementById('heroVslError');
   if (!video || !soundButton) return;
+
+  // Garante que nenhuma imagem antiga seja exibida antes da VSL.
+  video.removeAttribute('poster');
 
   /*
    * O primeiro caminho é o nome exato informado.
