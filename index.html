@@ -210,6 +210,15 @@ button { cursor: pointer; font-family: var(--sans); border: none; }
   color: #fff; border: 0; cursor: pointer; line-height: 1.2;
 }
 .hero-vsl-sound[hidden] { display: none; }
+
+.hero-vsl-error {
+  position: absolute; left: 14px; right: 14px; bottom: 14px; z-index: 3;
+  padding: 11px 13px; border-radius: 10px; background: rgba(0,0,0,.84);
+  color: #fff; font-family: var(--sans); font-size: .76rem; font-weight: 700;
+  line-height: 1.4; text-align: center;
+}
+.hero-vsl-error[hidden] { display: none; }
+
 .hero-vsl-sound-pill {
   display: inline-flex; align-items: center; justify-content: center; gap: 10px;
   padding: 13px 18px; border: 1px solid rgba(255,255,255,.38);
@@ -718,13 +727,28 @@ button { cursor: pointer; font-family: var(--sans); border: none; }
       </div>
       <div class="hero-visual">
         <div class="hero-vsl-wrap">
-          <video id="heroVsl" class="hero-vsl-video" autoplay muted playsinline preload="auto" aria-label="Apresentação em vídeo do LV Books">
-            <source src="./VSL.MP4" type="video/mp4">
+          <video
+            id="heroVsl"
+            class="hero-vsl-video"
+            autoplay
+            muted
+            playsinline
+            webkit-playsinline
+            preload="auto"
+            poster="header.png"
+            aria-label="Apresentação em vídeo do LV Books"
+          >
+            <source src="VSL.MP4?v=20260720" type="video/mp4">
             Seu navegador não suporta a reprodução deste vídeo.
           </video>
+
           <button type="button" class="hero-vsl-sound" id="heroVslSound" aria-label="Toque para liberar o som do vídeo">
             <span class="hero-vsl-sound-pill">🔊 Toque para liberar o som</span>
           </button>
+
+          <div class="hero-vsl-error" id="heroVslError" hidden>
+            Não foi possível carregar a VSL. Confirme que o arquivo VSL.MP4 foi publicado na mesma pasta do index.html.
+          </div>
         </div>
       </div>
     </div>
@@ -1173,49 +1197,150 @@ function closeMobileNav() { navOpen = false; mobileNav.style.display = 'none'; }
 (function(){
   var video = document.getElementById('heroVsl');
   var soundButton = document.getElementById('heroVslSound');
+  var errorBox = document.getElementById('heroVslError');
   if (!video || !soundButton) return;
 
-  // Navegadores só permitem autoplay confiável quando o vídeo começa sem som.
+  /*
+   * O primeiro caminho é o nome exato informado.
+   * Os demais são alternativas automáticas para diferenças de pasta,
+   * capitalização ou cache do deploy.
+   */
+  var candidates = [
+    'VSL.MP4?v=20260720',
+    './VSL.MP4?v=20260720',
+    '/VSL.MP4?v=20260720',
+    'VSL.mp4?v=20260720',
+    'vsl.mp4?v=20260720'
+  ];
+
+  var currentCandidate = 0;
+  var sourceConfirmed = false;
+  var autoplayBlocked = false;
+
   video.muted = true;
   video.defaultMuted = true;
+  video.volume = 1;
+  video.playsInline = true;
   video.setAttribute('muted', '');
+  video.setAttribute('playsinline', '');
+  video.setAttribute('webkit-playsinline', '');
 
-  var autoplayAttempt = video.play();
-  if (autoplayAttempt && typeof autoplayAttempt.catch === 'function') {
-    autoplayAttempt.catch(function(){
-      // Autoplay bloqueado pelo navegador
-      video.muted = false;
-      video.defaultMuted = false;
-      video.controls = true;
-    });
+  function resolvedUrl(path) {
+    return new URL(path, document.baseURI).href;
   }
 
-  function activateVideo() {
-    video.muted = false;
-    video.defaultMuted = false;
-    video.volume = 1;
-    video.controls = true;
-    soundButton.hidden = true;
-    soundButton.style.display = 'none';
+  function setSource(index) {
+    if (index >= candidates.length) {
+      if (errorBox) errorBox.hidden = false;
+      soundButton.hidden = false;
+      soundButton.style.display = '';
+      soundButton.querySelector('.hero-vsl-sound-pill').textContent = '▶ Toque para tentar iniciar o vídeo';
+      console.error('[LV Books] A VSL não foi carregada. Verifique se VSL.MP4 está publicada e se o codec é H.264/AAC.');
+      return;
+    }
 
-    var playAttempt = video.play();
-    if (playAttempt !== undefined) {
-      playAttempt.catch(function(){
+    currentCandidate = index;
+    sourceConfirmed = false;
+    video.pause();
+    video.removeAttribute('src');
+
+    while (video.firstChild) {
+      video.removeChild(video.firstChild);
+    }
+
+    video.src = resolvedUrl(candidates[index]);
+    video.load();
+  }
+
+  function tryAutoplay() {
+    video.muted = true;
+    video.defaultMuted = true;
+    video.setAttribute('muted', '');
+
+    var attempt = video.play();
+    if (attempt && typeof attempt.then === 'function') {
+      attempt.then(function(){
+        autoplayBlocked = false;
+        if (errorBox) errorBox.hidden = true;
+      }).catch(function(){
+        autoplayBlocked = true;
         soundButton.hidden = false;
         soundButton.style.display = '';
+        soundButton.querySelector('.hero-vsl-sound-pill').textContent = '▶ Toque para iniciar com som';
       });
     }
   }
 
-  soundButton.addEventListener('click', activateVideo);
-  video.addEventListener('click', activateVideo);
+  function activateVideo(event) {
+    if (event) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
+    if (errorBox) errorBox.hidden = true;
+    video.muted = false;
+    video.defaultMuted = false;
+    video.removeAttribute('muted');
+    video.volume = 1;
+    video.controls = true;
+
+    var attempt = video.play();
+    if (attempt && typeof attempt.then === 'function') {
+      attempt.then(function(){
+        soundButton.hidden = true;
+        soundButton.style.display = 'none';
+      }).catch(function(){
+        /*
+         * Alguns navegadores exigem uma segunda interação depois de trocar a fonte.
+         * Mantemos o botão visível para o cliente tocar novamente.
+         */
+        soundButton.hidden = false;
+        soundButton.style.display = '';
+        soundButton.querySelector('.hero-vsl-sound-pill').textContent = '▶ Toque novamente para iniciar';
+      });
+    } else {
+      soundButton.hidden = true;
+      soundButton.style.display = 'none';
+    }
+  }
+
+  video.addEventListener('loadeddata', function(){
+    sourceConfirmed = true;
+    if (errorBox) errorBox.hidden = true;
+    tryAutoplay();
+  }, { passive: true });
+
+  video.addEventListener('canplay', function(){
+    sourceConfirmed = true;
+    if (video.paused && !autoplayBlocked) tryAutoplay();
+  }, { passive: true });
+
+  video.addEventListener('error', function(){
+    if (sourceConfirmed) return;
+    setSource(currentCandidate + 1);
+  });
 
   video.addEventListener('volumechange', function(){
-    if (!video.muted && video.volume > 0) {
+    if (!video.muted && video.volume > 0 && !video.paused) {
       soundButton.hidden = true;
       soundButton.style.display = 'none';
     }
   });
+
+  soundButton.addEventListener('click', activateVideo);
+
+  /*
+   * O clique no vídeo só libera o som quando o botão não está cobrindo a área.
+   */
+  video.addEventListener('click', function(event){
+    if (video.muted || video.paused) activateVideo(event);
+  });
+
+  /*
+   * Começa pelo caminho exato. O atributo src já ajuda o carregamento inicial,
+   * mas setSource garante nova tentativa mesmo após cache antigo de erro 404.
+   */
+  setSource(0);
 })();
 </script>
 
