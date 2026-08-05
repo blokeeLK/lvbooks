@@ -617,7 +617,56 @@ t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 
-fbq('init', '868077232260294');
+/* Correspondência avançada manual:
+   - mantém o mesmo ID do Pixel;
+   - não altera PageView, ViewContent, layout ou CTAs;
+   - usa um identificador first-party persistente;
+   - aceita dados reais previamente salvos em "lv_meta_user_data",
+     sem inventar e-mail ou telefone.
+*/
+(function () {
+  var META_USER_STORE = 'lv_meta_user_data';
+  var META_EXTERNAL_ID_STORE = 'lv_meta_external_id';
+  var advancedMatching = {};
+
+  function normalizeText(value) {
+    return String(value || '').trim().toLowerCase();
+  }
+
+  function normalizePhone(value) {
+    return String(value || '').replace(/\D/g, '');
+  }
+
+  try {
+    var savedUserData = JSON.parse(localStorage.getItem(META_USER_STORE) || '{}');
+
+    if (savedUserData.em) advancedMatching.em = normalizeText(savedUserData.em);
+    if (savedUserData.ph) advancedMatching.ph = normalizePhone(savedUserData.ph);
+    if (savedUserData.fn) advancedMatching.fn = normalizeText(savedUserData.fn);
+    if (savedUserData.ln) advancedMatching.ln = normalizeText(savedUserData.ln);
+    if (savedUserData.ct) advancedMatching.ct = normalizeText(savedUserData.ct);
+    if (savedUserData.st) advancedMatching.st = normalizeText(savedUserData.st);
+    if (savedUserData.zp) advancedMatching.zp = String(savedUserData.zp).replace(/\D/g, '');
+    if (savedUserData.country) advancedMatching.country = normalizeText(savedUserData.country);
+
+    var externalId = localStorage.getItem(META_EXTERNAL_ID_STORE);
+
+    if (!externalId) {
+      externalId =
+        (window.crypto && typeof window.crypto.randomUUID === 'function')
+          ? window.crypto.randomUUID()
+          : 'lv_' + Date.now().toString(36) + '_' + Math.random().toString(36).slice(2);
+
+      localStorage.setItem(META_EXTERNAL_ID_STORE, externalId);
+    }
+
+    advancedMatching.external_id = externalId;
+  } catch (e) {
+    /* Se storage estiver bloqueado, o Pixel continua funcionando normalmente. */
+  }
+
+  fbq('init', '868077232260294', advancedMatching);
+})();
 
 (function(){
   if (window.__lvMetaPixelGuardInstalled) return;
