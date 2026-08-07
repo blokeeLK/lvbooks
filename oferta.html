@@ -1,888 +1,1344 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="es-MX">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- Canonical + HTTPS -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>LV Books | Biblioteca Digital – Audiolibros y eBooks para escuchar y leer desde tu celular</title>
+  <link rel="canonical" href="https://lvbooks.com.br/">
+  <link rel="icon" href="upcell/logo.png" sizes="32x32">
+  <link rel="icon" href="upcell/logo.png" sizes="192x192">
+  <link rel="apple-touch-icon" href="upcell/logo.png">
+  <meta name="msapplication-TileImage" content="upcell/logo.png">
   <script>
-  (function(){
-    var h = window.location.hostname;
-    var p = window.location.protocol;
-    if (h !== 'lvbooks.com.br' || p !== 'https:') {
-      window.location.replace('https://lvbooks.com.br' + window.location.pathname + window.location.search + window.location.hash);
+    if (location.hostname === 'lvbooks.onrender.com') {
+      location.replace('https://lvbooks.com.br' + location.pathname + location.search + location.hash);
     }
-  })();
   </script>
+  <link rel="dns-prefetch" href="//i.ibb.co">
+<link rel="dns-prefetch" href="//i.postimg.cc">
+<link rel="dns-prefetch" href="//iili.io">
+<link rel="dns-prefetch" href="//m.media-amazon.com">
+<link rel="dns-prefetch" href="//s.w.org">
+<link rel="preconnect" href="https://connect.facebook.net" crossorigin>
+<link rel="preconnect" href="https://cdn.utmify.com.br" crossorigin>
+<!-- A VSL é o único recurso pesado priorizado, pois precisa iniciar automaticamente. -->
+<link rel="preload" href="audio%20book/vsl.mp4" as="video" type="video/mp4">
+  <meta content="dark light" name="color-scheme"/>
+<style>
+ :root{
+  --bg:#0b1220;
+  --bg-soft:#121b31;
+  --line:#26324d;
+  --text:#e5ecff;
+  --muted:#a9b4ce;
+  --brand:#facc15;
+  --accent:#22c55e;
+  --accent-2:#d4af37;
+ }
+ *{box-sizing:border-box}
+ html,body{height:100%}
+ body{
+  margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", sans-serif;
+  background: var(--bg-soft);
+  color:var(--text); text-align:center; -webkit-font-smoothing:antialiased; line-height:1.55;
+ }
 
-  <title>Última Oferta LV Books – Acesso por R$ 13,90</title>
-  <meta name="description" content="Oferta especial LV Books: mais de 3.000 livros digitais e audiobooks por R$ 13,90. Pagamento único, acesso imediato e garantia de 7 dias." />
-  <meta name="robots" content="noindex, nofollow" />
+ .depoimentos {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 20px;
+   width: 100%;
+ }
+ .depoimentos img {
+   width: 100%;
+   max-width: 600px;
+   height: auto;
+   border-radius: 10px;
+ }
 
-  <link rel="icon" type="image/png" href="favicon.png" />
-  <link rel="apple-touch-icon" href="favicon.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+ html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: var(--bg-soft);
+  overflow-x: hidden;
+ }
 
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+ *, *::before, *::after { box-sizing: border-box; }
+ img, iframe, video { max-width: 100%; display: block; }
 
-    :root {
-      --navy:   #07101d;
-      --navy2:  #0c1f38;
-      --navy3:  #102947;
-      --green:  #27d840;
-      --green2: #20bd35;
-      --red:    #eb332d;
-      --gold:   #ffd21a;
-      --gray:   #a9b8ca;
-      --white:  #ffffff;
-      --border: #24456d;
-      --black:  #05080d;
+ .fullwidth, .container, .wrapper, .row, section {
+  max-width: 100%;
+  width: 100%;
+ }
+
+ .section-escura-externa {
+  border-radius: 0 !important;
+ }
+
+ .section-bleed {
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  width: 100vw;
+ }
+
+ body {
+  background: var(--bg-soft) !important;
+ }
+
+ section, .container, .video-wrapper {
+  background: var(--bg-soft) !important;
+ }
+
+ .container{max-width:620px; margin-inline:auto; padding:20px;}
+
+ .badge{
+  display:inline-flex; align-items:center; gap:8px; padding:8px 14px; border-radius:999px;
+  background: var(--bg-soft);
+ }
+
+ .hero .badge {
+   display: inline-flex;
+   align-items: center;
+   gap: 4px;
+   font-size: 11px;
+   padding: 2px 6px;
+   border-radius: 6px;
+   background: var(--bg-soft);
+   color: #fff;
+ }
+
+ .hero .badge svg {
+   width: 12px;
+   height: 12px;
+ }
+
+ main.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+ }
+
+ main.container1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+ }
+
+ header.container.hero {
+  background: var(--bg-soft);
+  border-radius: 12px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+ }
+
+ @media (min-width: 769px) {
+  header.container.hero {
+   margin-inline: auto !important;
+  }
+ }
+
+ .gp-vantagens__grid {
+  display: grid;
+  place-items: center;
+  justify-content: center;
+  text-align: center;
+ }
+
+ main.container {
+  background: var(--bg-soft);
+  border-radius: 12px;
+  padding: 20px;
+ }
+
+ footer.container {
+  background: var(--bg-soft);
+  border-radius: 12px;
+  padding: 20px;
+ }
+
+ .video {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+ }
+
+ .gp-vantagens {
+  margin: 0;
+  padding: 40px 20px;
+  background-color: #000;
+  color: white;
+  border: none;
+ }
+
+ .gp-vantagens__header,
+ .gp-vantagens__grid,
+ .gp-vantagens__item {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: none;
+ }
+
+ .gp-vantagens__item-desc { color: #ddd; }
+
+ .video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+ }
+
+ .gp-vantagens {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 28px;
+  border-radius: 20px;
+  background: var(--bg-soft);
+  border: 1px solid rgba(255,255,255,.06);
+  color: #fff;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+ }
+
+ .gp-vantagens__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+ }
+
+ .slides {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+ }
+
+ .gp-vantagens__header {
+  display:flex;
+  gap:12px;
+  align-items:center;
+  margin-bottom:14px;
+ }
+
+ .gp-vantagens__title { margin:0; font-size: clamp(20px, 2.6vw, 28px); }
+ .gp-vantagens__subtitle { margin:4px 0 0; color:#9ca3af; font-size:15px; }
+
+ .gp-vantagens__grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(1,1fr);
+ }
+
+ .gp-vantagens__item {
+  display: grid;
+  grid-template-columns: 58px 1fr;
+  gap: 12px;
+  align-items: start;
+  background: var(--bg-soft);
+  border-radius: 14px;
+  padding: 16px;
+  border: 1px solid rgba(255,255,255,.08);
+  transition: transform .15s ease, box-shadow .15s ease;
+ }
+
+ .gp-vantagens__item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,.35);
+ }
+
+ .gp-vantagens__emoji {
+  width:56px;
+  height:56px;
+  display:grid;
+  place-items:center;
+  border-radius:12px;
+  background: var(--bg-soft);
+  font-size:28px;
+  border:1px solid rgba(34,211,238,.18);
+ }
+
+ .gp-vantagens__emoji img { width: 28px; height: 28px; }
+
+ .gp-vantagens__item-title { margin:0; font-weight:700; font-size:16px; color:#fff; }
+ .gp-vantagens__item-desc { margin:6px 0 0; color:#e5e7eb; font-size:14px; line-height:1.5; }
+
+ @media (min-width:640px) {
+  .gp-vantagens__grid { grid-template-columns: repeat(2,1fr); }
+ }
+ @media (min-width:1024px) {
+  .gp-vantagens__grid { grid-template-columns: repeat(3,1fr); }
+ }
+
+ .gp-vantagens__title,
+ .gp-vantagens__subtitle { color: #fff; }
+
+ .gp-vantagens,
+ .gp-vantagens * { color: #fff; }
+
+ .slides {
+  margin: 0 auto;
+  text-align: center;
+ }
+
+ .badge svg{width:16px; height:16px}
+
+ .hero h1{margin:18px 0 8px; font-size:2rem; letter-spacing:.2px}
+ .hero .highlight{color:var(--brand)}
+ .hero p{margin:0 auto 14px; max-width:40ch; color:var(--muted)}
+
+ .video{position:relative; width:100%; padding-bottom:177.78%; border-radius:14px; overflow:hidden; background:#000}
+ .video iframe, .video video{position:absolute; inset:0; width:100%; height:100%; border:0}
+
+ .btn{display:block; width:100%; padding:16px 20px; border-radius:12px; border:0; cursor:pointer; font-weight:800; letter-spacing:.3px; font-size:1.05rem;}
+ .btn-primary{background:var(--accent); color:#00160b; box-shadow:0 10px 24px rgba(34,197,94,.25)}
+ .btn-primary:active{transform:translateY(1px)}
+ .btn-premium{background:var(--brand); color:#1f2a44;}
+
+ .copy-strip{display:grid; gap:12px; text-align:left}
+ .copy-pill{display:flex; gap:12px; align-items:flex-start; background:var(--bg-soft); border:1px solid var(--line); padding:14px; border-radius:14px}
+ .copy-pill b{display:block; font-size:.95rem}
+
+ section{padding:28px 0}
+ .title{font-size:1.45rem; margin:0 0 6px}
+ .subtitle{color:var(--muted); margin:0 auto 6px; max-width:46ch}
+
+ .benefits{display:grid; gap:12px; text-align:left}
+ .benefit{display:flex; gap:12px; align-items:flex-start; background:var(--bg-soft); border:1px solid var(--line); padding:14px; border-radius:14px}
+ .icon{flex:0 0 40px; height:40px; display:grid; place-items:center; border-radius:999px}
+ .i-blue{background:#1e3a8a}
+ .i-green{background:#065f46}
+ .i-yellow{background:#7c5b00}
+ .i-purple{background:#4c1d95}
+
+ .book-grid{display:grid; grid-template-columns:repeat(2, 1fr); gap:12px; margin-top:14px}
+ @media(min-width:520px){ .book-grid{grid-template-columns:repeat(3, 1fr);} }
+ .book-grid img{width:100%; height:auto; border-radius:12px; display:block; box-shadow:0 6px 18px rgba(0,0,0,.35)}
+
+ .slider{position:relative; overflow:hidden; border-radius:18px; background:#0a0f1e; border:1px solid var(--line);}
+ .slides{display:flex; transition:transform .45s ease}
+ .slide{min-width:100%; padding:16px}
+ .phone{border:1px solid #313d5a; border-radius:24px; padding:14px; background:#0f162a; height:440px; display:grid; place-items:center; color:#c8d2ee}
+ .dots{display:flex; gap:6px; justify-content:center; margin-top:10px}
+ .dot{width:8px; height:8px; border-radius:999px; background:#334155; opacity:.6}
+ .dot.active{opacity:1; background:#8ab4ff}
+ .nav{position:absolute; top:50%; transform:translateY(-50%); width:38px; height:38px; border-radius:999px; background:rgba(255,255,255,.06); display:grid; place-items:center; border:1px solid var(--line)}
+ .nav.left{left:8px} .nav.right{right:8px}
+
+ .ribbon{display:inline-block; background:#ef4444; color:#fff; padding:6px 12px; border-radius:999px; font-weight:700; letter-spacing:.3px}
+ .plans{display:grid; gap:16px; text-align:left}
+ .plan{background:var(--bg-soft); border:1px solid var(--line); border-radius:16px; padding:16px}
+ .plan h3{margin:0 0 4px; display:flex; align-items:center; gap:8px}
+ .price{font-size:1.8rem; font-weight:900; color:#8BEBAC; margin:6px 0 12px}
+ .checklist{padding-left:20px; margin:0 0 14px}
+ .checklist li{margin:8px 0}
+ .plan.premium{outline:3px solid var(--accent-2)}
+ .plan .subbar{background:#6b600a; color:#fff; padding:8px 12px; border-radius:10px; margin:10px 0}
+
+ .faq{display:grid; gap:10px; text-align:left}
+ details{background:var(--bg-soft); border:1px solid var(--line); border-radius:12px; padding:14px}
+ summary{cursor:pointer; font-weight:700}
+
+ footer{color:var(--muted); font-size:.85rem; padding:22px 0}
+ a.cta-link{color:inherit; text-decoration:none}
+
+ /* ====== (ESSENCIAL) CSS DA NOTIFICAÇÃO DE COMPRA (TOAST) ====== */
+ .purchase-toast {
+   position: fixed;
+   top: 12px;
+   left: 50%;
+   transform: translateX(-50%) translateY(-150%);
+   z-index: 99999;
+   display: flex;
+   align-items: center;
+   gap: 12px;
+   max-width: 380px;
+   width: calc(100% - 24px);
+   background: #fff;
+   color: #111;
+   border-radius: 10px;
+   box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+   padding: 12px;
+   font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+   opacity: 0;
+   animation: slideDown 450ms cubic-bezier(.2,.9,.2,1) forwards;
+ }
+ .purchase-toast .logo {
+   width: 44px;
+   height: 44px;
+   flex: 0 0 44px;
+   border-radius: 8px;
+   overflow: hidden;
+   display:flex;
+   align-items:center;
+   justify-content:center;
+   background: #f9f9f9;
+ }
+ .purchase-toast img {
+   max-width: 100%;
+   max-height: 100%;
+   display:block;
+ }
+ .purchase-toast .content {
+   flex: 1 1 auto;
+   font-size: 14px;
+   line-height: 1.3;
+ }
+ .purchase-toast .content .who {
+   font-weight: 600;
+   display:block;
+   margin-bottom: 2px;
+ }
+ .purchase-toast .content .what {
+   font-size: 13px;
+   color: #facc15;
+   font-weight: 600;
+ }
+ .purchase-toast .content .when {
+   font-size: 11px;
+   color: #777;
+   margin-top: 4px;
+   display:block;
+ }
+
+
+/* ===== GARANTIA 7 DIAS RESPONSIVA ===== */
+
+.garantia{
+  padding:24px 0;
+}
+
+.card-garantia{
+  max-width:620px;
+  margin:0 auto;
+  text-align:left;
+
+  background:linear-gradient(180deg, rgba(18,27,49,.95), rgba(18,27,49,.98));
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:18px;
+
+  padding:20px;
+
+  position:relative;
+  overflow:hidden;
+
+  box-shadow:0 18px 50px rgba(0,0,0,.45);
+}
+
+/* glow premium */
+.card-garantia::before{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  background:
+  radial-gradient(400px 140px at 10% 0%, rgba(34,197,94,.22), transparent 60%),
+  radial-gradient(400px 140px at 90% 0%, rgba(250,204,21,.18), transparent 60%);
+  pointer-events:none;
+}
+
+/* header */
+.garantia-top{
+  display:flex;
+  gap:14px;
+  align-items:flex-start;
+  margin-bottom:16px;
+}
+
+.garantia-icon{
+  width:52px;
+  height:52px;
+
+  border-radius:16px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:rgba(34,197,94,.12);
+  border:1px solid rgba(34,197,94,.22);
+
+  flex-shrink:0;
+}
+
+.garantia-icon svg{
+  width:24px;
+  height:24px;
+  stroke:var(--accent);
+}
+
+.garantia-title{
+  margin:0;
+  font-size:1.1rem;
+  font-weight:900;
+  color:var(--text);
+}
+
+.garantia-sub{
+  margin:6px 0 0;
+  color:var(--muted);
+  font-size:.95rem;
+  line-height:1.5;
+}
+
+.garantia-sub b{
+  color:var(--brand);
+}
+
+/* lista */
+.garantia-list{
+  display:grid;
+  gap:10px;
+}
+
+.garantia-item{
+  display:flex;
+  gap:10px;
+
+  background:rgba(11,18,32,.35);
+
+  border:1px solid rgba(255,255,255,.08);
+
+  border-radius:14px;
+
+  padding:12px;
+}
+
+.garantia-check{
+  width:22px;
+  height:22px;
+
+  border-radius:8px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:rgba(34,197,94,.15);
+
+  border:1px solid rgba(34,197,94,.30);
+
+  color:var(--accent);
+  font-weight:900;
+
+  flex-shrink:0;
+}
+
+.garantia-item p{
+  margin:0;
+  font-size:.92rem;
+  color:var(--text);
+  line-height:1.5;
+}
+
+/* rodapé */
+.garantia-foot{
+  margin-top:14px;
+  font-size:.78rem;
+  color:rgba(229,236,255,.7);
+  line-height:1.5;
+}
+
+/* ===== MOBILE ===== */
+
+@media (max-width:600px){
+
+  .card-garantia{
+    padding:18px 16px;
+    border-radius:16px;
+  }
+
+  .garantia-top{
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+  }
+
+  .garantia-icon{
+    margin-bottom:6px;
+  }
+
+  .garantia-title{
+    font-size:1rem;
+  }
+
+  .garantia-sub{
+    font-size:.9rem;
+  }
+
+  .garantia-item{
+    padding:11px;
+  }
+
+  .garantia-item p{
+    font-size:.9rem;
+  }
+
+}
+ @keyframes slideDown {
+   to { transform: translateX(-50%) translateY(0); opacity: 1; }
+ }
+ @keyframes slideUp {
+   to { transform: translateX(-50%) translateY(-150%); opacity: 0; }
+ }
+ @media (max-width: 480px) {
+   .purchase-toast {
+     max-width: 92%;
+     padding: 10px;
+   }
+ }
+</style>
+<style>
+.riscado { text-decoration: line-through; }
+</style>
+  <!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+
+/* Correspondência avançada manual:
+   - mantém o mesmo ID do Pixel;
+   - não altera PageView, ViewContent, layout ou CTAs;
+   - usa um identificador first-party persistente;
+   - aceita dados reais previamente salvos em "lv_meta_user_data",
+     sem inventar e-mail ou telefone.
+*/
+(function () {
+  var META_USER_STORE = 'lv_meta_user_data';
+  var META_EXTERNAL_ID_STORE = 'lv_meta_external_id';
+  var advancedMatching = {};
+
+  function normalizeText(value) {
+    return String(value || '').trim().toLowerCase();
+  }
+
+  function normalizePhone(value) {
+    return String(value || '').replace(/\D/g, '');
+  }
+
+  try {
+    var savedUserData = JSON.parse(localStorage.getItem(META_USER_STORE) || '{}');
+
+    if (savedUserData.em) advancedMatching.em = normalizeText(savedUserData.em);
+    if (savedUserData.ph) advancedMatching.ph = normalizePhone(savedUserData.ph);
+    if (savedUserData.fn) advancedMatching.fn = normalizeText(savedUserData.fn);
+    if (savedUserData.ln) advancedMatching.ln = normalizeText(savedUserData.ln);
+    if (savedUserData.ct) advancedMatching.ct = normalizeText(savedUserData.ct);
+    if (savedUserData.st) advancedMatching.st = normalizeText(savedUserData.st);
+    if (savedUserData.zp) advancedMatching.zp = String(savedUserData.zp).replace(/\D/g, '');
+    if (savedUserData.country) advancedMatching.country = normalizeText(savedUserData.country);
+
+    var externalId = localStorage.getItem(META_EXTERNAL_ID_STORE);
+
+    if (!externalId) {
+      externalId =
+        (window.crypto && typeof window.crypto.randomUUID === 'function')
+          ? window.crypto.randomUUID()
+          : 'lv_' + Date.now().toString(36) + '_' + Math.random().toString(36).slice(2);
+
+      localStorage.setItem(META_EXTERNAL_ID_STORE, externalId);
     }
 
-    html { scroll-behavior: smooth; }
+    advancedMatching.external_id = externalId;
+  } catch (e) {
+    /* Se storage estiver bloqueado, o Pixel continua funcionando normalmente. */
+  }
+
+  fbq('init', '868077232260294', advancedMatching);
+})();
+
+(function(){
+  if (window.__lvMetaPixelGuardInstalled) return;
+  window.__lvMetaPixelGuardInstalled = true;
+  window.__lvMetaPixelEventsSent = window.__lvMetaPixelEventsSent || {};
+  var originalFbq = window.fbq;
+
+  if (typeof originalFbq !== 'function') return;
+
+  function guardedFbq(){
+    try {
+      var command = arguments[0];
+      var eventName = command === 'trackSingle' ? arguments[2] : arguments[1];
+
+      if ((command === 'track' || command === 'trackSingle') && (eventName === 'PageView' || eventName === 'ViewContent')) {
+        if (window.__lvMetaPixelEventsSent[eventName]) {
+          return;
+        }
+        window.__lvMetaPixelEventsSent[eventName] = true;
+      }
+    } catch(e){}
+
+    if (guardedFbq.callMethod) {
+      return guardedFbq.callMethod.apply(guardedFbq, arguments);
+    }
+
+    return originalFbq.apply(originalFbq, arguments);
+  }
+
+  for (var key in originalFbq) {
+    try {
+      guardedFbq[key] = originalFbq[key];
+    } catch(e){}
+  }
+
+  window.fbq = guardedFbq;
+  window._fbq = guardedFbq;
+})();
+
+fbq('track', 'PageView');
+fbq('track', 'ViewContent', {
+  content_name: 'LV Books',
+  content_category: 'Audiolibros y eBooks',
+  value: 9.99,
+  currency: 'USD'
+});
+</script>
+
+<!-- End Meta Pixel Code -->
+  <!-- Utmify -->
+<script src="https://cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-xcod-sck data-utmify-prevent-subids async defer></script>
+</head>
+<body>
+  <noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=868077232260294&ev=PageView&noscript=1"
+/></noscript>
+  <header class="container hero">
+<div aria-label="Compra segura" class="badge">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"></path></svg>
+  Compra 100% segura y protegida
+ </div>
+<h1 style="font-weight: 800; text-align:center; font-size: clamp(1.45rem, 4.5vw, 2.3rem); line-height: 1.2; letter-spacing: 0.3px; background: linear-gradient(160deg, #ffffff 15%, #f5e090 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; filter: drop-shadow(0 2px 10px rgba(0,0,0,0.4));">
+  MÁS DE 3,000 LIBROS EN LA PALMA DE TU MANO
+ </h1>
+<p style="color: #ffffff; font-size: 0.97rem; font-weight: 400; text-align: center; margin: 6px auto 18px; max-width: 38ch; line-height: 1.55; opacity: 0.9;">Transforma tu vida con una colección creada para impulsar tu crecimiento personal y profesional.</p>
+<style>
+.video-wrapper {
+ display: flex;
+ justify-content: center;
+ margin: 20px auto;
+ background: var(--bg-soft);
+ padding: 10px;
+ border-radius: 12px;
+}
+
+.video-wrapper video {
+ max-width: 700px;
+ width: 100%;
+ background: var(--bg-soft) !important;
+}
+
+.video-wrapper iframe {
+ max-width: 700px !important;
+ width: 100% !important;
+ height: auto !important;
+ border-radius: 12px;
+ display: block;
+ margin: 0 auto;
+ background: var(--bg-soft) !important;
+}
+
+@media (max-width: 768px) {
+ .video-wrapper video,
+ .video-wrapper iframe {
+   max-width: 320px !important;
+ }
+}
+
+@media (max-width: 768px) {
+ #vsl-wrapper {
+   width: 75% !important;
+   max-width: 300px !important;
+   margin: 0 auto !important;
+ }
+}
+
+
+  .lp-top-offer-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(90deg, #e10600 0%, #ff1b1b 100%);
+    color: #fff;
+    z-index: 99999;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.18);
+  }
+
+  .lp-top-offer-text {
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    padding: 14px 10px;
+    font-size: 16px;
+  }
+
+  @media (max-width: 768px) {
+    .lp-top-offer-text {
+      font-size: 13px;
+      padding: 12px 8px;
+    }
 
     body {
-      font-family: 'Montserrat', Arial, sans-serif;
-      background: var(--navy);
-      color: var(--white);
-      overflow-x: hidden;
-      padding-bottom: 82px;
+      padding-top: 48px;
     }
+  }
 
-    a { color: inherit; }
-
-    .page {
-      min-height: 100vh;
-      background:
-        radial-gradient(circle at 50% 0%, rgba(39,216,64,.13) 0%, rgba(39,216,64,0) 28%),
-        linear-gradient(180deg, #0d203a 0%, #07101d 42%, #07101d 100%);
-    }
-
-    /* TOP COUNTDOWN */
-    .cd-bar {
-      background: var(--red);
-      text-align: center;
-      padding: 11px 14px 12px;
-      position: sticky;
-      top: 0;
-      z-index: 999;
-      box-shadow: 0 10px 28px rgba(0,0,0,.22);
-    }
-
-    .cd-bar__text {
+  @media (max-width: 480px) {
+    .lp-top-offer-text {
       font-size: 12px;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: .55px;
-      line-height: 1.25;
+      padding: 10px 6px;
     }
 
-    .cd-bar__timer {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      margin-top: 5px;
-      font-size: 27px;
-      font-weight: 900;
-      line-height: 1;
-      letter-spacing: 1.5px;
+    body {
+      padding-top: 44px;
     }
-
-    .cd-bar__timer span {
-      background: rgba(0,0,0,.25);
-      border-radius: 8px;
-      padding: 5px 10px;
-      min-width: 54px;
-      display: inline-block;
-    }
-
-    .cd-bar__sub {
-      font-size: 10px;
-      margin-top: 5px;
-      opacity: .95;
-      font-weight: 700;
-    }
-
-    /* HERO */
-    .hero {
-      width: 100%;
-      padding: 26px 16px 18px;
-      text-align: center;
-    }
-
-    .hero__inner {
-      max-width: 560px;
-      margin: 0 auto;
-    }
-
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 9px;
-      margin-bottom: 14px;
-      opacity: .97;
-    }
-
-    .brand img {
-      width: 44px;
-      height: 44px;
-      object-fit: contain;
-      border-radius: 8px;
-      background: #fff;
-    }
-
-    .brand span {
-      font-size: 12px;
-      font-weight: 900;
-      letter-spacing: 1.7px;
-      text-transform: uppercase;
-      color: #dfefff;
-    }
-
-    .save-badge {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      background: rgba(255,210,26,.13);
-      border: 1px solid rgba(255,210,26,.45);
-      color: var(--gold);
-      border-radius: 999px;
-      padding: 8px 12px;
-      font-size: 11px;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: .7px;
-      margin-bottom: 12px;
-    }
-
-    .hero h1 {
-      font-size: clamp(27px, 7vw, 47px);
-      font-weight: 900;
-      line-height: 1.04;
-      letter-spacing: -.8px;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-    }
-
-    .hero h1 .green { color: var(--green); }
-    .hero h1 .gold { color: var(--gold); }
-
-    .hero__sub {
-      max-width: 500px;
-      margin: 0 auto 18px;
-      color: #c6d4e5;
-      font-size: 15px;
-      line-height: 1.55;
-      font-weight: 600;
-    }
-
-    .hero__sub strong { color: #fff; font-weight: 900; }
-
-    /* PRICE CARD */
-    .price-card {
-      max-width: 480px;
-      margin: 0 auto;
-      background: linear-gradient(180deg, #102947 0%, #0c1f38 100%);
-      border: 2px solid var(--green);
-      box-shadow: 0 0 0 6px rgba(39,216,64,.06), 0 18px 50px rgba(0,0,0,.35);
-      border-radius: 18px;
-      padding: 20px 17px 16px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .price-card::before {
-      content: '';
-      position: absolute;
-      inset: -80px auto auto -80px;
-      width: 160px;
-      height: 160px;
-      background: radial-gradient(circle, rgba(39,216,64,.2), rgba(39,216,64,0) 65%);
-      pointer-events: none;
-    }
-
-    .price-card__tag {
-      display: inline-block;
-      background: var(--red);
-      color: #fff;
-      font-size: 11px;
-      font-weight: 900;
-      text-transform: uppercase;
-      padding: 7px 14px;
-      border-radius: 20px;
-      margin-bottom: 12px;
-      letter-spacing: .45px;
-    }
-
-    .price-card__line {
-      color: #d6e4f4;
-      font-size: 13px;
-      font-weight: 800;
-      margin-bottom: 4px;
-    }
-
-    .price-card__old {
-      color: var(--gray);
-      font-size: 14px;
-      font-weight: 700;
-      margin-bottom: 2px;
-    }
-
-    .price-card__old s { color: #91a3b8; }
-
-    .price-card__price {
-      color: var(--gold);
-      font-weight: 900;
-      line-height: .95;
-      font-size: clamp(58px, 15vw, 76px);
-      letter-spacing: -2px;
-      margin-bottom: 4px;
-      text-shadow: 0 8px 25px rgba(0,0,0,.25);
-    }
-
-    .price-card__price sup {
-      font-size: .36em;
-      position: relative;
-      top: -.85em;
-      margin-right: 4px;
-      letter-spacing: 0;
-    }
-
-    .price-card__once {
-      color: #c6d4e5;
-      font-size: 13px;
-      font-weight: 800;
-      margin-bottom: 14px;
-    }
-
-    .btn-cta {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      min-height: 62px;
-      background: linear-gradient(180deg, var(--green) 0%, var(--green2) 100%);
-      color: #000;
-      border: 0;
-      border-radius: 10px;
-      padding: 16px 14px;
-      font-family: 'Montserrat', Arial, sans-serif;
-      font-weight: 900;
-      font-size: 15px;
-      line-height: 1.25;
-      letter-spacing: .15px;
-      text-align: center;
-      text-decoration: none;
-      text-transform: uppercase;
-      cursor: pointer;
-      box-shadow: 0 12px 28px rgba(39,216,64,.25);
-      animation: pulse 1.8s infinite;
-      transition: transform .15s ease, filter .15s ease;
-    }
-
-    .btn-cta:hover {
-      filter: brightness(1.05);
-      transform: translateY(-1px);
-    }
-
-    @keyframes pulse {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(39,216,64,.42), 0 12px 28px rgba(39,216,64,.23); }
-      50% { box-shadow: 0 0 0 13px rgba(39,216,64,0), 0 12px 28px rgba(39,216,64,.23); }
-    }
-
-    .micro-trust {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
-      margin-top: 12px;
-    }
-
-    .micro-trust div {
-      background: rgba(255,255,255,.055);
-      border: 1px solid rgba(255,255,255,.09);
-      border-radius: 10px;
-      padding: 9px 5px;
-      color: #dce8f7;
-      font-size: 10px;
-      font-weight: 800;
-      line-height: 1.25;
-    }
-
-    .secure-line {
-      color: var(--gray);
-      font-size: 11px;
-      font-weight: 700;
-      margin-top: 10px;
-      line-height: 1.35;
-    }
-
-    /* FAST BENEFITS */
-    .fast-benefits {
-      max-width: 520px;
-      margin: 18px auto 0;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      padding: 0 2px;
-    }
-
-    .fast-benefits__item {
-      background: rgba(13,31,56,.92);
-      border: 1px solid var(--border);
-      border-radius: 13px;
-      padding: 12px 10px;
-      text-align: left;
-      font-size: 12px;
-      line-height: 1.35;
-      color: #d7e5f5;
-      font-weight: 700;
-    }
-
-    .fast-benefits__item strong {
-      display: block;
-      color: #fff;
-      font-size: 13px;
-      font-weight: 900;
-      margin-bottom: 3px;
-    }
-
-    /* BOOKS */
-    .books {
-      max-width: 560px;
-      margin: 12px auto 0;
-      padding: 20px 16px 8px;
-      text-align: center;
-    }
-
-    .books h2 {
-      font-size: 13px;
-      font-weight: 900;
-      color: #77b8ff;
-      margin-bottom: 13px;
-      text-transform: uppercase;
-      letter-spacing: 1.2px;
-    }
-
-    .books__grid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 8px;
-      max-width: 470px;
-      margin: 0 auto;
-    }
-
-    .books__grid img {
-      width: 100%;
-      aspect-ratio: 2/3;
-      object-fit: cover;
-      border-radius: 7px;
-      box-shadow: 0 8px 22px rgba(0,0,0,.48);
-      background: #0d1f38;
-    }
-
-    .books__caption {
-      color: var(--gray);
-      font-size: 11px;
-      font-weight: 700;
-      line-height: 1.45;
-      margin: 12px auto 0;
-      max-width: 440px;
-    }
-
-    /* RECEIVE */
-    .receive {
-      max-width: 540px;
-      margin: 0 auto;
-      padding: 22px 16px 8px;
-    }
-
-    .receive h2 {
-      font-size: 18px;
-      font-weight: 900;
-      text-align: center;
-      margin-bottom: 14px;
-    }
-
-    .receive-list {
-      list-style: none;
-      display: grid;
-      gap: 10px;
-    }
-
-    .receive-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      background: #0d1f38;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 13px 14px;
-      font-size: 13px;
-      line-height: 1.38;
-      font-weight: 750;
-      color: #edf5ff;
-    }
-
-    .receive-list li::before {
-      content: '✓';
-      flex: 0 0 auto;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 20px;
-      height: 20px;
-      margin-top: -1px;
-      border-radius: 50%;
-      background: rgba(39,216,64,.13);
-      color: var(--green);
-      font-weight: 900;
-    }
-
-    /* GUARANTEE */
-    .guarantee {
-      margin-top: 20px;
-      padding: 24px 16px;
-      background: #0c1f38;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      text-align: center;
-    }
-
-    .guarantee__inner {
-      max-width: 480px;
-      margin: 0 auto;
-    }
-
-    .guarantee__badge {
-      width: 76px;
-      height: 76px;
-      margin: 0 auto 12px;
-      border-radius: 50%;
-      border: 3px solid var(--green);
-      background: #07101d;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 0 28px rgba(39,216,64,.14);
-    }
-
-    .guarantee__badge .num {
-      font-size: 25px;
-      color: var(--green);
-      font-weight: 900;
-      line-height: 1;
-    }
-
-    .guarantee__badge .txt {
-      font-size: 8px;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: .4px;
-    }
-
-    .guarantee h3 {
-      font-size: 16px;
-      font-weight: 900;
-      margin-bottom: 7px;
-    }
-
-    .guarantee p {
-      color: var(--gray);
-      font-size: 12px;
-      font-weight: 600;
-      line-height: 1.55;
-    }
-
-    .final-cta {
-      max-width: 480px;
-      margin: 0 auto;
-      padding: 22px 16px 32px;
-      text-align: center;
-    }
-
-    .final-cta p {
-      color: #c6d4e5;
-      font-size: 13px;
-      font-weight: 700;
-      margin-bottom: 12px;
-      line-height: 1.45;
-    }
-
-    footer {
-      background: #050b13;
-      padding: 22px 16px 26px;
-      text-align: center;
-      font-size: 11px;
-      color: var(--gray);
-      line-height: 1.8;
-    }
-
-    footer strong {
-      display: block;
-      color: #fff;
-      font-size: 13px;
-      font-weight: 900;
-      letter-spacing: 2px;
-      margin-bottom: 6px;
-    }
-
-    footer a { color: var(--gray); text-decoration: underline; }
-
-    /* STICKY MOBILE CTA */
-    .sticky-cta {
-      position: fixed;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      z-index: 998;
-      padding: 10px 12px 12px;
-      background: rgba(5,10,18,.94);
-      border-top: 1px solid rgba(255,255,255,.08);
-      backdrop-filter: blur(10px);
-    }
-
-    .sticky-cta__inner {
-      max-width: 500px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 92px 1fr;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .sticky-price {
-      text-align: center;
-      color: var(--gold);
-      font-weight: 900;
-      line-height: 1;
-      font-size: 22px;
-    }
-
-    .sticky-price span {
-      display: block;
-      color: var(--gray);
-      font-size: 9px;
-      text-transform: uppercase;
-      letter-spacing: .4px;
-      margin-bottom: 3px;
-    }
-
-    .sticky-cta .btn-cta {
-      min-height: 50px;
-      font-size: 12px;
-      padding: 12px 10px;
-      border-radius: 9px;
-      animation: none;
-    }
-
-    /* NON-DECEPTIVE NOTIFICATION */
-    .notice-popup {
-      position: fixed;
-      left: 12px;
-      bottom: 94px;
-      z-index: 997;
-      width: min(330px, calc(100vw - 24px));
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      background: #fff;
-      color: #10151d;
-      border-left: 5px solid var(--green);
-      border-radius: 13px;
-      box-shadow: 0 18px 45px rgba(0,0,0,.25);
-      padding: 12px 34px 12px 12px;
-      transform: translateX(-115%);
-      opacity: 0;
-      transition: transform .35s ease, opacity .35s ease;
-      pointer-events: none;
-    }
-
-    .notice-popup.show {
-      transform: translateX(0);
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .notice-popup__icon { font-size: 25px; }
-
-    .notice-popup strong {
-      display: block;
-      color: #10151d;
-      font-size: 12px;
-      font-weight: 900;
-      margin-bottom: 2px;
-    }
-
-    .notice-popup span {
-      display: block;
-      color: #56616f;
-      font-size: 11px;
-      font-weight: 700;
-      line-height: 1.35;
-    }
-
-    .notice-popup button {
-      position: absolute;
-      top: 7px;
-      right: 9px;
-      border: 0;
-      background: none;
-      color: #8c96a3;
-      font-size: 15px;
-      cursor: pointer;
-    }
-
-    @media (min-width: 700px) {
-      body { padding-bottom: 0; }
-      .sticky-cta { display: none; }
-      .hero { padding-top: 34px; }
-      .price-card { padding: 24px 24px 18px; }
-      .receive-list { grid-template-columns: 1fr 1fr; }
-    }
-
-    @media (max-width: 420px) {
-      .cd-bar__timer { font-size: 24px; }
-      .cd-bar__timer span { min-width: 48px; padding: 5px 8px; }
-      .hero { padding-left: 13px; padding-right: 13px; }
-      .hero__sub { font-size: 14px; }
-      .price-card { border-radius: 16px; padding-left: 14px; padding-right: 14px; }
-      .micro-trust { grid-template-columns: 1fr; }
-      .fast-benefits { grid-template-columns: 1fr; }
-      .books__grid { grid-template-columns: repeat(5, 1fr); gap: 6px; }
-      .sticky-cta__inner { grid-template-columns: 78px 1fr; }
-      .sticky-price { font-size: 20px; }
-    }
-  </style>
-</head>
-
-<body>
-  <div class="page">
-    <!-- COUNTDOWN -->
-    <div class="cd-bar" role="status" aria-live="polite">
-      <div class="cd-bar__text">⚠️ Espere: desconto de saída liberado</div>
-      <div class="cd-bar__timer" aria-label="Tempo restante da oferta">
-        <span id="cd-min">07</span>:<span id="cd-sec">00</span>
-      </div>
-      <div class="cd-bar__sub" id="cd-sub">Depois disso, essa condição pode voltar ao valor normal.</div>
-    </div>
-
-    <!-- HERO + PRICE ABOVE THE FOLD -->
-    <main class="hero">
-      <div class="hero__inner">
-        <div class="brand" aria-label="LV Books">
-          <img src="upcell/logo.png" alt="LV Books" />
-          <span>LV Books</span>
-        </div>
-
-        <div class="save-badge">🔥 Oferta especial aplicada</div>
-
-        <h1>Antes de sair, leve tudo por <span class="green">R$ 13,90</span></h1>
-
-        <p class="hero__sub">
-          Acesso completo à biblioteca digital com <strong>mais de 3.000 livros + audiobooks</strong> para ler e ouvir direto pelo celular.
-        </p>
-
-        <section class="price-card" aria-label="Oferta especial LV Books">
-          <span class="price-card__tag">Desconto máximo nesta página</span>
-          <div class="price-card__line">Seu acesso completo fica por apenas:</div>
-          <div class="price-card__old">De <s>R$ 17,90</s></div>
-          <div class="price-card__price"><sup>R$</sup>13,90</div>
-          <div class="price-card__once">Pagamento único · Sem mensalidade · Acesso imediato</div>
-
-          <a href="https://pay.kirvano.com/a7a5c8b8-0846-4616-9a58-160473e70ec6" class="btn-cta" data-checkout>
-            Sim, liberar meu acesso por R$ 13,90 →
-          </a>
-
-          <div class="micro-trust" aria-label="Informações de confiança">
-            <div>🔒 Pagamento seguro</div>
-            <div>⚡ Acesso imediato</div>
-            <div>🛡️ Garantia 7 dias</div>
-          </div>
-
-          <p class="secure-line">Você paga uma vez e recebe o acesso digital logo após a confirmação do pagamento.</p>
-        </section>
-
-        <section class="fast-benefits" aria-label="Principais benefícios">
-          <div class="fast-benefits__item"><strong>+3.000 livros</strong>Biblioteca digital direto no celular.</div>
-          <div class="fast-benefits__item"><strong>Audiobooks</strong>Ouça enquanto dirige, treina ou trabalha.</div>
-          <div class="fast-benefits__item"><strong>Sem mensalidade</strong>Pagamento único nesta oferta.</div>
-          <div class="fast-benefits__item"><strong>7 dias de garantia</strong>Teste sem risco.</div>
-        </section>
-      </div>
-    </main>
-
-    <!-- BOOKS AFTER OFFER -->
-    <section class="books">
-      <h2>Alguns títulos da coleção</h2>
-      <div class="books__grid">
-        <img src="audio%20book/l2.png"  alt="Livro da coleção LV Books" loading="lazy" />
-        <img src="audio%20book/l3.png"  alt="Livro da coleção LV Books" loading="lazy" />
-        <img src="audio%20book/l7.png"  alt="Livro da coleção LV Books" loading="lazy" />
-        <img src="audio%20book/l4.png"  alt="Livro da coleção LV Books" loading="lazy" />
-        <img src="audio%20book/l8.png"  alt="Livro da coleção LV Books" loading="lazy" />
-        <img src="audio%20book/l11.jpg" alt="Livro da coleção LV Books" loading="lazy" />
-        <img src="audio%20book/l13.jpg" alt="Livro da coleção LV Books" loading="lazy" />
-        <img src="audio%20book/l10.jpg" alt="Livro da coleção LV Books" loading="lazy" />
-        <img src="audio%20book/l6.jpg"  alt="Livro da coleção LV Books" loading="lazy" />
-        <img src="audio%20book/l1.png"  alt="Livro da coleção LV Books" loading="lazy" />
-      </div>
-      <p class="books__caption">Conteúdos de desenvolvimento pessoal, finanças, negócios, clássicos e audiobooks selecionados.</p>
-    </section>
-
-    <!-- RECEIVE -->
-    <section class="receive">
-      <h2>O que você recebe agora</h2>
-      <ul class="receive-list">
-        <li>Mais de 3.000 livros digitais na palma da mão.</li>
-        <li>Audiobooks para ouvir direto pelo celular.</li>
-        <li>Acesso imediato após a confirmação do pagamento.</li>
-        <li>Funciona no celular, tablet ou computador.</li>
-        <li>Pagamento único, sem assinatura mensal.</li>
-        <li>Garantia incondicional de 7 dias.</li>
-      </ul>
-    </section>
-
-    <!-- GUARANTEE -->
-    <section class="guarantee">
-      <div class="guarantee__inner">
-        <div class="guarantee__badge" aria-hidden="true">
-          <span class="num">7</span>
-          <span class="txt">dias</span>
-        </div>
-        <h3>Garantia incondicional de 7 dias</h3>
-        <p>Você pode acessar, testar e decidir com calma. Se não gostar, pode solicitar reembolso dentro do prazo de garantia.</p>
-      </div>
-    </section>
-
-    <!-- FINAL CTA -->
-    <section class="final-cta">
-      <p>Essa é a menor condição desta página. Toque no botão abaixo para garantir o acesso por R$ 13,90.</p>
-      <a href="https://pay.kirvano.com/a7a5c8b8-0846-4616-9a58-160473e70ec6" class="btn-cta" data-checkout>
-        Garantir meu acesso por R$ 13,90 →
-      </a>
-      <p class="secure-line">🔒 Pagamento seguro · Acesso imediato · Garantia de 7 dias</p>
-    </section>
-
-    <footer>
-      <strong>LV BOOKS</strong>
-      <p>© 2026 LV Books · Todos os direitos reservados</p>
-      <p><a href="#">Termos de Uso</a> &nbsp;|&nbsp; <a href="#">Política de Privacidade</a></p>
-    </footer>
+  }
+</style>
+<div class="lp-top-offer-bar">
+<div class="lp-top-offer-text" id="lpTopOfferFullText">
+    OFERTA VÁLIDA SOLO HOY, JUEVES, 19/03/2026
   </div>
+</div>
+<script>
+  (function () {
+    function atualizarTextoOferta() {
+      var el = document.getElementById("lpTopOfferFullText");
+      if (!el) return;
 
-  <!-- Sticky mobile CTA -->
-  <div class="sticky-cta" aria-label="Botão fixo para checkout">
-    <div class="sticky-cta__inner">
-      <div class="sticky-price"><span>Hoje</span>R$ 13,90</div>
-      <a href="https://pay.kirvano.com/a7a5c8b8-0846-4616-9a58-160473e70ec6" class="btn-cta" data-checkout>
-        Liberar acesso agora →
-      </a>
-    </div>
+      var hoje = new Date();
+
+      var diasSemana = [
+        "DOMINGO",
+        "LUNES",
+        "MARTES",
+        "MIÉRCOLES",
+        "JUEVES",
+        "VIERNES",
+        "SÁBADO"
+      ];
+
+      var diaSemana = diasSemana[hoje.getDay()];
+      var dia = String(hoje.getDate()).padStart(2, "0");
+      var mes = String(hoje.getMonth() + 1).padStart(2, "0");
+      var ano = hoje.getFullYear();
+
+      el.textContent = "OFERTA VÁLIDA SOLO HOY, " + diaSemana + ", " + dia + "/" + mes + "/" + ano;
+    }
+
+    atualizarTextoOferta();
+  })();
+</script>
+<script>
+  (function () {
+    function ajustarEspacoTopo() {
+      var barra = document.querySelector('.lp-top-offer-bar');
+      if (!barra) return;
+
+      var altura = barra.offsetHeight;
+
+      document.body.style.paddingTop = altura + 'px';
+    }
+
+    window.addEventListener('load', ajustarEspacoTopo);
+    window.addEventListener('resize', ajustarEspacoTopo);
+  })();
+</script>
+<div id="vsl-wrapper" style="position:relative; width:100%; max-width:400px; margin:0 auto;">
+<video aria-label="Vídeo de apresentação LV Books" autoplay="" controls="" id="vsl-video" loop="" muted="" playsinline="" preload="metadata" style="width:100%;border-radius:12px;background:#000;display:block;margin:0 auto;">
+<source src="audio%20book/vsl.mp4" type="video/mp4"/>
+  Tu navegador no es compatible con video HTML5.
+ </video>
+<div id="vsl-sound-overlay" onclick="document.getElementById('vsl-video').muted=false;this.style.display='none';" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:#1a1a1a;color:#fff;border:3px solid #22c55e;border-radius:16px;padding:18px 28px;cursor:pointer;z-index:10;text-align:center;min-width:200px;box-shadow:0 4px 24px rgba(0,0,0,0.6);">
+<div style="font-size:1rem;font-weight:700;margin-bottom:12px;letter-spacing:0.3px;">Tu video ya comenzó</div>
+<div style="font-size:2.8rem;line-height:1;margin-bottom:12px;">🔇</div>
+<div style="font-size:1rem;font-weight:700;color:#22c55e;">Haz clic para escuchar</div>
+</div>
+</div>
+</header>
+<section aria-labelledby="gp-vantagens-title" class="gp-vantagens">
+<div class="gp-vantagens__header">
+<div>
+<h2 class="gp-vantagens__title" id="gp-vantagens-title">VENTAJAS</h2>
+<p class="gp-vantagens__subtitle">Escucha tus audiolibros sin anuncios, sin interrupciones y directamente desde tu celular.</p>
+</div>
+</div>
+<div class="gp-vantagens__grid" role="list">
+<article class="gp-vantagens__item" role="listitem">
+<div aria-hidden="true" class="gp-vantagens__emoji">
+<img alt="💳" class="emoji" decoding="async" draggable="false" fetchpriority="low" loading="lazy" role="img" src="https://s.w.org/images/core/emoji/16.0.1/svg/1f4b3.svg"/>
+</div>
+<div>
+<h3 class="gp-vantagens__item-title" style="color:white;">PAGA UNA SOLA VEZ</h3>
+<p class="gp-vantagens__item-desc">Y disfruta acceso de por vida.</p>
+</div>
+</article>
+<article class="gp-vantagens__item" role="listitem">
+<div aria-hidden="true" class="gp-vantagens__emoji">
+<img alt="🎧" class="emoji" decoding="async" draggable="false" fetchpriority="low" loading="lazy" role="img" src="https://s.w.org/images/core/emoji/16.0.1/svg/1f3a7.svg"/>
+</div>
+<div>
+<h3 class="gp-vantagens__item-title" style="color:white;">ESCUCHA DONDE QUIERAS</h3>
+<p class="gp-vantagens__item-desc">En tu celular, tablet o computadora.</p>
+</div>
+</article>
+<article class="gp-vantagens__item" role="listitem">
+<div aria-hidden="true" class="gp-vantagens__emoji">
+<img alt="⚡" class="emoji" decoding="async" draggable="false" fetchpriority="low" loading="lazy" role="img" src="https://s.w.org/images/core/emoji/16.0.1/svg/26a1.svg"/>
+</div>
+<div>
+<h3 class="gp-vantagens__item-title" style="color:white;">RECIBE EL ACCESO AL INSTANTE</h3>
+<p class="gp-vantagens__item-desc">Después de confirmar tu pago.</p>
+</div>
+</article>
+</div>
+</section>
+<main class="container">
+<img alt="Vista previa de la biblioteca digital" decoding="async" fetchpriority="low" loading="lazy" src="https://i.ibb.co/8Qzfr6K/Chat-GPT-Image-15-06-2026-15-59-36.png"/>
+<section aria-labelledby="porque">
+<h2 class="title" id="porque" style="color: white;">¿Por qué elegir nuestra colección?</h2>
+<p class="subtitle">Contenido enfocado en las áreas que más impulsan tu vida personal y profesional.</p>
+<div class="benefits">
+<div class="benefit">
+<div class="icon i-blue">💰</div>
+<div>
+<b>Finanzas y Negocios</b>
+<div class="subtitle">Estrategias financieras para crear libertad y desarrollar negocios rentables.</div>
+</div>
+</div>
+<div class="benefit">
+<div class="icon i-green">🌱</div>
+<div>
+<b>Desarrollo Personal</b>
+<div class="subtitle">Fortalece tu mentalidad y desarrolla habilidades que te acerquen a tus metas.</div>
+</div>
+</div>
+<div class="benefit">
+<div class="icon i-yellow">👑</div>
+<div>
+<b>Liderazgo y Gestión</b>
+<div class="subtitle">Aprende técnicas prácticas para destacar en cualquier área.</div>
+</div>
+</div>
+<div class="benefit">
+<div class="icon i-purple">⚡</div>
+<div>
+<b>Productividad y Eficiencia</b>
+<div class="subtitle">Organiza mejor tu tiempo y consigue mejores resultados cada día.</div>
+</div>
+</div>
+</div>
+</section>
+<section aria-labelledby="capas">
+<h2 class="title" id="capas" style="color: white;">Conoce algunos libros de la colección</h2>
+<p class="subtitle">Una muestra de los clásicos y best sellers incluidos en la colección completa.</p>
+<div class="book-grid">
+<img alt="Capa do livro 1" decoding="async" fetchpriority="low" loading="lazy" src="https://iili.io/KnyikP9.png">
+<img alt="Capa do livro 2" decoding="async" fetchpriority="low" loading="lazy" src="https://i.postimg.cc/Vs7c6MTf/imgi-238-819-ERr-DHRc-L-SL1500.png">
+<img alt="Capa do livro 3" decoding="async" fetchpriority="low" loading="lazy" src="https://i.postimg.cc/DZ631bwc/imgi-228-71-V4l-NR2g-KL-SL1500.png">
+<img alt="Capa do livro 4" decoding="async" fetchpriority="low" loading="lazy" src="https://i.postimg.cc/LsFc7VqT/imgi-245-81-Wz-W3x-Jb5-L-SL1500.png">
+<img alt="Capa do livro 5" decoding="async" fetchpriority="low" loading="lazy" src="https://m.media-amazon.com/images/I/51Pw06uU8FL._SY445_SX342_ControlCacheEqualizer_.jpg"/>
+<img alt="Capa do livro 6" decoding="async" fetchpriority="low" loading="lazy" src="https://m.media-amazon.com/images/I/41-xN92FD7L._SY445_SX342_ControlCacheEqualizer_.jpg"/>
+<img alt="Capa do livro 7" decoding="async" fetchpriority="low" loading="lazy" src="https://i.postimg.cc/2yHmNBp5/imageye-imgi-220-81e-T2pjx4j-L-SL1500.png"/>
+<img alt="Capa do livro 8" decoding="async" fetchpriority="low" loading="lazy" src="https://i.postimg.cc/cJQS4zq2/imgi-228-71q-AGtcq-CTL-SL1500.png"/>
+<img alt="Capa do livro 9" decoding="async" fetchpriority="low" loading="lazy" src="https://m.media-amazon.com/images/I/8119xmkJ3IL._SY425_.jpg"/>
+<img alt="Capa do livro 10" decoding="async" fetchpriority="low" loading="lazy" src="https://m.media-amazon.com/images/I/41TsvI70n9L._SY445_SX342_ControlCacheEqualizer_.jpg"/>
+<img alt="Capa do livro 11" decoding="async" fetchpriority="low" loading="lazy" src="https://m.media-amazon.com/images/I/41RTbO7BvbL._SY445_SX342_ControlCacheEqualizer_.jpg"/>
+<img alt="Capa do livro 12" decoding="async" fetchpriority="low" loading="lazy" src="https://i.postimg.cc/tJm0MQPZ/imgi-237-71wdbq8-Nb-FL-SL1500.png"/>
+</img></img></img></img></div>
+<div style="height:10px"></div>
+<button class="btn btn-primary" onclick="document.getElementById('ofertas').scrollIntoView({behavior:'smooth'})" style="margin-top: 20px;">
+    QUIERO VER LAS OFERTAS
+  </button>
+</section>
+<section aria-labelledby="reviews">
+<h2 class="title" id="reviews" style="color: white;">Mira lo que dicen nuestros clientes</h2>
+<div style="font-size:1.1rem">⭐⭐⭐⭐⭐</div>
+<div class="subtitle" style="color:#facc15; font-weight:bold;">
+    4.9/5 – 16,297 reseñas
   </div>
+<div class="slider" id="slider">
+<div class="slides" id="slides">
+<div class="depoimentos">
+<div style="margin:0 auto 18px; width:min(400px, 72vw); position:relative;">
+<video controls="" id="dep1-video" playsinline="" preload="none" style="width:100%;border-radius:12px;background:#000;display:block;">
+<source src="audio%20book/dep1.mp4" type="video/mp4"/>
+  Tu navegador no es compatible con video HTML5.
+ </video>
+<div id="dep1-overlay" onclick="var v=document.getElementById('dep1-video');v.play();this.style.display='none';" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;border-radius:12px;background:rgba(0,0,0,0.38);">
+<div style="background:rgba(0,0,0,0.72);border-radius:50%;width:64px;height:64px;display:flex;align-items:center;justify-content:center;margin-bottom:10px;">
+<svg fill="#fff" height="36" viewbox="0 0 24 24" width="36" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"></path></svg>
+</div>
+<span style="color:#fff;font-weight:700;font-size:1rem;background:rgba(0,0,0,0.6);padding:6px 18px;border-radius:20px;">Haz clic para reproducir el video</span>
+</div>
+</div>
+<img alt="Testimonio 1 de cliente" decoding="async" fetchpriority="low" loading="lazy" src="https://i.ibb.co/R4Qfy7dF/Chat-GPT-Image-28-de-jun-de-2026-21-47-55.png" style="margin:10px; max-width:250px; border-radius:10px;"/>
+<img alt="Testimonio 2 de cliente" decoding="async" fetchpriority="low" loading="lazy" src="https://i.ibb.co/HT67WYhv/8bf8db01-35bd-4229-8bb7-64ae6f704899.png" style="margin:10px; max-width:250px; border-radius:10px;"/>
+<img alt="Testimonio 3 de cliente" decoding="async" fetchpriority="low" loading="lazy" src="https://i.ibb.co/YFnZvTN9/DEP3.png" style="margin:10px; max-width:250px; border-radius:10px;"/>
+</div>
+</div>
+</div>
+</section>
+<section aria-labelledby="offers" id="ofertas">
+<div class="ribbon">⏳🔥 OFERTA POR TIEMPO LIMITADO</div>
+<h2 class="title" id="offers" style="color: white; margin-top:8px">
+   Elige tu oferta especial
+ </h2>
+<p class="subtitle">
+   Una biblioteca digital completa para impulsar tu vida personal y profesional.
+ </p>
+<div class="plans">
+<article class="plan premium">
+<div class="subbar">🔥 MÁS VENDIDO</div>
+<h3 style="color: white;">👑 Paquete Premium+</h3>
+<div class="price" style="color:#ffd54a">US$ 9.99</div>
+<div class="timer-box" style="margin:8px 0; font-size:18px; font-weight:bold; color:#ff4d4d;">
+       ⏳ La oferta termina en: <span id="timer-premium">10:00</span>
+</div>
+<div class="subbar">📚 Todo lo del paquete básico, más:</div>
+<ul class="checklist">
+<li>+ Súper bono: 3,500 libros </li>
+<li>Desarrollo personal, negocios, liderazgo y productividad</li>
+<li>200 audios nuevos cada mes</li>
+<li>200 nuevos libros digitales cada mes</li>
+<li>7 colecciones exclusivas organizadas</li>
+<li>Entrega automática por correo electrónico</li>
+<li>Acceso de por vida</li>
+<li>Soporte por WhatsApp</li>
+<li>Garantía de 7 días</li>
+</ul>
+<!-- ✅ ALTERAÇÃO ESSENCIAL: PASSAR UTM PARA O CHECKOUT -->
+<button class="btn btn-premium" onclick="goCheckout('https://pay.kirvano.com/fa856e82-bfd5-421b-ad32-12ecb139f72f', 9.99)">
+       QUIERO EL PAQUETE PREMIUM+
+     </button>
+<div class="subtitle" style="margin-top:8px">+935 personas ya eligieron este paquete</div>
+</article>
+<article class="plan">
+<h3 style="color: white;"> Paquete Básico</h3>
+<div class="price">US$ 4.99</div>
+<ul class="checklist">
+<li>Acceso a más de 250 audiolibros</li>
+<li>Entrega automática por correo electrónico</li>
+<li>Acceso de por vida</li>
+<li>Soporte por WhatsApp</li>
+<li>Garantía de 7 días</li>
+</ul>
+<!-- ✅ ALTERAÇÃO ESSENCIAL: PASSAR UTM PARA O CHECKOUT -->
+<button class="btn btn-primary" onclick="goCheckout('https://pay.kirvano.com/40790a84-d135-462f-baea-01062fac7c50', 4.99)">
+       QUIERO EL PAQUETE BÁSICO
+     </button>
+</article>
+</div>
+</section>
+<section class="garantia">
+<div class="container">
+<div class="card-garantia">
+<div class="garantia-top">
+<div class="garantia-icon">
+<svg fill="none" stroke-width="2" viewbox="0 0 24 24">
+<path d="M12 2l7 4v6c0 5-3 9-7 10-4-1-7-5-7-10V6l7-4z"></path>
+<path d="M9 12l2 2 4-4"></path>
+</svg>
+</div>
+<div>
+<p class="garantia-title">
+            Garantía incondicional de 7 días
+          </p>
+<p class="garantia-sub">
+            Si no te convence, te devolvemos <b>el 100% de tu dinero</b>.
+            Sin trámites complicados.
+          </p>
+</div>
+</div>
+<div class="garantia-list">
+<div class="garantia-item">
+<div class="garantia-check">✓</div>
+<p><b>Riesgo cero:</b> prueba el paquete durante 7 días.</p>
+</div>
+<div class="garantia-item">
+<div class="garantia-check">✓</div>
+<p><b>Reembolso total:</b> recupera el importe completo que pagaste.</p>
+</div>
+<div class="garantia-item">
+<div class="garantia-check">✓</div>
+<p><b>Proceso sencillo:</b> solicítalo dentro del plazo y recibirás tu reembolso.</p>
+</div>
+</div>
+<div class="garantia-foot">
+        *Garantía válida durante 7 días después de la confirmación del pago.
+      </div>
+</div>
+</div>
+</section>
+<script>
+ let tempoPremium = 600;
+ const timerPremium = document.getElementById("timer-premium");
 
-  <!-- Notification sem falsa compra -->
-  <div class="notice-popup" id="notice-popup">
-    <div class="notice-popup__icon">✅</div>
-    <div>
-      <strong>Desconto aplicado nesta página</strong>
-      <span>O acesso completo está liberado por R$ 13,90 por tempo limitado.</span>
-    </div>
-    <button type="button" aria-label="Fechar aviso" onclick="this.closest('.notice-popup').classList.remove('show')">×</button>
-  </div>
+ function atualizarTimerPremium() {
+   const minutos = Math.floor(tempoPremium / 60);
+   const segundos = tempoPremium % 60;
 
-  <script>
-    /* Countdown de 7 minutos, persistente apenas na sessão */
-    (function(){
-      var key = 'lvbooks_back_offer_end';
-      var end = sessionStorage.getItem(key);
+   timerPremium.textContent =
+     String(minutos).padStart(2, "0") + ":" + String(segundos).padStart(2, "0");
 
-      if (!end || Number(end) < Date.now()) {
-        end = Date.now() + 7 * 60 * 1000;
-        sessionStorage.setItem(key, String(end));
-      } else {
-        end = Number(end);
+   if (tempoPremium > 0) {
+     tempoPremium--;
+   } else {
+     clearInterval(contagemPremium);
+     timerPremium.textContent = "FINALIZADA ⛔";
+   }
+ }
+
+ const contagemPremium = setInterval(atualizarTimerPremium, 1000);
+ atualizarTimerPremium();
+</script>
+<section aria-labelledby="faq">
+<h2 class="title" id="faq" style="color: white;">Preguntas frecuentes</h2>
+<div class="faq">
+<details>
+<summary>¿Cómo recibo los audiolibros?</summary>
+<p>Recibes el acceso automáticamente por correo electrónico y WhatsApp después de confirmar el pago.</p>
+</details>
+<details>
+<summary>¿Tengo que pagar una suscripción?</summary>
+<p>No. Haces un solo pago y obtienes acceso de por vida.</p>
+</details>
+<details>
+<summary>¿El contenido es adecuado para principiantes?</summary>
+<p>Sí. Hay materiales para niveles principiante y avanzado.</p>
+</details>
+<details>
+<summary>¿Puedo descargar el contenido para usarlo sin conexión?</summary>
+<p>Sí. Puedes descargar libros y audios para escuchar y leer sin internet desde tu celular o tablet.</p>
+</details>
+<details>
+<summary>¿En cuántos dispositivos puedo usarlo?</summary>
+<p>Puedes acceder a la biblioteca desde hasta 3 dispositivos al mismo tiempo.</p>
+</details>
+</div>
+</section>
+<!-- ✅ (ESSENCIAL) Container da Notificação -->
+<div id="purchaseToastContainer"></div>
+<img decoding="async" fetchpriority="low" loading="lazy" src="https://i.ibb.co/k6M7gGxD/Chat-GPT-Image-20-05-2026-21-35-45.png" style="width:120px; display:block; margin:auto;"/>
+<footer class="container">© 2026 LV BOOKS – Todos los derechos reservados.</footer>
+</main>
+<!-- ✅ (ESSENCIAL) FUNÇÃO PARA REPASSAR UTM PARA O CHECKOUT -->
+<script>
+(function(){
+  // UTM + IDs que queremos carregar
+  const KEYS = ["utm_source","utm_medium","utm_campaign","utm_content","utm_term","fbclid","gclid","ttclid"];
+
+  // Se quiser FORÇAR uma UTM quando vier "sem nada", defina aqui:
+  // (deixe {} se NÃO quiser forçar)
+  const DEFAULTS = {
+    // exemplo: utm_source: "instagramlibkbio"
+  };
+
+  const STORE = "lv_utms";
+  const COOKIE = "lv_utms";
+
+  function getCurrent(){
+    const p = new URLSearchParams(window.location.search);
+    const out = {};
+    KEYS.forEach(k => { const v = p.get(k); if (v) out[k] = v; });
+    return out;
+  }
+
+  function loadLocal(){
+    try { return JSON.parse(localStorage.getItem(STORE) || "{}"); }
+    catch(e){ return {}; }
+  }
+
+  function saveLocal(obj){
+    try { localStorage.setItem(STORE, JSON.stringify(obj)); } catch(e){}
+  }
+
+  function loadCookie(){
+    try{
+      const m = document.cookie.match(new RegExp('(?:^|; )' + COOKIE.replace(/[-.*+?^${}()|[\]\\]/g, '\\$&') + '=([^;]*)'));
+      if (!m) return {};
+      return JSON.parse(decodeURIComponent(m[1]) || "{}");
+    } catch(e){
+      return {};
+    }
+  }
+
+  function saveCookie(obj){
+    try{
+      const val = encodeURIComponent(JSON.stringify(obj));
+      // 30 dias, first-party, funciona melhor no in-app do Instagram
+      document.cookie = `${COOKIE}=${val}; Max-Age=${60*60*24*30}; Path=/; SameSite=Lax`;
+    }catch(e){}
+  }
+
+  // 1) Ao entrar, salva tudo que veio na URL (UTM/CLID) em Local + Cookie
+  const current = getCurrent();
+  if (Object.keys(current).length) {
+    const merged = Object.assign({}, DEFAULTS, loadCookie(), loadLocal(), current);
+    saveLocal(merged);
+    saveCookie(merged);
+  }
+
+  // 2) Função do botão: junta tudo (cookie + local + url atual) e aplica no checkout
+  window.goCheckout = function(baseUrl, value){
+    const merged = Object.assign({}, DEFAULTS, loadCookie(), loadLocal(), getCurrent());
+    const url = new URL(baseUrl);
+
+    Object.keys(merged).forEach(k => {
+      if (merged[k] && !url.searchParams.get(k)) url.searchParams.set(k, merged[k]);
+    });
+
+
+    window.location.href = url.toString();
+  };
+})();
+</script>
+<!-- ✅ Notificação de Compra (sem duplicar HTML) -->
+<script>
+   const productName = "Más de 250 audiolibros - Paquete Premium+";
+   const productLogo = "https://i.postimg.cc/J7ywfQdR/Design-sem-nome-86.png";
+   const autoCloseMs = 4500;
+   let currentToast = null;
+
+   function showPurchase(customerName) {
+     if (currentToast) {
+       removeToast(currentToast);
+     }
+
+     const now = new Date();
+     const formattedDate = now.toLocaleDateString('es-MX', { day: '2-digit', month: '2-digit', year: 'numeric' });
+     const formattedTime = now.toLocaleTimeString('es-MX', { hour: '2-digit', minute: '2-digit' });
+
+     const toast = document.createElement('div');
+     toast.className = 'purchase-toast';
+     toast.innerHTML = `
+       <div class="logo"><img decoding="async" src="${productLogo}" alt="${productName} logo"></div>
+       <div class="content">
+         <span class="who">${escapeHtml(customerName)} compró</span>
+         <span class="what">${escapeHtml(productName)}</span>
+         <span class="when">${formattedDate} - ${formattedTime}</span>
+       </div>
+     `;
+     document.getElementById("purchaseToastContainer").appendChild(toast);
+     currentToast = toast;
+
+     setTimeout(() => removeToast(toast), autoCloseMs);
+   }
+
+   function removeToast(toast) {
+     if (!toast) return;
+     toast.style.animation = 'slideUp 800ms forwards';
+     setTimeout(() => {
+       if (toast.parentNode) toast.parentNode.removeChild(toast);
+       if (currentToast === toast) currentToast = null;
+     }, 400);
+   }
+
+   function escapeHtml(str) {
+     return String(str)
+       .replace(/&/g, '&amp;')
+       .replace(/</g, '&lt;')
+       .replace(/>/g, '&gt;')
+       .replace(/"/g, '&quot;')
+       .replace(/'/g, '&#039;');
+   }
+
+   const sampleNames = [
+     "Mariana Hernández", "Carlos Ramírez", "José Martínez", "Ana Sofía López",
+     "Roberto García", "Beatriz Torres", "Luis Hernández", "Fernanda Castillo",
+     "Miguel Ángel Sánchez", "Camila Rodríguez", "Gabriel Morales", "Juliana Vargas",
+     "Ricardo Flores", "Patricia Navarro", "Andrés Mendoza", "Larissa Cruz"
+   ];
+
+   function randomName() {
+     return sampleNames[Math.floor(Math.random() * sampleNames.length)];
+   }
+
+   showPurchase(randomName());
+
+   setInterval(() => {
+     showPurchase(randomName());
+   }, 20000);
+</script>
+<script>
+(function () {
+  const video = document.getElementById('vsl-video');
+  const overlay = document.getElementById('vsl-sound-overlay');
+  if (!video) return;
+
+  let somLiberado = false;
+
+  function iniciarVsl() {
+    if (!somLiberado) {
+      video.muted = true;
+      video.defaultMuted = true;
+    }
+    video.autoplay = true;
+    video.playsInline = true;
+    const tentativa = video.play();
+    if (tentativa && typeof tentativa.catch === 'function') {
+      tentativa.catch(function () {});
+    }
+  }
+
+  function liberarSom() {
+    somLiberado = true;
+    video.muted = false;
+    video.defaultMuted = false;
+    video.volume = 1;
+    const tentativa = video.play();
+    if (tentativa && typeof tentativa.catch === 'function') {
+      tentativa.catch(function () {});
+    }
+    if (overlay) overlay.style.display = 'none';
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', iniciarVsl, { once: true });
+  } else {
+    iniciarVsl();
+  }
+
+  window.addEventListener('pageshow', iniciarVsl);
+  document.addEventListener('visibilitychange', function () {
+    if (!document.hidden && video.paused) iniciarVsl();
+  });
+
+  if (overlay) {
+    overlay.setAttribute('role', 'button');
+    overlay.setAttribute('tabindex', '0');
+    overlay.setAttribute('aria-label', 'Activar el sonido del video');
+    overlay.addEventListener('click', liberarSom);
+    overlay.addEventListener('keydown', function (event) {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        liberarSom();
       }
-
-      var elM = document.getElementById('cd-min');
-      var elS = document.getElementById('cd-sec');
-      var elSub = document.getElementById('cd-sub');
-
-      function tick(){
-        var diff = Math.max(0, Math.floor((end - Date.now()) / 1000));
-        var m = Math.floor(diff / 60);
-        var s = diff % 60;
-
-        elM.textContent = m < 10 ? '0' + m : String(m);
-        elS.textContent = s < 10 ? '0' + s : String(s);
-
-        if (diff <= 60 && diff > 0) {
-          elSub.textContent = 'Últimos segundos para manter o valor especial.';
-        }
-
-        if (diff > 0) {
-          window.setTimeout(tick, 1000);
-        } else {
-          elSub.textContent = 'Oferta especial encerrada nesta sessão.';
-        }
-      }
-
-      tick();
-    })();
-
-    /* Preserva UTMs e identifica clique da página de back redirect */
-    (function(){
-      var checkoutBase = 'https://pay.kirvano.com/a7a5c8b8-0846-4616-9a58-160473e70ec6';
-
-      function getCheckoutUrl(){
-        var url = new URL(checkoutBase);
-        var currentParams = new URLSearchParams(window.location.search);
-
-        currentParams.forEach(function(value, key){
-          if (!url.searchParams.has(key)) url.searchParams.set(key, value);
-        });
-
-        if (!url.searchParams.has('src')) url.searchParams.set('src', 'back_redirect_790');
-        if (!url.searchParams.has('utm_content')) url.searchParams.set('utm_content', 'back_redirect_790');
-
-        return url.toString();
-      }
-
-      var checkoutUrl = getCheckoutUrl();
-      document.querySelectorAll('[data-checkout]').forEach(function(link){
-        link.href = checkoutUrl;
-        link.addEventListener('click', function(){
-          try {
-            if (typeof fbq === 'function') {
-              fbq('trackCustom', 'BackRedirectCheckoutClick', {
-                value: 7.90,
-                currency: 'BRL',
-                offer: 'lvbooks_back_redirect_790'
-              });
-            }
-          } catch(e) {}
-        });
-      });
-    })();
-
-    /* Aviso visual sem simular venda falsa */
-    (function(){
-      var popup = document.getElementById('notice-popup');
-      if (!popup) return;
-
-      setTimeout(function(){
-        popup.classList.add('show');
-      }, 4500);
-
-      setTimeout(function(){
-        popup.classList.remove('show');
-      }, 10500);
-    })();
-  </script>
+    });
+  }
+})();
+</script>
 </body>
 </html>
