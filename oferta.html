@@ -14,13 +14,8 @@
       location.replace('https://lvbooks.com.br' + location.pathname + location.search + location.hash);
     }
   </script>
-  <link rel="preconnect" href="https://i.ibb.co" crossorigin>
-  <link rel="preconnect" href="https://m.media-amazon.com" crossorigin>
-  <link rel="preconnect" href="https://http2.mlstatic.com" crossorigin>
-  <link rel="dns-prefetch" href="//encrypted-tbn0.gstatic.com">
-  <link rel="dns-prefetch" href="//s.w.org">
-  <link rel="preconnect" href="https://connect.facebook.net" crossorigin>
-  <link rel="preconnect" href="https://cdn.utmify.com.br" crossorigin>
+<link rel="preconnect" href="https://connect.facebook.net" crossorigin>
+<link rel="preconnect" href="https://cdn.utmify.com.br" crossorigin>
 <meta content="dark light" name="color-scheme"/>
 <style>
  :root{
@@ -717,33 +712,23 @@ fbq('track', 'ViewContent', {
   <!-- Utmify -->
 <script src="https://cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-xcod-sck data-utmify-prevent-subids async defer></script>
 
-<style id="lv-performance-optimizations">
-  /* Renderiza seções abaixo da dobra somente quando se aproximam da tela. */
+<style id="lv-ultra-performance">
+  .lazy-external {
+    opacity: 0;
+    transition: opacity .18s ease;
+    background: #121b31;
+  }
+  .lazy-external.is-loaded {
+    opacity: 1;
+  }
+  .book-grid img {
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+  }
   main.container > section,
   .garantia {
     content-visibility: auto;
     contain-intrinsic-size: 1px 700px;
-  }
-
-  /* Evita recálculos e saltos durante o carregamento das capas. */
-  .book-grid img {
-    aspect-ratio: 2 / 3;
-    object-fit: cover;
-    background: #0a0f1e;
-  }
-
-  .depoimentos img {
-    contain: layout paint;
-    background: #0a0f1e;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-      scroll-behavior: auto !important;
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-    }
   }
 </style>
 
@@ -891,7 +876,7 @@ src="https://www.facebook.com/tr?id=868077232260294&ev=PageView&noscript=1"
       document.body.style.paddingTop = altura + 'px';
     }
 
-    window.addEventListener('load', ajustarEspacoTopo);
+    document.addEventListener('DOMContentLoaded', ajustarEspacoTopo, { once: true });
     window.addEventListener('resize', ajustarEspacoTopo);
   })();
 </script>
@@ -906,7 +891,7 @@ src="https://www.facebook.com/tr?id=868077232260294&ev=PageView&noscript=1"
 <div class="gp-vantagens__grid" role="list">
 <article class="gp-vantagens__item" role="listitem">
 <div aria-hidden="true" class="gp-vantagens__emoji">
-<img alt="💳" class="emoji" decoding="async" draggable="false" fetchpriority="low" loading="lazy" role="img" src="https://s.w.org/images/core/emoji/16.0.1/svg/1f4b3.svg"/>
+💳
 </div>
 <div>
 <h3 class="gp-vantagens__item-title" style="color:white;">PAGA UNA SOLA VEZ</h3>
@@ -915,7 +900,7 @@ src="https://www.facebook.com/tr?id=868077232260294&ev=PageView&noscript=1"
 </article>
 <article class="gp-vantagens__item" role="listitem">
 <div aria-hidden="true" class="gp-vantagens__emoji">
-<img alt="🎧" class="emoji" decoding="async" draggable="false" fetchpriority="low" loading="lazy" role="img" src="https://s.w.org/images/core/emoji/16.0.1/svg/1f3a7.svg"/>
+🎧
 </div>
 <div>
 <h3 class="gp-vantagens__item-title" style="color:white;">ESCUCHA DONDE QUIERAS</h3>
@@ -924,7 +909,7 @@ src="https://www.facebook.com/tr?id=868077232260294&ev=PageView&noscript=1"
 </article>
 <article class="gp-vantagens__item" role="listitem">
 <div aria-hidden="true" class="gp-vantagens__emoji">
-<img alt="⚡" class="emoji" decoding="async" draggable="false" fetchpriority="low" loading="lazy" role="img" src="https://s.w.org/images/core/emoji/16.0.1/svg/26a1.svg"/>
+⚡
 </div>
 <div>
 <h3 class="gp-vantagens__item-title" style="color:white;">RECIBE EL ACCESO AL INSTANTE</h3>
@@ -934,7 +919,7 @@ src="https://www.facebook.com/tr?id=868077232260294&ev=PageView&noscript=1"
 </div>
 </section>
 <main class="container">
-<img alt="Vista previa de la biblioteca digital" decoding="async" fetchpriority="low" loading="lazy" referrerpolicy="no-referrer" src="https://i.ibb.co/Q3gjMwt2/Chat-GPT-Image-6-08-2026-22-08-24.png"/>
+<img class="lazy-external" alt="Vista previa de la biblioteca digital" decoding="async" loading="lazy" src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='30' viewBox='0 0 20 30'%3E%3Crect width='20' height='30' fill='%23121b31'/%3E%3C/svg%3E" data-src="https://i.ibb.co/Q3gjMwt2/Chat-GPT-Image-6-08-2026-22-08-24.png"/>
 <section aria-labelledby="porque">
 <h2 class="title" id="porque" style="color: white;">¿Por qué elegir nuestra colección?</h2>
 <p class="subtitle">Contenido enfocado en las áreas que más impulsan tu vida personal y profesional.</p>
@@ -973,16 +958,16 @@ src="https://www.facebook.com/tr?id=868077232260294&ev=PageView&noscript=1"
 <h2 class="title" id="capas" style="color: white;">Conoce algunos libros de la colección</h2>
 <p class="subtitle">Una muestra de los clásicos y best sellers incluidos en la colección completa.</p>
 <div class="book-grid">
-<img alt="Portada del libro 1" decoding="async" fetchpriority="low" loading="lazy" src="https://m.media-amazon.com/images/I/810GHGtf9zL._AC_UF420,630_QL75_.jpg" referrerpolicy="no-referrer"/>
-<img alt="Portada del libro 2" decoding="async" fetchpriority="low" loading="lazy" src="https://m.media-amazon.com/images/I/81ed2Vapz2L._AC_UF420,630_QL75_.jpg" referrerpolicy="no-referrer"/>
-<img alt="Portada del libro 3" decoding="async" fetchpriority="low" loading="lazy" src="https://m.media-amazon.com/images/I/51iUzFo5sYL._AC_UF420,630_QL75_.jpg" referrerpolicy="no-referrer"/>
-<img alt="Portada del libro 4" decoding="async" fetchpriority="low" loading="lazy" src="https://http2.mlstatic.com/D_NQ_NP_837648-CBT74414171644_022024-O.webp" referrerpolicy="no-referrer"/>
-<img alt="Portada del libro 5" decoding="async" fetchpriority="low" loading="lazy" src="https://m.media-amazon.com/images/I/71Sa9IB5i4L._AC_UF420,630_QL75_.jpg" referrerpolicy="no-referrer"/>
-<img alt="Portada del libro 6" decoding="async" fetchpriority="low" loading="lazy" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmnUeiXHzhbbNl_IU72C4_PTMWy4Jl1WH_gkl8v1QoG75O_uH8MCNcpvM&s=10" referrerpolicy="no-referrer"/>
-<img alt="Portada del libro 7" decoding="async" fetchpriority="low" loading="lazy" src="https://m.media-amazon.com/images/I/9126ob6z1aL._UF420,630_QL75_.jpg" referrerpolicy="no-referrer"/>
-<img alt="Portada del libro 8" decoding="async" fetchpriority="low" loading="lazy" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0px7EoDMNRvl6WEpZeHFu6aOqnb0GjlQl2TF0S8qlA3fBW-IjMmwJBzSP&s=10" referrerpolicy="no-referrer"/>
-<img alt="Portada del libro 9" decoding="async" fetchpriority="low" loading="lazy" src="https://m.media-amazon.com/images/I/71jc29-6iVL._AC_UF420,630_QL75_.jpg" referrerpolicy="no-referrer"/>
-<img alt="Portada del libro 10" decoding="async" fetchpriority="low" loading="lazy" src="https://m.media-amazon.com/images/I/81Hwj6ENRAL._UF420,630_QL75_.jpg" referrerpolicy="no-referrer"/>
+<img class="lazy-external" alt="Portada del libro 1" decoding="async" loading="lazy" src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='30' viewBox='0 0 20 30'%3E%3Crect width='20' height='30' fill='%23121b31'/%3E%3C/svg%3E" data-src="https://m.media-amazon.com/images/I/810GHGtf9zL._AC_UF1000,1000_QL80_.jpg"/>
+<img class="lazy-external" alt="Portada del libro 2" decoding="async" loading="lazy" src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='30' viewBox='0 0 20 30'%3E%3Crect width='20' height='30' fill='%23121b31'/%3E%3C/svg%3E" data-src="https://m.media-amazon.com/images/I/81ed2Vapz2L._AC_UF1000,1000_QL80_.jpg"/>
+<img class="lazy-external" alt="Portada del libro 3" decoding="async" loading="lazy" src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='30' viewBox='0 0 20 30'%3E%3Crect width='20' height='30' fill='%23121b31'/%3E%3C/svg%3E" data-src="https://m.media-amazon.com/images/I/51iUzFo5sYL._AC_UF1000,1000_QL80_.jpg"/>
+<img class="lazy-external" alt="Portada del libro 4" decoding="async" loading="lazy" src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='30' viewBox='0 0 20 30'%3E%3Crect width='20' height='30' fill='%23121b31'/%3E%3C/svg%3E" data-src="https://http2.mlstatic.com/D_NQ_NP_837648-CBT74414171644_022024-O.webp"/>
+<img class="lazy-external" alt="Portada del libro 5" decoding="async" loading="lazy" src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='30' viewBox='0 0 20 30'%3E%3Crect width='20' height='30' fill='%23121b31'/%3E%3C/svg%3E" data-src="https://m.media-amazon.com/images/I/71Sa9IB5i4L._AC_UF894,1000_QL80_.jpg"/>
+<img class="lazy-external" alt="Portada del libro 6" decoding="async" loading="lazy" src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='30' viewBox='0 0 20 30'%3E%3Crect width='20' height='30' fill='%23121b31'/%3E%3C/svg%3E" data-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmnUeiXHzhbbNl_IU72C4_PTMWy4Jl1WH_gkl8v1QoG75O_uH8MCNcpvM&s=10"/>
+<img class="lazy-external" alt="Portada del libro 7" decoding="async" loading="lazy" src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='30' viewBox='0 0 20 30'%3E%3Crect width='20' height='30' fill='%23121b31'/%3E%3C/svg%3E" data-src="https://m.media-amazon.com/images/I/9126ob6z1aL._UF1000,1000_QL80_.jpg"/>
+<img class="lazy-external" alt="Portada del libro 8" decoding="async" loading="lazy" src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='30' viewBox='0 0 20 30'%3E%3Crect width='20' height='30' fill='%23121b31'/%3E%3C/svg%3E" data-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0px7EoDMNRvl6WEpZeHFu6aOqnb0GjlQl2TF0S8qlA3fBW-IjMmwJBzSP&s=10"/>
+<img class="lazy-external" alt="Portada del libro 9" decoding="async" loading="lazy" src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='30' viewBox='0 0 20 30'%3E%3Crect width='20' height='30' fill='%23121b31'/%3E%3C/svg%3E" data-src="https://m.media-amazon.com/images/I/71jc29-6iVL._AC_UF1000,1000_QL80_.jpg"/>
+<img class="lazy-external" alt="Portada del libro 10" decoding="async" loading="lazy" src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='30' viewBox='0 0 20 30'%3E%3Crect width='20' height='30' fill='%23121b31'/%3E%3C/svg%3E" data-src="https://m.media-amazon.com/images/I/81Hwj6ENRAL._UF1000,1000_QL80_.jpg"/>
 </div>
 <div style="height:10px"></div>
 <button class="btn btn-primary" onclick="document.getElementById('ofertas').scrollIntoView({behavior:'smooth'})" style="margin-top: 20px;">
@@ -998,9 +983,9 @@ src="https://www.facebook.com/tr?id=868077232260294&ev=PageView&noscript=1"
 <div class="slider" id="slider">
 <div class="slides" id="slides">
 <div class="depoimentos">
-<img alt="Testimonio 1 de cliente" decoding="async" fetchpriority="low" loading="lazy" src="https://i.ibb.co/zHhXb619/Chat-GPT-Image-6-08-2026-21-50-59.png" style="margin:10px; max-width:250px; border-radius:10px;" referrerpolicy="no-referrer"/>
-<img alt="Testimonio 2 de cliente" decoding="async" fetchpriority="low" loading="lazy" src="https://i.ibb.co/MD1drWDb/Chat-GPT-Image-6-08-2026-21-53-45.png" style="margin:10px; max-width:250px; border-radius:10px;" referrerpolicy="no-referrer"/>
-<img alt="Testimonio 3 de cliente" decoding="async" fetchpriority="low" loading="lazy" src="https://i.ibb.co/5WRnJpt7/Chat-GPT-Image-6-08-2026-21-55-01.png" style="margin:10px; max-width:250px; border-radius:10px;" referrerpolicy="no-referrer"/>
+<img class="lazy-external" alt="Testimonio 1 de cliente" decoding="async" loading="lazy" src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='30' viewBox='0 0 20 30'%3E%3Crect width='20' height='30' fill='%23121b31'/%3E%3C/svg%3E" data-src="https://i.ibb.co/zHhXb619/Chat-GPT-Image-6-08-2026-21-50-59.png" style="margin:10px; max-width:250px; border-radius:10px;"/>
+<img class="lazy-external" alt="Testimonio 2 de cliente" decoding="async" loading="lazy" src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='30' viewBox='0 0 20 30'%3E%3Crect width='20' height='30' fill='%23121b31'/%3E%3C/svg%3E" data-src="https://i.ibb.co/MD1drWDb/Chat-GPT-Image-6-08-2026-21-53-45.png" style="margin:10px; max-width:250px; border-radius:10px;"/>
+<img class="lazy-external" alt="Testimonio 3 de cliente" decoding="async" loading="lazy" src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='30' viewBox='0 0 20 30'%3E%3Crect width='20' height='30' fill='%23121b31'/%3E%3C/svg%3E" data-src="https://i.ibb.co/5WRnJpt7/Chat-GPT-Image-6-08-2026-21-55-01.png" style="margin:10px; max-width:250px; border-radius:10px;"/>
 </div>
 </div>
 </div>
@@ -1145,7 +1130,7 @@ src="https://www.facebook.com/tr?id=868077232260294&ev=PageView&noscript=1"
 </section>
 <!-- ✅ (ESSENCIAL) Container da Notificação -->
 <div id="purchaseToastContainer"></div>
-<img decoding="async" fetchpriority="low" loading="lazy" referrerpolicy="no-referrer" src="https://i.ibb.co/k6M7gGxD/Chat-GPT-Image-20-05-2026-21-35-45.png" style="width:120px; display:block; margin:auto;"/>
+<img class="lazy-external" decoding="async" loading="lazy" src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='30' viewBox='0 0 20 30'%3E%3Crect width='20' height='30' fill='%23121b31'/%3E%3C/svg%3E" data-src="https://i.ibb.co/k6M7gGxD/Chat-GPT-Image-20-05-2026-21-35-45.png" style="width:120px; display:block; margin:auto;"/>
 <footer class="container">© 2026 LV BOOKS – Todos los derechos reservados.</footer>
 </main>
 <!-- ✅ (ESSENCIAL) FUNÇÃO PARA REPASSAR UTM PARA O CHECKOUT -->
@@ -1238,7 +1223,7 @@ src="https://www.facebook.com/tr?id=868077232260294&ev=PageView&noscript=1"
      const toast = document.createElement('div');
      toast.className = 'purchase-toast';
      toast.innerHTML = `
-       <div class="logo"><img decoding="async" src="${productLogo}" alt="${productName} logo"></div>
+       <div class="logo"><img loading="lazy" class="lazy-external" decoding="async" src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='30' viewBox='0 0 20 30'%3E%3Crect width='20' height='30' fill='%23121b31'/%3E%3C/svg%3E" data-src="${productLogo}" alt="${productName} logo"></div>
        <div class="content">
          <span class="who">${escapeHtml(customerName)} compró</span>
          <span class="what">${escapeHtml(productName)}</span>
@@ -1280,20 +1265,76 @@ src="https://www.facebook.com/tr?id=868077232260294&ev=PageView&noscript=1"
      return sampleNames[Math.floor(Math.random() * sampleNames.length)];
    }
 
-   function startPurchaseNotifications() {
+   function iniciarNotificacoes() {
      showPurchase(randomName());
      setInterval(() => {
        showPurchase(randomName());
      }, 20000);
    }
 
-   window.addEventListener('load', function () {
-     if ('requestIdleCallback' in window) {
-       requestIdleCallback(startPurchaseNotifications, { timeout: 2500 });
-     } else {
-       setTimeout(startPurchaseNotifications, 1200);
-     }
-   }, { once: true });
+   if ('requestIdleCallback' in window) {
+     requestIdleCallback(iniciarNotificacoes, { timeout: 2000 });
+   } else {
+     setTimeout(iniciarNotificacoes, 800);
+   }
+</script>
+
+
+<script id="lv-progressive-image-loader">
+(function () {
+  function loadImage(img) {
+    if (!img || !img.dataset || !img.dataset.src) return;
+    var realSrc = img.dataset.src;
+    img.removeAttribute('data-src');
+
+    function reveal() {
+      img.classList.add('is-loaded');
+    }
+
+    img.addEventListener('load', reveal, { once: true });
+    img.addEventListener('error', reveal, { once: true });
+    img.src = realSrc;
+
+    if (img.complete) reveal();
+  }
+
+  function start() {
+    var images = Array.prototype.slice.call(document.querySelectorAll('img.lazy-external[data-src]'));
+    if (!images.length) return;
+
+    var mainImage = document.querySelector('img[alt="Vista previa de la biblioteca digital"]');
+    if (mainImage) {
+      setTimeout(function () { loadImage(mainImage); }, 80);
+    }
+
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          observer.unobserve(entry.target);
+          loadImage(entry.target);
+        });
+      }, {
+        rootMargin: '250px 0px',
+        threshold: 0.01
+      });
+
+      images.forEach(function (img) {
+        if (img !== mainImage) observer.observe(img);
+      });
+    } else {
+      setTimeout(function () {
+        images.forEach(loadImage);
+      }, 700);
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', start, { once: true });
+  } else {
+    start();
+  }
+})();
 </script>
 
 </body>
