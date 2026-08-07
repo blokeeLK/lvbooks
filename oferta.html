@@ -14,16 +14,14 @@
       location.replace('https://lvbooks.com.br' + location.pathname + location.search + location.hash);
     }
   </script>
-  <link rel="dns-prefetch" href="//i.ibb.co">
-<link rel="dns-prefetch" href="//i.postimg.cc">
-<link rel="dns-prefetch" href="//iili.io">
-<link rel="dns-prefetch" href="//m.media-amazon.com">
-<link rel="dns-prefetch" href="//s.w.org">
-<link rel="preconnect" href="https://connect.facebook.net" crossorigin>
-<link rel="preconnect" href="https://cdn.utmify.com.br" crossorigin>
-<!-- A VSL é o único recurso pesado priorizado, pois precisa iniciar automaticamente. -->
-<link rel="preload" href="audio%20book/vsl.mp4" as="video" type="video/mp4">
-  <meta content="dark light" name="color-scheme"/>
+  <link rel="preconnect" href="https://i.ibb.co" crossorigin>
+  <link rel="preconnect" href="https://m.media-amazon.com" crossorigin>
+  <link rel="preconnect" href="https://http2.mlstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="//encrypted-tbn0.gstatic.com">
+  <link rel="dns-prefetch" href="//s.w.org">
+  <link rel="preconnect" href="https://connect.facebook.net" crossorigin>
+  <link rel="preconnect" href="https://cdn.utmify.com.br" crossorigin>
+<meta content="dark light" name="color-scheme"/>
 <style>
  :root{
   --bg:#0b1220;
@@ -718,6 +716,37 @@ fbq('track', 'ViewContent', {
 <!-- End Meta Pixel Code -->
   <!-- Utmify -->
 <script src="https://cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-xcod-sck data-utmify-prevent-subids async defer></script>
+
+<style id="lv-performance-optimizations">
+  /* Renderiza seções abaixo da dobra somente quando se aproximam da tela. */
+  main.container > section,
+  .garantia {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 700px;
+  }
+
+  /* Evita recálculos e saltos durante o carregamento das capas. */
+  .book-grid img {
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+    background: #0a0f1e;
+  }
+
+  .depoimentos img {
+    contain: layout paint;
+    background: #0a0f1e;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      scroll-behavior: auto !important;
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+</style>
+
 </head>
 <body>
   <noscript><img height="1" width="1" style="display:none"
@@ -905,7 +934,7 @@ src="https://www.facebook.com/tr?id=868077232260294&ev=PageView&noscript=1"
 </div>
 </section>
 <main class="container">
-<img alt="Vista previa de la biblioteca digital" decoding="async" fetchpriority="low" loading="lazy" src="https://i.ibb.co/Q3gjMwt2/Chat-GPT-Image-6-08-2026-22-08-24.png"/>
+<img alt="Vista previa de la biblioteca digital" decoding="async" fetchpriority="low" loading="lazy" referrerpolicy="no-referrer" src="https://i.ibb.co/Q3gjMwt2/Chat-GPT-Image-6-08-2026-22-08-24.png"/>
 <section aria-labelledby="porque">
 <h2 class="title" id="porque" style="color: white;">¿Por qué elegir nuestra colección?</h2>
 <p class="subtitle">Contenido enfocado en las áreas que más impulsan tu vida personal y profesional.</p>
@@ -944,16 +973,16 @@ src="https://www.facebook.com/tr?id=868077232260294&ev=PageView&noscript=1"
 <h2 class="title" id="capas" style="color: white;">Conoce algunos libros de la colección</h2>
 <p class="subtitle">Una muestra de los clásicos y best sellers incluidos en la colección completa.</p>
 <div class="book-grid">
-<img alt="Portada del libro 1" decoding="async" fetchpriority="low" loading="lazy" src="https://m.media-amazon.com/images/I/810GHGtf9zL._AC_UF1000,1000_QL80_.jpg"/>
-<img alt="Portada del libro 2" decoding="async" fetchpriority="low" loading="lazy" src="https://m.media-amazon.com/images/I/81ed2Vapz2L._AC_UF1000,1000_QL80_.jpg"/>
-<img alt="Portada del libro 3" decoding="async" fetchpriority="low" loading="lazy" src="https://m.media-amazon.com/images/I/51iUzFo5sYL._AC_UF1000,1000_QL80_.jpg"/>
-<img alt="Portada del libro 4" decoding="async" fetchpriority="low" loading="lazy" src="https://http2.mlstatic.com/D_NQ_NP_837648-CBT74414171644_022024-O.webp"/>
-<img alt="Portada del libro 5" decoding="async" fetchpriority="low" loading="lazy" src="https://m.media-amazon.com/images/I/71Sa9IB5i4L._AC_UF894,1000_QL80_.jpg"/>
-<img alt="Portada del libro 6" decoding="async" fetchpriority="low" loading="lazy" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmnUeiXHzhbbNl_IU72C4_PTMWy4Jl1WH_gkl8v1QoG75O_uH8MCNcpvM&s=10"/>
-<img alt="Portada del libro 7" decoding="async" fetchpriority="low" loading="lazy" src="https://m.media-amazon.com/images/I/9126ob6z1aL._UF1000,1000_QL80_.jpg"/>
-<img alt="Portada del libro 8" decoding="async" fetchpriority="low" loading="lazy" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0px7EoDMNRvl6WEpZeHFu6aOqnb0GjlQl2TF0S8qlA3fBW-IjMmwJBzSP&s=10"/>
-<img alt="Portada del libro 9" decoding="async" fetchpriority="low" loading="lazy" src="https://m.media-amazon.com/images/I/71jc29-6iVL._AC_UF1000,1000_QL80_.jpg"/>
-<img alt="Portada del libro 10" decoding="async" fetchpriority="low" loading="lazy" src="https://m.media-amazon.com/images/I/81Hwj6ENRAL._UF1000,1000_QL80_.jpg"/>
+<img alt="Portada del libro 1" decoding="async" fetchpriority="low" loading="lazy" src="https://m.media-amazon.com/images/I/810GHGtf9zL._AC_UF420,630_QL75_.jpg" referrerpolicy="no-referrer"/>
+<img alt="Portada del libro 2" decoding="async" fetchpriority="low" loading="lazy" src="https://m.media-amazon.com/images/I/81ed2Vapz2L._AC_UF420,630_QL75_.jpg" referrerpolicy="no-referrer"/>
+<img alt="Portada del libro 3" decoding="async" fetchpriority="low" loading="lazy" src="https://m.media-amazon.com/images/I/51iUzFo5sYL._AC_UF420,630_QL75_.jpg" referrerpolicy="no-referrer"/>
+<img alt="Portada del libro 4" decoding="async" fetchpriority="low" loading="lazy" src="https://http2.mlstatic.com/D_NQ_NP_837648-CBT74414171644_022024-O.webp" referrerpolicy="no-referrer"/>
+<img alt="Portada del libro 5" decoding="async" fetchpriority="low" loading="lazy" src="https://m.media-amazon.com/images/I/71Sa9IB5i4L._AC_UF420,630_QL75_.jpg" referrerpolicy="no-referrer"/>
+<img alt="Portada del libro 6" decoding="async" fetchpriority="low" loading="lazy" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmnUeiXHzhbbNl_IU72C4_PTMWy4Jl1WH_gkl8v1QoG75O_uH8MCNcpvM&s=10" referrerpolicy="no-referrer"/>
+<img alt="Portada del libro 7" decoding="async" fetchpriority="low" loading="lazy" src="https://m.media-amazon.com/images/I/9126ob6z1aL._UF420,630_QL75_.jpg" referrerpolicy="no-referrer"/>
+<img alt="Portada del libro 8" decoding="async" fetchpriority="low" loading="lazy" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0px7EoDMNRvl6WEpZeHFu6aOqnb0GjlQl2TF0S8qlA3fBW-IjMmwJBzSP&s=10" referrerpolicy="no-referrer"/>
+<img alt="Portada del libro 9" decoding="async" fetchpriority="low" loading="lazy" src="https://m.media-amazon.com/images/I/71jc29-6iVL._AC_UF420,630_QL75_.jpg" referrerpolicy="no-referrer"/>
+<img alt="Portada del libro 10" decoding="async" fetchpriority="low" loading="lazy" src="https://m.media-amazon.com/images/I/81Hwj6ENRAL._UF420,630_QL75_.jpg" referrerpolicy="no-referrer"/>
 </div>
 <div style="height:10px"></div>
 <button class="btn btn-primary" onclick="document.getElementById('ofertas').scrollIntoView({behavior:'smooth'})" style="margin-top: 20px;">
@@ -969,9 +998,9 @@ src="https://www.facebook.com/tr?id=868077232260294&ev=PageView&noscript=1"
 <div class="slider" id="slider">
 <div class="slides" id="slides">
 <div class="depoimentos">
-<img alt="Testimonio 1 de cliente" decoding="async" fetchpriority="low" loading="lazy" src="https://i.ibb.co/zHhXb619/Chat-GPT-Image-6-08-2026-21-50-59.png" style="margin:10px; max-width:250px; border-radius:10px;"/>
-<img alt="Testimonio 2 de cliente" decoding="async" fetchpriority="low" loading="lazy" src="https://i.ibb.co/MD1drWDb/Chat-GPT-Image-6-08-2026-21-53-45.png" style="margin:10px; max-width:250px; border-radius:10px;"/>
-<img alt="Testimonio 3 de cliente" decoding="async" fetchpriority="low" loading="lazy" src="https://i.ibb.co/5WRnJpt7/Chat-GPT-Image-6-08-2026-21-55-01.png" style="margin:10px; max-width:250px; border-radius:10px;"/>
+<img alt="Testimonio 1 de cliente" decoding="async" fetchpriority="low" loading="lazy" src="https://i.ibb.co/zHhXb619/Chat-GPT-Image-6-08-2026-21-50-59.png" style="margin:10px; max-width:250px; border-radius:10px;" referrerpolicy="no-referrer"/>
+<img alt="Testimonio 2 de cliente" decoding="async" fetchpriority="low" loading="lazy" src="https://i.ibb.co/MD1drWDb/Chat-GPT-Image-6-08-2026-21-53-45.png" style="margin:10px; max-width:250px; border-radius:10px;" referrerpolicy="no-referrer"/>
+<img alt="Testimonio 3 de cliente" decoding="async" fetchpriority="low" loading="lazy" src="https://i.ibb.co/5WRnJpt7/Chat-GPT-Image-6-08-2026-21-55-01.png" style="margin:10px; max-width:250px; border-radius:10px;" referrerpolicy="no-referrer"/>
 </div>
 </div>
 </div>
@@ -1116,7 +1145,7 @@ src="https://www.facebook.com/tr?id=868077232260294&ev=PageView&noscript=1"
 </section>
 <!-- ✅ (ESSENCIAL) Container da Notificação -->
 <div id="purchaseToastContainer"></div>
-<img decoding="async" fetchpriority="low" loading="lazy" src="https://i.ibb.co/k6M7gGxD/Chat-GPT-Image-20-05-2026-21-35-45.png" style="width:120px; display:block; margin:auto;"/>
+<img decoding="async" fetchpriority="low" loading="lazy" referrerpolicy="no-referrer" src="https://i.ibb.co/k6M7gGxD/Chat-GPT-Image-20-05-2026-21-35-45.png" style="width:120px; display:block; margin:auto;"/>
 <footer class="container">© 2026 LV BOOKS – Todos los derechos reservados.</footer>
 </main>
 <!-- ✅ (ESSENCIAL) FUNÇÃO PARA REPASSAR UTM PARA O CHECKOUT -->
@@ -1251,11 +1280,20 @@ src="https://www.facebook.com/tr?id=868077232260294&ev=PageView&noscript=1"
      return sampleNames[Math.floor(Math.random() * sampleNames.length)];
    }
 
-   showPurchase(randomName());
-
-   setInterval(() => {
+   function startPurchaseNotifications() {
      showPurchase(randomName());
-   }, 20000);
+     setInterval(() => {
+       showPurchase(randomName());
+     }, 20000);
+   }
+
+   window.addEventListener('load', function () {
+     if ('requestIdleCallback' in window) {
+       requestIdleCallback(startPurchaseNotifications, { timeout: 2500 });
+     } else {
+       setTimeout(startPurchaseNotifications, 1200);
+     }
+   }, { once: true });
 </script>
 
 </body>
